@@ -1,0 +1,41 @@
+name: Import LUMI prototype snapshot
+
+on:
+  push:
+    branches:
+      - feat/prototype-0.1
+    paths:
+      - '.source/lumi-github-snapshot.zip'
+
+permissions:
+  contents: write
+
+jobs:
+  import-snapshot:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v4
+        with:
+          ref: feat/prototype-0.1
+          fetch-depth: 0
+
+      - name: Extract snapshot
+        run: |
+          rm -rf /tmp/lumi-snapshot
+          mkdir -p /tmp/lumi-snapshot
+          unzip -q .source/lumi-github-snapshot.zip -d /tmp/lumi-snapshot
+          rsync -a --exclude '.git/' --exclude '.source/' --exclude '.github/' /tmp/lumi-snapshot/ ./
+
+      - name: Commit imported source
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Snapshot already imported"
+            exit 0
+          fi
+          git commit -m "feat: import lumi prototype snapshot"
+          git push origin HEAD:feat/prototype-0.1
