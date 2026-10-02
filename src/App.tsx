@@ -13,7 +13,7 @@ const episode = parseEpisode(episodeRaw);
 const initialState: StoryState = { junhoScore: 0, taeyunScore: 0, truthScore: 0, riskScore: 0, flags: {} };
 
 function isProductionBuild(): boolean {
-  return ((import.meta as ImportMeta & { env?: { PROD?: boolean } }).env?.PROD ?? false) === true;
+  return import.meta.env.PROD;
 }
 
 function StoryFrame(props: { sceneId: string; storyState: StoryState; status?: string; onChoose(id: string): Promise<void>; onAdvance(): Promise<void>; onRetry?(): Promise<void>; analytics?: boolean }) {

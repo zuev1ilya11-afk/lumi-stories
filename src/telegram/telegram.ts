@@ -77,26 +77,17 @@ export function resolveTelegramContext(
   throw new TelegramContextError('TELEGRAM_DEV_CONTEXT_NOT_CONFIGURED');
 }
 
-function viteEnv(): Record<string, unknown> {
-  return ((import.meta as ImportMeta & { env?: Record<string, unknown> }).env ?? {});
-}
-
 function explicitDevelopmentMock(): DevelopmentMock | undefined {
-  const env = viteEnv();
-  const initData = typeof env.VITE_LUMI_DEV_INIT_DATA === 'string' ? env.VITE_LUMI_DEV_INIT_DATA : '';
+  const initData = import.meta.env.VITE_LUMI_DEV_INIT_DATA ?? '';
   if (!initData) return undefined;
-  const userDisplayName =
-    typeof env.VITE_LUMI_DEV_DISPLAY_NAME === 'string' && env.VITE_LUMI_DEV_DISPLAY_NAME
-      ? env.VITE_LUMI_DEV_DISPLAY_NAME
-      : undefined;
+  const userDisplayName = import.meta.env.VITE_LUMI_DEV_DISPLAY_NAME || undefined;
   return { initData, ...(userDisplayName ? { userDisplayName } : {}) };
 }
 
 export function getTelegramContext(
   options?: Partial<Pick<ResolveTelegramOptions, 'production' | 'developmentMock'>>,
 ): TelegramContext {
-  const env = viteEnv();
-  const production = options?.production ?? env.PROD === true;
+  const production = options?.production ?? import.meta.env.PROD;
   const developmentMock = options?.developmentMock ?? (!production ? explicitDevelopmentMock() : undefined);
   return resolveTelegramContext(window.Telegram?.WebApp, { production, developmentMock });
 }

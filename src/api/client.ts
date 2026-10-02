@@ -96,8 +96,7 @@ export function createApiClient({ baseUrl, fetcher = fetch }: ApiClientOptions) 
 }
 
 function configuredBaseUrl(): string {
-  const meta = import.meta as ImportMeta & { env?: Record<string, string | undefined> };
-  return meta.env?.VITE_LUMI_API_URL ?? '';
+  return import.meta.env.VITE_LUMI_API_URL ?? '';
 }
 
 export function bootstrap(initData: string): Promise<BootstrapResponse> {
