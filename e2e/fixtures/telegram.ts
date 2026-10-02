@@ -61,6 +61,9 @@ function userIdFromRoute(route: Route): number {
 }
 
 export async function installMockLumiApi(page: Page, store: MockApiStore): Promise<void> {
+  page.on('request', (request) => {
+    if (request.url().includes('lumi')) console.log('LUMI_E2E_REQUEST', request.method(), request.url());
+  });
   await page.route('http://lumi.test/**', async (route: Route) => {
     const request = route.request();
     if (request.method() === 'OPTIONS') {

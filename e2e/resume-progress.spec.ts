@@ -5,7 +5,14 @@ async function enterStory(page: import('@playwright/test').Page, initData: strin
   await installTelegram(page, initData);
   await installMockLumiApi(page, store);
   await page.goto('/');
-  await page.getByRole('button', { name: 'Начать историю' }).click();
+  await page.waitForTimeout(250);
+  console.log('LUMI_E2E_BODY', await page.locator('body').innerText());
+  console.log('LUMI_E2E_CONTEXT', await page.evaluate(() => ({
+    href: location.href,
+    initDataLength: window.Telegram?.WebApp?.initData?.length ?? 0,
+    hasTelegram: Boolean(window.Telegram?.WebApp),
+  })));
+  await page.getByRole('button', { name: 'Начать историю' }).click({ timeout: 5_000 });
   await page.getByRole('button', { name: store.progress ? 'Продолжить' : 'Начать' }).click();
 }
 
