@@ -1,0 +1,19 @@
+{
+  "backgrounds": [
+    { "id": "hansu_arrival_evening", "purpose": "Прибытие Леры в Хансу, вечерний город" },
+    { "id": "apartment_hall_night", "purpose": "Коридор дома Леры и Джунхо" },
+    { "id": "lera_room_night", "purpose": "Комната Леры ночью, переписка SOA" },
+    { "id": "hansu_university_day", "purpose": "Университет Хансу и дневные сцены" }
+  ],
+  "characters": [
+    { "id": "lera-neutral", "character": "Лера", "emotion": "neutral" },
+    { "id": "lera-concerned", "character": "Лера", "emotion": "concerned" },
+    { "id": "lera-shocked", "character": "Лера", "emotion": "shocked" },
+    { "id": "junho-neutral", "character": "Кан Джунхо", "emotion": "neutral" },
+    { "id": "junho-guarded", "character": "Кан Джунхо", "emotion": "guarded" },
+    { "id": "junho-soft", "character": "Кан Джунхо", "emotion": "soft" }
+  ],
+  "cg": [
+    { "id": "soa-junho-old-photo", "purpose": "Старая фотография Соа и Джунхо, снятая из квартиры Леры" }
+  ]
+}

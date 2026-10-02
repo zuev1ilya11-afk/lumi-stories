@@ -1,0 +1,19 @@
+type StartScreenProps = {
+  onStart(): void;
+};
+
+export function StartScreen({ onStart }: StartScreenProps) {
+  return (
+    <main className="lumi-start" aria-label="LUMI">
+      <div className="lumi-start__art" aria-hidden="true" />
+      <div className="lumi-start__veil" aria-hidden="true" />
+      <section className="lumi-start__content">
+        <p className="lumi-eyebrow">Интерактивные истории</p>
+        <h1 className="lumi-logo">LUMI</h1>
+        <p className="lumi-tagline">Твоя история, твой выбор.</p>
+        <button className="lumi-primary" type="button" onClick={onStart}>Начать историю</button>
+        <p className="lumi-start__meta">Романтика · Мистика · K-pop</p>
+      </section>
+    </main>
+  );
+}

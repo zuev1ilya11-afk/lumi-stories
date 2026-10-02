@@ -1,0 +1,15 @@
+:root {
+  color-scheme: dark;
+  --lumi-bg: #0d0b14;
+  --lumi-surface: rgba(28, 23, 40, 0.92);
+  --lumi-surface-soft: rgba(40, 31, 55, 0.74);
+  --lumi-text: #fbf7ff;
+  --lumi-muted: #c1b5d0;
+  --lumi-accent: #e6b2ff;
+  --lumi-accent-2: #8ca4ff;
+  --lumi-border: rgba(230, 178, 255, 0.32);
+  --lumi-shadow: 0 18px 48px rgba(0, 0, 0, 0.38);
+  --lumi-safe-top: env(safe-area-inset-top, 0px);
+  --lumi-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --lumi-radius: 24px;
+}
