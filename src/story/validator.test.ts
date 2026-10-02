@@ -1,3 +1,4 @@
+// @vitest-environment node
 import { describe, expect, it } from 'vitest';
 import { parseEpisode, type Episode, type StoryState } from './schema';
 import { enumeratePaths, validateEpisode } from './validator';

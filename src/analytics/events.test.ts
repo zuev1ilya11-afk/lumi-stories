@@ -1,8 +1,11 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { trackEvent } from './events';
 
-const sendAnalytics = vi.fn();
-const getTelegramContext = vi.fn();
+const { sendAnalytics, getTelegramContext } = vi.hoisted(() => ({
+  sendAnalytics: vi.fn(),
+  getTelegramContext: vi.fn(),
+}));
+
 vi.mock('../api/client', async () => {
   const actual = await vi.importActual('../api/client') as typeof import('../api/client');
   return { ...actual, sendAnalytics };

@@ -14,7 +14,7 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -35,7 +35,7 @@ jobs:
           fi
           exit $code
 
-      - name: Unit tests
+      - name: Frontend unit tests
         run: npm test -- --run
 
       - name: Typecheck
@@ -46,6 +46,14 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Backend Deno tests
+        run: deno test supabase/functions/_shared/telegram.test.ts supabase/functions/_shared/repository.test.ts supabase/functions/lumi-api/routes.test.ts
 
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
