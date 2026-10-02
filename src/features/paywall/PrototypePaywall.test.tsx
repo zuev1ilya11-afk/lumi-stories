@@ -13,7 +13,7 @@ describe('PrototypePaywall', () => {
     render(<PrototypePaywall />);
     expect(screen.getByText('История только начинается')).toBeInTheDocument();
     expect(screen.getByText(/Эпизоды 2–5/)).toBeInTheDocument();
-    expect(screen.getByText(/249 ₽/)).toBeInTheDocument();
+    expect(screen.getByText('249 ₽', { selector: 'span' })).toBeInTheDocument();
     expect(screen.getByText(/ориентир будущей цены/i)).toBeInTheDocument();
   });
 
