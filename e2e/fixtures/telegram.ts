@@ -34,6 +34,8 @@ export async function signTelegramInitData(userId = 555111, nowSeconds = 1_800_0
 }
 
 export async function installTelegram(page: Page, initData: string, userId = 555111): Promise<void> {
+  page.on('console', (message) => console.log('LUMI_BROWSER_CONSOLE', message.type(), message.text()));
+  page.on('pageerror', (error) => console.log('LUMI_BROWSER_PAGEERROR', error.message, error.stack ?? ''));
   await page.addInitScript(({ signed, id }: { signed: string; id: number }) => {
     window.Telegram = {
       WebApp: {
