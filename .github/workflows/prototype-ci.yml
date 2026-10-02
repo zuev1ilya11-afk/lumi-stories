@@ -25,7 +25,15 @@ jobs:
           node-version: '22'
 
       - name: Install dependencies
-        run: npm install --no-audit --no-fund
+        run: |
+          set +e
+          npm install --no-audit --no-fund --verbose
+          code=$?
+          if [ $code -ne 0 ]; then
+            echo "=== npm debug log ==="
+            cat ~/.npm/_logs/*-debug-0.log || true
+          fi
+          exit $code
 
       - name: Unit tests
         run: npm test -- --run
