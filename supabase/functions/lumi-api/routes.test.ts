@@ -7,8 +7,14 @@ function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message);
 }
 
+function keyArrayBuffer(key: Uint8Array): ArrayBuffer {
+  const copy = new Uint8Array(key.byteLength);
+  copy.set(key);
+  return copy.buffer;
+}
+
 async function hmac(key: Uint8Array, value: string): Promise<Uint8Array> {
-  const cryptoKey = await crypto.subtle.importKey('raw', key, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  const cryptoKey = await crypto.subtle.importKey('raw', keyArrayBuffer(key), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
   return new Uint8Array(await crypto.subtle.sign('HMAC', cryptoKey, new TextEncoder().encode(value)));
 }
 

@@ -23,10 +23,17 @@ export type VerifiedTelegramUser = {
 
 const encoder = new TextEncoder();
 
+function keyArrayBuffer(key: Uint8Array): ArrayBuffer {
+  const copy = new Uint8Array(key.byteLength);
+  copy.set(key);
+  return copy.buffer;
+}
+
+
 async function hmacSha256(key: Uint8Array, value: string): Promise<Uint8Array> {
   const cryptoKey = await crypto.subtle.importKey(
     'raw',
-    key,
+    keyArrayBuffer(key),
     { name: 'HMAC', hash: 'SHA-256' },
     false,
     ['sign'],

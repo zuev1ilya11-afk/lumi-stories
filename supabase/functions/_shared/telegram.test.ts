@@ -11,10 +11,16 @@ function assertEquals<T>(actual: T, expected: T, message = 'values differ'): voi
   if (actual !== expected) throw new Error(`${message}: ${String(actual)} !== ${String(expected)}`);
 }
 
+function keyArrayBuffer(key: Uint8Array): ArrayBuffer {
+  const copy = new Uint8Array(key.byteLength);
+  copy.set(key);
+  return copy.buffer;
+}
+
 async function hmac(key: Uint8Array, value: string): Promise<Uint8Array> {
   const cryptoKey = await crypto.subtle.importKey(
     'raw',
-    key,
+    keyArrayBuffer(key),
     { name: 'HMAC', hash: 'SHA-256' },
     false,
     ['sign'],
