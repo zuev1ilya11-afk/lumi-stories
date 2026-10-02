@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: |
           set +e
-          npm install --no-audit --no-fund --verbose
+          npm install --no-audit --no-fund --legacy-peer-deps --verbose
           code=$?
           if [ $code -ne 0 ]; then
             echo "=== npm debug log ==="
