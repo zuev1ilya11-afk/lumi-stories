@@ -34,8 +34,6 @@ export async function signTelegramInitData(userId = 555111, nowSeconds = 1_800_0
 }
 
 export async function installTelegram(page: Page, initData: string, userId = 555111): Promise<void> {
-  page.on('console', (message) => console.log('LUMI_BROWSER_CONSOLE', message.type(), message.text()));
-  page.on('pageerror', (error) => console.log('LUMI_BROWSER_PAGEERROR', error.message, error.stack ?? ''));
   await page.addInitScript(({ signed, id }: { signed: string; id: number }) => {
     window.Telegram = {
       WebApp: {
@@ -63,9 +61,6 @@ function userIdFromRoute(route: Route): number {
 }
 
 export async function installMockLumiApi(page: Page, store: MockApiStore): Promise<void> {
-  page.on('request', (request) => {
-    if (request.url().includes('lumi')) console.log('LUMI_E2E_REQUEST', request.method(), request.url());
-  });
   await page.route('http://lumi.test/**', async (route: Route) => {
     const request = route.request();
     if (request.method() === 'OPTIONS') {

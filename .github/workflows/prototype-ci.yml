@@ -6,7 +6,7 @@ on:
       - main
   push:
     branches:
-      - feat/prototype-0.1
+      - main
 
 permissions:
   contents: read
