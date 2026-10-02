@@ -19,7 +19,7 @@ const scene: Scene = {
 
 describe('SoaChatScreen', () => {
   it('renders SOA identity, stale status and message bubbles', () => {
-    render(<SoaChatScreen scene={scene} availableChoices={choices} onChoose={vi.fn()} />);
+    render(<SoaChatScreen scene={scene} availableChoices={choices} onChoose={vi.fn()} onAdvance={vi.fn()} />);
     expect(screen.getByText('SOA')).toBeInTheDocument();
     expect(screen.getByText('была в сети очень давно')).toBeInTheDocument();
     expect(screen.getByText('Ты живёшь напротив него?')).toBeInTheDocument();
@@ -28,17 +28,31 @@ describe('SoaChatScreen', () => {
 
   it('uses the story engine callback for replies', () => {
     const onChoose = vi.fn();
-    render(<SoaChatScreen scene={scene} availableChoices={choices} onChoose={onChoose} />);
+    render(<SoaChatScreen scene={scene} availableChoices={choices} onChoose={onChoose} onAdvance={vi.fn()} />);
     fireEvent.click(screen.getByRole('button', { name: 'Скрыть сообщение' }));
     expect(onChoose).toHaveBeenCalledWith('hide');
   });
 
   it('renders attachment when the scene declares one', () => {
     render(
-      <SoaChatScreen scene={{ ...scene, attachment: 'soa-junho-old-photo' }} availableChoices={[]} onChoose={vi.fn()} />,
+      <SoaChatScreen scene={{ ...scene, attachment: 'soa-junho-old-photo' }} availableChoices={[]} onChoose={vi.fn()} onAdvance={vi.fn()} />,
     );
     expect(screen.getByRole('img', { name: 'Вложение от SOA' })).toHaveAttribute(
       'src', '/assets/last-online/cg/soa-junho-old-photo.webp',
     );
+  });
+
+  it('advances a message scene with nextSceneId when there are no reply choices', () => {
+    const onAdvance = vi.fn();
+    render(
+      <SoaChatScreen
+        scene={{ ...scene, choices: undefined, nextSceneId: 'next-message' }}
+        availableChoices={[]}
+        onChoose={vi.fn()}
+        onAdvance={onAdvance}
+      />,
+    );
+    fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
+    expect(onAdvance).toHaveBeenCalledTimes(1);
   });
 });

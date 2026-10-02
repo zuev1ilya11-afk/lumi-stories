@@ -59,7 +59,7 @@ export function StoryScreen({ episode, sceneId, state, onChoose, onAdvance, onMe
 
       <div className="lumi-story__content">
         {scene.kind === 'message' ? (
-          <SoaChatScreen scene={scene} availableChoices={choices} onChoose={handleChoose} disabled={choicePending} />
+          <SoaChatScreen scene={scene} availableChoices={choices} onChoose={handleChoose} onAdvance={onAdvance} disabled={choicePending} />
         ) : (
           <div className="lumi-story__standard">
             <DialogueBox scene={scene} canAdvance={choices.length === 0 && scene.kind !== 'terminal'} onAdvance={onAdvance} />
