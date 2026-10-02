@@ -13,15 +13,22 @@ const bootstrapPayload: BootstrapResponse = {
   playerId: 'p1', telegramUserId: 42, season1Owned: false, progress: saved,
 };
 
-const bootstrap = vi.fn();
-const saveProgress = vi.fn();
+const { bootstrap, saveProgress } = vi.hoisted(() => ({
+  bootstrap: vi.fn(),
+  saveProgress: vi.fn(),
+}));
+
 vi.mock('../api/client', async () => {
   const actual = await vi.importActual('../api/client') as typeof import('../api/client');
   return { ...actual, bootstrap, saveProgress };
 });
 
 describe('useProgress', () => {
-  beforeEach(() => { bootstrap.mockReset(); saveProgress.mockReset(); bootstrap.mockResolvedValue(bootstrapPayload); });
+  beforeEach(() => {
+    bootstrap.mockReset();
+    saveProgress.mockReset();
+    bootstrap.mockResolvedValue(bootstrapPayload);
+  });
 
   it('boots from server progress instead of episode start', async () => {
     const { result } = renderHook(() => useProgress('signed'));

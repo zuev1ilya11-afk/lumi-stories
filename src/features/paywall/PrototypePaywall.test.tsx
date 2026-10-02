@@ -2,7 +2,10 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { PrototypePaywall } from './PrototypePaywall';
 
-const trackEvent = vi.fn();
+const { trackEvent } = vi.hoisted(() => ({
+  trackEvent: vi.fn(),
+}));
+
 vi.mock('../../analytics/events', () => ({ trackEvent }));
 
 describe('PrototypePaywall', () => {

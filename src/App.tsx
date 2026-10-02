@@ -55,8 +55,7 @@ function LocalPrototype() {
   return <StoryFrame sceneId={sceneId} storyState={storyState} onChoose={choose} onAdvance={advance} />;
 }
 
-export function App() {
-  const production = isProductionBuild();
+export function App({ production = isProductionBuild() }: { production?: boolean } = {}) {
   let context: TelegramContext | null = null;
   try {
     context = getTelegramContext({ production });
