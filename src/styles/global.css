@@ -1763,3 +1763,228 @@ button { color: inherit; }
   .lumi-start__feature p small { font-size: .61rem; }
   .lumi-start__cta { min-height: 48px; margin-bottom: 59px; }
 }
+
+
+/* LUMI approved art-backed home — expectation/reality correction */
+.lumi-start__hero-art {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background-position: 50% 0%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 1;
+  transform: scale(1.018);
+  transform-origin: 50% 35%;
+  filter: saturate(1.03) contrast(1.02) brightness(.9);
+  animation: lumi-home-art-breathe 18s ease-in-out infinite alternate;
+}
+.lumi-start__hero-art::before {
+  content: "";
+  position: absolute;
+  inset: 40% 0 7%;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 46%, rgba(255,216,145,.15) 0 10%, transparent 37%),
+    linear-gradient(180deg, transparent 0 20%, rgba(6,8,17,.08) 46%, rgba(5,7,14,.68) 100%);
+  mix-blend-mode: screen;
+  opacity: .55;
+  animation: lumi-river-glow 5.8s ease-in-out infinite;
+}
+.lumi-start__hero-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(3,6,15,.02) 0 36%, rgba(4,7,15,.12) 48%, rgba(5,7,14,.64) 82%, rgba(5,6,12,.9) 100%),
+    radial-gradient(ellipse at 50% 50%, transparent 38%, rgba(1,3,9,.2) 100%);
+}
+
+/* The approved illustration owns the moon and skyline on the home tab. */
+.lumi-start--minimal[data-tab="home"] .lumi-start__moon,
+.lumi-start--minimal[data-tab="home"] .lumi-start__horizon {
+  opacity: 0 !important;
+  animation: none !important;
+}
+.lumi-start--minimal[data-tab="home"] {
+  background: #050814;
+}
+.lumi-start--minimal[data-tab="home"]::before {
+  z-index: 1;
+  opacity: .42;
+  mix-blend-mode: screen;
+}
+.lumi-start--minimal[data-tab="home"] .lumi-start__stars,
+.lumi-start--minimal[data-tab="home"] .lumi-start__shooting-stars,
+.lumi-start--minimal[data-tab="home"] .lumi-start__mist {
+  z-index: 2;
+}
+.lumi-start--minimal[data-tab="home"] .lumi-start__stars {
+  opacity: .44;
+  mix-blend-mode: screen;
+}
+.lumi-start--minimal[data-tab="home"] .lumi-start__mist {
+  inset: 28% -34% 20%;
+  opacity: .34;
+  filter: blur(24px);
+}
+.lumi-start--minimal[data-tab="home"] .lumi-start__minimal-content,
+.lumi-start--minimal[data-tab="home"] .lumi-start__nav {
+  z-index: 4;
+}
+
+/* Place the live UI over the illustration rather than trying to redraw the illustration in CSS. */
+.lumi-start--minimal[data-tab="home"] .lumi-start__minimal-content {
+  padding-top: clamp(238px, 36dvh, 335px);
+}
+.lumi-start--minimal[data-tab="home"] .lumi-logo--minimal {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.05rem, 14.8vw, 4.85rem);
+  font-weight: 400;
+  letter-spacing: .16em;
+  padding-left: .16em;
+  color: #fff3cf;
+  text-shadow:
+    0 0 10px rgba(255,237,190,.5),
+    0 0 30px rgba(255,218,145,.28),
+    0 2px 16px rgba(0,0,0,.45);
+}
+.lumi-start--minimal[data-tab="home"] .lumi-start__subtitle {
+  color: rgba(244,234,224,.9);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: .72rem;
+  letter-spacing: .27em;
+  text-shadow: 0 2px 12px rgba(0,0,0,.6);
+}
+.lumi-start--minimal[data-tab="home"] .lumi-start__features {
+  margin-top: clamp(18px, 3dvh, 28px);
+  gap: 8px;
+}
+.lumi-start--minimal[data-tab="home"] .lumi-start__feature {
+  min-height: 61px;
+  grid-template-columns: 48px 1fr;
+  padding: 7px 42px 7px 8px;
+  border-color: rgba(255,238,203,.2);
+  border-radius: 18px;
+  background: linear-gradient(105deg, rgba(13,17,30,.82), rgba(10,12,23,.68));
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.05),
+    0 8px 22px rgba(0,0,0,.24),
+    0 0 18px rgba(255,210,125,.035);
+  backdrop-filter: blur(14px);
+}
+.lumi-start--minimal[data-tab="home"] .lumi-start__feature > span {
+  width: 40px;
+  height: 40px;
+  color: #ffe9b2;
+  border-color: rgba(255,226,165,.46);
+  background: radial-gradient(circle, rgba(255,221,153,.16), rgba(255,255,255,.02));
+  box-shadow: 0 0 18px rgba(255,206,116,.16);
+}
+.lumi-start--minimal[data-tab="home"] .lumi-start__feature p {
+  display: grid;
+  gap: 2px;
+  padding-right: 0;
+}
+.lumi-start--minimal[data-tab="home"] .lumi-start__feature p strong {
+  color: #fff8ee;
+  font: 500 .9rem/1.15 Georgia, "Times New Roman", serif;
+}
+.lumi-start--minimal[data-tab="home"] .lumi-start__feature p small {
+  color: rgba(205,201,214,.78);
+  font: 400 .7rem/1.25 Inter, system-ui, sans-serif;
+}
+.lumi-start--minimal[data-tab="home"] .lumi-start__feature::after {
+  color: rgba(255,230,179,.9);
+  font-size: 1.42rem;
+}
+.lumi-start--minimal[data-tab="home"] .lumi-start__cta {
+  min-height: 57px;
+  margin-bottom: 68px;
+  border: 1px solid rgba(255,250,222,.92);
+  border-radius: 21px;
+  color: #21170d;
+  background:
+    linear-gradient(110deg, #fff4d2 0%, #f9dda2 52%, #e9bd75 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.9),
+    0 0 20px rgba(255,225,160,.55),
+    0 0 54px rgba(255,190,88,.2),
+    0 15px 34px rgba(0,0,0,.32);
+}
+.lumi-start--minimal[data-tab="home"] .lumi-start__nav {
+  border-color: rgba(218,222,246,.17);
+  background: rgba(5,8,17,.82);
+  box-shadow: 0 18px 38px rgba(0,0,0,.38);
+}
+.lumi-start--minimal[data-tab="home"] .lumi-start__nav button.is-active {
+  color: #ffe9b3;
+  text-shadow: 0 0 15px rgba(255,212,126,.45);
+}
+
+/* Other tabs stay calm and readable; the hero illustration fades away behind them. */
+.lumi-start--minimal:not([data-tab="home"]) .lumi-start__hero-art {
+  opacity: .1;
+  filter: saturate(.7) brightness(.45);
+  animation: none;
+}
+
+/* Motion is intentionally slow; small highlights provide the visible animation. */
+@keyframes lumi-home-art-breathe {
+  from { transform: scale(1.018) translate3d(0, 0, 0); filter: saturate(1.02) contrast(1.02) brightness(.88); }
+  to { transform: scale(1.045) translate3d(0, -.5%, 0); filter: saturate(1.08) contrast(1.035) brightness(.94); }
+}
+@keyframes lumi-river-glow {
+  0%, 100% { opacity: .32; transform: translateY(0) scaleX(.96); }
+  50% { opacity: .72; transform: translateY(-1.5%) scaleX(1.03); }
+}
+.lumi-start--minimal:not(.is-calm)[data-tab="home"] .lumi-start__feature {
+  animation: lumi-home-card-glint 7.5s ease-in-out infinite;
+}
+.lumi-start--minimal:not(.is-calm)[data-tab="home"] .lumi-start__feature:nth-child(2) { animation-delay: 1.1s; }
+.lumi-start--minimal:not(.is-calm)[data-tab="home"] .lumi-start__feature:nth-child(3) { animation-delay: 2.2s; }
+.lumi-start--minimal:not(.is-calm)[data-tab="home"] .lumi-start__feature:nth-child(4) { animation-delay: 3.3s; }
+@keyframes lumi-home-card-glint {
+  0%, 100% { border-color: rgba(255,238,203,.17); box-shadow: inset 0 1px rgba(255,255,255,.04), 0 8px 22px rgba(0,0,0,.24); }
+  50% { border-color: rgba(255,224,162,.3); box-shadow: inset 0 1px rgba(255,255,255,.06), 0 8px 24px rgba(0,0,0,.25), 0 0 22px rgba(255,201,111,.08); }
+}
+.lumi-start--minimal.is-calm .lumi-start__hero-art,
+.lumi-start--minimal.is-calm .lumi-start__hero-art::before {
+  animation: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lumi-start__hero-art,
+  .lumi-start__hero-art::before,
+  .lumi-start--minimal[data-tab="home"] .lumi-start__feature {
+    animation: none !important;
+  }
+}
+@media (max-height: 700px) {
+  .lumi-start--minimal[data-tab="home"] .lumi-start__minimal-content {
+    padding-top: 188px;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-logo--minimal {
+    font-size: clamp(2.55rem, 12vw, 3.5rem);
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__features {
+    margin-top: 12px;
+    gap: 6px;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__feature {
+    min-height: 49px;
+    grid-template-columns: 39px 1fr;
+    padding-block: 4px;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__feature > span {
+    width: 33px;
+    height: 33px;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__feature p strong { font-size: .79rem; }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__feature p small { font-size: .62rem; }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__cta {
+    min-height: 49px;
+    margin-bottom: 59px;
+  }
+}
