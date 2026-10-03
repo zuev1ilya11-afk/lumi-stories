@@ -82,7 +82,13 @@ export function StartScreen({
   return (
     <main className={`lumi-start lumi-start--minimal${motionEnabled ? '' : ' is-calm'}`} data-tab={tab} aria-label="LUMI">
       <div className="lumi-start__stars" aria-hidden="true" />
+      <div className="lumi-start__shooting-stars" aria-hidden="true">
+        <i /><i /><i />
+      </div>
       <div className="lumi-start__moon" aria-hidden="true" />
+      <div className="lumi-start__mist" aria-hidden="true">
+        <span /><span />
+      </div>
       <div className="lumi-start__horizon" aria-hidden="true">
         <span /><span /><span /><span /><span /><span />
       </div>
