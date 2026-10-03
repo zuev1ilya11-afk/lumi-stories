@@ -1053,3 +1053,520 @@ button { color: inherit; }
     transition: none !important;
   }
 }
+
+
+/* LUMI approved home concept — luminous moon city */
+.lumi-start--minimal {
+  background:
+    radial-gradient(circle at 50% 16%, rgba(96,112,184,.18) 0, transparent 31%),
+    radial-gradient(ellipse at 50% 68%, rgba(80,70,126,.2) 0, transparent 36%),
+    linear-gradient(180deg, #050a16 0%, #091020 48%, #0b0d18 74%, #080910 100%);
+}
+.lumi-start--minimal::before {
+  background:
+    radial-gradient(circle at 13% 11%, rgba(255,243,205,.9) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 77% 9%, rgba(255,255,255,.8) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 89% 26%, rgba(218,224,255,.72) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 34% 31%, rgba(255,239,196,.65) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 57% 20%, rgba(255,255,255,.7) 0 1px, transparent 1.5px);
+  background-size: 71px 83px, 103px 119px, 149px 137px, 181px 167px, 227px 211px;
+  opacity: .88;
+  animation: lumi-sky-slow-drift 22s ease-in-out infinite alternate;
+}
+.lumi-start__stars {
+  z-index: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,248,222,.96) 0 1px, transparent 1.7px),
+    radial-gradient(circle, rgba(209,218,255,.7) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(255,255,255,.55) 0 .8px, transparent 1.3px);
+  background-size: 67px 79px, 109px 127px, 43px 59px;
+  background-position: 7px 11px, 39px 24px, 18px 41px;
+  opacity: .72;
+  mask-image: linear-gradient(to bottom, #000 0 76%, transparent 96%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0 76%, transparent 96%);
+}
+.lumi-start__stars::before,
+.lumi-start__stars::after {
+  width: 3px;
+  height: 3px;
+  background: #fff8dc;
+  filter: drop-shadow(0 0 5px rgba(255,235,176,.95));
+}
+.lumi-start__stars::before {
+  top: 9%;
+  left: 11%;
+  box-shadow:
+    62px 31px rgba(255,248,220,.95),
+    142px 79px rgba(225,229,255,.8),
+    229px 22px rgba(255,255,255,.95),
+    296px 103px rgba(255,241,199,.86),
+    27px 192px rgba(205,213,255,.75),
+    184px 208px rgba(255,255,255,.84),
+    314px 244px rgba(255,236,182,.82);
+  animation: lumi-approved-twinkle-a 3.8s ease-in-out infinite;
+}
+.lumi-start__stars::after {
+  top: 16%;
+  left: 20%;
+  box-shadow:
+    86px 13px rgba(255,255,255,.84),
+    193px 103px rgba(255,244,211,.92),
+    -45px 118px rgba(209,219,255,.74),
+    139px 239px rgba(255,255,255,.84),
+    265px 182px rgba(255,239,190,.82),
+    54px 311px rgba(217,224,255,.74);
+  animation: lumi-approved-twinkle-b 5.1s 1.2s ease-in-out infinite;
+}
+
+.lumi-start__moon {
+  top: clamp(28px, 6.5dvh, 58px);
+  width: clamp(104px, 31vw, 164px);
+  height: clamp(104px, 31vw, 164px);
+  background:
+    radial-gradient(circle at 32% 27%, rgba(177,157,121,.28) 0 5%, transparent 6%),
+    radial-gradient(circle at 63% 39%, rgba(174,151,112,.22) 0 7%, transparent 8%),
+    radial-gradient(circle at 45% 66%, rgba(165,143,109,.18) 0 5%, transparent 6%),
+    radial-gradient(circle at 73% 73%, rgba(183,159,119,.2) 0 4%, transparent 5%),
+    radial-gradient(circle at 50% 45%, #fffdf2 0%, #fff1c9 52%, #ecd69f 100%);
+  opacity: 1;
+  box-shadow:
+    0 0 18px rgba(255,246,211,.9),
+    0 0 42px rgba(255,224,159,.62),
+    0 0 84px rgba(228,204,255,.32),
+    0 0 138px rgba(126,145,255,.16);
+  filter: saturate(.96) brightness(1.08);
+  isolation: isolate;
+}
+.lumi-start__moon::before {
+  content: "";
+  position: absolute;
+  inset: -31%;
+  border-radius: 50%;
+  border: 1px solid rgba(255,231,177,.28);
+  box-shadow:
+    0 0 0 12px rgba(255,232,181,.035),
+    0 0 0 25px rgba(222,213,255,.025),
+    0 0 34px rgba(255,226,164,.26);
+  opacity: .78;
+  animation: lumi-moon-ring 10s linear infinite;
+}
+.lumi-start__moon::after {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  width: auto;
+  height: auto;
+  top: 8%;
+  left: 8%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 26% 33%, rgba(124,105,82,.16) 0 5%, transparent 6%),
+    radial-gradient(circle at 70% 29%, rgba(135,113,84,.12) 0 7%, transparent 8%),
+    radial-gradient(circle at 48% 72%, rgba(145,120,90,.15) 0 6%, transparent 7%),
+    radial-gradient(circle at 78% 67%, rgba(119,98,78,.1) 0 4%, transparent 5%);
+  mix-blend-mode: multiply;
+  opacity: .72;
+}
+
+.lumi-start__shooting-stars {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.lumi-start__shooting-stars i {
+  position: absolute;
+  width: 96px;
+  height: 1px;
+  border-radius: 999px;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, rgba(223,231,255,.28), #fff8dd);
+  filter: drop-shadow(0 0 4px rgba(220,227,255,.65));
+  transform: rotate(-28deg) translate3d(-120px,0,0);
+}
+.lumi-start__shooting-stars i:nth-child(1) {
+  top: 14%;
+  left: 8%;
+  animation: lumi-shooting-star 8.8s 1.4s ease-out infinite;
+}
+.lumi-start__shooting-stars i:nth-child(2) {
+  top: 24%;
+  right: -2%;
+  animation: lumi-shooting-star-alt 12.4s 5.8s ease-out infinite;
+}
+.lumi-start__shooting-stars i:nth-child(3) {
+  top: 36%;
+  left: 23%;
+  width: 68px;
+  animation: lumi-shooting-star 15.6s 9.4s ease-out infinite;
+}
+
+.lumi-start__mist {
+  position: absolute;
+  z-index: 1;
+  inset: 36% -30% 12%;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: .48;
+  filter: blur(18px);
+}
+.lumi-start__mist span {
+  position: absolute;
+  width: 68%;
+  height: 34%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(175,181,219,.18), rgba(90,97,139,.08) 48%, transparent 72%);
+}
+.lumi-start__mist span:first-child {
+  top: 5%;
+  left: -8%;
+  animation: lumi-mist-drift-a 18s ease-in-out infinite alternate;
+}
+.lumi-start__mist span:last-child {
+  right: -3%;
+  bottom: 10%;
+  animation: lumi-mist-drift-b 23s ease-in-out infinite alternate;
+}
+
+.lumi-start__horizon {
+  z-index: 1;
+  bottom: 8%;
+  height: 45%;
+  opacity: .58;
+  background:
+    radial-gradient(ellipse at 50% 62%, rgba(108,94,158,.18) 0 18%, transparent 42%),
+    linear-gradient(180deg, transparent 0%, rgba(20,22,43,.2) 18%, rgba(8,10,18,.92) 100%);
+}
+.lumi-start__horizon::before {
+  bottom: 18%;
+  height: 54%;
+  background:
+    linear-gradient(174deg, transparent 0 41%, rgba(42,48,72,.92) 42% 56%, transparent 57%),
+    linear-gradient(187deg, transparent 0 47%, rgba(28,33,53,.98) 48% 68%, transparent 69%);
+  filter: blur(.4px);
+}
+.lumi-start__horizon::after {
+  content: "";
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: 12%;
+  height: 24%;
+  opacity: .65;
+  background:
+    radial-gradient(circle at 10% 68%, #ffd894 0 1px, transparent 1.7px),
+    radial-gradient(circle at 24% 38%, #ffe5a9 0 1px, transparent 1.7px),
+    radial-gradient(circle at 39% 72%, #d9ddff 0 1px, transparent 1.7px),
+    radial-gradient(circle at 53% 43%, #ffe6b1 0 1px, transparent 1.7px),
+    radial-gradient(circle at 67% 66%, #fbd594 0 1px, transparent 1.7px),
+    radial-gradient(circle at 82% 31%, #e7e3ff 0 1px, transparent 1.7px),
+    radial-gradient(circle at 93% 62%, #ffd78e 0 1px, transparent 1.7px);
+  animation: lumi-city-window-shimmer 4.6s ease-in-out infinite;
+}
+.lumi-start__horizon span {
+  border-top-color: rgba(225,218,255,.2);
+  box-shadow: 0 -6px 18px rgba(90,81,144,.08);
+}
+.lumi-start__horizon span::after {
+  content: "";
+  position: absolute;
+  inset: 16% 2px 6%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,218,145,.65) 0 1px,
+    transparent 1px 7px
+  );
+  opacity: .24;
+  animation: lumi-tower-lights 6s ease-in-out infinite;
+}
+.lumi-start__horizon span:nth-child(2)::after,
+.lumi-start__horizon span:nth-child(5)::after {
+  animation-delay: 1.6s;
+}
+
+.lumi-start__minimal-content {
+  z-index: 3;
+  padding-top: clamp(172px, 29dvh, 250px);
+}
+.lumi-start__brand-block {
+  gap: 8px;
+}
+.lumi-logo--minimal {
+  color: #fff7df;
+  text-shadow:
+    0 0 14px rgba(255,241,198,.28),
+    0 0 38px rgba(188,177,255,.2);
+  animation: lumi-logo-glow 6.4s ease-in-out infinite;
+}
+.lumi-start__subtitle {
+  color: #bbb1cf;
+}
+.lumi-start__features {
+  width: min(100%, 390px);
+  margin-top: clamp(24px, 4.5dvh, 40px);
+  gap: 9px;
+}
+.lumi-start__feature {
+  position: relative;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  min-height: 52px;
+  padding: 7px 15px 7px 8px;
+  overflow: hidden;
+  border: 1px solid rgba(228,222,255,.13);
+  border-radius: 18px;
+  background: linear-gradient(105deg, rgba(24,27,44,.72), rgba(13,16,29,.52));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.035),
+    0 8px 28px rgba(0,0,0,.13);
+  backdrop-filter: blur(12px);
+}
+.lumi-start__feature::after {
+  content: "›";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  translate: 0 -50%;
+  color: rgba(255,239,198,.76);
+  font-size: 1.25rem;
+}
+.lumi-start__feature > span {
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255,225,165,.32);
+  border-radius: 50%;
+  color: #ffedbc;
+  background: radial-gradient(circle, rgba(255,225,162,.12), rgba(255,255,255,.02));
+  box-shadow: 0 0 18px rgba(255,214,132,.1);
+  animation: lumi-feature-icon 5.2s ease-in-out infinite;
+}
+.lumi-start__feature:nth-child(2) > span { animation-delay: .9s; }
+.lumi-start__feature:nth-child(3) > span { animation-delay: 1.8s; }
+.lumi-start__feature:nth-child(4) > span { animation-delay: 2.7s; }
+.lumi-start__feature p {
+  padding-right: 24px;
+  color: #eee8f3;
+  font-family: Georgia, serif;
+  font-size: .88rem;
+}
+.lumi-start__cta {
+  min-height: 55px;
+  margin-bottom: 66px;
+  border-color: rgba(255,243,206,.72);
+  color: #20170c;
+  background: linear-gradient(135deg, #fff4d2 0%, #f3d59a 48%, #e6bd7d 100%);
+  box-shadow:
+    0 0 18px rgba(255,222,156,.38),
+    0 0 44px rgba(255,206,119,.16),
+    0 14px 34px rgba(0,0,0,.24);
+  animation: lumi-cta-breathe 3.6s ease-in-out infinite;
+}
+.lumi-start__cta > span {
+  font-size: 1.12rem;
+}
+.lumi-start__nav {
+  left: 14px;
+  right: 14px;
+  bottom: calc(8px + var(--lumi-safe-bottom));
+  min-height: 54px;
+  padding: 4px 10px;
+  border: 1px solid rgba(212,216,244,.12);
+  border-radius: 24px;
+  background: rgba(8,11,22,.72);
+  box-shadow: 0 14px 34px rgba(0,0,0,.26);
+  backdrop-filter: blur(18px);
+}
+.lumi-start__nav button {
+  color: #a8abc1;
+}
+.lumi-start__nav button.is-active {
+  color: #ffe8ae;
+  text-shadow: 0 0 12px rgba(255,218,139,.32);
+}
+
+.lumi-start--minimal:not([data-tab="home"]) .lumi-start__moon {
+  animation: none !important;
+  opacity: .2;
+  filter: saturate(.8) brightness(.72);
+  box-shadow: 0 0 30px rgba(204,193,255,.11);
+}
+.lumi-start--minimal:not([data-tab="home"]) .lumi-start__shooting-stars,
+.lumi-start--minimal:not([data-tab="home"]) .lumi-start__mist {
+  opacity: .16;
+}
+.lumi-start--minimal:not([data-tab="home"]) .lumi-start__horizon {
+  opacity: .28;
+}
+
+@keyframes lumi-sky-slow-drift {
+  from { transform: translate3d(-.35%, -.25%, 0) scale(1.01); }
+  to { transform: translate3d(.35%, .25%, 0) scale(1.02); }
+}
+@keyframes lumi-approved-twinkle-a {
+  0%, 100% { opacity: .22; transform: scale(.72); }
+  22% { opacity: 1; transform: scale(1.38); }
+  46% { opacity: .34; transform: scale(.86); }
+  73% { opacity: .82; transform: scale(1.16); }
+}
+@keyframes lumi-approved-twinkle-b {
+  0%, 100% { opacity: .18; transform: scale(.78); }
+  31% { opacity: .66; transform: scale(1.08); }
+  61% { opacity: 1; transform: scale(1.42); }
+  81% { opacity: .31; transform: scale(.9); }
+}
+@keyframes lumi-start-moon-glow {
+  0%, 100% {
+    transform: scale(.99);
+    box-shadow:
+      0 0 16px rgba(255,246,211,.86),
+      0 0 40px rgba(255,224,159,.55),
+      0 0 78px rgba(228,204,255,.27),
+      0 0 124px rgba(126,145,255,.13);
+    filter: saturate(.94) brightness(1.03);
+  }
+  50% {
+    transform: scale(1.035);
+    box-shadow:
+      0 0 24px rgba(255,252,225,1),
+      0 0 58px rgba(255,226,161,.82),
+      0 0 105px rgba(227,205,255,.46),
+      0 0 168px rgba(137,153,255,.23);
+    filter: saturate(1) brightness(1.18);
+  }
+}
+@keyframes lumi-moon-ring {
+  0% { transform: rotate(0deg) scale(.98); opacity: .48; }
+  50% { opacity: .9; }
+  100% { transform: rotate(360deg) scale(1.04); opacity: .48; }
+}
+@keyframes lumi-shooting-star {
+  0%, 82% { opacity: 0; transform: rotate(-28deg) translate3d(-120px,0,0); }
+  84% { opacity: 0; }
+  88% { opacity: .95; }
+  96%, 100% { opacity: 0; transform: rotate(-28deg) translate3d(360px,0,0); }
+}
+@keyframes lumi-shooting-star-alt {
+  0%, 78% { opacity: 0; transform: rotate(-32deg) translate3d(100px,0,0); }
+  82% { opacity: .92; }
+  93%, 100% { opacity: 0; transform: rotate(-32deg) translate3d(-330px,0,0); }
+}
+@keyframes lumi-mist-drift-a {
+  from { transform: translate3d(-5%, 1%, 0) scale(1); opacity: .34; }
+  to { transform: translate3d(22%, -4%, 0) scale(1.12); opacity: .58; }
+}
+@keyframes lumi-mist-drift-b {
+  from { transform: translate3d(8%, 0, 0) scale(1.08); opacity: .28; }
+  to { transform: translate3d(-24%, 5%, 0) scale(.96); opacity: .5; }
+}
+@keyframes lumi-city-window-shimmer {
+  0%, 100% { opacity: .38; filter: brightness(.8); }
+  42% { opacity: .82; filter: brightness(1.2); }
+  67% { opacity: .52; filter: brightness(.96); }
+}
+@keyframes lumi-tower-lights {
+  0%, 100% { opacity: .12; }
+  48% { opacity: .34; }
+  63% { opacity: .2; }
+}
+@keyframes lumi-logo-glow {
+  0%, 100% { text-shadow: 0 0 14px rgba(255,241,198,.2), 0 0 34px rgba(188,177,255,.14); }
+  50% { text-shadow: 0 0 20px rgba(255,241,198,.36), 0 0 48px rgba(188,177,255,.25); }
+}
+@keyframes lumi-feature-icon {
+  0%, 100% { box-shadow: 0 0 14px rgba(255,214,132,.08); filter: brightness(.94); }
+  50% { box-shadow: 0 0 24px rgba(255,214,132,.22); filter: brightness(1.12); }
+}
+@keyframes lumi-cta-breathe {
+  0%, 100% {
+    box-shadow: 0 0 16px rgba(255,222,156,.3), 0 0 36px rgba(255,206,119,.12), 0 14px 34px rgba(0,0,0,.24);
+    filter: brightness(.98);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255,229,178,.58), 0 0 58px rgba(255,206,119,.24), 0 16px 38px rgba(0,0,0,.26);
+    filter: brightness(1.06);
+  }
+}
+
+.lumi-start--minimal.is-calm::before,
+.lumi-start--minimal.is-calm .lumi-start__stars,
+.lumi-start--minimal.is-calm .lumi-start__stars::before,
+.lumi-start--minimal.is-calm .lumi-start__stars::after,
+.lumi-start--minimal.is-calm .lumi-start__moon,
+.lumi-start--minimal.is-calm .lumi-start__moon::before,
+.lumi-start--minimal.is-calm .lumi-start__shooting-stars i,
+.lumi-start--minimal.is-calm .lumi-start__mist span,
+.lumi-start--minimal.is-calm .lumi-start__horizon::after,
+.lumi-start--minimal.is-calm .lumi-start__horizon span::after,
+.lumi-start--minimal.is-calm .lumi-logo--minimal,
+.lumi-start--minimal.is-calm .lumi-start__feature > span,
+.lumi-start--minimal.is-calm .lumi-start__cta {
+  animation: none !important;
+  transition: none !important;
+}
+
+@media (max-height: 680px) {
+  .lumi-start__moon {
+    top: calc(24px + var(--lumi-safe-top));
+    width: 94px;
+    height: 94px;
+  }
+  .lumi-start__minimal-content {
+    padding-top: 126px;
+  }
+  .lumi-logo--minimal {
+    font-size: clamp(2.5rem, 12vw, 3.35rem);
+  }
+  .lumi-start__features {
+    margin-top: 16px;
+    gap: 6px;
+  }
+  .lumi-start__feature {
+    min-height: 43px;
+    grid-template-columns: 38px 1fr;
+    padding-block: 4px;
+  }
+  .lumi-start__feature > span {
+    width: 32px;
+    height: 32px;
+  }
+  .lumi-start__feature p {
+    font-size: .79rem;
+  }
+  .lumi-start__cta {
+    min-height: 48px;
+    margin-bottom: 58px;
+  }
+  .lumi-start__horizon {
+    height: 39%;
+  }
+}
+@media (max-width: 350px) {
+  .lumi-start--minimal {
+    padding-inline: 16px;
+  }
+  .lumi-start__feature {
+    border-radius: 15px;
+  }
+  .lumi-start__feature p {
+    font-size: .78rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lumi-start--minimal::before,
+  .lumi-start__stars,
+  .lumi-start__stars::before,
+  .lumi-start__stars::after,
+  .lumi-start__moon,
+  .lumi-start__moon::before,
+  .lumi-start__shooting-stars i,
+  .lumi-start__mist span,
+  .lumi-start__horizon::after,
+  .lumi-start__horizon span::after,
+  .lumi-logo--minimal,
+  .lumi-start__feature > span,
+  .lumi-start__cta {
+    animation: none !important;
+    transition: none !important;
+  }
+}
