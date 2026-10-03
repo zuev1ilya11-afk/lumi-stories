@@ -91,16 +91,30 @@ export async function createStarsInvoiceLink(
   priceStars: number,
   fetcher: typeof fetch = fetch,
 ): Promise<string> {
+  const isBlackRosesSeason = invoicePayload.startsWith('lumi:season:house-of-black-roses:season-1:');
+  const isLastOnlineSeason = invoicePayload.startsWith('lumi:season:last-online:season-1:')
+    || invoicePayload.startsWith('lumi:season-1:');
+  const isRewind = invoicePayload.startsWith('lumi:episode-rewind:');
+
+  const title = isRewind ? 'LUMI — Перепрохождение' : 'LUMI — Сезон 1';
+  const description = isBlackRosesSeason
+    ? 'Полный доступ к сезону «Дом чёрных роз»'
+    : isLastOnlineSeason
+      ? 'Полный доступ к сезону «Последний онлайн»'
+      : isRewind
+        ? 'Повторное прохождение выбранного эпизода'
+        : 'Покупка в LUMI';
+  const label = isRewind ? 'Перепройти эпизод' : 'Полный сезон';
+
   return telegramApi<string>(
     botToken,
     'createInvoiceLink',
     {
-      title: 'LUMI — Сезон 1',
-      description: 'Полный доступ к сезону «Последний онлайн»',
+      title,
+      description,
       payload: invoicePayload,
-      provider_token: '',
       currency: 'XTR',
-      prices: [{ label: 'Полный сезон', amount: priceStars }],
+      prices: [{ label, amount: priceStars }],
     },
     fetcher,
   );
