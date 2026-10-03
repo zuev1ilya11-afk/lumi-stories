@@ -1,4 +1,4 @@
-import { handleCreateSeasonInvoice, handlePaymentStatus, type PaymentDependencies } from './routes/payments.ts';
+import { handleCreateEpisodeRewindInvoice, handleCreateSeasonInvoice, handlePaymentStatus, type PaymentDependencies } from './routes/payments.ts';
 import { handleTelegramWebhook, type TelegramWebhookDependencies } from './routes/telegram-webhook.ts';
 import type { StarPaymentOrder, StarPaymentStore } from '../_shared/payments.ts';
 
@@ -59,7 +59,9 @@ function storeMock(current = order()): StarPaymentStore & {
     ownership: false,
     paidCalls: 0,
     support: [],
-    async createOrder() { return value ?? order(); },
+    async createOrder(playerId, productId, amount) {
+      return value ?? order({ playerId, productId, amount, invoicePayload: 'lumi:' + productId + ':new' });
+    },
     async findByPayload(payload) { return value?.invoicePayload === payload ? value : null; },
     async approveOrder(existing, queryId) {
       value = { ...existing, status: 'approved', preCheckoutQueryId: queryId };
@@ -84,10 +86,41 @@ function paymentDependencies(store: StarPaymentStore): PaymentDependencies {
   return {
     botToken: BOT_TOKEN,
     nowSeconds: NOW,
-    priceStars: 149,
+    seasonPriceStars: 149,
+    rewindPriceStars: 49,
     repository: {
       async getOrCreatePlayer(telegramUserId) {
         return { id: 'player-' + telegramUserId, telegramUserId, season1Owned: false, createdAt: 'now' };
+      },
+      async getProgress(playerId) {
+        return {
+          playerId,
+          storyId: 'last-online',
+          seasonId: 'season-1',
+          episodeId: 'last-online-s1-e2',
+          sceneId: 'ep2_end',
+          junhoScore: 6,
+          taeyunScore: 8,
+          truthScore: 5,
+          riskScore: 5,
+          flags: {},
+          updatedAt: 'now',
+        };
+      },
+      async getEpisodeCheckpoint(playerId, storyId, seasonId, episodeId) {
+        return {
+          playerId,
+          storyId,
+          seasonId,
+          episodeId,
+          sceneId: episodeId === 'last-online-s1-e2' ? 'ep2_morning' : 'ep1_arrival',
+          junhoScore: episodeId === 'last-online-s1-e2' ? 6 : 0,
+          taeyunScore: 0,
+          truthScore: episodeId === 'last-online-s1-e2' ? 1 : 0,
+          riskScore: 0,
+          flags: {},
+          updatedAt: 'now',
+        };
       },
     },
     store,
@@ -117,6 +150,7 @@ Deno.test('payment status returns server-owned entitlement', async () => {
   const store = storeMock();
   const deps = paymentDependencies(store);
   deps.repository = {
+    ...deps.repository,
     async getOrCreatePlayer(telegramUserId) {
       return { id: 'player-' + telegramUserId, telegramUserId, season1Owned: true, createdAt: 'now' };
     },
@@ -134,8 +168,14 @@ Deno.test('pre-checkout validates player, amount and order before approval', asy
   let answeredOk = false;
   const deps: TelegramWebhookDependencies = {
     webhookSecret: 'secret',
-    priceStars: 149,
-    repository: paymentDependencies(store).repository,
+    seasonPriceStars: 149,
+    rewindPriceStars: 49,
+    repository: {
+      ...paymentDependencies(store).repository,
+      async saveProgress(playerId, input) {
+        return { playerId, ...input, updatedAt: 'now' };
+      },
+    },
     store,
     async answerPreCheckout(id, ok) { answeredId = id; answeredOk = ok; },
     async sendMessage() {},
@@ -161,8 +201,14 @@ Deno.test('successful_payment grants season ownership after charge is recorded',
   const store = storeMock(order({ status: 'approved', preCheckoutQueryId: 'pcq-1' }));
   const deps: TelegramWebhookDependencies = {
     webhookSecret: 'secret',
-    priceStars: 149,
-    repository: paymentDependencies(store).repository,
+    seasonPriceStars: 149,
+    rewindPriceStars: 49,
+    repository: {
+      ...paymentDependencies(store).repository,
+      async saveProgress(playerId, input) {
+        return { playerId, ...input, updatedAt: 'now' };
+      },
+    },
     store,
     async answerPreCheckout() {},
     async sendMessage() {},
@@ -188,13 +234,87 @@ Deno.test('successful_payment grants season ownership after charge is recorded',
   assert(store.ownership === true, 'season entitlement was not granted');
 });
 
+Deno.test('episode rewind invoice uses its own Stars product and price', async () => {
+  const rewindOrder = order({
+    productId: 'episode-rewind:last-online-s1-e1',
+    amount: 49,
+    invoicePayload: 'lumi:episode-rewind:last-online-s1-e1:11111111-1111-4111-8111-111111111111',
+  });
+  const store = storeMock(rewindOrder);
+  const deps = paymentDependencies(store);
+  const response = await handleCreateEpisodeRewindInvoice(new Request('https://example.test/payments/rewind/invoice', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-Telegram-Init-Data': await validInitData() },
+    body: JSON.stringify({ episodeId: 'last-online-s1-e1' }),
+  }), deps);
+  assert(response.status === 200, 'rewind invoice request failed');
+  const payload = await response.json();
+  assert(payload.priceStars === 49, 'wrong rewind Stars price');
+  assert(payload.episodeId === 'last-online-s1-e1', 'wrong rewind episode');
+});
+
+Deno.test('successful rewind payment resets canonical progress to the paid episode start', async () => {
+  const rewindOrder = order({
+    productId: 'episode-rewind:last-online-s1-e1',
+    amount: 49,
+    invoicePayload: 'lumi:episode-rewind:last-online-s1-e1:11111111-1111-4111-8111-111111111111',
+    status: 'approved',
+    preCheckoutQueryId: 'pcq-rewind',
+  });
+  const store = storeMock(rewindOrder);
+  let savedScene = '';
+  let savedEpisode = '';
+  const deps: TelegramWebhookDependencies = {
+    webhookSecret: 'secret',
+    seasonPriceStars: 149,
+    rewindPriceStars: 49,
+    repository: {
+      ...paymentDependencies(store).repository,
+      async saveProgress(playerId, input) {
+        savedEpisode = input.episodeId;
+        savedScene = input.sceneId;
+        return { playerId, ...input, updatedAt: 'now' };
+      },
+    },
+    store,
+    async answerPreCheckout() {},
+    async sendMessage() {},
+  };
+  const response = await handleTelegramWebhook(new Request('https://example.test/telegram/webhook', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-Telegram-Bot-Api-Secret-Token': 'secret' },
+    body: JSON.stringify({
+      message: {
+        from: { id: 555111 },
+        successful_payment: {
+          currency: 'XTR',
+          total_amount: 49,
+          invoice_payload: rewindOrder.invoicePayload,
+          telegram_payment_charge_id: 'charge-rewind',
+          provider_payment_charge_id: '',
+        },
+      },
+    }),
+  }), deps);
+  assert(response.status === 200, 'rewind successful payment webhook failed');
+  assert(savedEpisode === 'last-online-s1-e1', 'rewind saved wrong episode');
+  assert(savedScene === 'ep1_arrival', 'rewind did not reset to episode start');
+  assert(store.ownership === false, 'rewind must not grant season ownership');
+});
+
 Deno.test('/paysupport accepts a payment support request through the bot webhook', async () => {
   const store = storeMock();
   let reply = '';
   const deps: TelegramWebhookDependencies = {
     webhookSecret: 'secret',
-    priceStars: 149,
-    repository: paymentDependencies(store).repository,
+    seasonPriceStars: 149,
+    rewindPriceStars: 49,
+    repository: {
+      ...paymentDependencies(store).repository,
+      async saveProgress(playerId, input) {
+        return { playerId, ...input, updatedAt: 'now' };
+      },
+    },
     store,
     async answerPreCheckout() {},
     async sendMessage(_chatId, text) { reply = text; },
