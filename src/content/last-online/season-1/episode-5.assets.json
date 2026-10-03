@@ -1,0 +1,22 @@
+{
+  "episodeId": "last-online-s1-e5",
+  "visualUpdate": "Episode 5 character staging pass after user review: remove empty non-chat scenes, introduce Han Sora, and stop reusing Episode 4 CGs as stand-ins.",
+  "characters": [
+    {
+      "id": "han-sora",
+      "role": "VANTA former coordinator / final evidence witness",
+      "design": "Korean woman around 38; mature sharp features; dark brown eyes; straight black hair in a low ponytail; navy tailored blazer, cream blouse, charcoal trousers, silver watch.",
+      "states": [
+        "assets/last-online/ep5/characters/han/neutral.svg",
+        "assets/last-online/ep5/characters/han/serious.svg",
+        "assets/last-online/ep5/characters/han/remorseful.svg"
+      ]
+    }
+  ],
+  "stagingRules": [
+    "Every non-message Episode 5 scene must contain at least one visible character or a dedicated CG.",
+    "Han must be visible during the archive reveal, sender reveal, and device handover.",
+    "Episode 5 must not use Episode 4 CG files as generic stand-ins.",
+    "Chat/message scenes intentionally use the SOA phone interface instead of stage characters."
+  ]
+}
