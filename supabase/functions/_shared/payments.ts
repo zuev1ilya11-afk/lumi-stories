@@ -14,6 +14,7 @@ export type StarPaymentOrder = {
   createdAt: string;
   paidAt?: string;
   refundedAt?: string;
+  fulfilledAt?: string;
 };
 
 type StarPaymentRow = {
@@ -30,6 +31,7 @@ type StarPaymentRow = {
   created_at: string;
   paid_at: string | null;
   refunded_at: string | null;
+  fulfilled_at: string | null;
 };
 
 export interface StarPaymentStore {
@@ -38,6 +40,7 @@ export interface StarPaymentStore {
   approveOrder(order: StarPaymentOrder, preCheckoutQueryId: string): Promise<StarPaymentOrder | null>;
   markPaid(order: StarPaymentOrder, telegramPaymentChargeId: string, providerPaymentChargeId: string): Promise<boolean>;
   markRefunded(order: StarPaymentOrder, telegramPaymentChargeId: string): Promise<boolean>;
+  markFulfilled(order: StarPaymentOrder): Promise<boolean>;
   hasPaidSeason(playerId: string): Promise<boolean>;
   setSeasonOwned(playerId: string, owned: boolean): Promise<void>;
   createSupportRequest(telegramUserId: number, messageText: string): Promise<void>;
@@ -59,6 +62,7 @@ const PAYMENT_SELECT = [
   'created_at',
   'paid_at',
   'refunded_at',
+  'fulfilled_at',
 ].join(',');
 
 function paymentFromRow(row: StarPaymentRow): StarPaymentOrder {
@@ -76,6 +80,7 @@ function paymentFromRow(row: StarPaymentRow): StarPaymentOrder {
     createdAt: row.created_at,
     ...(row.paid_at ? { paidAt: row.paid_at } : {}),
     ...(row.refunded_at ? { refundedAt: row.refunded_at } : {}),
+    ...(row.fulfilled_at ? { fulfilledAt: row.fulfilled_at } : {}),
   };
 }
 
@@ -221,6 +226,26 @@ export function createStarPaymentStore(
         current.telegramPaymentChargeId === telegramPaymentChargeId
       ) return false;
       throw new Error('REFUND_STATE_CONFLICT');
+    },
+
+    async markFulfilled(order) {
+      const query = new URLSearchParams({
+        id: 'eq.' + order.id,
+        status: 'eq.paid',
+        fulfilled_at: 'is.null',
+        select: PAYMENT_SELECT,
+      });
+      const response = await fetcher(root + '/rest/v1/star_payments?' + query.toString(), {
+        method: 'PATCH',
+        headers: { ...headers, Prefer: 'return=representation' },
+        body: JSON.stringify({ fulfilled_at: new Date().toISOString() }),
+      });
+      const [row] = await readRows<StarPaymentRow>(response);
+      if (row) return true;
+
+      const current = await findByPayload(order.invoicePayload);
+      if (current?.fulfilledAt) return false;
+      throw new Error('PAYMENT_FULFILLMENT_CONFLICT');
     },
 
     async hasPaidSeason(playerId) {
