@@ -180,9 +180,6 @@ Deno.test('pre-checkout validates player, amount and order before approval', asy
     rewindPriceStars: 49,
     repository: {
       ...paymentDependencies(store).repository,
-      async saveProgress(playerId, input) {
-        return { playerId, ...input, updatedAt: 'now' };
-      },
     },
     store,
     async answerPreCheckout(id, ok) { answeredId = id; answeredOk = ok; },
@@ -213,11 +210,8 @@ Deno.test('successful_payment grants season ownership after charge is recorded',
     rewindPriceStars: 49,
     repository: {
       ...paymentDependencies(store).repository,
-      async saveProgress(playerId, input) {
-        return { playerId, ...input, updatedAt: 'now' };
-      },
     },
-    store: rewindStore,
+    store,
     async answerPreCheckout() {},
     async sendMessage() {},
   };
@@ -287,13 +281,8 @@ Deno.test('successful rewind payment resets canonical progress to the paid episo
     rewindPriceStars: 49,
     repository: {
       ...paymentDependencies(store).repository,
-      async saveProgress(playerId, input) {
-        savedEpisode = input.episodeId;
-        savedScene = input.sceneId;
-        return { playerId, ...input, updatedAt: 'now' };
-      },
     },
-    store,
+    store: rewindStore,
     async answerPreCheckout() {},
     async sendMessage() {},
   };
@@ -328,9 +317,6 @@ Deno.test('/paysupport accepts a payment support request through the bot webhook
     rewindPriceStars: 49,
     repository: {
       ...paymentDependencies(store).repository,
-      async saveProgress(playerId, input) {
-        return { playerId, ...input, updatedAt: 'now' };
-      },
     },
     store,
     async answerPreCheckout() {},
