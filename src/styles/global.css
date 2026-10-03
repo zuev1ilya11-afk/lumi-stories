@@ -759,3 +759,100 @@ button { color: inherit; }
   .lumi-profile__avatar { width: 62px; height: 62px; margin-top: 16px; }
   .lumi-start__cards, .lumi-settings { margin-top: 18px; }
 }
+
+
+/* Story library — scalable catalog from the main navigation */
+.lumi-stories-library {
+  max-height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+.lumi-stories-library::-webkit-scrollbar {
+  display: none;
+}
+.lumi-story-catalog {
+  display: grid;
+  gap: 14px;
+  margin-top: 26px;
+}
+.lumi-story-card {
+  position: relative;
+  width: 100%;
+  min-height: 236px;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 128px auto;
+  padding: 0;
+  border: 1px solid rgba(220,210,255,.14);
+  border-radius: 22px;
+  color: #f2edff;
+  background: rgba(20,17,34,.9);
+  box-shadow: 0 16px 34px rgba(0,0,0,.22);
+  text-align: left;
+  cursor: pointer;
+}
+.lumi-story-card:active {
+  transform: scale(.99);
+}
+.lumi-story-card:disabled {
+  cursor: default;
+}
+.lumi-story-card__cover {
+  display: block;
+  width: 100%;
+  min-height: 128px;
+  background-position: center 40%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.lumi-story-card__body {
+  display: grid;
+  gap: 5px;
+  padding: 14px 44px 16px 15px;
+}
+.lumi-story-card__body small {
+  color: #9b90b2;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: .66rem;
+}
+.lumi-story-card__body strong {
+  font-size: 1.16rem;
+  line-height: 1.18;
+}
+.lumi-story-card__body > span {
+  color: #aaa0bd;
+  font-size: .78rem;
+  line-height: 1.42;
+}
+.lumi-story-card__body b {
+  margin-top: 3px;
+  color: #d5c9ff;
+  font-size: .76rem;
+  font-weight: 700;
+}
+.lumi-story-card__arrow {
+  position: absolute;
+  right: 15px;
+  bottom: 16px;
+  color: #d9ceff;
+  font-size: 1.05rem;
+}
+.lumi-story-card.is-coming {
+  opacity: .56;
+}
+.lumi-story-catalog__note {
+  margin: 16px 2px 6px;
+  color: #746b87;
+  font-size: .72rem;
+  line-height: 1.45;
+}
+@media (max-height: 680px) {
+  .lumi-story-catalog { margin-top: 18px; }
+  .lumi-story-card {
+    min-height: 202px;
+    grid-template-rows: 104px auto;
+  }
+  .lumi-story-card__cover { min-height: 104px; }
+}
