@@ -1,0 +1,78 @@
+name: LUMI Prototype CI
+
+on:
+  workflow_call:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: |
+          set +e
+          npm install --no-audit --no-fund --legacy-peer-deps --verbose
+          code=$?
+          if [ $code -ne 0 ]; then
+            echo "=== npm debug log ==="
+            cat ~/.npm/_logs/*-debug-0.log || true
+          fi
+          exit $code
+
+      - name: Frontend unit tests
+        run: npm test -- --run
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Validate story graphs
+        run: |
+          npm run validate:story -- src/content/last-online/season-1/episode-1.json
+          npm run validate:story -- src/content/last-online/season-1/episode-2.json
+          npm run validate:story -- src/content/last-online/season-1/episode-3.json
+          npm run validate:story -- src/content/last-online/season-1/episode-4.json
+          npm run validate:story -- src/content/house-of-black-roses/season-1/episode-1.json
+
+      - name: Build
+        run: npm run build
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Backend Deno tests
+        run: deno test supabase/functions/_shared/telegram.test.ts supabase/functions/_shared/repository.test.ts supabase/functions/lumi-api/routes.test.ts supabase/functions/lumi-api/payments.test.ts
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: End-to-end tests
+        run: npm run e2e
+
+      - name: Preserve visual QA and failure traces
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lumi-visual-qa-${{ github.run_id }}
+          path: |
+            docs/visual-qa/screenshots
+            test-results
+          retention-days: 14

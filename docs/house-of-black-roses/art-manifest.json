@@ -1,0 +1,242 @@
+[
+  {
+    "name": "evelyn-neutral",
+    "file": "public/assets/house-of-black-roses/v1/evelyn-neutral.webp",
+    "bytes": 47030,
+    "sha256": "90af96846d0f8a5faf32b797a98e0cab6d1b411e122d3175f418816df2b4d062",
+    "prompt": "Approved character bible / Ravenhall production reference: preserve canonical identities, gothic romance with amber candles and cool rain/moonlight, anatomically natural poses. See art-direction.md.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "adrian-neutral",
+    "file": "public/assets/house-of-black-roses/v1/adrian-neutral.webp",
+    "bytes": 48004,
+    "sha256": "40fe9d33bf04a75357293bc82f27e7992718bfd4954195c8a71d8aeb78f70eef",
+    "prompt": "Approved character bible / Ravenhall production reference: preserve canonical identities, gothic romance with amber candles and cool rain/moonlight, anatomically natural poses. See art-direction.md.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "ravenhall-exterior",
+    "file": "public/assets/house-of-black-roses/v1/ravenhall-exterior.webp",
+    "bytes": 128874,
+    "sha256": "abe5d6dabd573fdfe078d324db0cadef6cdb81eec2dd773b5801d2c9922f6792",
+    "prompt": "Approved character bible / Ravenhall production reference: preserve canonical identities, gothic romance with amber candles and cool rain/moonlight, anatomically natural poses. See art-direction.md.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "main-hall",
+    "file": "public/assets/house-of-black-roses/v1/main-hall.webp",
+    "bytes": 133674,
+    "sha256": "958901348e9d15ddf1b7c3ac0cfaa44cd97fe37f84fa230bd8eda76c5008310f",
+    "prompt": "Approved character bible / Ravenhall production reference: preserve canonical identities, gothic romance with amber candles and cool rain/moonlight, anatomically natural poses. See art-direction.md.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "grand-staircase",
+    "file": "public/assets/house-of-black-roses/v1/grand-staircase.webp",
+    "bytes": 137996,
+    "sha256": "43e816eb41d80b8f10214138aa3797dbcc600fdd2c7467031940f8069c41860c",
+    "prompt": "Approved character bible / Ravenhall production reference: preserve canonical identities, gothic romance with amber candles and cool rain/moonlight, anatomically natural poses. See art-direction.md.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "portrait-gallery",
+    "file": "public/assets/house-of-black-roses/v1/portrait-gallery.webp",
+    "bytes": 139910,
+    "sha256": "a2987ab9de9d60adabb3ea2d38b59ae76218b0fe02490c49497f279b97ebb506",
+    "prompt": "Approved character bible / Ravenhall production reference: preserve canonical identities, gothic romance with amber candles and cool rain/moonlight, anatomically natural poses. See art-direction.md.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "portrait-full",
+    "file": "public/assets/house-of-black-roses/v1/portrait-full.webp",
+    "bytes": 142504,
+    "sha256": "4b488365280ceddbe6e03af75fbac115c39670d2fef8626ec03b74e502048224",
+    "prompt": "Approved character bible / Ravenhall production reference: preserve canonical identities, gothic romance with amber candles and cool rain/moonlight, anatomically natural poses. See art-direction.md.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "evelyn-arrival",
+    "file": "public/assets/house-of-black-roses/v1/evelyn-arrival.webp",
+    "bytes": 89330,
+    "sha256": "238087bd1ed74674891e4aafcad85454f03d6d880727bb395288454db47b2312",
+    "prompt": "Use case: identity-preserve. Generate ONE vertical 2:3 photoreal cinematic production still of Evelyn Raven age23, EXACT SAME woman/face/hair as reference. Maintain face, eyes gray-green, chestnut hair, skin, nose and lips. Gothic romance, readable cool moonlight and amber candle light, natural anatomy, no extra limbs or fingers, not horror, no lettering, no collage. Medium portrait outside tall manor entrance in heavy evening rain, damp coat and damp loose hair, apprehensive but resolved arrival. Camera three quarter front, she glances up toward the tall manor, hands relaxed by sides. Cold blue mist and small warm porch light. Compose eyes in upper third, leave lower area for dialogue but do not crop to conceal defects.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "evelyn-curious",
+    "file": "public/assets/house-of-black-roses/v1/evelyn-curious.webp",
+    "bytes": 63216,
+    "sha256": "cdc4f329441b46295a06650dcad7d1d42a0643a44ce3531089c6b45313bcd1e6",
+    "prompt": "Use case: identity-preserve. Generate ONE vertical 2:3 photoreal cinematic production still of Evelyn Raven age23, EXACT SAME woman/face/hair as reference. Maintain face, eyes gray-green, chestnut hair, skin, nose and lips. Gothic romance, readable cool moonlight and amber candle light, natural anatomy, no extra limbs or fingers, not horror, no lettering, no collage. Close portrait in the grand hall beside a gilt portrait frame and oak staircase. She tilts her head a little, one eyebrow slightly raised, interested questioning gaze to someone just off camera. Coat still on. No held objects. Compose eyes in upper third, leave lower area for dialogue but do not crop to conceal defects.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "evelyn-frightened",
+    "file": "public/assets/house-of-black-roses/v1/evelyn-frightened.webp",
+    "bytes": 50772,
+    "sha256": "743cf90c23e60790564b5e44eb83cd4589bb654394f33ff7702f8506e472402d",
+    "prompt": "Use case: identity-preserve. Generate ONE vertical 2:3 photoreal cinematic production still of Evelyn Raven age23, EXACT SAME woman/face/hair as reference. Maintain face, eyes gray-green, chestnut hair, skin, nose and lips. Gothic romance, readable cool moonlight and amber candle light, natural anatomy, no extra limbs or fingers, not horror, no lettering, no collage. Medium close portrait from inside bedroom, dark oak closed door with brass lever blurred behind, moonlit rain window to side. She listens to someone outside; fear restrained in widening eyes and slightly parted lips, shoulders naturally held, no screaming. Ivory blouse, coat removed, same loose hair. No objects held. Compose eyes in upper third, leave lower area for dialogue but do not crop to conceal defects.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "evelyn-determined",
+    "file": "public/assets/house-of-black-roses/v1/evelyn-determined.webp",
+    "bytes": 56614,
+    "sha256": "4202afe0ef2291774b871063bb7f4445884d1581f8209ff4b5edf67311234fc0",
+    "prompt": "Use case: identity-preserve. ONE vertical 2:3 photoreal cinematic still, gothic romance with warm amber candles and cold blue moonlight. No text, no collage, correct anatomy, no extra limbs. Face in upper third. EXACT Evelyn from reference, still wearing long dark coat over ivory blouse. Medium shot at grand hall staircase, she stands independently, chin raised slightly, direct determined gaze toward Adrian offcamera, shoulders level and natural, arms down with hands open, calm defiant intelligence not anger. No props. Keep hair and face exactly.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "evelyn-shocked",
+    "file": "public/assets/house-of-black-roses/v1/evelyn-shocked.webp",
+    "bytes": 75252,
+    "sha256": "aa52b44b2b0560b8cd7a8fa792f35ecb51fddd0a308620dcf9760d514b439e09",
+    "prompt": "Use case: identity-preserve. ONE vertical 2:3 photoreal cinematic still, gothic romance with warm amber candles and cold blue moonlight. No text, no collage, correct anatomy, no extra limbs. Face in upper third. EXACT Evelyn identity from reference1, in gallery reference2. Modern ivory blouse with long cuffed sleeves and same dark trousers, NO coat now. Medium close reaction to a portrait OFFSCREEN, shock and disbelief in her widened grey green eyes and slightly parted lips. Natural body posture, not exaggerated screaming, hands relaxed at sides. Identical face and loose dark chestnut hair.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "adrian-formal",
+    "file": "public/assets/house-of-black-roses/v1/adrian-formal.webp",
+    "bytes": 60716,
+    "sha256": "1c0399c3b4de9f9669211d617b73adfb5f5e710ef51998a6af9b382fb8c335aa",
+    "prompt": "Use case: identity-preserve. ONE 2:3 vertical cinematic photoreal still for LUMI. EXACT SAME Adrian Veil from reference, identical face, age28-30, dark hair, pale grey eyes, angular cheekbones, tall elegant lean build, NO vampire fangs. Keep exact reference black coat, waistcoat, cravat and white collar. Gothic romance / dark academia not horror. Natural anatomy, no extra people, no text, no collage. Standing at open manor entry as a host, composed courteous expression and slight inclination of head, he has just said welcome. Warm candle background. Medium shot with both natural arms by his sides. Face upper third, readable light.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "adrian-guarded",
+    "file": "public/assets/house-of-black-roses/v1/adrian-guarded.webp",
+    "bytes": 63906,
+    "sha256": "2882ff8b3cfee142bde9f56083fb60651fd3105cbb1e0a129386b12434b827fd",
+    "prompt": "Use case: identity-preserve. ONE 2:3 vertical cinematic photoreal still for LUMI. EXACT SAME Adrian Veil from reference, identical face, age28-30, dark hair, pale grey eyes, angular cheekbones, tall elegant lean build, NO vampire fangs. Keep exact reference black coat, waistcoat, cravat and white collar. Gothic romance / dark academia not horror. Natural anatomy, no extra people, no text, no collage. Close-up at foot of grand oak staircase, gaze briefly averted down and to side, lips pressed, concealing a difficult memory. Face not scowling, aristocratic restraint, cool rim light plus candle fill. Face upper third, readable light.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "adrian-warning",
+    "file": "public/assets/house-of-black-roses/v1/adrian-warning.webp",
+    "bytes": 60230,
+    "sha256": "cf6abdf2c20b79e629269332efaafb1189579cd9726a51102ebd3ea5026c7cde",
+    "prompt": "Use case: identity-preserve. ONE 2:3 vertical cinematic photoreal still for LUMI. EXACT SAME Adrian Veil from reference, identical face, age28-30, dark hair, pale grey eyes, angular cheekbones, tall elegant lean build, NO vampire fangs. Keep exact reference black coat, waistcoat, cravat and white collar. Gothic romance / dark academia not horror. Natural anatomy, no extra people, no text, no collage. Medium close frontal view beside tall grandfather clock in main hall. He is speaking seriously, level gaze, shoulders relaxed, no threatening pose, sorrow and genuine concern rather than villainy. Same clothing. Face upper third, readable light.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "adrian-soft",
+    "file": "public/assets/house-of-black-roses/v1/adrian-soft.webp",
+    "bytes": 52144,
+    "sha256": "9317c22e0be8eac8ba96916e5492119a0d1e8bc62597d4a87c1cbd5bfe718606",
+    "prompt": "Use case: identity-preserve. ONE 2:3 vertical cinematic photoreal still for LUMI. EXACT SAME Adrian Veil from reference, identical face, age28-30, dark hair, pale grey eyes, angular cheekbones, tall elegant lean build, NO vampire fangs. Keep exact reference black coat, waistcoat, cravat and white collar. Gothic romance / dark academia not horror. Natural anatomy, no extra people, no text, no collage. Close three-quarter portrait in warm candle light at bedroom corridor threshold, expression softening in restrained relief, faint sadness, subtle almost-smile, calm pale grey eyes looking toward Evelyn offscreen. Romantic humanity, no teeth smile. Face upper third, readable light.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "adrian-tense",
+    "file": "public/assets/house-of-black-roses/v1/adrian-tense.webp",
+    "bytes": 61912,
+    "sha256": "62b5d4e0810f6297dea1ead83a14fa8332aad5b0b3165c9407f5f7c7bf1f5e77",
+    "prompt": "Use case: identity-preserve. ONE vertical 2:3 photoreal cinematic still, gothic romance with warm amber candles and cold blue moonlight. No text, no collage, correct anatomy, no extra limbs. Face in upper third. Same exact Adrian identity and clothes as reference1, in gallery environment reference2. Medium close shot as he arrives at gallery doorway at midnight, head turned toward unseen portrait, tense sorrowful expression, jaw slightly tight, controlled worry not rage. Black waistcoat, same coat and cravat. Arms relaxed with no objects. Cool moonlight across cheek.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "adrian-final",
+    "file": "public/assets/house-of-black-roses/v1/adrian-final.webp",
+    "bytes": 60048,
+    "sha256": "164573c1b8708ea477da0cc19f0758bf695368450a66d2d4959b45f373f872ac",
+    "prompt": "Use case: identity-preserve. ONE vertical 2:3 photoreal cinematic still, gothic romance with warm amber candles and cold blue moonlight. No text, no collage, correct anatomy, no extra limbs. Face in upper third. Same exact Adrian identity, age and clothing as reference1. In gallery reference2 at midnight, close portrait from Evelyn's eye level, gentle deeply sad gaze, visibly dropping the guarded facade, parted lips speaking quietly, regrets and recognition. Eyes pale grey, no fangs, no evil grin. Background blurred old painting frames and candlelight. No other people.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "midnight-corridor",
+    "file": "public/assets/house-of-black-roses/v1/midnight-corridor.webp",
+    "bytes": 121186,
+    "sha256": "f5c3acaaadbc27d262460b87e63d392f91defb1c6f487d69d4000708e1e3123f",
+    "prompt": "ONE environment shot: EMPTY midnight upper corridor outside Evelyn bedroom in same Ravenhall manor, carved dark oak closed doors along left side, rain-streaked leaded windows right, narrow red runner and polished dark wood floor, faint amber candle wall sconces. Her open bedroom door near camera emits warm light, elsewhere cold blue moonlight. Sparse fresh BLACK rose petals trail away along floor toward distant landing. No people, no faces in space, no monsters, no text. Gothic romance cinematic photoreal, strong correct perspective. Vertical2:3, near foreground visible, haunted stillness not horror.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "black-roses",
+    "file": "public/assets/house-of-black-roses/v1/black-roses.webp",
+    "bytes": 126856,
+    "sha256": "2271d3b8dba31210b77636e5a2f9446f75d3f8fd0438a4db761226717660913c",
+    "prompt": "ONE narrative CG insert of fresh BLACK ROSES in a smoky transparent glass vase on small dark mahogany table next to leaded rainy bedroom window of same Ravenhall as reference. Every rose petal is velvety jet-black, no red roses, no purple roses, small silver moonlit edges. Tiny fresh rain drops, pale stem ends visible through water and glass. Amber candle on table to side and cool blue moonlight, fireplace softly defocused far background. Natural flower morphology, no person or hands, no text. Gothic romance photoreal cinematic still vertical2:3, bouquet upper-middle third, exquisite tangible detail.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "adrian-door",
+    "file": "public/assets/house-of-black-roses/v1/adrian-door.webp",
+    "bytes": 135166,
+    "sha256": "303ad67422ca58c5df1a587b7a1eaafb3307ebcf37fb44fc8fca6d61f0ec500e",
+    "prompt": "ONE event CG: front view from rainy porch into Ravenhall as heavy dark oak entrance door opens. EXACT Adrian from reference1 with identical face/age/hair/clothes, framed by huge open doorway. He stands slightly to side with his LEFT hand gently resting flat against door edge at hip height, right arm relaxed at his side, absolutely natural correct fingers and elbow. No complex grip, no crossing wrists. Candlelit hall reference2 behind him, blue rain beyond foreground threshold, welcome and melancholy mystery. Medium full-body composition, no other people. Vertical2:3 photoreal gothic romance, no text. Natural movement and readable face.",
+    "qa": "Accepted after individual full-frame visual inspection: identity, anatomy, garments, props, perspective and lighting."
+  },
+  {
+    "name": "bedroom",
+    "file": "public/assets/house-of-black-roses/v1/bedroom.webp",
+    "bytes": 142814,
+    "sha256": "926cece28a2b4ffceae97dd9b75c09fdbf14c6af6f4128de91b55f0668600582",
+    "prompt": "Use case: precise-object-edit. Edit reference1 ONLY to correct flower continuity with reference2. Keep EXACT same bedroom composition, architecture, lighting, bed, mirror and door. Change the bouquet on the small round table at rainy window to ONLY fresh BLACK roses in the identical smoky transparent glass vase seen in reference2. Also change any other visible red flowers in the room to black roses. NO red or burgundy flowers anywhere. Keep all furniture, no extra people, no text, vertical2:3 photoreal. This must clearly be the same room, only flowers and their vase corrected.",
+    "qa": "Accepted after individual full-frame visual inspection; corrected assets re-inspected. Identity, anatomy, garments, props and perspective checked."
+  },
+  {
+    "name": "evelyn-concerned",
+    "file": "public/assets/house-of-black-roses/v1/evelyn-concerned.webp",
+    "bytes": 62716,
+    "sha256": "e29c849e2c991d4aeccd79a1c32abb193ba21d457b0079c4f78b2bc1803e39bf",
+    "prompt": "Use case: precise-object-edit. Edit reference1 ONLY to fix flower color continuity: EVERY visible red/burgundy blossom in background/foreground must be a BLACK rose, velvety jet-black petals matching reference2. Do NOT change Evelyn at all: preserve EXACT face, expression, hair, white blouse, trousers, hands/arms and body pose. Keep camera, lighting, bedroom, mirror and fireplace exactly. The scene is about mysterious black roses, not red roses. No extra people, no text. Vertical2:3 photoreal.",
+    "qa": "Accepted after individual full-frame visual inspection; corrected assets re-inspected. Identity, anatomy, garments, props and perspective checked."
+  },
+  {
+    "name": "midnight-handle",
+    "file": "public/assets/house-of-black-roses/v1/midnight-handle.webp",
+    "bytes": 81888,
+    "sha256": "069580614abc2d9c1b8a960e5552fcf39413845d4f4a204cbc99deae8b2bfb83",
+    "prompt": "Use case: precise-object-edit. Correct ONLY the door closure in this existing CG. The oak bedroom door MUST be FULLY CLOSED, flush with its wooden jamb, latched shut. Remove visible open gap, remove exposed latch bolt: latch is inside its strike plate because door closed. Keep brass lever and all its exact design, slightly depressed downward angle, same camera, wood grain, lighting and composition. Door wood remains vertical solid, no hands or figures. Photoreal exact continuity, vertical2:3, no text. This scene is before opening the door, so an open door gap is a storytelling error.",
+    "qa": "Accepted after individual full-frame visual inspection; corrected assets re-inspected. Identity, anatomy, garments, props and perspective checked."
+  },
+  {
+    "name": "petal-trail",
+    "file": "public/assets/house-of-black-roses/v1/petal-trail.webp",
+    "bytes": 131470,
+    "sha256": "7579f99c2e592719959359e1dd77dba25cca5fa1c6eebfef5d2abc2b2e025fc2",
+    "prompt": "Use case: precise-object-edit. Correct ONLY foreground rose petals and the broken rosebud at doorway to truly velvety JET BLACK petals with subtle silvery blue edge reflections. Currently they have red/burgundy interiors, this is wrong. The story's supernatural roses must be black, not dark red or purple. Preserve every petal shape, position, raindrop, wood floor, carpet, doorway, gallery and lighting exactly. No new objects, no people, no cropping, no darkening whole scene. Photoreal vertical2:3. Background ordinary bouquets do not matter, foreground trail and bud must be BLACK.",
+    "qa": "Accepted after individual full-frame visual inspection; corrected assets re-inspected. Identity, anatomy, garments, props and perspective checked."
+  },
+  {
+    "name": "portrait-dress",
+    "file": "public/assets/house-of-black-roses/v1/portrait-dress.webp",
+    "bytes": 145340,
+    "sha256": "421e838e482db28b4adb40a271622f72811f3663624d0ce920af038da9066ec7",
+    "prompt": "Use case: identity-preserve. Create a photoreal photograph of a DETAIL of the EXACT SAME old 1901 oil painting in reference. Frame ONLY the seated woman's ivory Victorian lace dress from collar down to lap, her two natural hands resting on lap, carved armchair, the aged canvas brushwork/cracks and small LEFT edge of gold frame. Preserve exact dress/hands/pose and canvas. Neither the woman's face nor ANY part of the man's face or body may appear in this suspense insert. This is an intentional narrative detail shot, not a different portrait. No extra hands/fingers, natural anatomy, no new props, no text. Vertical2:3, candlelight plus moonlight, hands near upper-middle so visible above dialogue.",
+    "qa": "Accepted after individual full-frame visual inspection; corrected assets re-inspected. Identity, anatomy, garments, props and perspective checked."
+  },
+  {
+    "name": "portrait-face",
+    "file": "public/assets/house-of-black-roses/v1/portrait-face.webp",
+    "bytes": 161182,
+    "sha256": "50b0ee1b188a56928d1cd0acd2a4429ad82691fafb26d7ac908546a92efb5210",
+    "prompt": "Use case: identity-preserve. Create a new photoreal camera detail of the EXACT SAME historic oil portrait from reference. Isolate ONLY the woman's FACE, hair in historical updo, neck and ivory lace collar, upper shoulders, left gold frame edge; framing ends at upper chest. Her face MUST remain absolutely identical to original. Preserve oil paint cracks, brushwork, original cool composed portrait expression, original lighting. Do NOT show man, men's hands, men's shoulders or ANY hint of Adrian, this is BEFORE the twist. A natural tight photographic study of the left side of painting, no collage, vertical2:3 with female face in upper-middle. No text.",
+    "qa": "Accepted after individual full-frame visual inspection; corrected assets re-inspected. Identity, anatomy, garments, props and perspective checked."
+  },
+  {
+    "name": "portrait-nameplate",
+    "file": "public/assets/house-of-black-roses/v1/portrait-nameplate.webp",
+    "bytes": 147852,
+    "sha256": "9f81c82e2e9dc720db34fa03197cbe95811ff2fadf39bc916a6a5dd012e8a4ab",
+    "prompt": "Use case: illustration-story. ONE photoreal detail below the exact aged gold ornate portrait frame in reference. At upper 40% of vertical 2:3 image show a beautiful aged BRASS NAMEPLATE affixed to dark oak gallery wall just beneath bottom edge of ornate frame. Plaque takes 85% of width, all lettering entirely visible. Exact Cyrillic inscription in TWO centered lines with engraved dark serif uppercase letters: «ЭВЕЛИН РЕЙВЕН» first line and «1879–1901» second line. NO quotation marks in actual engraving. Precisely these characters and date. Sharp readable macro engraving, restrained moonlight and amber candlelight, slightly worn brass but inscription clean. No hands, no faces, no people, no other text. Bottom half is dark oak panel, not vignette obscuring lettering.",
+    "qa": "Accepted after individual full-frame visual inspection; corrected assets re-inspected. Identity, anatomy, garments, props and perspective checked."
+  },
+  {
+    "name": "final-frame",
+    "file": "public/assets/house-of-black-roses/v1/final-frame.webp",
+    "bytes": 75648,
+    "sha256": "05cbf514e229b3628db9878830ce7610418945c602c0f040e2f10eef434d9e47",
+    "prompt": "Use case: identity-preserve. ONE dramatic final cinematic scene from gothic romance visual novel. In gallery reference3, EXACT modern Evelyn reference1 (age23 same face/hair, ivory blouse and dark trousers, coat REMOVED) foreground left turned three-quarter toward viewer, shocked quiet realization in face, natural relaxed hands. EXACT Adrian reference2 (same face/age/hair/clothes) stands several steps BEHIND her at right, sad gentle expression, arms naturally at his sides, looking toward a painting OFFSCREEN to left. Both identities must match precisely, no supernatural signs, no vampire fangs. His voice breaks silence. Strong depth, eyes above midpoint, candle/moonlight, vertical2:3 photoreal movie still, no other people, no text, no collage, no extra limbs or distorted hands.",
+    "qa": "Accepted after individual full-frame visual inspection; corrected assets re-inspected. Identity, anatomy, garments, props and perspective checked."
+  },
+  {
+    "name": "evelyn-determined-night",
+    "file": "public/assets/house-of-black-roses/v1/evelyn-determined-night.webp",
+    "bytes": 81072,
+    "sha256": "c8a918990b66da54f7515a2ec580f265110072de31865fc19d4dd624def1eb1a",
+    "prompt": "Use case: identity-preserve. ONE vertical2:3 cinematic photoreal medium portrait of EXACT Evelyn in reference1, unchanged face/hair/age23/eyes. NOW wearing only same ivory blouse and dark high waist trousers, coat REMOVED. Dark long hair loose, sleeves buttoned. She stands in moonlit oak corridor outside gallery reference2, determined investigative expression, chin raised slightly, gaze ahead, shoulders natural, two arms relaxed with anatomically correct hands at sides, no props. Warm candle and blue moonlight, no red flowers, no text, no collage.",
+    "qa": "Accepted after individual full-frame visual inspection; corrected assets re-inspected. Identity, anatomy, garments, props and perspective checked."
+  }
+]

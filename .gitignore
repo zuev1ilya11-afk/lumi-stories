@@ -3,3 +3,7 @@
 node_modules/
 dist/
 .env
+
+test-results/
+playwright-report/
+docs/visual-qa/screenshots/

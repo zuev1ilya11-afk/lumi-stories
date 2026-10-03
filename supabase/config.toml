@@ -1,0 +1,4 @@
+project_id = "lumi-local"
+
+[functions.lumi-api]
+verify_jwt = false

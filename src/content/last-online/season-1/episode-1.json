@@ -1,0 +1,3278 @@
+{
+  "id": "last-online-s1-e1",
+  "title": "Номер, который не должен отвечать",
+  "startSceneId": "ep1_arrival",
+  "requiredSceneIds": [
+    "ep1_arrival",
+    "ep1_first_meet",
+    "ep1_reveal_junho",
+    "ep1_soa_first_message",
+    "ep1_junho_warning",
+    "ep1_old_photo",
+    "ep1_end_paywall"
+  ],
+  "scenes": [
+    {
+      "id": "ep1_arrival",
+      "kind": "narrative",
+      "text": "Хансу встретил Леру дождём, светом рекламных экранов и ощущением, будто город вообще не собирается спать. За стеклом автобуса проплывали вывески кафе, афиши музыкальных шоу и лица людей, которых она не знала. Ещё утром всё её имущество помещалось в два чемодана, а теперь впереди были новый университет, новая квартира и жизнь, в которой никто не знал её прошлых ошибок. Именно этого она и хотела. По крайней мере, так она повторяла себе, пока навигатор не сообщил: «Вы прибыли».",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "nextSceneId": "ep1_building",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Хансу · прибытие",
+        "camera": "wide",
+        "position": "center",
+        "motion": "drift-right",
+        "transition": "crossfade",
+        "ambient": "rain",
+        "characters": [],
+        "cg": "assets/last-online/v2/cg/arrival.webp"
+      },
+      "beats": [
+        {
+          "text": "Хансу встретил Леру дождём, светом рекламных экранов и ощущением, будто город вообще не собирается спать.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "За стеклом автобуса проплывали вывески кафе, афиши музыкальных шоу и лица людей, которых она не знала.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Ещё утром всё её имущество помещалось в два чемодана, а теперь впереди были новый университет, новая квартира и жизнь, в которой никто не знал её прошлых ошибок.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Именно этого она и хотела. По крайней мере, так она повторяла себе, пока навигатор не сообщил: «Вы прибыли».",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_building",
+      "kind": "narrative",
+      "text": "Дом оказался тише улицы — узкий холл, тёплые лампы и старый лифт с зеркалом, в котором Лера впервые увидела себя по-настоящему уставшей. Хозяин квартиры оставил ключ в электронном боксе и короткое сообщение: «Соседи спокойные. Если что — квартира напротив». Она усмехнулась. После перелёта последнее, чего ей хотелось, — знакомиться с соседями. Лифт остановился на восьмом этаже. Когда двери открылись, один из её чемоданов тут же зацепился колесом за металлический порог.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "nextSceneId": "ep1_first_meet",
+      "presentation": {
+        "mode": "standard",
+        "location": "Восьмой этаж",
+        "camera": "wide",
+        "position": "left",
+        "motion": "pull-out",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/tired.webp",
+            "emotion": "tired",
+            "pose": "tired",
+            "position": "left",
+            "framing": "full-body",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Дом оказался тише улицы — узкий холл, тёплые лампы и старый лифт с зеркалом, в котором Лера впервые увидела себя по-настоящему уставшей.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "pull-out",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/arrival.webp",
+                "emotion": "arrival",
+                "pose": "arrival",
+                "position": "left",
+                "framing": "full-body",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Хозяин квартиры оставил ключ в электронном боксе и короткое сообщение: «Соседи спокойные. Если что — квартира напротив». Она усмехнулась.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "После перелёта последнее, чего ей хотелось, — знакомиться с соседями. Лифт остановился на восьмом этаже.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Когда двери открылись, один из её чемоданов тут же зацепился колесом за металлический порог.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/shocked.webp",
+                "emotion": "shocked",
+                "pose": "shocked",
+                "position": "left",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_first_meet",
+      "kind": "dialogue",
+      "text": "Чья-то рука удержала чемодан прежде, чем тот рухнул набок. Парень в чёрной куртке стоял настолько близко, что Лера успела заметить тонкий шрам у его брови и серебряную серьгу. Он поднял чемодан одной рукой и поставил рядом с дверью. «Новенькая?» — спросил он без улыбки. Голос был низким и знакомым каким-то странным, неуловимым образом. Лера кивнула. Парень посмотрел на номер её квартиры, потом на неё — дольше, чем требовала обычная вежливость.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "nextSceneId": "ep1_choice_first_impression",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Восьмой этаж",
+        "camera": "medium",
+        "position": "center",
+        "motion": "push-in",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [],
+        "cg": "assets/last-online/v2/cg/first-meet.webp"
+      },
+      "beats": [
+        {
+          "text": "Чья-то рука удержала чемодан прежде, чем тот рухнул набок.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "Парень в чёрной куртке стоял совсем близко. Лера заметила тонкий шрам у его брови и серебряную серьгу.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Он поднял чемодан одной рукой и поставил рядом с дверью.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Новенькая?",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Голос был низким и странно знакомым. Лера кивнула.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Парень посмотрел на номер её квартиры, потом на неё — дольше, чем требовала обычная вежливость.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "cg": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/guarded.webp",
+                "emotion": "guarded",
+                "pose": "guarded",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_choice_first_impression",
+      "kind": "dialogue",
+      "text": "Как ответить незнакомому соседу?",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "choices": [
+        {
+          "id": "ep1_first_warm",
+          "text": "Улыбнуться и поблагодарить",
+          "nextSceneId": "ep1_first_impression_warm",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "junhoScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "first_impression",
+              "value": "warm"
+            }
+          ]
+        },
+        {
+          "id": "ep1_first_guarded",
+          "text": "Спросить, почему он так смотрит",
+          "nextSceneId": "ep1_first_impression_guarded",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "first_impression",
+              "value": "guarded"
+            }
+          ]
+        },
+        {
+          "id": "ep1_first_cold",
+          "text": "Забрать чемодан и закончить разговор",
+          "nextSceneId": "ep1_first_impression_cold",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "first_impression",
+              "value": "cold"
+            }
+          ]
+        }
+      ],
+      "presentation": {
+        "mode": "standard",
+        "location": "Восьмой этаж",
+        "camera": "medium",
+        "position": "left",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/curious.webp",
+            "emotion": "curious",
+            "pose": "curious",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Как ответить незнакомому соседу?",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_first_impression_warm",
+      "kind": "dialogue",
+      "text": "«Спасибо. Я Лера». На секунду выражение его лица стало мягче. «Джунхо». Он будто хотел сказать что-то ещё, но вместо этого только указал на дверь напротив. «Если ночью услышишь музыку — постараюсь не слишком громко». Лера улыбнулась: «Если хорошая, можешь не стараться». На этот раз он действительно почти улыбнулся.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "nextSceneId": "ep1_move_in",
+      "presentation": {
+        "mode": "standard",
+        "location": "Восьмой этаж",
+        "camera": "medium",
+        "position": "right",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/soft.webp",
+            "emotion": "soft",
+            "pose": "soft",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Спасибо. Я Лера.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "medium",
+            "motion": "slow-zoom",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/shy.webp",
+                "emotion": "shy",
+                "pose": "shy",
+                "position": "left",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "На секунду выражение его лица стало мягче.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Джунхо.",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/soft.webp",
+                "emotion": "soft",
+                "pose": "soft",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Он будто хотел сказать что-то ещё, но только указал на дверь напротив.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Если ночью услышишь музыку — постараюсь не слишком громко.",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/soft.webp",
+                "emotion": "soft",
+                "pose": "soft",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Если хорошая, можешь не стараться.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/shy.webp",
+                "emotion": "shy",
+                "pose": "shy",
+                "position": "left",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "На этот раз он действительно почти улыбнулся.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_first_impression_guarded",
+      "kind": "dialogue",
+      "text": "«Почему ты так смотришь?» Парень отвёл взгляд первым. «Показалось, что я тебя где-то видел». — «Я сегодня впервые в Хансу». Он коротко кивнул, словно ответ только добавил ему вопросов. «Тогда показалось. Джунхо». Дверь напротив закрылась за ним прежде, чем Лера успела спросить что-нибудь ещё.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "nextSceneId": "ep1_move_in",
+      "presentation": {
+        "mode": "standard",
+        "location": "Восьмой этаж",
+        "camera": "close",
+        "position": "right",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/suspicious.webp",
+            "emotion": "suspicious",
+            "pose": "suspicious",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Почему ты так смотришь?",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/curious.webp",
+                "emotion": "curious",
+                "pose": "curious",
+                "position": "left",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Парень отвёл взгляд первым.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Показалось, что я тебя где-то видел.",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/suspicious.webp",
+                "emotion": "suspicious",
+                "pose": "suspicious",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Я сегодня впервые в Хансу.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/curious.webp",
+                "emotion": "curious",
+                "pose": "curious",
+                "position": "left",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Он коротко кивнул, словно ответ только добавил ему вопросов.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Тогда показалось. Джунхо.",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/suspicious.webp",
+                "emotion": "suspicious",
+                "pose": "suspicious",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Дверь напротив закрылась за ним прежде, чем Лера успела спросить что-нибудь ещё.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_first_impression_cold",
+      "kind": "dialogue",
+      "text": "«Я справлюсь». Лера забрала ручку чемодана. Незнакомец не стал спорить, только сделал шаг назад. «Как хочешь». Он уже открыл дверь напротив, когда остановился. «Не оставляй вещи в коридоре. Здесь иногда заходят чужие». Странная фраза для первого знакомства. Лера проводила его взглядом и решила, что новый сосед ей пока совсем не нравится.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "nextSceneId": "ep1_move_in",
+      "presentation": {
+        "mode": "standard",
+        "location": "Восьмой этаж",
+        "camera": "wide",
+        "position": "right",
+        "motion": "pull-out",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/distant.webp",
+            "emotion": "distant",
+            "pose": "distant",
+            "position": "right",
+            "framing": "full-body",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Я справлюсь.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "wide",
+            "motion": "pull-out",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/defensive.webp",
+                "emotion": "defensive",
+                "pose": "defensive",
+                "position": "left",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Лера забрала ручку чемодана. Незнакомец не стал спорить, только сделал шаг назад.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Как хочешь.",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/distant.webp",
+                "emotion": "distant",
+                "pose": "distant",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Он уже открыл дверь напротив, когда остановился.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Не оставляй вещи в коридоре. Здесь иногда заходят чужие.",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/distant.webp",
+                "emotion": "distant",
+                "pose": "distant",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Странная фраза для первого знакомства. Лера проводила его взглядом и решила, что новый сосед ей пока совсем не нравится.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/defensive.webp",
+                "emotion": "defensive",
+                "pose": "defensive",
+                "position": "left",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_move_in",
+      "kind": "narrative",
+      "text": "Квартира была маленькой, но именно такой, как на фотографиях: большое окно, светлый диван и город до самого горизонта. Разбирая вещи, Лера нашла конверт от оператора связи. Университетская программа заранее заказала ей местную SIM-карту. Новый номер выглядел почти как случайный набор цифр — ещё одна деталь новой жизни, которую пока никто не знал. Она переставила SIM в телефон и написала маме, что добралась.",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "nextSceneId": "ep1_first_night",
+      "presentation": {
+        "mode": "standard",
+        "location": "Квартира Леры · ночь",
+        "camera": "wide",
+        "position": "left",
+        "motion": "reveal",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "pose": "neutral",
+            "position": "left",
+            "framing": "full-body",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Квартира была маленькой, но именно такой, как на фотографиях: большое окно, светлый диван и город до самого горизонта.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "reveal",
+            "characters": []
+          }
+        },
+        {
+          "text": "Разбирая вещи, Лера нашла конверт от оператора связи. Университетская программа заранее заказала ей местную SIM-карту.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Новый номер выглядел почти как случайный набор цифр — ещё одна деталь новой жизни, которую пока никто не знал.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Она переставила SIM в телефон и написала маме, что добралась.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+                "emotion": "phone-reading",
+                "pose": "phone-reading",
+                "position": "left",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_first_night",
+      "kind": "narrative",
+      "text": "Около полуночи за стеной заиграла музыка. Не громко — несколько аккордов фортепиано, затем мужской голос. Профессиональный. Слишком профессиональный для человека, который просто напевает дома. Лера подошла к стене и невольно прислушалась. Через минуту музыка оборвалась, будто сосед почувствовал чужое внимание. На экране телефона мигнуло уведомление: «Номер активирован». Больше ничего. Лера легла спать, не подозревая, что этот номер уже принадлежал кому-то до неё.",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "nextSceneId": "ep1_university_gate",
+      "presentation": {
+        "mode": "standard",
+        "location": "Квартира Леры · ночь",
+        "camera": "medium",
+        "position": "right",
+        "motion": "drift-left",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/curious.webp",
+            "emotion": "curious",
+            "pose": "curious",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Около полуночи за стеной заиграла музыка. Не громко — несколько аккордов фортепиано, затем мужской голос. Профессиональный.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "drift-left"
+          }
+        },
+        {
+          "text": "Слишком профессиональный для человека, который просто напевает дома. Лера подошла к стене и невольно прислушалась.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Через минуту музыка оборвалась, будто сосед почувствовал чужое внимание. На экране телефона мигнуло уведомление: «Номер активирован».",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Больше ничего. Лера легла спать, не подозревая, что этот номер уже принадлежал кому-то до неё.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_university_gate",
+      "kind": "narrative",
+      "text": "Утром университет Хансу оказался противоположностью её тихого дома: толпы студентов, музыка из открытых окон клубов и стенды со стажировками. Лера несколько раз сверилась с картой кампуса, прежде чем нашла факультет. У входа девушка с короткими волосами перехватила её взгляд и рассмеялась: «Ты тоже потерялась? Отлично. Значит, будем потерянными вместе». Так Лера познакомилась с Миной.",
+      "background": "assets/last-online/v2/backgrounds/campus.webp",
+      "nextSceneId": "ep1_meet_mina",
+      "presentation": {
+        "mode": "standard",
+        "location": "Университет Хансу · утро",
+        "camera": "wide",
+        "position": "left",
+        "motion": "reveal",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/curious.webp",
+            "emotion": "curious",
+            "pose": "curious",
+            "position": "left",
+            "framing": "full-body",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Утром университет Хансу оказался противоположностью её тихого дома: толпы студентов, музыка из открытых окон клубов и стенды со стажировками.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "reveal",
+            "characters": []
+          }
+        },
+        {
+          "text": "Лера несколько раз сверилась с картой кампуса, прежде чем нашла факультет.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "У входа девушка с короткими волосами перехватила её взгляд и рассмеялась: «Ты тоже потерялась? Отлично. Значит, будем потерянными вместе».",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Так Лера познакомилась с Миной.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "mina",
+                "src": "assets/last-online/v2/characters/mina/friendly.webp",
+                "emotion": "friendly",
+                "pose": "friendly",
+                "position": "right",
+                "framing": "full-body",
+                "depth": "foreground"
+              },
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/curious.webp",
+                "emotion": "curious",
+                "pose": "curious",
+                "position": "left",
+                "framing": "full-body",
+                "depth": "background"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_meet_mina",
+      "kind": "dialogue",
+      "text": "Мина говорила быстро, знала половину кампуса и за двадцать минут успела сообщить Лере больше, чем университетский сайт за месяц. Где дешёвый кофе. Какой профессор ставит оценки за посещение. Где обычно появляются знаменитости, когда агентства арендуют аудитории для съёмок. «Ты вообще K-pop слушаешь?» — спросила она. Лера пожала плечами. «Иногда». Мина посмотрела на неё так, будто услышала признание в преступлении.",
+      "background": "assets/last-online/v2/backgrounds/campus.webp",
+      "nextSceneId": "ep1_campus_cafe",
+      "presentation": {
+        "mode": "standard",
+        "location": "Университет Хансу · утро",
+        "camera": "medium",
+        "position": "right",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/excited.webp",
+            "emotion": "excited",
+            "pose": "excited",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Мина говорила быстро, знала половину кампуса и за двадцать минут сообщила Лере больше, чем университетский сайт за месяц.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Где дешёвый кофе. Какой профессор ставит оценки за посещение. Где появляются знаменитости, когда агентства арендуют аудитории для съёмок.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Ты вообще K-pop слушаешь?",
+          "speaker": "Мина",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "mina",
+                "src": "assets/last-online/v2/characters/mina/excited.webp",
+                "emotion": "excited",
+                "pose": "excited",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Лера пожала плечами.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Иногда.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/curious.webp",
+                "emotion": "curious",
+                "pose": "curious",
+                "position": "left",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Мина посмотрела на неё так, будто услышала признание в преступлении.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "mina",
+                "src": "assets/last-online/v2/characters/mina/surprised.webp",
+                "emotion": "surprised",
+                "pose": "surprised",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_campus_cafe",
+      "kind": "dialogue",
+      "text": "В кафе Мина листала телефон, показывая группы, которые «невозможно не знать». Лера уже собиралась сменить тему, когда на экране мелькнуло знакомое лицо. Тот же шрам у брови. Те же тёмные глаза. Только на фотографии он улыбался под светом сцены, а вокруг его имени стояли тысячи комментариев. «Стой», — сказала Лера. — «Кто это?» Мина замерла. «Ты серьёзно?»",
+      "background": "assets/last-online/v2/backgrounds/cafe.webp",
+      "nextSceneId": "ep1_reveal_junho",
+      "presentation": {
+        "mode": "standard",
+        "location": "Кафе кампуса",
+        "camera": "medium",
+        "position": "right",
+        "motion": "drift-right",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/gossip.webp",
+            "emotion": "gossip",
+            "pose": "gossip",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "В кафе Мина листала телефон, показывая группы, которые «невозможно не знать».",
+          "presentation": {
+            "camera": "medium",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Лера уже собиралась сменить тему, когда на экране мелькнуло знакомое лицо. Тот же шрам у брови. Те же тёмные глаза.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Только на фотографии он улыбался под светом сцены, а вокруг его имени стояли тысячи комментариев.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Стой. Кто это?",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/curious.webp",
+                "emotion": "curious",
+                "pose": "curious",
+                "position": "left",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Мина замерла.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Ты серьёзно?",
+          "speaker": "Мина",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "mina",
+                "src": "assets/last-online/v2/characters/mina/surprised.webp",
+                "emotion": "surprised",
+                "pose": "surprised",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_reveal_junho",
+      "kind": "narrative",
+      "text": "Три года назад Кан Джунхо был участником ECLIPSE — группы, которая за один год стала лицом VANTA Entertainment. Потом исчезла стажёрка Юн Соа. Последними людьми, которых видели с ней в здании агентства, называли нескольких сотрудников и Джунхо. Полиция не предъявила ему обвинений, но интернет сделал это вместо неё. Контракты ECLIPSE заморозили. Через месяц Джунхо исчез из публичной жизни. «Никто не знает, что случилось на самом деле», — тихо сказала Мина. — «Но фанаты до сих пор спорят».",
+      "background": "assets/last-online/v2/backgrounds/cafe.webp",
+      "nextSceneId": "ep1_choice_search_scandal",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Кафе кампуса",
+        "camera": "medium",
+        "position": "center",
+        "motion": "push-in",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [],
+        "cg": "assets/last-online/v2/cg/reveal-hologram-v1.webp"
+      },
+      "beats": [
+        {
+          "text": "Три года назад Кан Джунхо был участником ECLIPSE — группы, которая за один год стала лицом VANTA Entertainment.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "Потом исчезла стажёрка Юн Соа. Последними людьми, которых видели с ней в здании агентства, называли нескольких сотрудников и Джунхо.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Полиция не предъявила ему обвинений, но интернет сделал это вместо неё. Контракты ECLIPSE заморозили.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Через месяц Джунхо исчез из публичной жизни.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "«Никто не знает, что случилось на самом деле», — тихо сказала Мина. — «Но фанаты до сих пор спорят».",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "cg": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/shocked.webp",
+                "emotion": "shocked",
+                "pose": "shocked",
+                "position": "left",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_choice_search_scandal",
+      "kind": "narrative",
+      "text": "Что сделать после рассказа Мины?",
+      "background": "assets/last-online/v2/backgrounds/cafe.webp",
+      "choices": [
+        {
+          "id": "ep1_search_everything",
+          "text": "Прочитать всё, что сохранилось о скандале",
+          "nextSceneId": "ep1_search_deep",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 2
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "deep_scandal_search",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "ep1_search_basics",
+          "text": "Ограничиться официальными фактами",
+          "nextSceneId": "ep1_search_basic",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "basic_scandal_search",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "ep1_search_stop",
+          "text": "Закрыть статьи. Это не моё дело",
+          "nextSceneId": "ep1_search_close",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "junhoScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "avoided_gossip",
+              "value": true
+            }
+          ]
+        }
+      ],
+      "presentation": {
+        "mode": "standard",
+        "location": "Кафе кампуса",
+        "camera": "medium",
+        "position": "left",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/suspicious.webp",
+            "emotion": "suspicious",
+            "pose": "suspicious",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Что сделать после рассказа Мины?",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_search_deep",
+      "kind": "narrative",
+      "text": "Лера провалилась в старые архивы. Посты фанатов, удалённые фотографии, пересказы анонимных сотрудников. Чем больше она читала, тем меньше история складывалась. Одни утверждали, что Джунхо ревновал Соа. Другие — что он пытался вывести её из здания через служебный вход. В одном старом комментарии кто-то написал: «Ищите не того, кто был рядом с ней, а того, кому было выгодно, чтобы она исчезла». Через минуту страница с комментарием перестала открываться.",
+      "background": "assets/last-online/v2/backgrounds/cafe.webp",
+      "nextSceneId": "ep1_scandal_aftertaste",
+      "presentation": {
+        "mode": "standard",
+        "location": "Кафе кампуса",
+        "camera": "close",
+        "position": "left",
+        "motion": "tension",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone-reading",
+            "pose": "phone-reading",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера провалилась в старые архивы. Посты фанатов, удалённые фотографии, пересказы анонимных сотрудников.",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        },
+        {
+          "text": "Чем больше она читала, тем меньше история складывалась. Одни утверждали, что Джунхо ревновал Соа.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Другие — что он пытался вывести её из здания через служебный вход.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "В одном старом комментарии кто-то написал: «Ищите не того, кто был рядом с ней, а того, кому было выгодно, чтобы она исчезла».",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Через минуту страница с комментарием перестала открываться.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_search_basic",
+      "kind": "narrative",
+      "text": "Официальные материалы были короткими и почти бесполезными: заявление VANTA, что Соа самовольно прекратила стажировку; сообщение полиции о розыске; объявление ECLIPSE о паузе по «личным причинам». Имя Джунхо нигде не стояло рядом со словом «виновен». Это сделали заголовки и комментарии. Лера закрыла браузер с неприятным ощущением: все знали версию истории, но почти никто — факты.",
+      "background": "assets/last-online/v2/backgrounds/cafe.webp",
+      "nextSceneId": "ep1_scandal_aftertaste",
+      "presentation": {
+        "mode": "standard",
+        "location": "Кафе кампуса",
+        "camera": "medium",
+        "position": "right",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone-reading",
+            "pose": "phone-reading",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Официальные материалы были короткими и почти бесполезными: заявление VANTA, что Соа самовольно прекратила стажировку; сообщение полиции о розыске;",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "объявление ECLIPSE о паузе по «личным причинам». Имя Джунхо нигде не стояло рядом со словом «виновен». Это сделали заголовки и комментарии.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Лера закрыла браузер с неприятным ощущением: все знали версию истории, но почти никто — факты.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_search_close",
+      "kind": "narrative",
+      "text": "Лера вернула телефон Мине. «Если полиция ничего не доказала, я не хочу знакомиться с человеком через чужие слухи». Мина удивлённо подняла брови, затем улыбнулась. «Справедливо. Только будь осторожна. Истории про айдолов редко заканчиваются там, где заканчиваются статьи». Лера решила, что это звучит слишком драматично. До вечера.",
+      "background": "assets/last-online/v2/backgrounds/cafe.webp",
+      "nextSceneId": "ep1_scandal_aftertaste",
+      "presentation": {
+        "mode": "standard",
+        "location": "Кафе кампуса",
+        "camera": "medium",
+        "position": "right",
+        "motion": "pull-out",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/surprised.webp",
+            "emotion": "surprised",
+            "pose": "surprised",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера вернула телефон Мине. «Если полиция ничего не доказала, я не хочу знакомиться с человеком через чужие слухи».",
+          "presentation": {
+            "camera": "medium",
+            "motion": "pull-out"
+          }
+        },
+        {
+          "text": "Мина удивлённо подняла брови, затем улыбнулась. «Справедливо. Только будь осторожна.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Истории про айдолов редко заканчиваются там, где заканчиваются статьи». Лера решила, что это звучит слишком драматично. До вечера.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "mina",
+                "src": "assets/last-online/v2/characters/mina/friendly.webp",
+                "emotion": "friendly",
+                "pose": "friendly",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_scandal_aftertaste",
+      "kind": "narrative",
+      "text": "На последней паре Лера почти не слушала преподавателя. Теперь каждое движение соседа из вчерашнего вечера казалось другим. Его пауза, когда он увидел номер квартиры. Его фраза про чужих людей в коридоре. Музыка за стеной. Она несколько раз убеждала себя, что всё это совпадения, а затем поймала себя на том, что снова открывает фотографию ECLIPSE. На сцене Джунхо выглядел человеком, которому нечего скрывать.",
+      "background": "assets/last-online/v2/backgrounds/classroom.webp",
+      "nextSceneId": "ep1_return_home",
+      "presentation": {
+        "mode": "standard",
+        "location": "Последняя пара",
+        "camera": "wide",
+        "position": "left",
+        "motion": "drift-left",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "pose": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "На последней паре Лера почти не слушала преподавателя. Теперь каждое движение соседа из вчерашнего вечера казалось другим.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "drift-left"
+          }
+        },
+        {
+          "text": "Его пауза, когда он увидел номер квартиры. Его фраза про чужих людей в коридоре. Музыка за стеной.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Она несколько раз убеждала себя, что всё это совпадения, а затем поймала себя на том, что снова открывает фотографию ECLIPSE.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "На сцене Джунхо выглядел человеком, которому нечего скрывать.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+                "emotion": "phone-reading",
+                "pose": "phone-reading",
+                "position": "left",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_return_home",
+      "kind": "narrative",
+      "text": "К вечеру дождь вернулся. Лера поднялась на восьмой этаж пешком: лифт снова застрял где-то выше. В коридоре напротив квартиры Джунхо лежал бумажный пакет с логотипом музыкального магазина. Из него торчали струны и нотная тетрадь. Значит, он всё ещё играл. Лера уже открывала свою дверь, когда сосед вышел из лифта со стаканом кофе и остановился, заметив её взгляд на пакете.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "nextSceneId": "ep1_hallway_second_meet",
+      "presentation": {
+        "mode": "standard",
+        "location": "Восьмой этаж",
+        "camera": "wide",
+        "position": "left",
+        "motion": "reveal",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/tired.webp",
+            "emotion": "tired",
+            "pose": "tired",
+            "position": "left",
+            "framing": "full-body",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "К вечеру дождь вернулся. Лера поднялась на восьмой этаж пешком: лифт снова застрял где-то выше.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "reveal",
+            "characters": []
+          }
+        },
+        {
+          "text": "В коридоре напротив квартиры Джунхо лежал бумажный пакет с логотипом музыкального магазина. Из него торчали струны и нотная тетрадь.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Значит, он всё ещё играл.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Лера уже открывала свою дверь, когда сосед вышел из лифта со стаканом кофе и остановился, заметив её взгляд на пакете.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_hallway_second_meet",
+      "kind": "dialogue",
+      "text": "«Первый день пережила?» — спросил Джунхо. Лера кивнула. Теперь ей было невозможно не видеть в нём человека со старых фотографий. Он заметил это почти сразу. «Тебе уже рассказали». Это прозвучало не как вопрос. Лера не успела ответить. Джунхо забрал пакет и добавил: «В Хансу люди любят старые истории больше новых. Не верь всему, что прочитаешь». Он закрыл дверь. Лера осталась в коридоре с ощущением, что разговор начался задолго до её приезда.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "nextSceneId": "ep1_room_settle",
+      "presentation": {
+        "mode": "standard",
+        "location": "Восьмой этаж",
+        "camera": "medium",
+        "position": "right",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/guarded.webp",
+            "emotion": "guarded",
+            "pose": "guarded",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Первый день пережила?",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/guarded.webp",
+                "emotion": "guarded",
+                "pose": "guarded",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Лера кивнула. Теперь ей было невозможно не видеть в нём человека со старых фотографий. Он заметил это почти сразу.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Тебе уже рассказали.",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/guarded.webp",
+                "emotion": "guarded",
+                "pose": "guarded",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Это прозвучало не как вопрос. Лера не успела ответить. Джунхо забрал пакет.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "В Хансу люди любят старые истории больше новых. Не верь всему, что прочитаешь.",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/guarded.webp",
+                "emotion": "guarded",
+                "pose": "guarded",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Он закрыл дверь. Лера осталась в коридоре с ощущением, что разговор начался задолго до её приезда.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_room_settle",
+      "kind": "narrative",
+      "text": "Лера поставила чайник и попыталась заняться расписанием. Телефон лежал экраном вниз. В 23:46 он коротко завибрировал. Незнакомое уведомление из мессенджера. Отправитель — SOA. В профиле не было фотографии, только серый силуэт и статус: «был(а) в сети очень давно». Лера решила, что это рекламный бот, но имя заставило её перевернуть телефон обратно.",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "nextSceneId": "ep1_soa_ping",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Квартира Леры · ночь",
+        "camera": "wide",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [],
+        "cg": "assets/last-online/v2/cg/soa-ping.webp",
+        "haptic": "light"
+      },
+      "beats": [
+        {
+          "text": "Лера поставила чайник и попыталась заняться расписанием. Телефон лежал экраном вниз. В 23:46 он коротко завибрировал.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Незнакомое уведомление из мессенджера. Отправитель — SOA.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "В профиле не было фотографии, только серый силуэт и статус: «был(а) в сети очень давно».",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Лера решила, что это рекламный бот, но имя заставило её перевернуть телефон обратно.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_soa_ping",
+      "kind": "message",
+      "text": "Новое сообщение от SOA. Аккаунт создан много лет назад. История переписки пуста. В профиле нет ни одного общего контакта.",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "nextSceneId": "ep1_soa_first_message",
+      "chat": {
+        "status": "была в сети очень давно",
+        "messages": [
+          {
+            "from": "system",
+            "text": "Новый диалог · общих контактов нет"
+          }
+        ],
+        "context": "Аккаунт создан много лет назад. История переписки пуста."
+      },
+      "presentation": {
+        "mode": "phone",
+        "location": "Квартира Леры · ночь",
+        "camera": "close",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": []
+      },
+      "beats": [
+        {
+          "text": "Новый диалог · общих контактов нет",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_soa_first_message",
+      "kind": "message",
+      "text": "Ты живёшь напротив него?\n\nЧерез несколько секунд приходит второе сообщение:\n\nНе говори Джунхо, что я тебе написала.",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "nextSceneId": "ep1_choice_soa_message",
+      "chat": {
+        "status": "была в сети очень давно",
+        "messages": [
+          {
+            "from": "soa",
+            "text": "Ты живёшь напротив него?"
+          },
+          {
+            "from": "soa",
+            "text": "Не говори Джунхо, что я тебе написала."
+          }
+        ]
+      },
+      "presentation": {
+        "mode": "phone",
+        "location": "Квартира Леры · ночь",
+        "camera": "close",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": []
+      },
+      "beats": [
+        {
+          "text": "Ты живёшь напротив него?",
+          "speaker": "SOA",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Не говори Джунхо, что я тебе написала.",
+          "speaker": "SOA",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_choice_soa_message",
+      "kind": "message",
+      "text": "Что сделать с сообщением SOA?",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "choices": [
+        {
+          "id": "ep1_soa_tell_junho",
+          "text": "Сразу рассказать Джунхо",
+          "nextSceneId": "ep1_soa_tell",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "junhoScore",
+              "by": 2
+            },
+            {
+              "kind": "setFlag",
+              "flag": "told_junho_soa",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "ep1_soa_hide_message",
+          "text": "Скрыть сообщение",
+          "nextSceneId": "ep1_soa_hide",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "hid_soa_message",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "ep1_soa_answer",
+          "text": "Ответить: «Кто ты?»",
+          "nextSceneId": "ep1_soa_reply",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 2
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "replied_soa",
+              "value": true
+            }
+          ]
+        }
+      ],
+      "chat": {
+        "status": "была в сети очень давно",
+        "messages": [
+          {
+            "from": "soa",
+            "text": "Ты живёшь напротив него?"
+          },
+          {
+            "from": "soa",
+            "text": "Не говори Джунхо, что я тебе написала."
+          }
+        ]
+      },
+      "presentation": {
+        "mode": "phone",
+        "location": "Квартира Леры · ночь",
+        "camera": "close",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": []
+      },
+      "beats": [
+        {
+          "text": "Ты живёшь напротив него?",
+          "speaker": "SOA",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Не говори Джунхо, что я тебе написала.",
+          "speaker": "SOA",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_soa_tell",
+      "kind": "narrative",
+      "text": "Лера уже поднялась с дивана, чтобы постучать к Джунхо, но остановилась у двери. Сообщения исчезли из уведомлений, хотя сама переписка осталась. Она сделала скриншот. Если это розыгрыш, он быстро закончится. Если нет — сосед должен знать. В этот момент из коридора донёсся звук закрывающегося лифта.",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "nextSceneId": "ep1_after_soa_choice",
+      "presentation": {
+        "mode": "standard",
+        "location": "Квартира Леры · ночь",
+        "camera": "medium",
+        "position": "right",
+        "motion": "drift-right",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "pose": "concerned",
+            "position": "right",
+            "framing": "full-body",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера уже поднялась с дивана, чтобы постучать к Джунхо, но остановилась у двери.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Сообщения исчезли из уведомлений, хотя сама переписка осталась. Она сделала скриншот. Если это розыгрыш, он быстро закончится.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Если нет — сосед должен знать. В этот момент из коридора донёсся звук закрывающегося лифта.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_soa_hide",
+      "kind": "narrative",
+      "text": "Лера заблокировала экран и положила телефон рядом, будто это могло сделать сообщения менее реальными. Не говорить Джунхо — пока. Сначала понять, кто пишет. Возможно, кто-то из фанатов узнал её адрес. Но откуда этот человек знает, что она живёт именно напротив него? За дверью послышались шаги.",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "nextSceneId": "ep1_after_soa_choice",
+      "presentation": {
+        "mode": "standard",
+        "location": "Квартира Леры · ночь",
+        "camera": "medium",
+        "position": "left",
+        "motion": "tension",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/defensive.webp",
+            "emotion": "defensive",
+            "pose": "defensive",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера заблокировала экран и положила телефон рядом, будто это могло сделать сообщения менее реальными. Не говорить Джунхо — пока.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "tension"
+          }
+        },
+        {
+          "text": "Сначала понять, кто пишет. Возможно, кто-то из фанатов узнал её адрес. Но откуда этот человек знает, что она живёт именно напротив него?",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "За дверью послышались шаги.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_soa_reply",
+      "kind": "message",
+      "text": "Лера напечатала: «Кто ты?»\n\nСтатус сообщения мгновенно сменился на «прочитано». Несколько секунд под именем SOA горело «печатает…», затем исчезло. Ответа не было. Вместо него экран на мгновение потемнел, а из коридора раздался короткий удар, будто кто-то задел дверь.",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "nextSceneId": "ep1_after_soa_choice",
+      "chat": {
+        "status": "была в сети очень давно",
+        "typing": true,
+        "messages": [
+          {
+            "from": "soa",
+            "text": "Ты живёшь напротив него?"
+          },
+          {
+            "from": "soa",
+            "text": "Не говори Джунхо, что я тебе написала."
+          },
+          {
+            "from": "lera",
+            "text": "Кто ты?",
+            "meta": "прочитано"
+          }
+        ],
+        "context": "Ответа не было. Экран потемнел, а из коридора раздался короткий удар."
+      },
+      "presentation": {
+        "mode": "phone",
+        "location": "Квартира Леры · ночь",
+        "camera": "close",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [],
+        "effect": "dark-pulse"
+      },
+      "beats": [
+        {
+          "text": "Ты живёшь напротив него?",
+          "speaker": "SOA",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Не говори Джунхо, что я тебе написала.",
+          "speaker": "SOA",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Кто ты?",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_after_soa_choice",
+      "kind": "narrative",
+      "text": "Лера подошла к глазку. В коридоре никого не было. Только у двери Джунхо валялся тот самый пакет из музыкального магазина, теперь разорванный сбоку. На полу блестела маленькая металлическая подвеска — серебряная звезда. Лера открыла дверь ровно настолько, чтобы её поднять. На обратной стороне была выгравирована буква S.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "nextSceneId": "ep1_noise_hall",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Восьмой этаж",
+        "camera": "extreme-close",
+        "position": "center",
+        "motion": "push-in",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [],
+        "cg": "assets/last-online/v2/cg/pendant.webp"
+      },
+      "beats": [
+        {
+          "text": "Лера подошла к глазку. В коридоре никого не было.",
+          "presentation": {
+            "camera": "extreme-close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "Только у двери Джунхо валялся тот самый пакет из музыкального магазина, теперь разорванный сбоку.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "На полу блестела маленькая металлическая подвеска — серебряная звезда. Лера открыла дверь ровно настолько, чтобы её поднять.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "На обратной стороне была выгравирована буква S.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_noise_hall",
+      "kind": "narrative",
+      "text": "Лифт звякнул. Джунхо вышел в коридор и сразу заметил подвеску в руке Леры. Он остановился так резко, будто увидел оружие. «Где ты это взяла?» Лера показала на пол. На его лице впервые появилось не раздражение и не усталость — страх. Он забрал звезду, сжал в ладони и посмотрел на лестничную клетку.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "nextSceneId": "ep1_junho_door",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Восьмой этаж",
+        "camera": "close",
+        "position": "center",
+        "motion": "tension",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [],
+        "cg": "assets/last-online/v2/cg/pendant-shock.webp",
+        "effect": "dark-pulse",
+        "haptic": "light"
+      },
+      "beats": [
+        {
+          "text": "Лифт звякнул. Джунхо вышел в коридор и сразу заметил подвеску в руке Леры. Он остановился так резко, будто увидел оружие.",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        },
+        {
+          "text": "«Где ты это взяла?» Лера показала на пол. На его лице впервые появилось не раздражение и не усталость — страх.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Он забрал звезду, сжал в ладони и посмотрел на лестничную клетку.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "cg": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/frightened.webp",
+                "emotion": "frightened",
+                "pose": "frightened",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_junho_door",
+      "kind": "dialogue",
+      "text": "«Ты кому-нибудь говорила, где живёшь?» — спросил Джунхо. «Только семье и университету». — «Кто-нибудь сегодня спрашивал обо мне?» Лера вспомнила Мину, статьи, аккаунт SOA. Джунхо заметил паузу. «Лера». Он впервые произнёс её имя без дистанции. «Если с тобой свяжется кто-то, кто говорит о VANTA, ECLIPSE или Соа, не отвечай».",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "nextSceneId": "ep1_junho_warning",
+      "presentation": {
+        "mode": "standard",
+        "location": "Восьмой этаж",
+        "camera": "close",
+        "position": "right",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/intense.webp",
+            "emotion": "intense",
+            "pose": "intense",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Ты кому-нибудь говорила, где живёшь?",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/intense.webp",
+                "emotion": "intense",
+                "pose": "intense",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Только семье и университету.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/curious.webp",
+                "emotion": "curious",
+                "pose": "curious",
+                "position": "left",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Кто-нибудь сегодня спрашивал обо мне?",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/intense.webp",
+                "emotion": "intense",
+                "pose": "intense",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Лера вспомнила Мину, статьи, аккаунт SOA. Джунхо заметил паузу.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Лера.",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/intense.webp",
+                "emotion": "intense",
+                "pose": "intense",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Он впервые произнёс её имя без дистанции.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Если с тобой свяжется кто-то, кто говорит о VANTA, ECLIPSE или Соа, не отвечай.",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/intense.webp",
+                "emotion": "intense",
+                "pose": "intense",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_junho_warning",
+      "kind": "dialogue",
+      "text": "«Почему?» — спросила Лера. Джунхо посмотрел на серебряную звезду. «Потому что три года назад такие вещи уже начинались с сообщений». Он сделал шаг к своей двери, затем добавил: «И потому что человек, которому принадлежала эта подвеска, исчез». Теперь сомнений не осталось. Он говорил о Соа.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "nextSceneId": "ep1_choice_junho_confrontation",
+      "presentation": {
+        "mode": "standard",
+        "location": "Восьмой этаж",
+        "camera": "close",
+        "position": "right",
+        "motion": "push-in",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/warning.webp",
+            "emotion": "warning",
+            "pose": "warning",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Почему?",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/curious.webp",
+                "emotion": "curious",
+                "pose": "curious",
+                "position": "left",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Джунхо посмотрел на серебряную звезду.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Потому что три года назад такие вещи уже начинались с сообщений.",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/warning.webp",
+                "emotion": "warning",
+                "pose": "warning",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Он сделал шаг к своей двери, затем добавил:",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "И потому что человек, которому принадлежала эта подвеска, исчез.",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/warning.webp",
+                "emotion": "warning",
+                "pose": "warning",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Теперь сомнений не осталось. Он говорил о Соа.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_choice_junho_confrontation",
+      "kind": "dialogue",
+      "text": "Как ответить Джунхо?",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "choices": [
+        {
+          "id": "ep1_confront_trust_choice",
+          "text": "Сказать: «Хорошо. Я тебе верю»",
+          "nextSceneId": "ep1_confront_trust",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "junhoScore",
+              "by": 2
+            },
+            {
+              "kind": "setFlag",
+              "flag": "trusted_junho_warning",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "ep1_confront_evade_choice",
+          "text": "Уклониться: «Со мной никто не связывался»",
+          "nextSceneId": "ep1_confront_evade",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "evaded_junho",
+              "value": true
+            }
+          ]
+        }
+      ],
+      "presentation": {
+        "mode": "standard",
+        "location": "Восьмой этаж",
+        "camera": "medium",
+        "position": "left",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "pose": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Как ответить Джунхо?",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_confront_trust",
+      "kind": "dialogue",
+      "text": "«Хорошо. Я тебе верю». Джунхо долго смотрел ей в глаза, будто проверял, действительно ли она это решила. «Не надо верить мне просто так», — тихо сказал он. — «Просто будь осторожна». Он вернул подвеску себе и на секунду коснулся пальцами руки Леры. «И если станет страшно — стучи. Даже ночью».",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "nextSceneId": "ep1_after_confrontation",
+      "presentation": {
+        "mode": "standard",
+        "location": "Восьмой этаж",
+        "camera": "close",
+        "position": "right",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/vulnerable.webp",
+            "emotion": "vulnerable",
+            "pose": "vulnerable",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Хорошо. Я тебе верю.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "close",
+            "motion": "slow-zoom",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/shy.webp",
+                "emotion": "shy",
+                "pose": "shy",
+                "position": "left",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Джунхо долго смотрел ей в глаза, будто проверял, действительно ли она это решила.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Не надо верить мне просто так. Просто будь осторожна.",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/vulnerable.webp",
+                "emotion": "vulnerable",
+                "pose": "vulnerable",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Он убрал подвеску и на секунду коснулся пальцами руки Леры.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "И если станет страшно — стучи. Даже ночью.",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/soft.webp",
+                "emotion": "soft",
+                "pose": "soft",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_confront_evade",
+      "kind": "dialogue",
+      "text": "«Со мной никто не связывался». Лера произнесла это слишком быстро. Джунхо чуть прищурился. Он не поверил — она поняла сразу. Но спорить не стал. «Тогда хорошо». Его голос снова стал холодным. «Пусть так и остаётся». Дверь квартиры закрылась, оставив Леру наедине с ложью и телефоном в кармане.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "nextSceneId": "ep1_after_confrontation",
+      "presentation": {
+        "mode": "standard",
+        "location": "Восьмой этаж",
+        "camera": "close",
+        "position": "right",
+        "motion": "pull-out",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/suspicious.webp",
+            "emotion": "suspicious",
+            "pose": "suspicious",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Со мной никто не связывался.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "close",
+            "motion": "pull-out",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/defensive.webp",
+                "emotion": "defensive",
+                "pose": "defensive",
+                "position": "left",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Лера произнесла это слишком быстро. Джунхо чуть прищурился.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Он не поверил — она поняла сразу. Но спорить не стал.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Тогда хорошо.",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/suspicious.webp",
+                "emotion": "suspicious",
+                "pose": "suspicious",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Его голос снова стал холодным.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Пусть так и остаётся.",
+          "speaker": "Кан Джунхо",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/suspicious.webp",
+                "emotion": "suspicious",
+                "pose": "suspicious",
+                "position": "right",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Дверь квартиры закрылась, оставив Леру наедине с ложью и телефоном в кармане.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_after_confrontation",
+      "kind": "narrative",
+      "text": "Вернувшись в комнату, Лера снова открыла старые статьи. Теперь её интересовало не обвинение Джунхо, а символ. На одной фотографии с закрытой репетиции VANTA у Соа на шее висела серебряная звезда. Та же форма. Та же буква на обратной стороне, которую было видно на увеличенном снимке. Значит, подвеска действительно принадлежала ей. Но как она оказалась сегодня у двери Джунхо?",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "nextSceneId": "ep1_old_article_detail",
+      "presentation": {
+        "mode": "standard",
+        "location": "Квартира Леры · ночь",
+        "camera": "medium",
+        "position": "left",
+        "motion": "push-in",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone-reading",
+            "pose": "phone-reading",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Вернувшись в комнату, Лера снова открыла старые статьи. Теперь её интересовало не обвинение Джунхо, а символ.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "На одной фотографии с закрытой репетиции VANTA у Соа на шее висела серебряная звезда. Та же форма.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Та же буква на обратной стороне, которую было видно на увеличенном снимке. Значит, подвеска действительно принадлежала ей.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Но как она оказалась сегодня у двери Джунхо?",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/suspicious.webp",
+                "emotion": "suspicious",
+                "pose": "suspicious",
+                "position": "left",
+                "framing": "medium",
+                "depth": "foreground"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_old_article_detail",
+      "kind": "narrative",
+      "text": "Лера нашла ещё одну деталь. В комментариях под архивной фотографией кто-то утверждал, что Соа часто бывала в доме неподалёку от университета — у знакомого из ECLIPSE. Адрес давно удалили, но на снимке из окна за спиной девушки виднелась башня и мост. Лера подняла взгляд на собственное окно. Та же башня. Тот же мост. Угол почти совпадал.",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "nextSceneId": "ep1_soa_second_ping",
+      "presentation": {
+        "mode": "standard",
+        "location": "Квартира Леры · ночь",
+        "camera": "wide",
+        "position": "right",
+        "motion": "drift-left",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/shocked.webp",
+            "emotion": "shocked",
+            "pose": "shocked",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера нашла ещё одну деталь.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "drift-left",
+            "characters": []
+          }
+        },
+        {
+          "text": "В комментариях под архивной фотографией кто-то утверждал, что Соа часто бывала в доме неподалёку от университета — у знакомого из ECLIPSE.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Адрес давно удалили, но на снимке из окна за спиной девушки виднелась башня и мост. Лера подняла взгляд на собственное окно. Та же башня.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Тот же мост. Угол почти совпадал.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_soa_second_ping",
+      "kind": "message",
+      "text": "Телефон снова вибрирует.\n\nSOA: Ты нашла звезду.\n\nЛера перестаёт дышать на секунду. Она никому не рассказывала о подвеске. Даже Мине.",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "nextSceneId": "ep1_soa_photo_intro",
+      "chat": {
+        "status": "была в сети очень давно",
+        "messages": [
+          {
+            "from": "soa",
+            "text": "Ты нашла звезду."
+          }
+        ],
+        "context": "Лера никому не рассказывала о подвеске. Даже Мине."
+      },
+      "presentation": {
+        "mode": "phone",
+        "location": "Квартира Леры · ночь",
+        "camera": "close",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [],
+        "haptic": "light"
+      },
+      "beats": [
+        {
+          "text": "Ты нашла звезду.",
+          "speaker": "SOA",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_soa_photo_intro",
+      "kind": "message",
+      "text": "SOA: Тогда посмотри, где ты живёшь.\n\nПод сообщением появляется вложение. Файл называется `IMG_0317_old.jpg`. Дата в метаданных — три года назад, за четыре дня до исчезновения Соа.",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "nextSceneId": "ep1_old_photo",
+      "attachment": "assets/last-online/v2/cg/old-photo.webp",
+      "chat": {
+        "status": "была в сети очень давно",
+        "messages": [
+          {
+            "from": "soa",
+            "text": "Ты нашла звезду."
+          },
+          {
+            "from": "soa",
+            "text": "Тогда посмотри, где ты живёшь."
+          },
+          {
+            "from": "system",
+            "text": "IMG_0317_old.jpg · 3 года назад"
+          }
+        ],
+        "context": "Дата в метаданных — за четыре дня до исчезновения Соа."
+      },
+      "presentation": {
+        "mode": "phone",
+        "location": "Квартира Леры · ночь",
+        "camera": "close",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": []
+      },
+      "beats": [
+        {
+          "text": "Ты нашла звезду.",
+          "speaker": "SOA",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Тогда посмотри, где ты живёшь.",
+          "speaker": "SOA",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "IMG_0317_old.jpg · 3 года назад",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_old_photo",
+      "kind": "narrative",
+      "text": "На фотографии — эта же комната. Другие шторы, другая мебель, но окно и вид на ночной Хансу невозможно перепутать. У стекла стоит Соа, живая, улыбающаяся, в той самой подвеске-звезде. Рядом — Джунхо. Он держит её за запястье, будто пытается остановить или удержать. Снимок сделан от двери спальни — человеком, который находился внутри квартиры Леры. Внизу фотографии видна дата. Через четыре дня Соа исчезла.",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "nextSceneId": "ep1_choice_photo_response",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Квартира Леры · ночь",
+        "camera": "wide",
+        "position": "center",
+        "motion": "push-in",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [],
+        "cg": "assets/last-online/v2/cg/old-photo.webp"
+      },
+      "beats": [
+        {
+          "text": "На фотографии — эта же комната. Другие шторы, другая мебель, но окно и вид на ночной Хансу невозможно перепутать.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "У стекла стоит Соа, живая, улыбающаяся, в той самой подвеске-звезде. Рядом — Джунхо.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Он держит её за запястье, будто пытается остановить или удержать.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Снимок сделан от двери спальни — человеком, который находился внутри квартиры Леры. Внизу фотографии видна дата.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Через четыре дня Соа исчезла.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_choice_photo_response",
+      "kind": "message",
+      "text": "Что сделать после фотографии?",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "choices": [
+        {
+          "id": "ep1_photo_call",
+          "text": "Позвонить Джунхо прямо сейчас",
+          "nextSceneId": "ep1_photo_call_junho",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "junhoScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "photo_called_junho",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "ep1_photo_keep",
+          "text": "Сохранить фотографию и никому не показывать",
+          "nextSceneId": "ep1_photo_save",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "photo_saved",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "ep1_photo_answer",
+          "text": "Ответить SOA: «Ты была здесь?»",
+          "nextSceneId": "ep1_photo_reply",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "photo_replied_soa",
+              "value": true
+            }
+          ]
+        }
+      ],
+      "chat": {
+        "status": "была в сети очень давно",
+        "messages": [
+          {
+            "from": "soa",
+            "text": "Тогда посмотри, где ты живёшь."
+          }
+        ]
+      },
+      "attachment": "assets/last-online/v2/cg/old-photo.webp",
+      "presentation": {
+        "mode": "phone",
+        "location": "Квартира Леры · ночь",
+        "camera": "close",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": []
+      },
+      "beats": [
+        {
+          "text": "Тогда посмотри, где ты живёшь.",
+          "speaker": "SOA",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_photo_call_junho",
+      "kind": "narrative",
+      "text": "Палец Леры уже нажимает имя Джунхо. За стеной в ту же секунду начинается музыка — один короткий аккорд и тишина. Вызов ещё не успевает пройти, когда сверху появляется новое уведомление от SOA: «Не спрашивай его о фотографии, если хочешь узнать, что случилось со мной».",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "nextSceneId": "ep1_end_paywall",
+      "presentation": {
+        "mode": "standard",
+        "location": "Квартира Леры · ночь",
+        "camera": "medium",
+        "position": "left",
+        "motion": "tension",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone-reading",
+            "pose": "phone-reading",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Палец Леры уже нажимает имя Джунхо. За стеной в ту же секунду начинается музыка — один короткий аккорд и тишина.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "tension"
+          }
+        },
+        {
+          "text": "Вызов ещё не успевает пройти, когда сверху появляется новое уведомление от SOA: «Не спрашивай его о фотографии, если хочешь узнать, что случилось со мной».",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "cg": "assets/last-online/v2/cg/cliffhanger.webp",
+            "characters": [],
+            "effect": "dark-pulse"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_photo_save",
+      "kind": "narrative",
+      "text": "Лера сохраняет фотографию в отдельную папку и отключает экран. Через секунду телефон вибрирует снова. SOA: «Хорошо. Пока не показывай её никому». За стеной Джунхо начинает играть ту же мелодию, которую Лера слышала прошлой ночью. Теперь она замечает на старом снимке лист нот на пианино. Название композиции совпадает с подписью на сегодняшнем пакете.",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "nextSceneId": "ep1_end_paywall",
+      "presentation": {
+        "mode": "standard",
+        "location": "Квартира Леры · ночь",
+        "camera": "medium",
+        "position": "right",
+        "motion": "tension",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone-reading",
+            "pose": "phone-reading",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера сохраняет фотографию в отдельную папку и отключает экран. Через секунду телефон вибрирует снова. SOA: «Хорошо.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "tension"
+          }
+        },
+        {
+          "text": "Пока не показывай её никому». За стеной Джунхо начинает играть ту же мелодию, которую Лера слышала прошлой ночью.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Теперь она замечает на старом снимке лист нот на пианино. Название композиции совпадает с подписью на сегодняшнем пакете.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "cg": "assets/last-online/v2/cg/cliffhanger.webp",
+            "characters": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_photo_reply",
+      "kind": "message",
+      "text": "Лера пишет: «Ты была здесь?»\n\nОтвет приходит мгновенно:\n\nSOA: Да.\nSOA: И он знает почему.\n\nЛера печатает следующий вопрос, но статус аккаунта меняется на «был(а) в сети очень давно». Сообщение не отправляется.",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "nextSceneId": "ep1_end_paywall",
+      "chat": {
+        "status": "была в сети очень давно",
+        "messages": [
+          {
+            "from": "lera",
+            "text": "Ты была здесь?",
+            "meta": "прочитано"
+          },
+          {
+            "from": "soa",
+            "text": "Да."
+          },
+          {
+            "from": "soa",
+            "text": "И он знает почему."
+          },
+          {
+            "from": "system",
+            "text": "SOA была в сети очень давно"
+          }
+        ],
+        "context": "Следующий вопрос не отправляется. SOA снова не в сети."
+      },
+      "presentation": {
+        "mode": "phone",
+        "location": "Квартира Леры · ночь",
+        "camera": "close",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": []
+      },
+      "beats": [
+        {
+          "text": "Ты была здесь?",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Да.",
+          "speaker": "SOA",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "И он знает почему.",
+          "speaker": "SOA",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "SOA была в сети очень давно",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep1_end_paywall",
+      "kind": "terminal",
+      "text": "КОНЕЦ ЭПИЗОДА 1 — «Номер, который не должен отвечать».\n\nЛера приехала в Хансу, чтобы начать новую жизнь. Но её новый номер уже принадлежал девушке, исчезнувшей три года назад, а её квартира оказалась частью старой тайны. В Эпизоде 2 появится Ли Тэюн — действующий айдол, который узнает номер Соа с первого взгляда.",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Квартира Леры · ночь",
+        "camera": "wide",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [],
+        "cg": "assets/last-online/v2/cg/cliffhanger.webp"
+      },
+      "beats": [
+        {
+          "text": "КОНЕЦ ЭПИЗОДА 1 — «Номер, который не должен отвечать». Лера приехала в Хансу, чтобы начать новую жизнь.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Но её новый номер уже принадлежал девушке, исчезнувшей три года назад, а её квартира оказалась частью старой тайны.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "В Эпизоде 2 появится Ли Тэюн — действующий айдол, который узнает номер Соа с первого взгляда.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    }
+  ]
+}

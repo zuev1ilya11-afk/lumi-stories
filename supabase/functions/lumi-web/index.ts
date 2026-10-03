@@ -1,0 +1,140 @@
+const html = String.raw`<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0913" />
+  <title>LUMI — Последний онлайн</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    :root{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#f6eefc;background:#0b0913}
+    *{box-sizing:border-box} body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#241435 0,#100c19 46%,#08070d 100%);color:#f8f4fb}
+    button{font:inherit}.app{min-height:100vh;display:flex;justify-content:center}.phone{width:min(100%,520px);min-height:100vh;position:relative;padding:env(safe-area-inset-top) 18px env(safe-area-inset-bottom);display:flex;flex-direction:column}
+    .top{display:flex;align-items:center;justify-content:space-between;padding:18px 2px 12px}.brand{font-size:22px;font-weight:800;letter-spacing:.16em}.status{font-size:12px;color:#cdb8dd;border:1px solid #5e456f;background:#1d1526;border-radius:99px;padding:7px 10px}
+    .card{border:1px solid #4c3a5c;background:linear-gradient(180deg,rgba(38,27,49,.94),rgba(19,14,27,.97));box-shadow:0 24px 80px rgba(0,0,0,.38);border-radius:26px;padding:22px;margin-top:auto;margin-bottom:auto;overflow:hidden;position:relative}
+    .glow{position:absolute;width:210px;height:210px;border-radius:50%;filter:blur(60px);background:#9559ca55;right:-90px;top:-80px;pointer-events:none}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.18em;color:#c6a8db}.title{font-size:38px;line-height:1.02;margin:12px 0 8px}.sub{color:#c9bacf;line-height:1.5;margin:0 0 22px}.scene{font-size:17px;line-height:1.65;white-space:pre-line}.speaker{font-size:13px;color:#d4a5f4;margin-bottom:8px;font-weight:700;letter-spacing:.04em}
+    .choices{display:grid;gap:10px;margin-top:22px}.choice,.primary,.secondary{width:100%;border-radius:16px;border:1px solid #6d4c83;padding:15px 16px;color:white;background:#24182f;text-align:left}.choice:active,.primary:active{transform:scale(.99)}.primary{text-align:center;background:linear-gradient(90deg,#b261d7,#6f72f5);border:0;font-weight:700}.secondary{text-align:center;background:transparent;color:#d6c5df}.error{margin-top:14px;padding:12px;border-radius:14px;background:#4a1f2f;color:#ffdce6;font-size:14px}.scores{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.score{font-size:12px;background:#17101f;border:1px solid #40304d;padding:7px 9px;border-radius:99px;color:#d7c6df}.foot{padding:12px 0 22px;text-align:center;color:#806f8a;font-size:11px}.banner{font-size:12px;padding:10px 12px;border-radius:12px;background:#352446;color:#ead8f6;margin-bottom:14px}.hidden{display:none}
+  </style>
+</head>
+<body>
+<div class="app"><main class="phone"><header class="top"><div class="brand">LUMI✦</div><div id="status" class="status">проверка…</div></header><section id="root" class="card"></section><div class="foot">Prototype 0.1 · integration smoke</div></main></div>
+<script>
+(() => {
+  const root = document.getElementById('root');
+  const statusEl = document.getElementById('status');
+  const tg = window.Telegram && window.Telegram.WebApp ? window.Telegram.WebApp : null;
+  const initData = tg && tg.initData ? tg.initData : '';
+  const API = location.origin + '/functions/v1/lumi-api';
+  if (tg) { tg.ready(); tg.expand(); }
+
+  const scenes = {
+    smoke_intro: {kind:'narrative', text:'Хансу встретил Леру дождём, неоном и ощущением, что этот город вообще не собирается спать. Сегодня мы проверяем не весь эпизод, а настоящий Telegram → LUMI API → Supabase путь.', next:'smoke_meet'},
+    smoke_meet: {kind:'dialogue', speaker:'Кан Джунхо', text:'Чья-то рука удержала чемодан прежде, чем тот рухнул. «Новенькая?» — спросил незнакомец из квартиры напротив.', next:'smoke_choice'},
+    smoke_choice: {kind:'choice', speaker:'Лера', text:'Как ответить соседу?', choices:[
+      {id:'warm',text:'Улыбнуться и поблагодарить',next:'smoke_done',score:'junhoScore',flag:'first_impression_warm'},
+      {id:'guarded',text:'Спросить, почему он так смотрит',next:'smoke_done',score:'truthScore',flag:'first_impression_guarded'},
+      {id:'cold',text:'Забрать чемодан и закончить разговор',next:'smoke_done',score:'riskScore',flag:'first_impression_cold'}
+    ]},
+    smoke_done: {kind:'terminal', text:'Интеграция LUMI работает.\n\nЕсли ты видишь этот экран после выбора внутри Telegram, значит Mini App получил Telegram initData, сервер проверил пользователя, а прогресс сохранился в отдельном Supabase LUMI.'}
+  };
+
+  let state = {sceneId:'smoke_intro',junhoScore:0,taeyunScore:0,truthScore:0,riskScore:0,flags:{}};
+  let lastChoice = null;
+
+  const escapeHtml = (s) => String(s).replace(/[&<>\"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  async function api(path, options={}) {
+    const headers = {'Content-Type':'application/json',...(options.headers||{})};
+    if (initData) headers['X-Telegram-Init-Data'] = initData;
+    return fetch(API + path, {...options, headers});
+  }
+  async function analytics(eventName, metadata={}) {
+    if (!initData) return;
+    try { await api('/analytics',{method:'POST',body:JSON.stringify({eventName,episodeId:'episode-1',sceneId:state.sceneId,metadata})}); } catch {}
+  }
+  async function save(nextSceneId) {
+    if (!initData) return true;
+    const body = {storyId:'last-online',seasonId:'season-1',episodeId:'episode-1',sceneId:nextSceneId,junhoScore:state.junhoScore,taeyunScore:state.taeyunScore,truthScore:state.truthScore,riskScore:state.riskScore,flags:state.flags};
+    const res = await api('/progress',{method:'PUT',body:JSON.stringify(body)});
+    if (!res.ok) throw new Error('save_failed');
+    return true;
+  }
+  function scores() {
+    return '<div class="scores"><span class="score">♡ Джунхо '+state.junhoScore+'</span><span class="score">⌕ Истина '+state.truthScore+'</span><span class="score">⚠ Риск '+state.riskScore+'</span></div>';
+  }
+  function renderError(message, retry) {
+    root.insertAdjacentHTML('beforeend','<div class="error">'+escapeHtml(message)+'</div><div class="choices"><button id="retry" class="primary">Повторить сохранение</button></div>');
+    document.getElementById('retry').onclick = retry;
+  }
+  function render() {
+    const scene = scenes[state.sceneId];
+    if (!scene) { root.innerHTML='<div class="error">Неизвестная smoke-сцена</div>'; return; }
+    const demo = !initData ? '<div class="banner">Демо-режим: открой LUMI из Telegram, чтобы проверить авторизацию и серверное сохранение.</div>' : '';
+    const speaker = scene.speaker ? '<div class="speaker">'+escapeHtml(scene.speaker)+'</div>' : '';
+    const choices = scene.choices ? '<div class="choices">'+scene.choices.map(c => '<button class="choice" data-choice="'+c.id+'">'+escapeHtml(c.text)+'</button>').join('')+'</div>' : '';
+    const next = scene.next ? '<div class="choices"><button id="next" class="primary">Продолжить</button></div>' : '';
+    const terminal = scene.kind==='terminal' ? '<div class="choices"><button id="again" class="secondary">Начать smoke заново</button></div>' : '';
+    root.innerHTML='<div class="glow"></div>'+demo+'<div class="eyebrow">Последний онлайн · проверка</div><h1 class="title">'+(scene.kind==='terminal'?'Готово':'Хансу')+'</h1>'+speaker+'<div class="scene">'+escapeHtml(scene.text)+'</div>'+choices+next+scores()+terminal;
+    if (scene.next) document.getElementById('next').onclick = async () => { state.sceneId=scene.next; await analytics('scene_reached'); render(); };
+    document.querySelectorAll('[data-choice]').forEach(btn => btn.onclick = async () => {
+      const choice = scene.choices.find(c => c.id===btn.dataset.choice); if (!choice) return;
+      const previous = JSON.parse(JSON.stringify(state));
+      state[choice.score] += 1; state.flags[choice.flag] = true; lastChoice = choice;
+      btn.disabled = true; statusEl.textContent='сохраняем…';
+      try {
+        await save(choice.next);
+        state.sceneId = choice.next;
+        statusEl.textContent='сохранено';
+        await analytics('choice_selected',{choiceId:choice.id});
+        render();
+      } catch {
+        state = previous; statusEl.textContent='ошибка сети'; render();
+        renderError('Выбор не потерян: сервер не подтвердил сохранение.', async () => {
+          if (!lastChoice) return;
+          state[lastChoice.score] += 1; state.flags[lastChoice.flag] = true;
+          try { await save(lastChoice.next); state.sceneId=lastChoice.next; statusEl.textContent='сохранено'; render(); }
+          catch { state=previous; render(); renderError('Сохранение снова не удалось.', ()=>location.reload()); }
+        });
+      }
+    });
+    if (scene.kind==='terminal') document.getElementById('again').onclick = () => { state={sceneId:'smoke_intro',junhoScore:0,taeyunScore:0,truthScore:0,riskScore:0,flags:{}}; render(); };
+  }
+
+  async function boot() {
+    try {
+      const h = await fetch(API + '/health');
+      const health = h.ok ? await h.json() : null;
+      statusEl.textContent = health && health.telegramConfigured ? 'Telegram ✓' : 'backend ⚠';
+    } catch { statusEl.textContent='backend ?'; }
+    if (!initData) { render(); return; }
+    try {
+      const res = await api('/bootstrap',{method:'POST',body:'{}'});
+      if (!res.ok) throw new Error('bootstrap_failed');
+      const data = await res.json();
+      const p = data && data.progress;
+      if (p && typeof p.sceneId==='string' && scenes[p.sceneId]) {
+        state = {sceneId:p.sceneId,junhoScore:p.junhoScore||0,taeyunScore:p.taeyunScore||0,truthScore:p.truthScore||0,riskScore:p.riskScore||0,flags:p.flags||{}};
+      }
+      statusEl.textContent='Telegram ✓';
+      await analytics('app_opened');
+    } catch {
+      statusEl.textContent='auth ошибка';
+    }
+    render();
+  }
+  boot();
+})();
+</script>
+</body></html>`;
+
+Deno.serve((request: Request) => {
+  if (request.method !== 'GET') {
+    return new Response('Method not allowed', { status: 405 });
+  }
+  return new Response(html, {
+    headers: {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'no-store',
+      'X-Content-Type-Options': 'nosniff',
+    },
+  });
+});

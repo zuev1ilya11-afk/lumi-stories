@@ -1,0 +1,72 @@
+{
+  "episodeId": "last-online-s1-e4",
+  "generation": "Built-in Imagegen with published identity and setting references. Mobile WEBP conversion; visual review of anatomy, continuity and in-app framing.",
+  "images": [
+    {
+      "id": "morning-room",
+      "path": "assets/last-online/ep4/backgrounds/morning-room.webp",
+      "prompt": "Edit this exact established Lera apartment background for the next MORNING. Preserve the exact room geometry, furnishings, sofa, rose throw, desk, tall window, river and Korean city skyline, portrait 2:3 composition and elegant detailed visual novel rendering. Change ONLY the time of day and lighting: soft bright overcast morning daylight from window, pale blue-grey daytime sky, daylight buildings and river, all city neon and building lights off, desk and table lamps off, candles unlit. Natural diffuse sun illumination, calm cozy neutral cream and rose tones. No people no new objects no text no watermark. It must be unmistakably daytime and the same apartment.",
+      "references": [
+        "assets/last-online/v2/backgrounds/room.webp"
+      ],
+      "review": "Established apartment changed to daylight; geometry, furniture and window layout preserved. No characters. Mobile opening scene checked."
+    },
+    {
+      "id": "junho",
+      "path": "assets/last-online/ep4/cg/junho.webp",
+      "prompt": "Create ONE finished portrait 2:3 CG for premium Korean webtoon mystery visual novel LUMI episode 4. Reference defines EXACT adult Lera and Junho identities and attire. Lera long wavy chestnut hair green hazel eyes pink cable cardigan ivory top dark pleated skirt; Junho black hair small brow scar black jacket and turtleneck. Bright overcast morning in Junho's modest apartment, upright piano against wall, sheet music on stand, tall window soft daylight and quiet Korean city outside. Both seated on separate chairs at a small distance beside piano, Lera attentive and firm, Junho regretful but finally honest, direct eye contact. Frame both from knees up with faces in upper half. His forearms lowered naturally, each relaxed hand resting separately on his own thigh, five normal fingers, straight relaxed wrists. Her hands loosely folded on her own lap, simple natural anatomy, no contact no phones. Elegant cinematic detailed manhwa matching reference. Credible emotional restraint. Room daylight warm grey cream and soft rose; rich background. No text no logos no panels no watermark. Important figures in central upper 65%, lower third calm for dialogue overlay.",
+      "references": [
+        "assets/last-online/v2/cg/character-reference.webp"
+      ],
+      "review": "Arms, wrists, hands, clothing and staging inspected at original resolution; final mobile framing checked before publication."
+    },
+    {
+      "id": "taeyun",
+      "path": "assets/last-online/ep4/cg/taeyun.webp",
+      "prompt": "Create ONE finished portrait 2:3 CG for premium Korean webtoon mystery visual novel LUMI episode 4. Preserve exact identities from reference: adult Lera long wavy chestnut hair green hazel eyes pink cable cardigan ivory top dark pleated skirt; adult Taeyun light brown hair ivory blazer burgundy open collar shirt. ONLY these TWO characters (do not include dark-haired Junho). Early afternoon empty VANTA rehearsal studio with pale wooden floor tall daylight window and wall mirror. Lera and Taeyun sit apart on a plain long bench. He faces her with regretful vulnerable expression, shoulders lowered, speaks honestly; she listens firm but compassionate. Three-quarter view from knees up. Each person's arms rest naturally downward, hands separated relaxed on their OWN thighs with anatomically correct wrists and five fingers, NO touching, no raised hand no phone. Mirror reflects room light but no confusing extra people. Beautiful precise detailed Korean manhwa, emotionally intimate but no romance forced, soft daylight, faces in upper half with lower third available for dialogue. No text, logos, panels or watermark.",
+      "references": [
+        "assets/last-online/ep2/cg/elevator-cliffhanger.webp"
+      ],
+      "review": "Arms, wrists, hands, clothing and staging inspected at original resolution; final mobile framing checked before publication."
+    },
+    {
+      "id": "night",
+      "path": "assets/last-online/ep4/cg/night.webp",
+      "prompt": "ONE portrait 2:3 full-color cinematic Korean webtoon illustration for LUMI. This is a witness's memory of three years ago, NOT CCTV, no timestamp no filters no captions. Identity reference sheet: ONLY Soa (adult19, straight shoulder-length black hair soft bangs, lavender button blouse sleeves rolled, long cream skirt silver star pendant) and Junho (adult21, black hair black hooded agency jacket dark trousers). Preserve the solid dark B17 door and separate tall reflective glass wall panel beside it from second reference; glass is BESIDE door, NOT in the door. Corridor of VANTA at night, cold fluorescent ceiling light warm small pool from open distant room. Soa and Junho walking side by side away from closed B17, three-quarter frontal view. Soa holds a thin closed beige paper folder against her chest with both hands in a simple natural hold, five normal fingers and correct wrist alignment. Junho's hands both relaxed at his sides, NOT holding her, not restraining, protective worried expression but gives her room to walk. Soa determined and tired, looks forward. No other people visible or reflected. Door small plaque may read B17 only; no other readable text, no brand logos. Faces centered upper third, full figures or knees visible, lower third clear for overlay. Detailed premium manhwa rendering consistent with references. Check arms from shoulders to wrists, no twisted hands.",
+      "references": [
+        "assets/last-online/v2/cg/character-reference.webp",
+        "assets/last-online/ep2/cg/archive-0226.webp"
+      ],
+      "correction": "Edit this exact illustration, preserve composition, identities, Soa's folder and lavender outfit, natural hands, hallway solid B17 door and separate glass panel, lighting, full portrait. ONE continuity correction: Junho the black-haired man MUST have his black jacket HOOD UP over his head, as on the established camera record. Hood realistically surrounds his dark hair and casts light shadow over his forehead, face still partly readable from this angle. Do not add another hood or new garments, use existing jacket's hood raised. Keep both arms relaxed lowered, do not touch woman. Everything else unchanged, no other people or added text.",
+      "review": "Arms, wrists, hands, clothing and staging inspected at original resolution; final mobile framing checked before publication."
+    },
+    {
+      "id": "records",
+      "path": "assets/last-online/ep4/cg/records.webp",
+      "prompt": "ONE portrait 2:3 finished CG for premium Korean manhwa visual novel LUMI. Only TWO adult women: exact Lera (long wavy chestnut hair pink cable cardigan ivory top dark skirt) and Mina (short wavy black bob olive overshirt white tee jeans mustard crossbody bag). Daytime archive viewing office, window diffuse daylight grey metal filing cabinets and a large wooden table. Both seated adjacent but distinct at table leaning slightly toward two open document folders. Lera thoughtful serious, Mina observant calm. Documents have indistinct lines and deliberate black privacy redaction bars but NO legible text; this is illustrative scene, not literal evidence reproduction. Their four arms simple anatomically natural positions: Lera's right hand relaxed palm down on table edge, her other hand on her own lap. Mina's hands both resting apart on her own side of table, not pointing or holding objects. No phones no extra people no disembodied hands. Exact clothing and identities from reference, beautiful detailed restrained cinematic manhwa. Faces in upper third documents visible central area, lower third reserved game text. No logos no watermark no panels.",
+      "references": [
+        "assets/last-online/v2/cg/character-reference.webp"
+      ],
+      "review": "Arms, wrists, hands, clothing and staging inspected at original resolution; final mobile framing checked before publication."
+    },
+    {
+      "id": "independent",
+      "path": "assets/last-online/ep4/cg/independent.webp",
+      "prompt": "ONE portrait 2:3 finished CG premium Korean manhwa mystery visual novel LUMI. Exact adult Lera (long wavy chestnut hair pink cable cardigan ivory top dark pleated skirt) and Mina (short black wavy bob olive overshirt white tee blue jeans mustard sling bag) from reference. Quiet Korean university library terrace in late afternoon soft golden daylight. Both seated on a wood bench with comfortable friendly distance and equal agency, Lera thoughtful resolute facing slightly toward camera, Mina supportive looks toward her. Nearby low stone ledge supports closed notebook and two untouched paper tea cups, NO phones. Four arms relaxed at their sides, hands simple loosely resting on OWN thighs, no contact no raised or crossed arms. Beautiful lush small plants library glass façade city softly blurred. Frame knees upward with faces in upper third and unobstructed center, low area calm for dialogue. Respectful friendship and independent resolve. Detailed consistent cinematic webtoon, no text no logos no watermark.",
+      "references": [
+        "assets/last-online/v2/cg/character-reference.webp"
+      ],
+      "review": "Arms, wrists, hands, clothing and staging inspected at original resolution; final mobile framing checked before publication."
+    },
+    {
+      "id": "final",
+      "path": "assets/last-online/ep4/cg/final.webp",
+      "prompt": "ONE portrait 2:3 finished new story CG for LUMI, premium detailed Korean manhwa style. Use refs for exact adult Lera long wavy chestnut hair green-hazel eyes pink cable cardigan ivory top and same modest apartment desk/window. Evening after an investigation. Lera seated upright at desk, firmer expression than previous night, looking at an open notebook with THREE clearly separated columns of illegible lines and small evidence tabs, no readable text. A single smartphone lies FLAT screen-up on desk beside notebook glowing a muted blue with no readable display, she is NOT holding it. Her left hand relaxed naturally palm-down beside notebook; right hand loosely on her own lap visible at table edge, anatomically normal no writing gesture. Cool evening city through window and warm desk lamp, hint of piano in background, psychological mystery without ghosts. Camera medium three-quarter framing from waist up, face in upper third, phone central, lower third gentle shadow for dialogue UI. No duplicate device no extra limbs no text no watermark.",
+      "references": [
+        "assets/last-online/v2/cg/character-reference.webp",
+        "assets/last-online/ep3/cg/final.webp"
+      ],
+      "review": "Arms, wrists, hands, clothing and staging inspected at original resolution; final mobile framing checked before publication."
+    }
+  ]
+}
