@@ -33,7 +33,7 @@ type StarPaymentRow = {
 };
 
 export interface StarPaymentStore {
-  createOrder(playerId: string, amount: number): Promise<StarPaymentOrder>;
+  createOrder(playerId: string, productId: string, amount: number): Promise<StarPaymentOrder>;
   findByPayload(payload: string): Promise<StarPaymentOrder | null>;
   approveOrder(order: StarPaymentOrder, preCheckoutQueryId: string): Promise<StarPaymentOrder | null>;
   markPaid(order: StarPaymentOrder, telegramPaymentChargeId: string, providerPaymentChargeId: string): Promise<boolean>;
@@ -118,9 +118,9 @@ export function createStarPaymentStore(
   }
 
   return {
-    async createOrder(playerId, amount) {
+    async createOrder(playerId, productId, amount) {
       const id = crypto.randomUUID();
-      const invoicePayload = 'lumi:s1:' + id;
+      const invoicePayload = 'lumi:' + productId.replace(/[^a-z0-9:-]/gi, '-') + ':' + id;
       const response = await fetcher(
         root + '/rest/v1/star_payments?select=' + encodeURIComponent(PAYMENT_SELECT),
         {
@@ -129,7 +129,7 @@ export function createStarPaymentStore(
           body: JSON.stringify({
             id,
             player_id: playerId,
-            product_id: 'season-1',
+            product_id: productId,
             currency: 'XTR',
             amount,
             invoice_payload: invoicePayload,
