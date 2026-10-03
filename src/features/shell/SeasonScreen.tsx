@@ -1,3 +1,5 @@
+import { publicAsset } from '../../publicAsset';
+
 type SeasonScreenProps = {
   hasProgress: boolean;
   onPlay(): void;
@@ -21,7 +23,13 @@ export function SeasonScreen({ hasProgress, onPlay, onBack }: SeasonScreenProps)
         <span className="lumi-topbar__spacer" />
       </header>
       <section className="lumi-season__hero">
-        <div className="lumi-season__cover" aria-hidden="true" />
+        <div
+          className="lumi-season__cover"
+          aria-hidden="true"
+          style={{
+            backgroundImage: `linear-gradient(180deg, transparent, rgba(8,6,13,.25)), url(${publicAsset('assets/last-online/cover.webp')})`,
+          }}
+        />
         <div>
           <p className="lumi-eyebrow">История 1 · Сезон 1</p>
           <h1>Последний онлайн</h1>

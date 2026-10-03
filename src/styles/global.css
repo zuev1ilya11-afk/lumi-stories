@@ -17,7 +17,7 @@ button { color: inherit; }
 .lumi-primary { width: 100%; border: 1px solid rgba(255,255,255,.16); border-radius: 18px; padding: 15px 20px; background: linear-gradient(135deg, #cb79ef, #6f8dff); box-shadow: 0 10px 30px rgba(132, 90, 231, .35); font-weight: 750; cursor: pointer; }
 .lumi-primary:active { transform: translateY(1px); }
 .lumi-start { position: relative; min-height: 100dvh; overflow: hidden; display: flex; align-items: flex-end; padding: calc(24px + var(--lumi-safe-top)) 22px calc(28px + var(--lumi-safe-bottom)); background: #0a0810; }
-.lumi-start__art { position: absolute; inset: 0; background: url('/assets/last-online/cover.webp') center 18% / cover no-repeat; transform: scale(1.02); }
+.lumi-start__art { position: absolute; inset: 0; background-position: center 18%; background-size: cover; background-repeat: no-repeat; transform: scale(1.02); }
 .lumi-start__veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,6,12,.05) 22%, rgba(8,6,13,.5) 58%, #0b0912 94%); }
 .lumi-start__content { position: relative; z-index: 1; width: min(100%, 520px); margin-inline: auto; text-align: center; }
 .lumi-start__meta { margin: 18px 0 0; color: var(--lumi-muted); font-size: .78rem; letter-spacing: .04em; }
@@ -27,7 +27,7 @@ button { color: inherit; }
 .lumi-icon-button { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; border: 1px solid rgba(255,255,255,.14); background: rgba(11,9,18,.55); cursor: pointer; font-size: 1.5rem; }
 .lumi-season { min-height: 100dvh; padding-bottom: calc(28px + var(--lumi-safe-bottom)); background: radial-gradient(circle at 75% 15%, #2b1c3d 0, #0d0b14 42%); }
 .lumi-season__hero { padding: 22px 18px 8px; max-width: 680px; margin-inline: auto; }
-.lumi-season__cover { aspect-ratio: 4 / 5; border-radius: 30px; background: linear-gradient(180deg, transparent, rgba(8,6,13,.25)), url('/assets/last-online/cover.webp') center / cover; box-shadow: var(--lumi-shadow); border: 1px solid rgba(255,255,255,.12); }
+.lumi-season__cover { aspect-ratio: 4 / 5; border-radius: 30px; background-position: center; background-size: cover; background-repeat: no-repeat; box-shadow: var(--lumi-shadow); border: 1px solid rgba(255,255,255,.12); }
 .lumi-season__hero h1 { margin: 20px 0 8px; font-size: 2rem; }
 .lumi-season__hero p:not(.lumi-eyebrow) { color: var(--lumi-muted); line-height: 1.55; }
 .lumi-episodes { padding: 12px 18px; display: grid; gap: 10px; max-width: 680px; margin-inline: auto; }

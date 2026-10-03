@@ -1,4 +1,5 @@
 import type { Choice, Scene } from '../../story/schema';
+import { publicAsset } from '../../publicAsset';
 
 type SoaChatScreenProps = {
   scene: Scene;
@@ -29,7 +30,7 @@ export function SoaChatScreen({ scene, availableChoices, onChoose, onAdvance, di
         {scene.attachment ? (
           <img
             className="lumi-soa__attachment"
-            src={`/assets/last-online/cg/${scene.attachment}.webp`}
+            src={publicAsset(`assets/last-online/cg/${scene.attachment}.webp`)}
             alt="Вложение от SOA"
           />
         ) : null}

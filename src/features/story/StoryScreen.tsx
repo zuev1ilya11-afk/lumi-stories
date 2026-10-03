@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { getAvailableChoices, getScene } from '../../story/engine';
+import { publicAsset } from '../../publicAsset';
 import type { Episode, StoryState } from '../../story/schema';
 import { SoaChatScreen } from '../messages/SoaChatScreen';
 import { PrototypePaywall } from '../paywall/PrototypePaywall';
@@ -19,10 +20,10 @@ function assetPath(kind: 'backgrounds' | 'characters', id?: string): string | nu
   if (!id) return null;
   if (kind === 'characters') {
     const [character, emotion = 'neutral'] = id.split('-');
-    return `/assets/last-online/characters/${character}/${emotion}.webp`;
+    return publicAsset(`assets/last-online/characters/${character}/${emotion}.webp`);
   }
-  if (id === 'soa-junho-old-photo') return '/assets/last-online/cg/soa-junho-old-photo.webp';
-  return `/assets/last-online/backgrounds/${id}.webp`;
+  if (id === 'soa-junho-old-photo') return publicAsset('assets/last-online/cg/soa-junho-old-photo.webp');
+  return publicAsset(`assets/last-online/backgrounds/${id}.webp`);
 }
 
 export function StoryScreen({ episode, sceneId, state, onChoose, onAdvance, onMenu }: StoryScreenProps) {

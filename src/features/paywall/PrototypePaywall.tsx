@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { trackEvent } from '../../analytics/events';
+import { publicAsset } from '../../publicAsset';
 
 export function PrototypePaywall() {
   const [clicked, setClicked] = useState(false);
@@ -16,7 +17,7 @@ export function PrototypePaywall() {
 
   return (
     <section className="lumi-paywall" aria-label="Продолжение сезона">
-      <img src="/assets/last-online/cg/soa-junho-old-photo.webp" alt="Старая фотография Соа и Джунхо" />
+      <img src={publicAsset('assets/last-online/cg/soa-junho-old-photo.webp')} alt="Старая фотография Соа и Джунхо" />
       <div className="lumi-paywall__body">
         <p className="lumi-eyebrow">Эпизод 1 завершён</p>
         <h2>История только начинается</h2>

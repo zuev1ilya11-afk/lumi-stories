@@ -1,3 +1,5 @@
+import { publicAsset } from '../../publicAsset';
+
 type StartScreenProps = {
   onStart(): void;
 };
@@ -5,7 +7,11 @@ type StartScreenProps = {
 export function StartScreen({ onStart }: StartScreenProps) {
   return (
     <main className="lumi-start" aria-label="LUMI">
-      <div className="lumi-start__art" aria-hidden="true" />
+      <div
+        className="lumi-start__art"
+        aria-hidden="true"
+        style={{ backgroundImage: `url(${publicAsset('assets/last-online/cover.webp')})` }}
+      />
       <div className="lumi-start__veil" aria-hidden="true" />
       <section className="lumi-start__content">
         <p className="lumi-eyebrow">Интерактивные истории</p>
