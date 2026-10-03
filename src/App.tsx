@@ -8,7 +8,7 @@ import { useProgress } from './progress/useProgress';
 import { createProgressMachine, progressFromDto, type ProgressState } from './progress/model';
 import { getScene } from './story/engine';
 import { getNextStoryEpisode, getStoryEpisode, getStoryRuntime } from './story/stories';
-import { getTelegramContext, TelegramContextError, type TelegramContext } from './telegram/telegram';
+import { getTelegramContext, readyTelegramApp, TelegramContextError, type TelegramContext } from './telegram/telegram';
 
 function isProductionBuild(): boolean {
   return import.meta.env.PROD;
@@ -126,7 +126,10 @@ function ConnectedPrototype({ context }: { context: TelegramContext }) {
   const [initialScreen, setInitialScreen] = useState<'start' | 'season'>('start');
   const progress = useProgress(context.initData, storyId);
 
-  useEffect(() => { void trackEvent('app_opened'); }, []);
+  useEffect(() => {
+    readyTelegramApp();
+    void trackEvent('app_opened');
+  }, []);
 
   function selectStory(nextStoryId: string) {
     setStoryId(nextStoryId);
