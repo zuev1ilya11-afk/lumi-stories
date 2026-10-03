@@ -60,6 +60,7 @@ Deno.test('bootstrap returns verified Telegram identity from repository', async 
         telegramUserId: user.id,
         season1Owned: false,
         season1PriceStars: 149,
+        episodeRewindPriceStars: 49,
         progress: null,
       };
     },
@@ -92,6 +93,9 @@ function createProgressRepository(): ProgressRepository & { saves: number } {
       this.saves += 1;
       current = { playerId, ...input, updatedAt: '2026-10-02T00:00:00.000Z' };
       return current;
+    },
+    async saveEpisodeCheckpoint(playerId, input) {
+      return { playerId, ...input, updatedAt: '2026-10-02T00:00:00.000Z' };
     },
   };
 }
@@ -150,6 +154,7 @@ Deno.test('progress rejects invalid Telegram initData before repository access',
     async getOrCreatePlayer() { calls += 1; throw new Error('must not be called'); },
     async getProgress() { calls += 1; return null; },
     async saveProgress() { calls += 1; throw new Error('must not be called'); },
+    async saveEpisodeCheckpoint() { calls += 1; throw new Error('must not be called'); },
   };
   const response = await handleProgress(new Request('https://example.test/progress?storyId=last-online&seasonId=season-1', {
     headers: { 'X-Telegram-Init-Data': 'auth_date=1&hash=bad' },
