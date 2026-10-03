@@ -30,7 +30,7 @@ export const STORY_CATALOG: StoryCatalogEntry[] = [
       { number: '02', id: 'last-online-s1-e2', title: 'Тот, кого все знают' },
       { number: '03', id: 'last-online-s1-e3', title: 'Все лгут' },
       { number: '04', id: 'last-online-s1-e4', title: 'Ночь исчезновения' },
-      { number: '05', title: 'Последний онлайн' },
+      { number: '05', id: 'last-online-s1-e5', title: 'Последний онлайн' },
     ],
   },
   {
