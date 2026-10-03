@@ -49,12 +49,25 @@ describe('Telegram adapter', () => {
     ).toEqual({ initData: 'explicit-dev-init-data', userDisplayName: 'Dev' });
   });
 
-  it('signals ready and expand when Telegram WebApp exists', () => {
+  it('signals ready, expands and requests fullscreen when Telegram WebApp exists', () => {
     const ready = vi.fn();
     const expand = vi.fn();
-    readyTelegramApp({ ready, expand });
+    const requestFullscreen = vi.fn();
+    readyTelegramApp({ ready, expand, requestFullscreen });
     expect(ready).toHaveBeenCalledOnce();
     expect(expand).toHaveBeenCalledOnce();
+    expect(requestFullscreen).toHaveBeenCalledOnce();
+  });
+
+  it('keeps expanded mode when fullscreen is unsupported or rejected', () => {
+    const ready = vi.fn();
+    const expand = vi.fn();
+    const requestFullscreen = vi.fn(() => { throw new Error('UNSUPPORTED'); });
+    expect(() => readyTelegramApp({ ready, expand, requestFullscreen })).not.toThrow();
+    expect(ready).toHaveBeenCalledOnce();
+    expect(expand).toHaveBeenCalledOnce();
+    expect(requestFullscreen).toHaveBeenCalledOnce();
+    expect(() => readyTelegramApp({ ready, expand })).not.toThrow();
   });
 
   it('opens a Telegram invoice and resolves its payment status', async () => {
