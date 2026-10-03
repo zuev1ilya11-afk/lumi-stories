@@ -7,7 +7,7 @@ type SeasonScreenProps = {
   season1Owned?: boolean;
   season1PriceStars?: number;
   onPlay(): void;
-  onSelectEpisode?(episodeId: string): void;
+  onOpenRecap?(episodeId: string): void;
   onBack(): void;
 };
 
@@ -19,7 +19,7 @@ const EPISODES = [
   ['05', undefined, 'Последний онлайн'],
 ] as const;
 
-export function SeasonScreen({ hasProgress, currentEpisodeId = 'last-online-s1-e1', episodeCompleted = false, season1Owned = false, season1PriceStars = 149, onPlay, onSelectEpisode, onBack }: SeasonScreenProps) {
+export function SeasonScreen({ hasProgress, currentEpisodeId = 'last-online-s1-e1', episodeCompleted = false, season1Owned = false, season1PriceStars = 149, onPlay, onOpenRecap, onBack }: SeasonScreenProps) {
   const currentEpisode = currentEpisodeId === 'last-online-s1-e2' ? 2 : 1;
   function episodeStatus(number: number) {
     if (number > 2) return 'В разработке';
@@ -57,10 +57,10 @@ export function SeasonScreen({ hasProgress, currentEpisodeId = 'last-online-s1-e
           const episodeNumber = Number(number);
           const status = episodeStatus(episodeNumber);
           const locked = status === 'В разработке' || status === 'После Эпизода 1' || status.endsWith('⭐');
-          const replayable = episodeNumber < currentEpisode;
-          const selectable = Boolean(episodeId && onSelectEpisode && !locked && episodeNumber <= currentEpisode);
+          const completed = episodeNumber < currentEpisode || (episodeNumber === currentEpisode && episodeCompleted);
+          const selectable = Boolean(episodeId && onOpenRecap && completed && !locked);
           const activate = () => {
-            if (selectable && episodeId) onSelectEpisode?.(episodeId);
+            if (selectable && episodeId) onOpenRecap?.(episodeId);
           };
           return (
           <article
@@ -69,7 +69,7 @@ export function SeasonScreen({ hasProgress, currentEpisodeId = 'last-online-s1-e
             data-episode-id={episodeId}
             role={selectable ? 'button' : undefined}
             tabIndex={selectable ? 0 : undefined}
-            aria-label={selectable ? `Эпизод ${episodeNumber}: ${title}. ${replayable ? 'Пройти снова' : 'Продолжить'}` : undefined}
+            aria-label={selectable ? `Эпизод ${episodeNumber}: ${title}. Краткая сводка` : undefined}
             onClick={activate}
             onKeyDown={event => {
               if (!selectable || (event.key !== 'Enter' && event.key !== ' ')) return;
@@ -78,8 +78,8 @@ export function SeasonScreen({ hasProgress, currentEpisodeId = 'last-online-s1-e
             }}
           >
             <span className="lumi-episode__number">{number}</span>
-            <div><strong>{title}</strong><small>{replayable ? `${status} · Пройти снова` : status}</small></div>
-            <span aria-label={locked ? 'Закрыто' : replayable ? 'Пройти снова' : 'Доступно'}>{locked ? '⌁' : replayable ? '↺' : '→'}</span>
+            <div><strong>{title}</strong><small>{completed ? `${status} · Краткая сводка` : status}</small></div>
+            <span aria-label={locked ? 'Закрыто' : completed ? 'Краткая сводка' : 'Доступно'}>{locked ? '⌁' : '→'}</span>
           </article>
           );
         })}
