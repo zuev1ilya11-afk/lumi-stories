@@ -132,6 +132,38 @@ Deno.test('progress PUT saves verified player progress and GET returns it', asyn
   assert(getPayload.progress.sceneId === 'scene-2', 'GET did not return saved progress');
 });
 
+Deno.test('progress PUT keeps episode 1 free and blocks later episodes without season access', async () => {
+  const repository = createProgressRepository();
+  const initData = await validInitData();
+  const dependencies = {
+    botToken: BOT_TOKEN,
+    nowSeconds: NOW,
+    repository,
+    async canAccessSeason() { return false; },
+  };
+
+  const firstEpisode = await handleProgress(new Request('https://example.test/progress', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'X-Telegram-Init-Data': initData },
+    body: JSON.stringify({
+      storyId: 'last-online', seasonId: 'season-1', episodeId: 'last-online-s1-e1', sceneId: 'ep1_arrival',
+      junhoScore: 0, taeyunScore: 0, truthScore: 0, riskScore: 0, flags: {},
+    }),
+  }), dependencies);
+  assert(firstEpisode.status === 200, `expected free episode PUT 200, got ${firstEpisode.status}`);
+
+  const paidEpisode = await handleProgress(new Request('https://example.test/progress', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'X-Telegram-Init-Data': initData },
+    body: JSON.stringify({
+      storyId: 'last-online', seasonId: 'season-1', episodeId: 'last-online-s1-e2', sceneId: 'ep2_morning',
+      junhoScore: 0, taeyunScore: 0, truthScore: 0, riskScore: 0, flags: {},
+    }),
+  }), dependencies);
+  assert(paidEpisode.status === 403, `expected paid episode PUT 403, got ${paidEpisode.status}`);
+  assert(repository.saves === 1, 'paid episode must not be saved without entitlement');
+});
+
 Deno.test('progress PUT rejects client-supplied player identity fields', async () => {
   const repository = createProgressRepository();
   const request = new Request('https://example.test/progress', {

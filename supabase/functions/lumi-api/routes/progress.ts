@@ -1,6 +1,7 @@
 import { jsonResponse } from '../../_shared/http.ts';
 import type {
   LumiRepository,
+  Player,
   SaveProgressInput,
 } from '../../_shared/repository.ts';
 import { verifyTelegramInitData } from '../../_shared/telegram.ts';
@@ -14,6 +15,7 @@ export type ProgressDependencies = {
   botToken: string;
   nowSeconds: number;
   repository: ProgressRepository;
+  canAccessSeason?(player: Player, storyId: string, seasonId: string): Promise<boolean>;
 };
 
 const SAVE_KEYS = new Set([
@@ -30,6 +32,12 @@ const SAVE_KEYS = new Set([
 
 function nonEmptyString(value: unknown): value is string {
   return typeof value === 'string' && value.trim().length > 0;
+}
+
+function isFreeFirstEpisode(storyId: string, seasonId: string, episodeId: string): boolean {
+  const seasonMatch = /^season-(\d+)$/.exec(seasonId);
+  if (!seasonMatch) return false;
+  return episodeId === storyId + '-s' + seasonMatch[1] + '-e1';
 }
 
 function parseSaveProgressInput(value: unknown): SaveProgressInput | null {
@@ -99,6 +107,16 @@ export async function handleProgress(
   }
   const input = parseSaveProgressInput(body);
   if (!input) return jsonResponse({ error: 'INVALID_PROGRESS' }, 400);
+
+  if (!isFreeFirstEpisode(input.storyId, input.seasonId, input.episodeId) && dependencies.canAccessSeason) {
+    let allowed = false;
+    try {
+      allowed = await dependencies.canAccessSeason(player, input.storyId, input.seasonId);
+    } catch {
+      return jsonResponse({ error: 'INVALID_SEASON' }, 400);
+    }
+    if (!allowed) return jsonResponse({ error: 'SEASON_REQUIRED' }, 403);
+  }
 
   const previous = await dependencies.repository.getProgress(player.id, input.storyId, input.seasonId);
   if (previous && previous.episodeId !== input.episodeId) {

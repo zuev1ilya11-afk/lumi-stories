@@ -1,10 +1,79 @@
 import { jsonResponse } from '../../_shared/http.ts';
 import { playerAccess } from '../../_shared/access.ts';
 import type { StarPaymentStore } from '../../_shared/payments.ts';
-import type { LumiRepository, Progress, SaveProgressInput } from '../../_shared/repository.ts';
+import type { LumiRepository, Player, Progress, SaveProgressInput } from '../../_shared/repository.ts';
 import { verifyTelegramInitData } from '../../_shared/telegram.ts';
 
 export const REWIND_PRODUCT_PREFIX = 'episode-rewind:';
+export const SEASON_PRODUCT_PREFIX = 'season:';
+
+const SUPPORTED_SEASONS = new Set([
+  'last-online:season-1',
+  'house-of-black-roses:season-1',
+]);
+
+export function seasonProductId(storyId: string, seasonId: string): string | null {
+  const key = storyId + ':' + seasonId;
+  return SUPPORTED_SEASONS.has(key) ? SEASON_PRODUCT_PREFIX + key : null;
+}
+
+export function isSeasonProductId(productId: string): boolean {
+  if (!productId.startsWith(SEASON_PRODUCT_PREFIX)) return false;
+  return SUPPORTED_SEASONS.has(productId.slice(SEASON_PRODUCT_PREFIX.length));
+}
+
+type SeasonTarget = { storyId: string; seasonId: string; productId: string };
+
+function seasonTarget(storyId: string, seasonId: string): SeasonTarget | null {
+  const productId = seasonProductId(storyId, seasonId);
+  return productId ? { storyId, seasonId, productId } : null;
+}
+
+function requestedSeasonFromUrl(request: Request): SeasonTarget | null {
+  const url = new URL(request.url);
+  return seasonTarget(
+    url.searchParams.get('storyId') ?? 'last-online',
+    url.searchParams.get('seasonId') ?? 'season-1',
+  );
+}
+
+async function requestedSeasonFromInvoice(request: Request): Promise<SeasonTarget | null> {
+  let storyId = 'last-online';
+  let seasonId = 'season-1';
+  const raw = await request.text();
+  if (raw.trim()) {
+    let body: unknown;
+    try { body = JSON.parse(raw); } catch { return null; }
+    if (!body || typeof body !== 'object' || Array.isArray(body)) return null;
+    const record = body as Record<string, unknown>;
+    if (record.storyId !== undefined) {
+      if (typeof record.storyId !== 'string' || !record.storyId.trim()) return null;
+      storyId = record.storyId;
+    }
+    if (record.seasonId !== undefined) {
+      if (typeof record.seasonId !== 'string' || !record.seasonId.trim()) return null;
+      seasonId = record.seasonId;
+    }
+  }
+  return seasonTarget(storyId, seasonId);
+}
+
+export async function seasonAccess(
+  player: Player,
+  storyId: string,
+  seasonId: string,
+  dependencies: Pick<PaymentDependencies, 'seasonPriceStars' | 'seasonFree' | 'store'>,
+): Promise<{ season1Owned: boolean; season1PriceStars: number }> {
+  const productId = seasonProductId(storyId, seasonId);
+  if (!productId) throw new Error('UNSUPPORTED_SEASON');
+  const free = dependencies.seasonFree === true || player.freeAccess === true;
+  const legacyOwned = storyId === 'last-online' && seasonId === 'season-1' && player.season1Owned;
+  const paid = legacyOwned ? true : await dependencies.store.hasPaidProduct(player.id, productId);
+  return {
+    season1Owned: free || paid,
+    season1PriceStars: free ? 0 : dependencies.seasonPriceStars,
+  };
+}
 
 export const EPISODE_REWIND_TARGETS = {
   'last-online-s1-e1': { index: 0, startSceneId: 'ep1_arrival', terminalSceneId: 'ep1_end_paywall' },
@@ -106,39 +175,34 @@ export async function handleCreateSeasonInvoice(
   request: Request,
   dependencies: PaymentDependencies,
 ): Promise<Response> {
-  if (request.method !== 'POST') {
-    return jsonResponse({ error: 'METHOD_NOT_ALLOWED' }, 405);
-  }
+  if (request.method !== 'POST') return jsonResponse({ error: 'METHOD_NOT_ALLOWED' }, 405);
 
   let player;
-  try {
-    player = await verifiedPlayer(request, dependencies);
-  } catch {
-    return jsonResponse({ error: 'UNAUTHORIZED' }, 401);
-  }
+  try { player = await verifiedPlayer(request, dependencies); }
+  catch { return jsonResponse({ error: 'UNAUTHORIZED' }, 401); }
 
-  const access = playerAccess(player, dependencies);
+  const target = await requestedSeasonFromInvoice(request);
+  if (!target) return jsonResponse({ error: 'INVALID_SEASON' }, 400);
+
+  const access = await seasonAccess(player, target.storyId, target.seasonId, dependencies);
   if (access.season1Owned) {
     return jsonResponse({
       season1Owned: true,
       priceStars: access.season1PriceStars,
+      storyId: target.storyId,
+      seasonId: target.seasonId,
     });
   }
 
   try {
     await dependencies.telegram.ensureWebhook();
-    const order = await dependencies.store.createOrder(
-      player.id,
-      'season-1',
-      dependencies.seasonPriceStars,
-    );
-    const invoiceUrl = await dependencies.telegram.createInvoiceLink(
-      order.invoicePayload,
-      dependencies.seasonPriceStars,
-    );
+    const order = await dependencies.store.createOrder(player.id, target.productId, dependencies.seasonPriceStars);
+    const invoiceUrl = await dependencies.telegram.createInvoiceLink(order.invoicePayload, dependencies.seasonPriceStars);
     return jsonResponse({
       season1Owned: false,
       priceStars: dependencies.seasonPriceStars,
+      storyId: target.storyId,
+      seasonId: target.seasonId,
       invoiceUrl,
     });
   } catch (error) {
@@ -255,21 +319,21 @@ export async function handlePaymentStatus(
   request: Request,
   dependencies: PaymentDependencies,
 ): Promise<Response> {
-  if (request.method !== 'GET') {
-    return jsonResponse({ error: 'METHOD_NOT_ALLOWED' }, 405);
-  }
+  if (request.method !== 'GET') return jsonResponse({ error: 'METHOD_NOT_ALLOWED' }, 405);
 
   let player;
-  try {
-    player = await verifiedPlayer(request, dependencies);
-  } catch {
-    return jsonResponse({ error: 'UNAUTHORIZED' }, 401);
-  }
+  try { player = await verifiedPlayer(request, dependencies); }
+  catch { return jsonResponse({ error: 'UNAUTHORIZED' }, 401); }
 
-  const access = playerAccess(player, dependencies);
+  const target = requestedSeasonFromUrl(request);
+  if (!target) return jsonResponse({ error: 'INVALID_SEASON' }, 400);
+
+  const access = await seasonAccess(player, target.storyId, target.seasonId, dependencies);
   return jsonResponse({
     season1Owned: access.season1Owned,
     priceStars: access.season1PriceStars,
-    episodeRewindPriceStars: access.episodeRewindPriceStars,
+    episodeRewindPriceStars: player.freeAccess === true ? 0 : dependencies.rewindPriceStars,
+    storyId: target.storyId,
+    seasonId: target.seasonId,
   });
 }

@@ -16,7 +16,7 @@ import {
 } from '../_shared/telegram-bot.ts';
 import { handleAnalytics } from './routes/analytics.ts';
 import { handleBootstrap } from './routes/bootstrap.ts';
-import { handleCreateEpisodeRewindInvoice, handleCreateSeasonInvoice, handleEpisodeRewindStatus, handlePaymentStatus } from './routes/payments.ts';
+import { handleCreateEpisodeRewindInvoice, handleCreateSeasonInvoice, handleEpisodeRewindStatus, handlePaymentStatus, seasonAccess } from './routes/payments.ts';
 import { handleProgress } from './routes/progress.ts';
 import { handleTelegramWebhook } from './routes/telegram-webhook.ts';
 
@@ -117,10 +117,16 @@ Deno.serve(async (request: Request) => {
         async bootstrapPlayer(user) {
           const player = await repository.getOrCreatePlayer(user.id);
           const progress = await repository.getProgress(player.id, STORY_ID, SEASON_ID);
+          const access = await seasonAccess(player, STORY_ID, SEASON_ID, {
+            seasonFree: SEASON_1_FREE,
+            seasonPriceStars: SEASON_1_PRICE_STARS,
+            store: paymentStore,
+          });
           return {
             playerId: player.id,
             telegramUserId: player.telegramUserId,
-            ...playerAccess(player, ACCESS_POLICY),
+            ...access,
+            episodeRewindPriceStars: playerAccess(player, ACCESS_POLICY).episodeRewindPriceStars,
             progress,
           };
         },
@@ -162,7 +168,18 @@ Deno.serve(async (request: Request) => {
   }
 
   if (url.pathname.endsWith('/progress')) {
-    return handleProgress(request, { botToken, nowSeconds, repository });
+    return handleProgress(request, {
+      botToken,
+      nowSeconds,
+      repository,
+      canAccessSeason: async (player, storyId, seasonId) => (
+        await seasonAccess(player, storyId, seasonId, {
+          seasonFree: SEASON_1_FREE,
+          seasonPriceStars: SEASON_1_PRICE_STARS,
+          store: paymentStore,
+        })
+      ).season1Owned,
+    });
   }
 
   if (url.pathname.endsWith('/analytics')) {

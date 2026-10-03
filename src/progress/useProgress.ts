@@ -35,9 +35,9 @@ export function useProgress(initData: string, storyId = 'last-online'): {
   const inFlight = useRef<Promise<void> | null>(null);
   const pendingAnalyticsRef = useRef<{ operation: Operation; episodeId: string; sceneId: string; choiceId?: string } | null>(null);
 
-  function configureAccess(payload: { season1Owned: boolean; season1PriceStars?: number; episodeRewindPriceStars?: number }) {
-    setSeason1Owned(story.free ? true : payload.season1Owned);
-    setSeason1PriceStars(story.free ? 0 : (payload.season1PriceStars ?? 149));
+  function configureAccess(payload: { season1Owned: boolean; season1PriceStars?: number; priceStars?: number; episodeRewindPriceStars?: number }) {
+    setSeason1Owned(payload.season1Owned);
+    setSeason1PriceStars(payload.season1PriceStars ?? payload.priceStars ?? 149);
     setEpisodeRewindPriceStars(story.id === 'last-online' ? (payload.episodeRewindPriceStars ?? 49) : 0);
   }
 
@@ -65,9 +65,12 @@ export function useProgress(initData: string, storyId = 'last-online'): {
         if (inFlight.current) await inFlight.current.catch(() => undefined);
         if (!active) return;
         const payload = await bootstrap(initData);
-        const rawProgress = story.id === 'last-online'
-          ? payload.progress
-          : await loadProgress(initData, story.id, story.seasonId);
+        const [rawProgress, access] = story.id === 'last-online'
+          ? [payload.progress, payload] as const
+          : await Promise.all([
+              loadProgress(initData, story.id, story.seasonId),
+              getPaymentStatus(initData, story.id, story.seasonId),
+            ]);
         if (!active) return;
         const episode = getStoryEpisode(story.id, rawProgress?.episodeId);
         const initial = progressFromDto(normalizeProgress(rawProgress, episode), episode);
@@ -79,7 +82,7 @@ export function useProgress(initData: string, storyId = 'last-online'): {
           initial,
           save: (progress) => saveProgress(initData, progress),
         });
-        configureAccess(payload);
+        configureAccess(access);
         setState(initial);
         setLoadedStoryId(story.id);
         setStatus('ready');
@@ -95,12 +98,7 @@ export function useProgress(initData: string, storyId = 'last-online'): {
 
   const refreshOwnership = useCallback(async (): Promise<boolean> => {
     const generation = generationRef.current;
-    if (story.free) {
-      setSeason1Owned(true);
-      setSeason1PriceStars(0);
-      return true;
-    }
-    const payment = await getPaymentStatus(initData);
+    const payment = await getPaymentStatus(initData, story.id, story.seasonId);
     if (generation !== generationRef.current) return false;
     setSeason1Owned(payment.season1Owned);
     setSeason1PriceStars(payment.priceStars);
@@ -166,9 +164,12 @@ export function useProgress(initData: string, storyId = 'last-online'): {
     setStatus('loading');
     try {
       const payload = await bootstrap(initData);
-      const rawProgress = story.id === 'last-online'
-        ? payload.progress
-        : await loadProgress(initData, story.id, story.seasonId);
+      const [rawProgress, access] = story.id === 'last-online'
+        ? [payload.progress, payload] as const
+        : await Promise.all([
+            loadProgress(initData, story.id, story.seasonId),
+            getPaymentStatus(initData, story.id, story.seasonId),
+          ]);
       if (generation !== generationRef.current) return;
       const episode = getStoryEpisode(story.id, rawProgress?.episodeId);
       const initial = progressFromDto(normalizeProgress(rawProgress, episode), episode);
@@ -181,7 +182,7 @@ export function useProgress(initData: string, storyId = 'last-online'): {
         save: (progress) => saveProgress(initData, progress),
       });
       pendingAnalyticsRef.current = null;
-      configureAccess(payload);
+      configureAccess(access);
       setState(initial);
       setLoadedStoryId(story.id);
       setStatus('ready');

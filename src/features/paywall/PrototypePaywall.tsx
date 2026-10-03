@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { createSeasonInvoice, getPaymentStatus } from '../../api/client';
 import { trackEvent } from '../../analytics/events';
+import { getStoryCatalogEntry } from '../../story/catalog';
 import { getTelegramContext, openTelegramInvoice } from '../../telegram/telegram';
 
 type Props = {
+  storyId?: string;
+  seasonId?: string;
   episodeId?: string;
   sceneId?: string;
   episodeNumber?: number;
@@ -20,9 +23,9 @@ function delay(milliseconds: number): Promise<void> {
   return new Promise(resolve => window.setTimeout(resolve, milliseconds));
 }
 
-async function waitForServerOwnership(initData: string): Promise<boolean> {
+async function waitForServerOwnership(initData: string, storyId: string, seasonId: string): Promise<boolean> {
   for (let attempt = 0; attempt < CONFIRM_ATTEMPTS; attempt += 1) {
-    const status = await getPaymentStatus(initData);
+    const status = await getPaymentStatus(initData, storyId, seasonId);
     if (status.season1Owned) return true;
     if (attempt < CONFIRM_ATTEMPTS - 1) await delay(350);
   }
@@ -30,6 +33,8 @@ async function waitForServerOwnership(initData: string): Promise<boolean> {
 }
 
 export function PrototypePaywall({
+  storyId = 'last-online',
+  seasonId = 'season-1',
   episodeId = 'last-online-s1-e1',
   sceneId = 'ep1_end_paywall',
   episodeNumber = 1,
@@ -42,15 +47,17 @@ export function PrototypePaywall({
   const [pending, setPending] = useState(false);
   const [checking, setChecking] = useState(false);
   const [notice, setNotice] = useState<string>();
+  const storyTitle = getStoryCatalogEntry(storyId).title;
+  const offer = `season:${storyId}:${seasonId}`;
 
   useEffect(() => {
-    void trackEvent('paywall_opened', { episodeId, sceneId, offer: 'season-1', priceStars });
-  }, [episodeId, sceneId, priceStars]);
+    void trackEvent('paywall_opened', { episodeId, sceneId, offer, priceStars });
+  }, [episodeId, sceneId, offer, priceStars]);
 
   async function confirmOwnership(initData: string): Promise<boolean> {
     setChecking(true);
     try {
-      const owned = await waitForServerOwnership(initData);
+      const owned = await waitForServerOwnership(initData, storyId, seasonId);
       if (owned) {
         setNotice('Покупка подтверждена. Продолжение открыто.');
         await onPurchased?.();
@@ -67,10 +74,10 @@ export function PrototypePaywall({
     if (pending || checking) return;
     setPending(true);
     setNotice(undefined);
-    void trackEvent('purchase_clicked', { episodeId, sceneId, offer: 'season-1', priceStars });
+    void trackEvent('purchase_clicked', { episodeId, sceneId, offer, priceStars });
     try {
       const { initData } = getTelegramContext();
-      const invoice = await createSeasonInvoice(initData);
+      const invoice = await createSeasonInvoice(initData, storyId, seasonId);
       if (invoice.season1Owned) {
         setNotice('Сезон уже куплен. Продолжение открыто.');
         await onPurchased?.();
@@ -112,7 +119,7 @@ export function PrototypePaywall({
     <div className="lumi-paywall__body">
       <p className="lumi-eyebrow">Эпизод {episodeNumber} завершён</p>
       <h2>Продолжить: {nextEpisodeTitle}</h2>
-      <p>Открой полный сезон «Последний онлайн». Эпизоды 2–3 доступны сейчас, следующие эпизоды откроются автоматически после выхода.</p>
+      <p>Эпизод 1 — бесплатно. Купи сезон «{storyTitle}», чтобы открыть все опубликованные эпизоды после первого и будущие эпизоды этого сезона.</p>
       <div className="lumi-paywall__offer"><strong>Полный сезон</strong><span>{priceStars} ⭐</span></div>
       <small>Оплата проходит внутри Telegram через Telegram Stars. Доступ выдаётся только после подтверждения платежа Telegram.</small>
       <button className="lumi-primary" type="button" disabled={pending || checking} onClick={() => void handlePurchase()}>

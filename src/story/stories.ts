@@ -26,7 +26,7 @@ const RUNTIMES: Record<string, StoryRuntime> = {
     seasonId: 'season-1',
     episodes: blackRosesEpisodes,
     firstEpisode: blackRosesEpisodes[0],
-    free: true,
+    free: false,
   },
 };
 

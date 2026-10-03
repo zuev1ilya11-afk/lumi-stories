@@ -1,8 +1,8 @@
 import type { Player } from './repository.ts';
 
-// Temporary public offer for all five episodes of season 1.
-// Turning this off does not revoke purchases or personal free access.
-export const SEASON_1_FREE = true;
+// Episode 1 stays free; the rest of a season requires a season entitlement.
+// Keep this legacy whole-season promotion off. Purchases and personal free access remain valid.
+export const SEASON_1_FREE = false;
 
 export type AccessPolicy = {
   seasonFree?: boolean;

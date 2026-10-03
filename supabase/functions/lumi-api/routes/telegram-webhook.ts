@@ -2,7 +2,7 @@ import { jsonResponse } from '../../_shared/http.ts';
 import type { StarPaymentOrder, StarPaymentStore } from '../../_shared/payments.ts';
 import type { LumiRepository } from '../../_shared/repository.ts';
 import { constantTimeTextEqual } from '../../_shared/telegram-bot.ts';
-import { EPISODE_REWIND_TARGETS, REWIND_PRODUCT_PREFIX, episodeRewindInput } from './payments.ts';
+import { EPISODE_REWIND_TARGETS, REWIND_PRODUCT_PREFIX, episodeRewindInput, isSeasonProductId } from './payments.ts';
 
 type TelegramUser = { id?: number };
 type TelegramChat = { id?: number };
@@ -60,7 +60,7 @@ export type TelegramWebhookDependencies = {
 };
 
 function productPrice(productId: string, dependencies: TelegramWebhookDependencies): number | null {
-  if (productId === 'season-1') return dependencies.seasonPriceStars;
+  if (productId === 'season-1' || isSeasonProductId(productId)) return dependencies.seasonPriceStars;
   if (productId.startsWith(REWIND_PRODUCT_PREFIX)) {
     const episodeId = productId.slice(REWIND_PRODUCT_PREFIX.length);
     if (episodeId in EPISODE_REWIND_TARGETS) return dependencies.rewindPriceStars;
@@ -101,10 +101,15 @@ async function handlePreCheckout(
     if (queryId && Number.isSafeInteger(telegramUserId) && telegramUserId > 0 && payload) {
       const player = await dependencies.repository.getOrCreatePlayer(telegramUserId);
       const order = await dependencies.store.findByPayload(payload);
+      const alreadyOwned = order && isSeasonProductId(order.productId)
+        ? await dependencies.store.hasPaidProduct(player.id, order.productId)
+        : false;
       if (
         validOrder(order, player.id, query.currency, query.total_amount, dependencies) &&
         player.freeAccess !== true &&
-        !(order.productId === 'season-1' && (player.season1Owned || dependencies.seasonFree === true))
+        !alreadyOwned &&
+        !(dependencies.seasonFree === true && (order.productId === 'season-1' || isSeasonProductId(order.productId))) &&
+        !(order.productId === 'season-1' && player.season1Owned)
       ) {
         const approved = await dependencies.store.approveOrder(order, queryId);
         ok = Boolean(approved);
@@ -155,6 +160,8 @@ async function handleSuccessfulPayment(
 
   if (paidOrder.productId === 'season-1') {
     await dependencies.store.setSeasonOwned(player.id, true);
+    await dependencies.store.markFulfilled(paidOrder);
+  } else if (isSeasonProductId(paidOrder.productId)) {
     await dependencies.store.markFulfilled(paidOrder);
   } else {
     const input = await episodeRewindInput(player.id, rewindEpisodeId(paidOrder.productId)!, dependencies.repository);

@@ -85,6 +85,7 @@ function storeMock(current = order()): StarPaymentStore & {
       value = { ...existing, fulfilledAt: 'now' };
       return Boolean(input.episodeId && input.sceneId);
     },
+    async hasPaidProduct(_playerId, productId) { return value?.status === 'paid' && value.productId === productId; },
     async hasPaidSeason() { return value?.status === 'paid'; },
     async setSeasonOwned(_playerId, owned) { this.ownership = owned; },
     async createSupportRequest(_userId, messageText) { this.support.push(messageText); },
@@ -443,4 +444,28 @@ Deno.test('Episode 4 progress permits rewinding completed earlier episodes and i
     }), deps);
     assert(response.status === wanted, `${target} from ${sceneId}: expected ${wanted}, got ${response.status}`);
   }
+});
+
+
+Deno.test('season invoice product is scoped to the selected story', async () => {
+  const store = storeMock();
+  let createdProduct = '';
+  store.createOrder = async (playerId, productId, amount) => {
+    createdProduct = productId;
+    return order({
+      playerId,
+      productId,
+      amount,
+      invoicePayload: 'lumi:' + productId + ':scoped',
+    });
+  };
+  const response = await handleCreateSeasonInvoice(new Request('https://example.test/payments/invoice', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-Telegram-Init-Data': await validInitData() },
+    body: JSON.stringify({ storyId: 'house-of-black-roses', seasonId: 'season-1' }),
+  }), paymentDependencies(store));
+  const payload = await response.json();
+  assert(response.status === 200, 'scoped season invoice failed');
+  assert(createdProduct === 'season:house-of-black-roses:season-1', 'season product was not scoped to the story');
+  assert(payload.priceStars === 149 && payload.invoiceUrl, 'scoped invoice response is incomplete');
 });

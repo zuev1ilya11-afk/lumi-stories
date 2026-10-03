@@ -99,6 +99,7 @@ function StoryFrame(props: StoryFrameProps) {
     <>
       <StoryScreen
         storyId={props.storyId}
+        seasonId={story.seasonId}
         episode={episode}
         sceneId={sceneId}
         state={storyState}

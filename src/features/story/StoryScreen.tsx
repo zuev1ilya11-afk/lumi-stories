@@ -15,6 +15,7 @@ import { useReducedMotion } from './useReducedMotion';
 
 type Props = {
   storyId?: string;
+  seasonId?: string;
   episode: Episode;
   sceneId: string;
   state: StoryState;
@@ -39,7 +40,7 @@ export function StoryScreen(props: Props) {
   return <ScenePlayer key={`${props.episode.id}:${scene.id}`} {...props} scene={scene} previous={previousArt} onArt={src => { previous.current = src; }} chatHistory={chatHistory.current} onHistory={messages => { chatHistory.current = messages; }} />;
 }
 
-function ScenePlayer({ storyId = 'last-online', episode, scene, state, onChoose, onAdvance, onMenu, nextEpisode, onNextEpisode, disabled = false, analytics = false, season1Owned = false, season1PriceStars = 149, onRefreshOwnership, previous, onArt, chatHistory, onHistory }: Props & { scene: Scene; previous?: string; onArt(src?: string): void; chatHistory: ChatTimelineEvent[]; onHistory(messages: ChatTimelineEvent[]): void }) {
+function ScenePlayer({ storyId = 'last-online', seasonId = 'season-1', episode, scene, state, onChoose, onAdvance, onMenu, nextEpisode, onNextEpisode, disabled = false, analytics = false, season1Owned = false, season1PriceStars = 149, onRefreshOwnership, previous, onArt, chatHistory, onHistory }: Props & { scene: Scene; previous?: string; onArt(src?: string): void; chatHistory: ChatTimelineEvent[]; onHistory(messages: ChatTimelineEvent[]): void }) {
   const reduced = useReducedMotion();
   const playback = useBeatPlayback(getSceneBeats(scene), reduced);
   const p = getScenePresentation(scene, playback.beat);
@@ -76,6 +77,8 @@ function ScenePlayer({ storyId = 'last-online', episode, scene, state, onChoose,
   const episodeNumber = getEpisodeNumber(episode.id);
   if (offer && nextEpisode && onNextEpisode && !entitlement) {
     return <PrototypePaywall
+      storyId={storyId}
+      seasonId={seasonId}
       episodeId={episode.id}
       sceneId={scene.id}
       episodeNumber={episodeNumber}

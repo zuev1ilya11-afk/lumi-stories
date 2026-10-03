@@ -44,6 +44,7 @@ export interface StarPaymentStore {
   markRefunded(order: StarPaymentOrder, telegramPaymentChargeId: string): Promise<boolean>;
   markFulfilled(order: StarPaymentOrder): Promise<boolean>;
   fulfillEpisodeRewind(order: StarPaymentOrder, input: SaveProgressInput): Promise<boolean>;
+  hasPaidProduct(playerId: string, productId: string): Promise<boolean>;
   hasPaidSeason(playerId: string): Promise<boolean>;
   setSeasonOwned(playerId: string, owned: boolean): Promise<void>;
   createSupportRequest(telegramUserId: number, messageText: string): Promise<void>;
@@ -274,6 +275,19 @@ export function createStarPaymentStore(
       const data = await response.json();
       if (typeof data !== 'boolean') throw new Error('Supabase rewind fulfillment returned invalid response');
       return data;
+    },
+
+    async hasPaidProduct(playerId, productId) {
+      const query = new URLSearchParams({
+        player_id: 'eq.' + playerId,
+        product_id: 'eq.' + productId,
+        status: 'eq.paid',
+        select: 'id',
+        limit: '1',
+      });
+      const response = await fetcher(root + '/rest/v1/star_payments?' + query.toString(), { headers });
+      const rows = await readRows<{ id: string }>(response);
+      return rows.length > 0;
     },
 
     async hasPaidSeason(playerId) {

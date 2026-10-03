@@ -40,9 +40,9 @@ describe('PrototypePaywall', () => {
     const onPurchased = vi.fn();
     render(<PrototypePaywall priceStars={149} onPurchased={onPurchased} />);
     fireEvent.click(screen.getByRole('button', { name: 'Купить за 149 ⭐' }));
-    await waitFor(() => expect(mocks.createSeasonInvoice).toHaveBeenCalledWith('signed'));
+    await waitFor(() => expect(mocks.createSeasonInvoice).toHaveBeenCalledWith('signed', 'last-online', 'season-1'));
     expect(mocks.openTelegramInvoice).toHaveBeenCalledWith('https://t.me/$invoice');
-    await waitFor(() => expect(mocks.getPaymentStatus).toHaveBeenCalledWith('signed'));
+    await waitFor(() => expect(mocks.getPaymentStatus).toHaveBeenCalledWith('signed', 'last-online', 'season-1'));
     await waitFor(() => expect(onPurchased).toHaveBeenCalledOnce());
   });
 

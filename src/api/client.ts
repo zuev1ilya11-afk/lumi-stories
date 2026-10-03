@@ -87,15 +87,19 @@ export function createApiClient({ baseUrl, fetcher = fetch }: ApiClientOptions) 
       return payload.progress;
     },
 
-    async createSeasonInvoice(initData: string): Promise<PaymentInvoiceResponse> {
+    async createSeasonInvoice(initData: string, storyId = STORY_ID, seasonId = SEASON_ID): Promise<PaymentInvoiceResponse> {
+      const scoped = storyId !== STORY_ID || seasonId !== SEASON_ID;
       return parseJson<PaymentInvoiceResponse>(await fetcher(`${root}/payments/invoice`, {
         method: 'POST',
-        headers: telegramHeaders(initData),
+        headers: telegramHeaders(initData, scoped),
+        ...(scoped ? { body: JSON.stringify({ storyId, seasonId }) } : {}),
       }));
     },
 
-    async getPaymentStatus(initData: string): Promise<PaymentStatusResponse> {
-      return parseJson<PaymentStatusResponse>(await fetcher(`${root}/payments/status`, {
+    async getPaymentStatus(initData: string, storyId = STORY_ID, seasonId = SEASON_ID): Promise<PaymentStatusResponse> {
+      const scoped = storyId !== STORY_ID || seasonId !== SEASON_ID;
+      const query = scoped ? '?' + new URLSearchParams({ storyId, seasonId }).toString() : '';
+      return parseJson<PaymentStatusResponse>(await fetcher(`${root}/payments/status${query}`, {
         headers: telegramHeaders(initData),
       }));
     },
@@ -142,12 +146,12 @@ export function saveProgress(initData: string, progress: ProgressDto): Promise<P
   return createApiClient({ baseUrl: configuredBaseUrl() }).saveProgress(initData, progress);
 }
 
-export function createSeasonInvoice(initData: string): Promise<PaymentInvoiceResponse> {
-  return createApiClient({ baseUrl: configuredBaseUrl() }).createSeasonInvoice(initData);
+export function createSeasonInvoice(initData: string, storyId = STORY_ID, seasonId = SEASON_ID): Promise<PaymentInvoiceResponse> {
+  return createApiClient({ baseUrl: configuredBaseUrl() }).createSeasonInvoice(initData, storyId, seasonId);
 }
 
-export function getPaymentStatus(initData: string): Promise<PaymentStatusResponse> {
-  return createApiClient({ baseUrl: configuredBaseUrl() }).getPaymentStatus(initData);
+export function getPaymentStatus(initData: string, storyId = STORY_ID, seasonId = SEASON_ID): Promise<PaymentStatusResponse> {
+  return createApiClient({ baseUrl: configuredBaseUrl() }).getPaymentStatus(initData, storyId, seasonId);
 }
 
 export function createEpisodeRewindInvoice(initData: string, episodeId: string): Promise<EpisodeRewindInvoiceResponse> {
