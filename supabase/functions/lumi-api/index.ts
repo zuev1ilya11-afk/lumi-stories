@@ -15,13 +15,14 @@ import {
 } from '../_shared/telegram-bot.ts';
 import { handleAnalytics } from './routes/analytics.ts';
 import { handleBootstrap } from './routes/bootstrap.ts';
-import { handleCreateSeasonInvoice, handlePaymentStatus } from './routes/payments.ts';
+import { handleCreateEpisodeRewindInvoice, handleCreateSeasonInvoice, handleEpisodeRewindStatus, handlePaymentStatus } from './routes/payments.ts';
 import { handleProgress } from './routes/progress.ts';
 import { handleTelegramWebhook } from './routes/telegram-webhook.ts';
 
 const STORY_ID = 'last-online';
 const SEASON_ID = 'season-1';
 const SEASON_1_PRICE_STARS = 149;
+const EPISODE_REWIND_PRICE_STARS = 49;
 let cachedRepository: LumiRepository | null = null;
 let cachedPaymentStore: StarPaymentStore | null = null;
 
@@ -69,6 +70,7 @@ Deno.serve(async (request: Request) => {
       ),
       paymentsConfigured: Boolean(botToken && supabaseUrl),
       season1PriceStars: SEASON_1_PRICE_STARS,
+      episodeRewindPriceStars: EPISODE_REWIND_PRICE_STARS,
     });
   }
 
@@ -89,7 +91,8 @@ Deno.serve(async (request: Request) => {
     const webhookSecret = await deriveTelegramWebhookSecret(botToken);
     return handleTelegramWebhook(request, {
       webhookSecret,
-      priceStars: SEASON_1_PRICE_STARS,
+      seasonPriceStars: SEASON_1_PRICE_STARS,
+      rewindPriceStars: EPISODE_REWIND_PRICE_STARS,
       repository,
       store: paymentStore,
       answerPreCheckout: (queryId, ok, errorMessage) =>
@@ -113,6 +116,7 @@ Deno.serve(async (request: Request) => {
             telegramUserId: player.telegramUserId,
             season1Owned: player.season1Owned,
             season1PriceStars: SEASON_1_PRICE_STARS,
+            episodeRewindPriceStars: EPISODE_REWIND_PRICE_STARS,
             progress,
           };
         },
@@ -123,7 +127,8 @@ Deno.serve(async (request: Request) => {
   const paymentDependencies = {
     botToken,
     nowSeconds,
-    priceStars: SEASON_1_PRICE_STARS,
+    seasonPriceStars: SEASON_1_PRICE_STARS,
+    rewindPriceStars: EPISODE_REWIND_PRICE_STARS,
     repository,
     store: paymentStore,
     telegram: {
@@ -143,6 +148,14 @@ Deno.serve(async (request: Request) => {
 
   if (url.pathname.endsWith('/payments/status')) {
     return handlePaymentStatus(request, paymentDependencies);
+  }
+
+  if (url.pathname.endsWith('/payments/rewind/invoice')) {
+    return handleCreateEpisodeRewindInvoice(request, paymentDependencies);
+  }
+
+  if (url.pathname.endsWith('/payments/rewind/status')) {
+    return handleEpisodeRewindStatus(request, paymentDependencies);
   }
 
   if (url.pathname.endsWith('/progress')) {
