@@ -10,7 +10,7 @@ import { getSceneBeats, getScenePresentation, nearbyAssets, sceneAsset } from '.
 import { useBeatPlayback } from './useBeatPlayback';
 import { useReducedMotion } from './useReducedMotion';
 
-type Props = { episode: Episode; sceneId: string; state: StoryState; onChoose(choiceId: string): Promise<void> | void; onAdvance(): Promise<void> | void; onMenu?(): void };
+type Props = { episode: Episode; episodeNumber?: number; nextEpisodeTitle?: string; sceneId: string; state: StoryState; onChoose(choiceId: string): Promise<void> | void; onAdvance(): Promise<void> | void; onEpisodeComplete?(): Promise<void> | void; onMenu?(): void };
 
 export function StoryScreen(props: Props) {
   const scene = getScene(props.episode, props.sceneId);
@@ -21,7 +21,7 @@ export function StoryScreen(props: Props) {
   return <ScenePlayer key={scene.id} {...props} scene={scene} previous={previousArt} onArt={src => { previous.current = src; }} chatHistory={chatHistory.current} onHistory={messages => { chatHistory.current = messages; }} />;
 }
 
-function ScenePlayer({ episode, scene, state, onChoose, onAdvance, onMenu, previous, onArt, chatHistory, onHistory }: Props & { scene: Scene; previous?: string; onArt(src?: string): void; chatHistory: ChatTimelineEvent[]; onHistory(messages: ChatTimelineEvent[]): void }) {
+function ScenePlayer({ episode, episodeNumber, nextEpisodeTitle, scene, state, onChoose, onAdvance, onEpisodeComplete, onMenu, previous, onArt, chatHistory, onHistory }: Props & { scene: Scene; previous?: string; onArt(src?: string): void; chatHistory: ChatTimelineEvent[]; onHistory(messages: ChatTimelineEvent[]): void }) {
   const reduced = useReducedMotion();
   const playback = useBeatPlayback(getSceneBeats(scene), reduced);
   const p = getScenePresentation(scene, playback.beat);
@@ -52,7 +52,7 @@ function ScenePlayer({ episode, scene, state, onChoose, onAdvance, onMenu, previ
       else void run(onAdvance);
     }
   }
-  if (offer) return <PrototypePaywall />;
+  if (offer) return <PrototypePaywall episodeId={episode.id} sceneId={scene.id} episodeNumber={episodeNumber} nextEpisodeTitle={nextEpisodeTitle} onContinue={onEpisodeComplete} />;
   if (scene.kind === 'message') return <main className="lumi-chat-stage" data-scene-id={scene.id} data-motion="phone">
     <div className="lumi-chat-stage__wallpaper" aria-hidden="true" />
     <SoaChatScreen scene={scene} availableChoices={choices} onChoose={id => run(() => onChoose(id), id)} onAdvance={() => run(onAdvance)} disabled={pending} onMenu={onMenu} history={chatHistory} onHistory={onHistory} />
