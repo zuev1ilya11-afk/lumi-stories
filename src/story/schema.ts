@@ -31,6 +31,19 @@ export type Transition = {
 };
 
 export type SceneKind = 'narrative' | 'dialogue' | 'message' | 'terminal';
+export type ChatMessageFrom = 'soa' | 'lera' | 'system';
+
+export type ChatMessage = {
+  from: ChatMessageFrom;
+  text: string;
+  meta?: string;
+};
+
+export type ChatPresentation = {
+  status?: string;
+  typing?: boolean;
+  messages: ChatMessage[];
+};
 
 export type Scene = {
   id: string;
@@ -40,6 +53,7 @@ export type Scene = {
   background?: string;
   character?: string;
   attachment?: string;
+  chat?: ChatPresentation;
   choices?: Choice[];
   transitions?: Transition[];
   nextSceneId?: string;
@@ -171,6 +185,38 @@ function parseTransition(raw: unknown, label: string): Transition {
   };
 }
 
+
+const CHAT_MESSAGE_FROM = new Set<ChatMessageFrom>(['soa', 'lera', 'system']);
+
+function parseChat(raw: unknown, label: string): ChatPresentation | undefined {
+  if (raw === undefined) return undefined;
+  const value = record(raw, label);
+  if (!Array.isArray(value.messages)) {
+    throw new StorySchemaError(`${label}.messages must be an array`);
+  }
+  const messages = value.messages.map((item, index) => {
+    const message = record(item, `${label}.messages[${index}]`);
+    if (typeof message.from !== 'string' || !CHAT_MESSAGE_FROM.has(message.from as ChatMessageFrom)) {
+      throw new StorySchemaError(`${label}.messages[${index}].from is unknown: ${String(message.from)}`);
+    }
+    return {
+      from: message.from as ChatMessageFrom,
+      text: stringValue(message.text, `${label}.messages[${index}].text`),
+      meta: message.meta === undefined
+        ? undefined
+        : stringValue(message.meta, `${label}.messages[${index}].meta`),
+    };
+  });
+  if (value.typing !== undefined && typeof value.typing !== 'boolean') {
+    throw new StorySchemaError(`${label}.typing must be boolean`);
+  }
+  return {
+    status: value.status === undefined ? undefined : stringValue(value.status, `${label}.status`),
+    typing: value.typing === undefined ? undefined : value.typing,
+    messages,
+  };
+}
+
 function parseScene(raw: unknown, index: number): Scene {
   const label = `scenes[${index}]`;
   const value = record(raw, label);
@@ -199,6 +245,7 @@ function parseScene(raw: unknown, index: number): Scene {
     background: value.background === undefined ? undefined : stringValue(value.background, `${label}.background`),
     character: value.character === undefined ? undefined : stringValue(value.character, `${label}.character`),
     attachment: value.attachment === undefined ? undefined : stringValue(value.attachment, `${label}.attachment`),
+    chat: parseChat(value.chat, `${label}.chat`),
     choices,
     transitions,
     nextSceneId: value.nextSceneId === undefined ? undefined : stringValue(value.nextSceneId, `${label}.nextSceneId`),

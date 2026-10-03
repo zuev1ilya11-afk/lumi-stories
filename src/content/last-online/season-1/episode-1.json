@@ -304,7 +304,16 @@
       "speaker": "SOA",
       "background": "lera_room_night",
       "character": "lera-concerned",
-      "nextSceneId": "ep1_soa_first_message"
+      "nextSceneId": "ep1_soa_first_message",
+      "chat": {
+        "status": "была в сети очень давно",
+        "messages": [
+          {
+            "from": "system",
+            "text": "Новый диалог · общих контактов нет"
+          }
+        ]
+      }
     },
     {
       "id": "ep1_soa_first_message",
@@ -313,7 +322,20 @@
       "speaker": "SOA",
       "background": "lera_room_night",
       "character": "lera-shocked",
-      "nextSceneId": "ep1_choice_soa_message"
+      "nextSceneId": "ep1_choice_soa_message",
+      "chat": {
+        "status": "была в сети очень давно",
+        "messages": [
+          {
+            "from": "soa",
+            "text": "Ты живёшь напротив него?"
+          },
+          {
+            "from": "soa",
+            "text": "Не говори Джунхо, что я тебе написала."
+          }
+        ]
+      }
     },
     {
       "id": "ep1_choice_soa_message",
@@ -384,7 +406,20 @@
             }
           ]
         }
-      ]
+      ],
+      "chat": {
+        "status": "была в сети очень давно",
+        "messages": [
+          {
+            "from": "soa",
+            "text": "Ты живёшь напротив него?"
+          },
+          {
+            "from": "soa",
+            "text": "Не говори Джунхо, что я тебе написала."
+          }
+        ]
+      }
     },
     {
       "id": "ep1_soa_tell",
@@ -409,7 +444,26 @@
       "speaker": "SOA",
       "background": "lera_room_night",
       "character": "lera-shocked",
-      "nextSceneId": "ep1_after_soa_choice"
+      "nextSceneId": "ep1_after_soa_choice",
+      "chat": {
+        "status": "была в сети очень давно",
+        "typing": true,
+        "messages": [
+          {
+            "from": "soa",
+            "text": "Ты живёшь напротив него?"
+          },
+          {
+            "from": "soa",
+            "text": "Не говори Джунхо, что я тебе написала."
+          },
+          {
+            "from": "lera",
+            "text": "Кто ты?",
+            "meta": "прочитано"
+          }
+        ]
+      }
     },
     {
       "id": "ep1_after_soa_choice",
@@ -535,7 +589,16 @@
       "speaker": "SOA",
       "background": "lera_room_night",
       "character": "lera-shocked",
-      "nextSceneId": "ep1_soa_photo_intro"
+      "nextSceneId": "ep1_soa_photo_intro",
+      "chat": {
+        "status": "была в сети очень давно",
+        "messages": [
+          {
+            "from": "soa",
+            "text": "Ты нашла звезду."
+          }
+        ]
+      }
     },
     {
       "id": "ep1_soa_photo_intro",
@@ -545,7 +608,24 @@
       "background": "lera_room_night",
       "character": "lera-shocked",
       "nextSceneId": "ep1_old_photo",
-      "attachment": "soa-junho-old-photo"
+      "attachment": "soa-junho-old-photo",
+      "chat": {
+        "status": "была в сети очень давно",
+        "messages": [
+          {
+            "from": "soa",
+            "text": "Ты нашла звезду."
+          },
+          {
+            "from": "soa",
+            "text": "Тогда посмотри, где ты живёшь."
+          },
+          {
+            "from": "system",
+            "text": "IMG_0317_old.jpg · 3 года назад"
+          }
+        ]
+      }
     },
     {
       "id": "ep1_old_photo",
@@ -614,7 +694,17 @@
             }
           ]
         }
-      ]
+      ],
+      "chat": {
+        "status": "была в сети очень давно",
+        "messages": [
+          {
+            "from": "soa",
+            "text": "Тогда посмотри, где ты живёшь."
+          }
+        ]
+      },
+      "attachment": "soa-junho-old-photo"
     },
     {
       "id": "ep1_photo_call_junho",
@@ -639,7 +729,29 @@
       "speaker": "SOA",
       "background": "lera_room_night",
       "character": "lera-shocked",
-      "nextSceneId": "ep1_end_paywall"
+      "nextSceneId": "ep1_end_paywall",
+      "chat": {
+        "status": "была в сети очень давно",
+        "messages": [
+          {
+            "from": "lera",
+            "text": "Ты была здесь?",
+            "meta": "прочитано"
+          },
+          {
+            "from": "soa",
+            "text": "Да."
+          },
+          {
+            "from": "soa",
+            "text": "И он знает почему."
+          },
+          {
+            "from": "system",
+            "text": "SOA была в сети очень давно"
+          }
+        ]
+      }
     },
     {
       "id": "ep1_end_paywall",
