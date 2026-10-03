@@ -763,11 +763,13 @@ button { color: inherit; }
 
 /* Story library — scalable catalog from the main navigation */
 .lumi-stories-library {
-  max-height: 100%;
+  min-height: 0;
+  max-height: calc(100% - 56px);
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: none;
 }
+.lumi-start[data-tab="stories"] .lumi-start__nav button { min-height: 44px; }
 .lumi-stories-library::-webkit-scrollbar {
   display: none;
 }

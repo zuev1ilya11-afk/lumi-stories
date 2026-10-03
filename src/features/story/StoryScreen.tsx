@@ -88,7 +88,7 @@ function ScenePlayer({ storyId = 'last-online', episode, scene, state, onChoose,
       onMenu={onMenu}
     />;
   }
-  if (offer) return <section className="lumi-paywall" aria-label="Продолжение сезона">
+  if (offer) return <section className="lumi-paywall" data-story-id={storyId} aria-label="Продолжение сезона">
     {art ? <img src={art} alt="Финал эпизода" /> : null}
     <div className="lumi-paywall__body">
       <p className="lumi-eyebrow">Эпизод {episodeNumber} завершён</p>

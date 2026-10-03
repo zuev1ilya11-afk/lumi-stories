@@ -114,6 +114,9 @@ export function createProgressMachine(options: {
     pendingState = candidate;
     const episode = episodeFor(candidate);
     const saved = await options.save(progressToDto(candidate, episode, identity));
+    if (saved.storyId !== identity.storyId || saved.seasonId !== identity.seasonId) {
+      throw new Error('Progress identity mismatch');
+    }
     committed = progressFromDto(saved, episode);
     pendingState = null;
     return committed;

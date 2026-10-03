@@ -31,6 +31,7 @@ export function useProgress(initData: string, storyId = 'last-online'): {
   const [bootstrapAttempt, setBootstrapAttempt] = useState(0);
   const machineRef = useRef<ReturnType<typeof createProgressMachine> | null>(null);
   const bootstrapBusy = useRef(true);
+  const generationRef = useRef(0);
   const inFlight = useRef<Promise<void> | null>(null);
   const pendingAnalyticsRef = useRef<{ operation: Operation; episodeId: string; sceneId: string; choiceId?: string } | null>(null);
 
@@ -41,11 +42,15 @@ export function useProgress(initData: string, storyId = 'last-online'): {
   }
 
   function normalizeProgress(progress: Awaited<ReturnType<typeof loadProgress>> | null, episode: ReturnType<typeof getStoryEpisode>) {
+    if (progress && (progress.storyId !== story.id || progress.seasonId !== story.seasonId)) {
+      throw new Error('Progress identity mismatch');
+    }
     return story.id === 'last-online' ? normalizeEpisode2Progress(progress, episode) : progress;
   }
 
   useEffect(() => {
     let active = true;
+    generationRef.current += 1;
     bootstrapBusy.current = true;
     machineRef.current = null;
     pendingAnalyticsRef.current = null;
@@ -55,6 +60,10 @@ export function useProgress(initData: string, storyId = 'last-online'): {
 
     void (async () => {
       try {
+        // A round trip must read after the previous story's scene-boundary write.
+        // Failed writes leave the server's last committed checkpoint authoritative.
+        if (inFlight.current) await inFlight.current.catch(() => undefined);
+        if (!active) return;
         const payload = await bootstrap(initData);
         const rawProgress = story.id === 'last-online'
           ? payload.progress
@@ -81,16 +90,18 @@ export function useProgress(initData: string, storyId = 'last-online'): {
       }
     })();
 
-    return () => { active = false; };
+    return () => { active = false; generationRef.current += 1; };
   }, [initData, storyId, bootstrapAttempt]);
 
   const refreshOwnership = useCallback(async (): Promise<boolean> => {
+    const generation = generationRef.current;
     if (story.free) {
       setSeason1Owned(true);
       setSeason1PriceStars(0);
       return true;
     }
     const payment = await getPaymentStatus(initData);
+    if (generation !== generationRef.current) return false;
     setSeason1Owned(payment.season1Owned);
     setSeason1PriceStars(payment.priceStars);
     setEpisodeRewindPriceStars(payment.episodeRewindPriceStars ?? 49);
@@ -149,13 +160,16 @@ export function useProgress(initData: string, storyId = 'last-online'): {
   }, [storyId]);
 
   const reload = useCallback(async (): Promise<void> => {
+    const generation = generationRef.current;
     if (inFlight.current) await inFlight.current;
+    if (generation !== generationRef.current) return;
     setStatus('loading');
     try {
       const payload = await bootstrap(initData);
       const rawProgress = story.id === 'last-online'
         ? payload.progress
         : await loadProgress(initData, story.id, story.seasonId);
+      if (generation !== generationRef.current) return;
       const episode = getStoryEpisode(story.id, rawProgress?.episodeId);
       const initial = progressFromDto(normalizeProgress(rawProgress, episode), episode);
       machineRef.current = createProgressMachine({
@@ -172,6 +186,7 @@ export function useProgress(initData: string, storyId = 'last-online'): {
       setLoadedStoryId(story.id);
       setStatus('ready');
     } catch (error) {
+      if (generation !== generationRef.current) return;
       setStatus('error');
       throw error;
     }

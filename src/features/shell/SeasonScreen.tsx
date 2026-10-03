@@ -35,7 +35,7 @@ export function SeasonScreen({ storyId = 'last-online', hasProgress, currentEpis
     : 'radial-gradient(circle at 50% 18%, rgba(208,194,220,.28), transparent 20%), linear-gradient(160deg, #211322, #0b0910 72%)';
 
   return (
-    <main className="lumi-season">
+    <main className="lumi-season" data-story-id={storyId}>
       <header className="lumi-topbar">
         <button className="lumi-icon-button" type="button" onClick={onBack} aria-label="Назад">‹</button>
         <strong>LUMI</strong>

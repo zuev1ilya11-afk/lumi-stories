@@ -37,6 +37,7 @@ export const STORY_CATALOG: StoryCatalogEntry[] = [
     id: 'house-of-black-roses',
     order: 2,
     title: 'Дом чёрных роз',
+    coverAsset: 'assets/house-of-black-roses/v1/ravenhall-exterior.webp',
     description: 'Старинное поместье. Три запрета. И портрет женщины, умершей 125 лет назад с твоим лицом.',
     seasonLabel: 'Сезон 1',
     available: true,

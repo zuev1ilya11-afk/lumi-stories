@@ -48,6 +48,7 @@ jobs:
           npm run validate:story -- src/content/last-online/season-1/episode-2.json
           npm run validate:story -- src/content/last-online/season-1/episode-3.json
           npm run validate:story -- src/content/last-online/season-1/episode-4.json
+          npm run validate:story -- src/content/house-of-black-roses/season-1/episode-1.json
 
       - name: Build
         run: npm run build
