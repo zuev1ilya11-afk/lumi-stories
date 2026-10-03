@@ -2,8 +2,19 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { expect, it, vi } from 'vitest';
 import { StartScreen } from './StartScreen';
 
-it('opens profile and settings from the bottom navigation', () => {
-  render(<StartScreen onStart={vi.fn()} userDisplayName="Илья" hasProgress currentEpisodeId="last-online-s1-e2" season1PriceStars={149} />);
+it('opens the story catalog, profile and settings from the bottom navigation', () => {
+  const onStart = vi.fn();
+  render(<StartScreen onStart={onStart} userDisplayName="Илья" hasProgress currentEpisodeId="last-online-s1-e2" season1PriceStars={149} />);
+
+  expect(screen.getByRole('button', { name: 'Продолжить историю' })).toBeVisible();
+
+  fireEvent.click(screen.getByRole('button', { name: 'Истории' }));
+  expect(screen.getByRole('region', { name: 'Истории' })).toBeVisible();
+  expect(screen.getByText('Последний онлайн')).toBeVisible();
+  const currentStory = screen.getByRole('button', { name: 'Открыть историю «Последний онлайн»' });
+  expect(currentStory).toBeVisible();
+  fireEvent.click(currentStory);
+  expect(onStart).toHaveBeenCalledTimes(1);
 
   fireEvent.click(screen.getByRole('button', { name: 'Профиль' }));
   expect(screen.getByRole('region', { name: 'Профиль' })).toBeVisible();
@@ -18,5 +29,6 @@ it('opens profile and settings from the bottom navigation', () => {
   expect(motion).toHaveAttribute('aria-pressed', 'false');
 
   fireEvent.click(screen.getByRole('button', { name: 'Истории' }));
-  expect(screen.getByRole('button', { name: 'Продолжить историю' })).toBeVisible();
+  expect(screen.getByRole('region', { name: 'Истории' })).toBeVisible();
+  expect(screen.getByRole('button', { name: 'Открыть историю «Последний онлайн»' })).toBeVisible();
 });
