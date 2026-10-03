@@ -388,3 +388,232 @@ button { color: inherit; }
     transform: none;
   }
 }
+
+
+/* LUMI minimal start screen — approved direction 4 */
+.lumi-start--minimal {
+  position: relative;
+  min-height: var(--tg-viewport-stable-height, 100dvh);
+  height: var(--tg-viewport-stable-height, 100dvh);
+  max-width: 520px;
+  margin-inline: auto;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  padding: calc(18px + var(--lumi-safe-top)) 22px calc(14px + var(--lumi-safe-bottom));
+  background:
+    radial-gradient(circle at 50% 71%, rgba(84,73,150,.22) 0, transparent 21%),
+    linear-gradient(180deg, #090a13 0%, #0b0c18 52%, #121120 100%);
+}
+.lumi-start--minimal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(180,168,255,.6) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 72% 12%, rgba(255,255,255,.5) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 84% 31%, rgba(195,181,255,.42) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 32% 38%, rgba(255,255,255,.38) 0 1px, transparent 1.5px);
+  background-size: 97px 109px, 131px 143px, 173px 157px, 211px 181px;
+  opacity: .5;
+}
+.lumi-start__stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(231,224,255,.85) 0 1px, transparent 1.4px),
+    radial-gradient(circle, rgba(171,158,244,.46) 0 1px, transparent 1.5px);
+  background-size: 83px 93px, 127px 151px;
+  background-position: 17px 5px, 52px 37px;
+  opacity: .28;
+  mask-image: linear-gradient(to bottom, #000 0 70%, transparent 92%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0 70%, transparent 92%);
+}
+.lumi-start__moon {
+  position: absolute;
+  top: calc(66px + var(--lumi-safe-top));
+  left: 50%;
+  width: 46px;
+  height: 46px;
+  translate: -50% 0;
+  border-radius: 50%;
+  background: #ddd4ff;
+  box-shadow: 0 0 26px rgba(207,194,255,.18);
+  opacity: .9;
+}
+.lumi-start__moon::after {
+  content: "";
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  top: -5px;
+  left: 12px;
+  border-radius: 50%;
+  background: #090a13;
+}
+.lumi-start__minimal-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: center;
+  padding-top: clamp(115px, 19dvh, 170px);
+}
+.lumi-start__brand-block {
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+}
+.lumi-logo--minimal {
+  margin: 0;
+  font-size: clamp(2.9rem, 14vw, 4.6rem);
+  line-height: .95;
+  font-weight: 300;
+  letter-spacing: .23em;
+  padding-left: .23em;
+  color: #eeeafd;
+  text-shadow: 0 0 30px rgba(164,145,240,.1);
+}
+.lumi-start__subtitle {
+  margin: 0;
+  color: #9288ad;
+  text-transform: uppercase;
+  font-size: .67rem;
+  letter-spacing: .23em;
+}
+.lumi-start__features {
+  width: min(100%, 350px);
+  margin: clamp(38px, 7dvh, 62px) auto 0;
+  display: grid;
+  gap: 16px;
+  text-align: left;
+}
+.lumi-start__feature {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  align-items: center;
+  gap: 11px;
+  min-height: 32px;
+}
+.lumi-start__feature > span {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  color: #cfc4ff;
+  font-size: 1.18rem;
+  font-weight: 400;
+}
+.lumi-start__feature p {
+  margin: 0;
+  color: #cbc4d9;
+  font-size: .92rem;
+  line-height: 1.35;
+}
+.lumi-start__cta {
+  width: min(100%, 390px);
+  min-height: 54px;
+  margin: auto auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid rgba(228,220,255,.22);
+  border-radius: 18px;
+  color: #171422;
+  background: linear-gradient(135deg, #d6cdfd 0%, #9a8de8 100%);
+  box-shadow: 0 14px 34px rgba(96,76,174,.2);
+  font-weight: 760;
+  cursor: pointer;
+}
+.lumi-start__cta > span {
+  font-size: 1rem;
+  transform: translateY(-1px);
+}
+.lumi-start__cta:active {
+  transform: scale(.985);
+}
+.lumi-start__nav {
+  position: absolute;
+  z-index: 3;
+  left: 22px;
+  right: 22px;
+  bottom: calc(12px + var(--lumi-safe-bottom));
+  min-height: 48px;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.lumi-start__nav button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 0;
+  padding: 8px 0;
+  color: #b8afd0;
+  background: transparent;
+  font-size: .72rem;
+  pointer-events: auto;
+}
+.lumi-start__nav button > span {
+  font-size: 1rem;
+}
+.lumi-start__nav-mark {
+  color: #665d7f;
+}
+.lumi-start__horizon {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 29%;
+  opacity: .36;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(21,18,37,.3) 14%, #0a0912 100%);
+  pointer-events: none;
+}
+.lumi-start__horizon::before {
+  content: "";
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: 7%;
+  height: 45%;
+  background:
+    linear-gradient(174deg, transparent 0 42%, rgba(52,46,77,.85) 43% 55%, transparent 56%),
+    linear-gradient(187deg, transparent 0 47%, rgba(33,29,51,.92) 48% 67%, transparent 68%);
+  filter: blur(1px);
+}
+.lumi-start__horizon span {
+  position: absolute;
+  bottom: 2%;
+  width: 6px;
+  background: #141320;
+  border-top: 1px solid rgba(152,137,214,.12);
+}
+.lumi-start__horizon span:nth-child(1) { left: 10%; height: 25%; }
+.lumi-start__horizon span:nth-child(2) { left: 27%; height: 33%; width: 10px; }
+.lumi-start__horizon span:nth-child(3) { left: 46%; height: 41%; width: 7px; }
+.lumi-start__horizon span:nth-child(4) { left: 61%; height: 27%; width: 12px; }
+.lumi-start__horizon span:nth-child(5) { left: 78%; height: 36%; width: 8px; }
+.lumi-start__horizon span:nth-child(6) { left: 89%; height: 22%; width: 14px; }
+
+@media (max-height: 680px) {
+  .lumi-start__minimal-content { padding-top: 92px; }
+  .lumi-start__moon { top: calc(40px + var(--lumi-safe-top)); width: 38px; height: 38px; }
+  .lumi-start__moon::after { width: 36px; height: 36px; left: 10px; }
+  .lumi-start__features { margin-top: 24px; gap: 10px; }
+  .lumi-start__feature { min-height: 27px; }
+  .lumi-start__feature p { font-size: .82rem; }
+  .lumi-start__cta { min-height: 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lumi-start__cta { transition: none; }
+}
