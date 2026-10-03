@@ -54,7 +54,14 @@ export function StartScreen({ onStart }: StartScreenProps) {
           <span aria-hidden="true">▱</span>
           Истории
         </button>
-        <span className="lumi-start__nav-mark" aria-hidden="true">✦</span>
+        <button type="button" disabled aria-label="Профиль — скоро">
+          <span aria-hidden="true">○</span>
+          Профиль
+        </button>
+        <button type="button" disabled aria-label="Настройки — скоро">
+          <span aria-hidden="true">⚙</span>
+          Настройки
+        </button>
       </nav>
     </main>
   );

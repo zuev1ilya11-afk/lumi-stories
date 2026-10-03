@@ -518,7 +518,7 @@ button { color: inherit; }
 .lumi-start__cta {
   width: min(100%, 390px);
   min-height: 54px;
-  margin: auto auto 0;
+  margin: auto auto 58px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -545,10 +545,10 @@ button { color: inherit; }
   right: 22px;
   bottom: calc(12px + var(--lumi-safe-bottom));
   min-height: 48px;
-  display: none;
+  display: flex;
   align-items: center;
-  justify-content: space-between;
-  pointer-events: none;
+  justify-content: space-around;
+  pointer-events: auto;
 }
 .lumi-start__nav button {
   display: flex;
@@ -560,6 +560,13 @@ button { color: inherit; }
   background: transparent;
   font-size: .72rem;
   pointer-events: auto;
+}
+.lumi-start__nav button:disabled {
+  opacity: .4;
+  cursor: default;
+}
+.lumi-start__nav button.is-active {
+  color: #d8cff9;
 }
 .lumi-start__nav button > span {
   font-size: 1rem;
