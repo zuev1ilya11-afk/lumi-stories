@@ -151,7 +151,6 @@ export function useProgress(initData: string, storyId = 'last-online'): {
   const reload = useCallback(async (): Promise<void> => {
     if (inFlight.current) await inFlight.current;
     setStatus('loading');
-    setLoadedStoryId(null);
     try {
       const payload = await bootstrap(initData);
       const rawProgress = story.id === 'last-online'
