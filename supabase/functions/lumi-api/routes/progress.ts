@@ -7,7 +7,7 @@ import { verifyTelegramInitData } from '../../_shared/telegram.ts';
 
 export type ProgressRepository = Pick<
   LumiRepository,
-  'getOrCreatePlayer' | 'getProgress' | 'saveProgress'
+  'getOrCreatePlayer' | 'getProgress' | 'saveProgress' | 'saveEpisodeCheckpoint'
 >;
 
 export type ProgressDependencies = {
@@ -99,6 +99,11 @@ export async function handleProgress(
   }
   const input = parseSaveProgressInput(body);
   if (!input) return jsonResponse({ error: 'INVALID_PROGRESS' }, 400);
+
+  const previous = await dependencies.repository.getProgress(player.id, input.storyId, input.seasonId);
+  if (previous && previous.episodeId !== input.episodeId) {
+    await dependencies.repository.saveEpisodeCheckpoint(player.id, input);
+  }
 
   const progress = await dependencies.repository.saveProgress(player.id, input);
   return jsonResponse({ progress });
