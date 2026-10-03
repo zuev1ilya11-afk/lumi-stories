@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { publicAsset } from '../../publicAsset';
+import { STORY_CATALOG } from '../../story/catalog';
 
 type StartScreenProps = {
   onStart(): void;
+  onOpenStory?(storyId: string): void;
   userDisplayName?: string;
   hasProgress?: boolean;
   currentEpisodeId?: string;
@@ -9,7 +12,7 @@ type StartScreenProps = {
   season1PriceStars?: number;
 };
 
-type StartTab = 'stories' | 'profile' | 'settings';
+type StartTab = 'home' | 'stories' | 'profile' | 'settings';
 
 const FEATURES = [
   ['♡', 'Любовные линии'],
@@ -43,15 +46,24 @@ function Navigation({ tab, onTab }: { tab: StartTab; onTab(tab: StartTab): void 
 
 export function StartScreen({
   onStart,
+  onOpenStory,
   userDisplayName = 'Игрок LUMI',
   hasProgress = false,
   currentEpisodeId = 'last-online-s1-e1',
   season1Owned = false,
   season1PriceStars = 149,
 }: StartScreenProps) {
-  const [tab, setTab] = useState<StartTab>('stories');
+  const [tab, setTab] = useState<StartTab>('home');
   const [motionEnabled, setMotionEnabled] = useState(true);
   const [hapticsEnabled, setHapticsEnabled] = useState(true);
+
+  function openStory(storyId: string) {
+    if (onOpenStory) {
+      onOpenStory(storyId);
+      return;
+    }
+    if (storyId === 'last-online') onStart();
+  }
 
   return (
     <main className={`lumi-start lumi-start--minimal${motionEnabled ? '' : ' is-calm'}`} aria-label="LUMI">
@@ -61,7 +73,7 @@ export function StartScreen({
         <span /><span /><span /><span /><span /><span />
       </div>
 
-      {tab === 'stories' ? (
+      {tab === 'home' ? (
         <section className="lumi-start__minimal-content">
           <div className="lumi-start__brand-block">
             <h1 className="lumi-logo lumi-logo--minimal">LUMI</h1>
@@ -81,6 +93,49 @@ export function StartScreen({
             <span aria-hidden="true">▷</span>
             {hasProgress ? 'Продолжить' : 'Начать'}
           </button>
+        </section>
+      ) : null}
+
+      {tab === 'stories' ? (
+        <section className="lumi-start__panel lumi-stories-library" aria-label="Истории">
+          <p className="lumi-eyebrow">Библиотека</p>
+          <h1>Истории</h1>
+          <p className="lumi-start__panel-muted">Все истории LUMI будут собраны здесь.</p>
+
+          <div className="lumi-story-catalog">
+            {STORY_CATALOG.map(story => {
+              const isCurrentStory = story.id === 'last-online';
+              const progressLabel = isCurrentStory
+                ? (hasProgress ? `${episodeLabel(currentEpisodeId)} · продолжить` : 'Эпизод 1 · бесплатно')
+                : story.seasonLabel;
+
+              return (
+                <button
+                  className={`lumi-story-card${story.available ? '' : ' is-coming'}`}
+                  type="button"
+                  key={story.id}
+                  disabled={!story.available}
+                  aria-label={story.available ? `Открыть историю «${story.title}»` : `История «${story.title}» скоро`}
+                  onClick={() => openStory(story.id)}
+                >
+                  <span
+                    className="lumi-story-card__cover"
+                    aria-hidden="true"
+                    style={{ backgroundImage: `linear-gradient(180deg, transparent 30%, rgba(7,5,12,.82) 100%), url(${publicAsset(story.coverAsset)})` }}
+                  />
+                  <span className="lumi-story-card__body">
+                    <small>{story.seasonLabel}</small>
+                    <strong>{story.title}</strong>
+                    <span>{story.description}</span>
+                    <b>{story.available ? progressLabel : 'Скоро'}</b>
+                  </span>
+                  <span className="lumi-story-card__arrow" aria-hidden="true">{story.available ? '→' : '⌁'}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          <p className="lumi-story-catalog__note">Новые истории будут автоматически появляться в этой библиотеке.</p>
         </section>
       ) : null}
 
