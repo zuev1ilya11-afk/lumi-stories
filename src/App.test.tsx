@@ -2,6 +2,7 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { afterEach, expect, it, vi } from 'vitest';
 import type { ProgressDto } from './api/types';
 import { App } from './App';
+import { firstEpisode } from './story/episodes';
 
 const { bootstrap, saveProgress } = vi.hoisted(() => ({ bootstrap: vi.fn(), saveProgress: vi.fn() }));
 vi.mock('./api/client', async () => ({ ...await vi.importActual('./api/client'), bootstrap, saveProgress, sendAnalytics: vi.fn().mockResolvedValue(undefined) }));
@@ -70,4 +71,23 @@ it('continues from the episode 1 terminal into episode 2 without resetting saved
   fireEvent.click(screen.getByRole('button', { name: 'Продолжить — Эпизод 2' }));
   await waitFor(() => expect(screen.getByTestId('story-stage')).toHaveAttribute('data-scene-id', 'ep2_morning'));
   expect(saveProgress).toHaveBeenCalledExactlyOnceWith('signed', { ...saved, episodeId: 'last-online-s1-e2', sceneId: 'ep2_morning' });
+});
+
+
+it('replays episode 1 from the season without overwriting saved episode 2 progress', async () => {
+  connected({ ...saved, episodeId: 'last-online-s1-e2', sceneId: 'ep2_morning' }, true);
+  render(<App production />);
+  fireEvent.click(await screen.findByRole('button', { name: /(?:Начать|Продолжить) историю/ }));
+  fireEvent.click(screen.getByRole('button', { name: 'Эпизод 1: Номер, который не должен отвечать. Пройти снова' }));
+
+  expect(screen.getByTestId('story-stage')).toHaveAttribute('data-scene-id', firstEpisode.startSceneId);
+  expect(screen.getByText('Номер, который не должен отвечать')).toBeVisible();
+  expect(saveProgress).not.toHaveBeenCalled();
+
+  fireEvent.click(screen.getByRole('button', { name: 'Меню' }));
+  expect(screen.getByText('Текущий эпизод')).toBeVisible();
+  fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
+
+  expect(screen.getByTestId('story-stage')).toHaveAttribute('data-scene-id', 'ep2_morning');
+  expect(saveProgress).not.toHaveBeenCalled();
 });
