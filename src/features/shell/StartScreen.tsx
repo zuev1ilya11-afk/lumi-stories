@@ -84,7 +84,7 @@ export function StartScreen({
       <div
         className="lumi-start__hero-art"
         aria-hidden="true"
-        style={{ backgroundImage: `url(${publicAsset('assets/ui/lumi-home-bg-v2.webp')})` }}
+        style={{ backgroundImage: 'url(https://cdn.creativeclaw.co/u/7d016fd4/images/c99f74e9-d8e7-4ece-97c0-3d3351037c5c.png)' }}
       />
       <div className="lumi-start__stars" aria-hidden="true" />
       <div className="lumi-start__shooting-stars" aria-hidden="true">
