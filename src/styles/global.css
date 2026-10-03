@@ -856,3 +856,74 @@ button { color: inherit; }
   }
   .lumi-story-card__cover { min-height: 104px; }
 }
+
+
+/* Read-only episode recap */
+.lumi-recap {
+  min-height: 100dvh;
+  padding-bottom: calc(24px + var(--lumi-safe-bottom));
+  background:
+    radial-gradient(circle at 78% 12%, rgba(83, 63, 128, .34), transparent 34%),
+    linear-gradient(180deg, #0d0b14 0%, #0a0911 100%);
+}
+.lumi-recap__content {
+  width: min(100%, 680px);
+  margin-inline: auto;
+  padding: 24px 18px 8px;
+}
+.lumi-recap__content h1 {
+  margin: 8px 0 8px;
+  font-size: clamp(1.9rem, 8vw, 2.55rem);
+  line-height: 1.08;
+}
+.lumi-recap__lead {
+  margin: 0;
+  color: var(--lumi-muted);
+  line-height: 1.5;
+}
+.lumi-recap__events {
+  display: grid;
+  gap: 10px;
+  margin: 24px 0 18px;
+  padding: 0;
+  list-style: none;
+}
+.lumi-recap__events li {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 14px 14px;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 17px;
+  background: rgba(27, 23, 40, .74);
+}
+.lumi-recap__events li > span {
+  color: var(--lumi-accent);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  padding-top: 2px;
+}
+.lumi-recap__events p {
+  margin: 0;
+  color: #ddd5e5;
+  line-height: 1.48;
+  font-size: .92rem;
+}
+.lumi-recap__note {
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(144, 121, 196, .09);
+  color: #a99fba;
+  font-size: .78rem;
+  line-height: 1.45;
+}
+@media (min-width: 700px) {
+  .lumi-recap {
+    max-width: 520px;
+    margin-inline: auto;
+    box-shadow: 0 0 80px rgba(0,0,0,.5);
+  }
+}
