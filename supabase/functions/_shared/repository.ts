@@ -21,6 +21,9 @@ export type Progress = {
 
 export type ProgressRow = Progress;
 
+export type EpisodeCheckpoint = Progress;
+export type EpisodeCheckpointRow = EpisodeCheckpoint;
+
 export type SaveProgressInput = Omit<Progress, 'playerId' | 'updatedAt'>;
 
 
@@ -40,6 +43,8 @@ export interface LumiDatabaseAdapter {
   upsertPlayerByTelegramId(telegramUserId: number): Promise<Player>;
   findProgress(playerId: string, storyId: string, seasonId: string): Promise<ProgressRow | null>;
   upsertProgress(row: ProgressRow): Promise<ProgressRow>;
+  findEpisodeCheckpoint(playerId: string, storyId: string, seasonId: string, episodeId: string): Promise<EpisodeCheckpointRow | null>;
+  upsertEpisodeCheckpoint(row: EpisodeCheckpointRow): Promise<EpisodeCheckpointRow>;
   insertAnalyticsEvent(row: AnalyticsEventRow): Promise<void>;
 }
 
@@ -47,6 +52,8 @@ export interface LumiRepository {
   getOrCreatePlayer(telegramUserId: number): Promise<Player>;
   getProgress(playerId: string, storyId: string, seasonId: string): Promise<Progress | null>;
   saveProgress(playerId: string, input: SaveProgressInput): Promise<Progress>;
+  getEpisodeCheckpoint(playerId: string, storyId: string, seasonId: string, episodeId: string): Promise<EpisodeCheckpoint | null>;
+  saveEpisodeCheckpoint(playerId: string, input: SaveProgressInput): Promise<EpisodeCheckpoint>;
   recordAnalytics(playerId: string, input: AnalyticsEventInput): Promise<void>;
 }
 
@@ -60,6 +67,16 @@ export function createRepository(database: LumiDatabaseAdapter): LumiRepository 
     },
     saveProgress(playerId, input) {
       return database.upsertProgress({
+        playerId,
+        ...input,
+        updatedAt: new Date().toISOString(),
+      });
+    },
+    getEpisodeCheckpoint(playerId, storyId, seasonId, episodeId) {
+      return database.findEpisodeCheckpoint(playerId, storyId, seasonId, episodeId);
+    },
+    saveEpisodeCheckpoint(playerId, input) {
+      return database.upsertEpisodeCheckpoint({
         playerId,
         ...input,
         updatedAt: new Date().toISOString(),
@@ -191,6 +208,46 @@ export function createSupabaseRestDatabaseAdapter(
       );
       const [saved] = await readRows<ProgressDbRow>(response);
       if (!saved) throw new Error('Supabase progress upsert returned no row');
+      return progressFromRow(saved);
+    },
+
+    async findEpisodeCheckpoint(playerId, storyId, seasonId, episodeId) {
+      const query = new URLSearchParams({
+        player_id: `eq.${playerId}`,
+        story_id: `eq.${storyId}`,
+        season_id: `eq.${seasonId}`,
+        episode_id: `eq.${episodeId}`,
+        select: 'player_id,story_id,season_id,episode_id,scene_id,junho_score,taeyun_score,truth_score,risk_score,flags,updated_at',
+        limit: '1',
+      });
+      const response = await fetcher(`${root}/rest/v1/episode_checkpoints?${query.toString()}`, { headers });
+      const [row] = await readRows<ProgressDbRow>(response);
+      return row ? progressFromRow(row) : null;
+    },
+
+    async upsertEpisodeCheckpoint(row) {
+      const response = await fetcher(
+        `${root}/rest/v1/episode_checkpoints?on_conflict=player_id,story_id,season_id,episode_id&select=player_id,story_id,season_id,episode_id,scene_id,junho_score,taeyun_score,truth_score,risk_score,flags,updated_at`,
+        {
+          method: 'POST',
+          headers: { ...headers, Prefer: 'resolution=merge-duplicates,return=representation' },
+          body: JSON.stringify({
+            player_id: row.playerId,
+            story_id: row.storyId,
+            season_id: row.seasonId,
+            episode_id: row.episodeId,
+            scene_id: row.sceneId,
+            junho_score: row.junhoScore,
+            taeyun_score: row.taeyunScore,
+            truth_score: row.truthScore,
+            risk_score: row.riskScore,
+            flags: row.flags,
+            updated_at: row.updatedAt,
+          }),
+        },
+      );
+      const [saved] = await readRows<ProgressDbRow>(response);
+      if (!saved) throw new Error('Supabase episode checkpoint upsert returned no row');
       return progressFromRow(saved);
     },
 
