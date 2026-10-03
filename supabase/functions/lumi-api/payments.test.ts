@@ -76,6 +76,10 @@ function storeMock(current = order()): StarPaymentStore & {
       value = { ...existing, status: 'refunded', refundedAt: 'now' };
       return true;
     },
+    async markFulfilled(existing) {
+      value = { ...existing, fulfilledAt: 'now' };
+      return true;
+    },
     async hasPaidSeason() { return value?.status === 'paid'; },
     async setSeasonOwned(_playerId, owned) { this.ownership = owned; },
     async createSupportRequest(_userId, messageText) { this.support.push(messageText); },
