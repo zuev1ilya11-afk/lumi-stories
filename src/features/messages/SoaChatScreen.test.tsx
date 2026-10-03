@@ -56,3 +56,34 @@ describe('SoaChatScreen', () => {
     expect(onAdvance).toHaveBeenCalledTimes(1);
   });
 });
+
+
+it('renders structured incoming, outgoing and system chat messages', () => {
+  const structured = {
+    ...scene,
+    chat: {
+      status: 'была в сети очень давно',
+      typing: true,
+      messages: [
+        { from: 'soa', text: 'Ты живёшь напротив него?' },
+        { from: 'lera', text: 'Кто ты?', meta: 'прочитано' },
+        { from: 'system', text: 'SOA печатает…' },
+      ],
+    },
+  } as unknown as Scene;
+
+  render(
+    <SoaChatScreen
+      scene={structured}
+      availableChoices={[]}
+      onChoose={vi.fn()}
+      onAdvance={vi.fn()}
+    />,
+  );
+
+  expect(screen.getByText('Кто ты?').closest('[data-from]')).toHaveAttribute('data-from', 'lera');
+  expect(screen.getByText('Ты живёшь напротив него?').closest('[data-from]')).toHaveAttribute('data-from', 'soa');
+  expect(screen.getByText('прочитано')).toBeInTheDocument();
+  expect(screen.getByText('SOA печатает…')).toBeInTheDocument();
+  expect(screen.getByLabelText('SOA печатает')).toBeInTheDocument();
+});

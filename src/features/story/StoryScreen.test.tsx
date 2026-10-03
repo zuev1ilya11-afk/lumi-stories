@@ -77,3 +77,70 @@ describe('StoryScreen', () => {
     release();
   });
 });
+
+
+it('renders message scenes as a dedicated full-screen chat stage', () => {
+  const chatEpisode: Episode = {
+    id: 'chat-episode',
+    title: 'Chat',
+    startSceneId: 'ep1_soa_first_message',
+    scenes: [{
+      id: 'ep1_soa_first_message',
+      kind: 'message',
+      text: 'Ты живёшь напротив него?',
+      nextSceneId: 'end',
+    }, {
+      id: 'end',
+      kind: 'terminal',
+      text: 'end',
+    }],
+  };
+
+  const { container } = render(
+    <StoryScreen
+      episode={chatEpisode}
+      sceneId="ep1_soa_first_message"
+      state={state}
+      onChoose={vi.fn()}
+      onAdvance={vi.fn()}
+    />,
+  );
+
+  expect(container.querySelector('.lumi-chat-stage')).toBeInTheDocument();
+  expect(container.querySelector('.lumi-story')).not.toBeInTheDocument();
+});
+
+it('marks key scenes as cinematic and exposes motion variant', () => {
+  const cinematicEpisode: Episode = {
+    id: 'cinematic',
+    title: 'Cinematic',
+    startSceneId: 'ep1_noise_hall',
+    scenes: [{
+      id: 'ep1_noise_hall',
+      kind: 'narrative',
+      text: 'Джунхо увидел подвеску и остановился.',
+      background: 'apartment_hall_night',
+      character: 'junho-guarded',
+      nextSceneId: 'end',
+    }, {
+      id: 'end',
+      kind: 'terminal',
+      text: 'end',
+    }],
+  };
+
+  render(
+    <StoryScreen
+      episode={cinematicEpisode}
+      sceneId="ep1_noise_hall"
+      state={state}
+      onChoose={vi.fn()}
+      onAdvance={vi.fn()}
+    />,
+  );
+
+  const stage = screen.getByTestId('story-stage');
+  expect(stage).toHaveAttribute('data-presentation', 'cinematic');
+  expect(stage).toHaveAttribute('data-motion', 'tension');
+  expect(stage.querySelector('.lumi-story__backdrop')).toBeInTheDocument();
+});
