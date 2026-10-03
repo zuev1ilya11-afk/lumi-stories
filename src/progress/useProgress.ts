@@ -1,99 +1,105 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { bootstrap, saveProgress } from '../api/client';
 import { trackEvent } from '../analytics/events';
-import { firstEpisode, getEpisodeById } from '../content/last-online/season-1/episodes';
-import type { Episode } from '../story/schema';
-import { createProgressMachine, progressFromDto, progressToDto, type ProgressState } from './model';
+import { episodes, firstEpisode, getEpisode } from '../story/episodes';
+import { createProgressMachine, progressFromDto, type ProgressState } from './model';
+import { normalizeEpisode2Progress } from './legacyEpisode2';
 
 type ProgressStatus = 'loading' | 'ready' | 'saving' | 'error';
+type Operation = 'advance' | 'choose' | 'nextEpisode';
 
 export function useProgress(initData: string): {
   status: ProgressStatus;
   state: ProgressState | null;
-  episode: Episode;
   choose(choiceId: string): Promise<void>;
   advance(): Promise<void>;
+  nextEpisode(): Promise<void>;
   retry(): Promise<void>;
-  startEpisode(episodeId: string): Promise<void>;
 } {
   const [status, setStatus] = useState<ProgressStatus>('loading');
   const [state, setState] = useState<ProgressState | null>(null);
-  const [episode, setEpisode] = useState<Episode>(firstEpisode);
-  const episodeRef = useRef<Episode>(firstEpisode);
+  const [bootstrapAttempt, setBootstrapAttempt] = useState(0);
   const machineRef = useRef<ReturnType<typeof createProgressMachine> | null>(null);
-  const pendingEpisodeRef = useRef<string | null>(null);
-  const pendingAnalyticsRef = useRef<{ operation: 'advance' | 'choose'; sceneId: string; choiceId?: string; episodeId: string } | null>(null);
-
-  const makeMachine = useCallback((selected: Episode, initial: ProgressState) => createProgressMachine({
-    episode: selected,
-    initial,
-    save: (progress) => saveProgress(initData, progress),
-  }), [initData]);
+  const bootstrapBusy = useRef(true);
+  const inFlight = useRef<Promise<void> | null>(null);
+  const pendingAnalyticsRef = useRef<{ operation: Operation; episodeId: string; sceneId: string; choiceId?: string } | null>(null);
 
   useEffect(() => {
     let active = true;
+    bootstrapBusy.current = true;
+    machineRef.current = null;
+    pendingAnalyticsRef.current = null;
+    setState(null);
     setStatus('loading');
     bootstrap(initData)
       .then((payload) => {
         if (!active) return;
-        const selected = getEpisodeById(payload.progress?.episodeId);
-        const initial = progressFromDto(payload.progress, selected);
-        episodeRef.current = selected;
-        setEpisode(selected);
-        machineRef.current = makeMachine(selected, initial);
+        const episode = getEpisode(payload.progress?.episodeId);
+        const initial = progressFromDto(normalizeEpisode2Progress(payload.progress, episode), episode);
+        machineRef.current = createProgressMachine({
+          episode: firstEpisode,
+          episodes,
+          initial,
+          save: (progress) => saveProgress(initData, progress),
+        });
         setState(initial);
         setStatus('ready');
       })
-      .catch(() => { if (active) setStatus('error'); });
+      .catch(() => { if (active) setStatus('error'); })
+      .finally(() => { if (active) bootstrapBusy.current = false; });
     return () => { active = false; };
-  }, [initData, makeMachine]);
+  }, [initData, bootstrapAttempt]);
 
-  const commitEpisodeStart = useCallback(async (episodeId: string) => {
+  const run = useCallback((operation: Operation | 'retry', choiceId?: string): Promise<void> => {
+    if (inFlight.current) return inFlight.current;
     const machine = machineRef.current;
-    if (!machine) return;
-    const selected = getEpisodeById(episodeId);
-    if (selected.id === episodeRef.current.id) return;
-    pendingEpisodeRef.current = selected.id;
-    setStatus('saving');
-    try {
-      const candidate: ProgressState = { sceneId: selected.startSceneId, storyState: machine.current().storyState };
-      const saved = await saveProgress(initData, progressToDto(candidate, selected));
-      const initial = progressFromDto(saved, selected);
-      episodeRef.current = selected;
-      setEpisode(selected);
-      machineRef.current = makeMachine(selected, initial);
-      pendingEpisodeRef.current = null;
-      setState(initial);
-      setStatus('ready');
-      void trackEvent('episode_started', { episodeId: selected.id, sceneId: initial.sceneId });
-    } catch {
-      setStatus('error');
+    if (!machine) {
+      if (operation === 'retry' && !bootstrapBusy.current) {
+        bootstrapBusy.current = true;
+        setBootstrapAttempt(attempt => attempt + 1);
+      }
+      return Promise.resolve();
     }
-  }, [initData, makeMachine]);
-
-  const run = useCallback(async (operation: 'advance' | 'retry' | 'choose', choiceId?: string) => {
-    if (operation === 'retry' && pendingEpisodeRef.current) {
-      await commitEpisodeStart(pendingEpisodeRef.current);
-      return;
-    }
-    const machine = machineRef.current;
-    if (!machine) return;
+    if (operation !== 'retry' && machine.pending()) return Promise.reject(new Error('Retry the pending save before continuing'));
+    if (operation === 'retry' && !machine.pending()) return Promise.resolve();
     if (operation !== 'retry') {
-      pendingAnalyticsRef.current = { operation, sceneId: machine.current().sceneId, episodeId: episodeRef.current.id, ...(choiceId ? { choiceId } : {}) };
+      const current = machine.current();
+      pendingAnalyticsRef.current = { operation, episodeId: current.episodeId ?? firstEpisode.id, sceneId: current.sceneId, ...(choiceId ? { choiceId } : {}) };
     }
     setStatus('saving');
-    try {
-      const next = operation === 'choose' ? await machine.choose(choiceId ?? '') : operation === 'advance' ? await machine.advance() : await machine.retry();
-      setState(next);
-      setStatus('ready');
-      const pendingAnalytics = pendingAnalyticsRef.current;
-      if (pendingAnalytics?.operation === 'choose') void trackEvent('choice_selected', { episodeId: pendingAnalytics.episodeId, sceneId: pendingAnalytics.sceneId, choiceId: pendingAnalytics.choiceId });
-      if (pendingAnalytics) void trackEvent('scene_reached', { episodeId: pendingAnalytics.episodeId, sceneId: next.sceneId });
-      pendingAnalyticsRef.current = null;
-    } catch {
-      setStatus('error');
-    }
-  }, [commitEpisodeStart]);
+    inFlight.current = (async () => {
+      try {
+        const before = machine.current();
+        const next = operation === 'choose'
+          ? await machine.choose(choiceId ?? '')
+          : operation === 'advance'
+            ? await machine.advance()
+            : operation === 'nextEpisode'
+              ? await machine.nextEpisode()
+              : await machine.retry();
+        if (machineRef.current !== machine) return;
+        setState(next);
+        setStatus('ready');
+        const pending = pendingAnalyticsRef.current;
+        const episodeId = next.episodeId ?? firstEpisode.id;
+        if (pending && next !== before) {
+          if (pending.operation === 'choose') void trackEvent('choice_selected', { episodeId: pending.episodeId, sceneId: pending.sceneId, choiceId: pending.choiceId });
+          if (pending.operation === 'nextEpisode') void trackEvent('episode_started', { episodeId, sceneId: next.sceneId });
+          void trackEvent('scene_reached', { episodeId, sceneId: next.sceneId });
+        }
+        pendingAnalyticsRef.current = null;
+      } catch (error) {
+        if (machineRef.current === machine) {
+          setStatus(machine.pending() ? 'error' : 'ready');
+          if (!machine.pending()) pendingAnalyticsRef.current = null;
+        }
+        throw error;
+      } finally {
+        inFlight.current = null;
+      }
+    })();
+    return inFlight.current;
+  }, []);
 
-  return { status, state, episode, choose: (choiceId) => run('choose', choiceId), advance: () => run('advance'), retry: () => run('retry'), startEpisode: commitEpisodeStart };
+  return { status, state, choose: choiceId => run('choose', choiceId), advance: () => run('advance'), nextEpisode: () => run('nextEpisode'), retry: () => run('retry') };
 }

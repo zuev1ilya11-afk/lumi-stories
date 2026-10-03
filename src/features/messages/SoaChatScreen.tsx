@@ -4,16 +4,16 @@ import { sceneAsset } from '../story/presentation';
 import { useReducedMotion } from '../story/useReducedMotion';
 import { AttachmentViewer } from './AttachmentViewer';
 
-export type ChatTimelineEvent = { type: 'message'; message: ChatMessage } | { type: 'attachment'; src: string };
-type Props = { scene: Scene; availableChoices: Choice[]; onChoose(choiceId: string): Promise<void> | void; onAdvance(): Promise<void> | void; disabled?: boolean; onMenu?(): void; history?: ChatTimelineEvent[]; onHistory?(events: ChatTimelineEvent[]): void };
+export type ChatTimelineEvent = { type: 'message'; message: ChatMessage } | { type: 'attachment'; src: string; label?: string };
+type Props = { scene: Scene; availableChoices: Choice[]; onChoose(choiceId: string): Promise<void> | void; onAdvance(): Promise<void> | void; disabled?: boolean; onMenu?(): void; history?: ChatTimelineEvent[]; onHistory?(events: ChatTimelineEvent[]): void; dateLabel?: string };
 function messageKey(m: ChatMessage) { return `${m.from}:${m.text}`; }
-export function SoaChatScreen({ scene, availableChoices, onChoose, onAdvance, disabled = false, onMenu, history = [], onHistory }: Props) {
+export function SoaChatScreen({ scene, availableChoices, onChoose, onAdvance, disabled = false, onMenu, history = [], onHistory, dateLabel = 'Сегодня · 23:46' }: Props) {
   const reduced = useReducedMotion();
   const [timeline] = useState<ChatTimelineEvent[]>(() => {
     const messages = scene.chat?.messages ?? scene.text.split(/\n\s*\n/u).filter(Boolean).map(text => ({ from: 'soa' as const, text: text.replace(/^SOA:\s*/u, '') }));
     const added: ChatTimelineEvent[] = messages.filter(m => !history.some(h => h.type === 'message' && messageKey(h.message) === messageKey(m))).map(message => ({ type: 'message', message }));
     const src = sceneAsset(scene.attachment, 'cg');
-    if (src && !history.some(h => h.type === 'attachment' && h.src === src)) added.push({ type: 'attachment', src });
+    if (src && !history.some(h => h.type === 'attachment' && h.src === src)) added.push({ type: 'attachment', src, label: src.endsWith('/soa-junho-old-photo.webp') || src.endsWith('/old-photo.webp') ? 'IMG_0317_old.jpg' : src.split('/').at(-1) });
     return [...history, ...added];
   });
   const first = timeline[history.length];
@@ -63,10 +63,10 @@ export function SoaChatScreen({ scene, availableChoices, onChoose, onAdvance, di
       <div className="lumi-soa__identity"><strong>SOA</strong><small>{typing ? 'печатает…' : scene.chat?.status ?? 'была в сети очень давно'}</small></div><span className="lumi-soa__secure" aria-hidden="true">⋮</span>
     </header>
     <div className="lumi-soa__thread" ref={thread} role="log" aria-live="polite" aria-relevant="additions text">
-      <div className="lumi-soa__date">Сегодня · 23:46</div>
+      <div className="lumi-soa__date">{dateLabel}</div>
       {timeline.slice(0, visible).map((event, i) => {
         if (event.type === 'attachment') return <div className="lumi-soa__message lumi-soa__message--soa" data-from="soa" key={`photo-${event.src}`}>
-          <button className="lumi-soa__photo-button" type="button" aria-label="Открыть IMG_0317_old.jpg" onClick={() => setViewer(event.src)}><img className="lumi-soa__attachment" src={event.src} alt="Вложение от SOA" /><span>IMG_0317_old.jpg <small>Открыть фотографию ↗</small></span></button>
+          <button className="lumi-soa__photo-button" type="button" aria-label={`Открыть ${event.label ?? 'IMG_0317_old.jpg'}`} onClick={() => setViewer(event.src)}><img className="lumi-soa__attachment" src={event.src} alt="Вложение от SOA" /><span>{event.label ?? 'IMG_0317_old.jpg'} <small>Открыть фотографию ↗</small></span></button>
         </div>;
         const message = event.message;
         return message.from === 'system'

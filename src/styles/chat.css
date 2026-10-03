@@ -1,7 +1,7 @@
 .lumi-chat-stage { height: var(--tg-viewport-stable-height, 100dvh); min-height: 480px; max-width: 520px; margin-inline: auto; padding: calc(4px + var(--lumi-safe-top)) 0 calc(6px + var(--lumi-safe-bottom)); }
 .lumi-chat-stage .lumi-soa { height: 100%; min-height: 0; }
 .lumi-soa__header { padding: 10px 14px 13px; gap: 10px; }
-.lumi-soa__back { border: 0; background: none; font-size: 30px; width: 30px; min-height: 44px; padding: 0; color: #d9bce9; }
+.lumi-soa__back { border: 0; background: none; font-size: 30px; width: 44px; min-width: 44px; min-height: 44px; flex-shrink: 0; padding: 0; color: #d9bce9; }
 .lumi-soa__avatar { width: 40px; height: 40px; background: linear-gradient(145deg, #493651, #272433); color: #e4cceb; font-family: Georgia, serif; font-weight: 500; }
 .lumi-soa__identity strong { font-size: .94rem; letter-spacing: .03em; }
 .lumi-soa__identity small { display: block; margin-top: 3px; color: #aa97b8; font-size: .65rem; }

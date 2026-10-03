@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import type { Episode, StoryState } from '../../story/schema';
 import { StoryScreen } from './StoryScreen';
@@ -77,6 +77,54 @@ describe('StoryScreen', () => {
     expect(button).toBeDisabled();
     release();
   });
+});
+
+it('continues a completed episode only once while its save is pending', async () => {
+  const terminal: Episode = { id: 'last-online-s1-e1', title: 'One', startSceneId: 'end', scenes: [{ id: 'end', kind: 'terminal', text: 'Конец' }] };
+  const second: Episode = { ...terminal, id: 'last-online-s1-e2', title: 'Two' };
+  let release!: () => void;
+  const onNextEpisode = vi.fn(() => new Promise<void>(resolve => { release = resolve; }));
+  const onAdvance = vi.fn();
+  render(<StoryScreen episode={terminal} nextEpisode={second} sceneId="end" state={state} onChoose={vi.fn()} onAdvance={onAdvance} onNextEpisode={onNextEpisode} />);
+  expect(screen.queryByRole('button', { name: 'Продолжить — Эпизод 2' })).not.toBeInTheDocument();
+  fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
+  const next = screen.getByRole('button', { name: 'Продолжить — Эпизод 2' });
+  fireEvent.click(next);
+  fireEvent.click(next);
+  expect(next).toBeDisabled();
+  expect(onNextEpisode).toHaveBeenCalledTimes(1);
+  expect(onAdvance).not.toHaveBeenCalled();
+  await act(async () => release());
+});
+
+it('finishes episode 2 with development notice and a return to season', () => {
+  const terminal: Episode = { id: 'last-online-s1-e2', title: 'Two', startSceneId: 'ep2_end', scenes: [{ id: 'ep2_end', kind: 'terminal', text: 'Конец' }] };
+  const onMenu = vi.fn();
+  render(<StoryScreen episode={terminal} sceneId="ep2_end" state={state} onChoose={vi.fn()} onAdvance={vi.fn()} onMenu={onMenu} />);
+  fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
+  expect(screen.getByText('Эпизод 2 завершён')).toBeVisible();
+  expect(screen.getByText('Эпизод 3 в разработке')).toBeVisible();
+  expect(screen.queryByText('249 ₽')).not.toBeInTheDocument();
+  fireEvent.click(screen.getByRole('button', { name: 'К сезону' }));
+  expect(onMenu).toHaveBeenCalledTimes(1);
+});
+
+it('labels episode 2 chat without the episode 1 night time or photograph name', () => {
+  const chatEpisode: Episode = { id: 'last-online-s1-e2', title: 'Two', startSceneId: 'ep2_chat', scenes: [{ id: 'ep2_chat', kind: 'message', text: 'Посмотри.', attachment: 'assets/last-online/episode-2/cg/cafe-photo.webp', nextSceneId: 'end' }] };
+  render(<StoryScreen episode={chatEpisode} sceneId="ep2_chat" state={state} onChoose={vi.fn()} onAdvance={vi.fn()} />);
+  expect(screen.getByText('Сегодня')).toBeVisible();
+  expect(screen.queryByText('Сегодня · 23:46')).not.toBeInTheDocument();
+  fireEvent.click(screen.getByRole('button', { name: 'Показать сообщения' }));
+  expect(screen.getByRole('button', { name: 'Открыть cafe-photo.webp' })).toBeVisible();
+});
+
+it('preserves the original episode 1 attachment filename for its current artwork', () => {
+  const chatEpisode: Episode = { id: 'last-online-s1-e1', title: 'One', startSceneId: 'ep1_photo', scenes: [{ id: 'ep1_photo', kind: 'message', text: 'Посмотри.', attachment: 'assets/last-online/v2/cg/old-photo.webp', nextSceneId: 'end' }] };
+  render(<StoryScreen episode={chatEpisode} sceneId="ep1_photo" state={state} onChoose={vi.fn()} onAdvance={vi.fn()} />);
+  fireEvent.click(screen.getByRole('button', { name: 'Показать сообщения' }));
+  expect(screen.getByRole('button', { name: 'Открыть IMG_0317_old.jpg' })).toBeVisible();
 });
 
 

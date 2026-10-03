@@ -1,0 +1,168 @@
+{
+  "generator": "built-in image_gen",
+  "reference": "assets/last-online/v2/cg/character-reference.webp",
+  "assets": [
+    {
+      "path": "assets/last-online/ep2/characters/taeyun/neutral.webp",
+      "bytes": 52904,
+      "width": 600,
+      "height": 900,
+      "alpha": true,
+      "sha256": "7c7908f2a61fddeda8c47bf6c155b686400693519380dc1714cabe59055bfbca",
+      "prompt": "Original Taeyun identity anchor; full-body neutral, ivory blazer, wine shirt, honey-ash hair."
+    },
+    {
+      "path": "assets/last-online/ep2/characters/taeyun/stage.webp",
+      "bytes": 58892,
+      "width": 600,
+      "height": 900,
+      "alpha": true,
+      "sha256": "9047dddd30859d6d9e228acdf74ea03b25ee1656d2957bd4c336639bba109874",
+      "prompt": "Use case: identity-preserve. ONE transparent full-body sprite, Lee Taeyun for LUMI. Edit attached character into STAGE state: Bright practiced charismatic stage smile, confidently holds handheld microphone near chest with one hand, other hand makes graceful small open greeting to audience, slightly turned stance, brilliant alert eyes. Preserve exact adult Korean man identity, honey-ash-brown hair, amber-brown eyes, ivory blazer, deep wine satin open shirt, charcoal trousers, polished black loafers, silver bracelet and ear stud. Premium Korean webtoon painterly shadows and delicate linework, identical rendering style. Entire head, both hands, both shoes in portrait 2:3 canvas with margin. True transparent alpha background, no environment or glow or floor, no text, solo character. Change pose and expression substantially, retain recognizability."
+    },
+    {
+      "path": "assets/last-online/ep2/characters/taeyun/amused.webp",
+      "bytes": 51174,
+      "width": 600,
+      "height": 900,
+      "alpha": true,
+      "sha256": "f36d93e68fe988588c78f20ee3e602027bd26f38d6a944c0b03f2a41bde926de",
+      "prompt": "Use case: identity-preserve. ONE transparent full-body sprite, Lee Taeyun for LUMI. Edit attached character into AMUSED state: Private amused half-laugh, playful lifted eyebrow, one hand touches collar, other rests at hip, slight relaxed lean, warm teasing eye contact. Preserve exact adult Korean man identity, honey-ash-brown hair, amber-brown eyes, ivory blazer, deep wine satin open shirt, charcoal trousers, polished black loafers, silver bracelet and ear stud. Premium Korean webtoon painterly shadows and delicate linework, identical rendering style. Entire head, both hands, both shoes in portrait 2:3 canvas with margin. True transparent alpha background, no environment or glow or floor, no text, solo character. Change pose and expression substantially, retain recognizability."
+    },
+    {
+      "path": "assets/last-online/ep2/characters/taeyun/guarded.webp",
+      "bytes": 47512,
+      "width": 600,
+      "height": 900,
+      "alpha": true,
+      "sha256": "339a3bf86bb4274d03baa0818b0d7a1153ea21fb98c056a85f44c8f1bdf0722b",
+      "prompt": "Use case: identity-preserve. ONE transparent full-body sprite, Lee Taeyun for LUMI. Edit attached character into GUARDED state: Smile abruptly gone, narrowed cautious eyes, lips pressed, shoulders closed, one arm crossed beneath other hand holding phone tightly near chest, defensive body language. Preserve exact adult Korean man identity, honey-ash-brown hair, amber-brown eyes, ivory blazer, deep wine satin open shirt, charcoal trousers, polished black loafers, silver bracelet and ear stud. Premium Korean webtoon painterly shadows and delicate linework, identical rendering style. Entire head, both hands, both shoes in portrait 2:3 canvas with margin. True transparent alpha background, no environment or glow or floor, no text, solo character. Change pose and expression substantially, retain recognizability."
+    },
+    {
+      "path": "assets/last-online/ep2/characters/taeyun/serious.webp",
+      "bytes": 54100,
+      "width": 600,
+      "height": 900,
+      "alpha": true,
+      "sha256": "fe94d176814a44c60ee083dffa55d3eece2adae79daaf75ede573eb9cfdb146d",
+      "prompt": "Use case: identity-preserve. ONE transparent full-body sprite, Lee Taeyun for LUMI. Edit attached character into SERIOUS state: Direct serious questioning expression, brows slightly drawn, upright stance, one hand extended palm up as if asking to see evidence, other hangs at side. Preserve exact adult Korean man identity, honey-ash-brown hair, amber-brown eyes, ivory blazer, deep wine satin open shirt, charcoal trousers, polished black loafers, silver bracelet and ear stud. Premium Korean webtoon painterly shadows and delicate linework, identical rendering style. Entire head, both hands, both shoes in portrait 2:3 canvas with margin. True transparent alpha background, no environment or glow or floor, no text, solo character. Change pose and expression substantially, retain recognizability."
+    },
+    {
+      "path": "assets/last-online/ep2/characters/taeyun/surprised.webp",
+      "bytes": 62894,
+      "width": 600,
+      "height": 900,
+      "alpha": true,
+      "sha256": "09991dbb40b6a241d2ca490032f88bf02c798bc250474e3d90df2855ad6d33de",
+      "prompt": "Use case: identity-preserve. ONE transparent full-body sprite, Lee Taeyun for LUMI. Edit attached character into SURPRISED state: Recognizes impossible incoming call, sudden fear and shock, widened eyes looking down to smartphone raised in one hand, other hand frozen slightly raised, body recoils. Preserve exact adult Korean man identity, honey-ash-brown hair, amber-brown eyes, ivory blazer, deep wine satin open shirt, charcoal trousers, polished black loafers, silver bracelet and ear stud. Premium Korean webtoon painterly shadows and delicate linework, identical rendering style. Entire head, both hands, both shoes in portrait 2:3 canvas with margin. True transparent alpha background, no environment or glow or floor, no text, solo character. Change pose and expression substantially, retain recognizability."
+    },
+    {
+      "path": "assets/last-online/ep2/characters/taeyun/vulnerable.webp",
+      "bytes": 50056,
+      "width": 600,
+      "height": 900,
+      "alpha": true,
+      "sha256": "f7b49297882d2313ef2b9a1db70f4cc6815fecd6c6fc848ab88e505258ed0b34",
+      "prompt": "Use case: identity-preserve. ONE transparent full-body sprite, Lee Taeyun for LUMI. Edit attached character into VULNERABLE state: On rooftop confesses guilt: tired wet eyes and lowered gaze, slight slumped shoulders, one hand grips opposite wrist down in front, no smile, emotionally exposed. Preserve exact adult Korean man identity, honey-ash-brown hair, amber-brown eyes, ivory blazer, deep wine satin open shirt, charcoal trousers, polished black loafers, silver bracelet and ear stud. Premium Korean webtoon painterly shadows and delicate linework, identical rendering style. Entire head, both hands, both shoes in portrait 2:3 canvas with margin. True transparent alpha background, no environment or glow or floor, no text, solo character. Change pose and expression substantially, retain recognizability."
+    },
+    {
+      "path": "assets/last-online/ep2/backgrounds/event-hall.webp",
+      "bytes": 166454,
+      "width": 900,
+      "height": 1350,
+      "alpha": false,
+      "sha256": "88fe69ff5c4e75a9ca721bdbc46946a66dc829859cc60975ef6f40842bb3dc97",
+      "prompt": "Use case: illustration-story. ONE full-bleed portrait 2:3 mobile visual novel environment background for LUMI. University closed student livestream event hall, intimate stage with two modern stools and microphones, fictional ECLIPSE simple lettering on back LED panel, lavender and warm spotlight beams, audience seats softly implied in lower foreground, cables and volunteer desk. Daylight through high windows. No people. Match attached reference's premium Korean webtoon painterly grounded adult-world art, delicate ink details, cinematic moody lighting, sophisticated colors. Important action zone center upper 65 percent, slight negative space lower third for dialogue, coherent perspective, high quality environment art. No character figures, no collage, no logos from real companies, no watermarks. ECLIPSE and VANTA are fictional."
+    },
+    {
+      "path": "assets/last-online/ep2/backgrounds/backstage.webp",
+      "bytes": 146670,
+      "width": 900,
+      "height": 1350,
+      "alpha": false,
+      "sha256": "5cd36e1201aa54759c787b58c445637540786d909cf308d117f279b508cb1cf2",
+      "prompt": "Use case: illustration-story. ONE full-bleed portrait 2:3 mobile visual novel environment background for LUMI. Backstage dressing room of a university broadcast hall, mirror ringed by warm bulbs, garment rack with ivory stage jackets, makeup table, paper call sheet, door opening onto cool service hallway. Afternoon warm and cool mixed light. No people. Match attached reference's premium Korean webtoon painterly grounded adult-world art, delicate ink details, cinematic moody lighting, sophisticated colors. Important action zone center upper 65 percent, slight negative space lower third for dialogue, coherent perspective, high quality environment art. No character figures, no collage, no logos from real companies, no watermarks. ECLIPSE and VANTA are fictional."
+    },
+    {
+      "path": "assets/last-online/ep2/backgrounds/practice-room.webp",
+      "bytes": 179422,
+      "width": 900,
+      "height": 1350,
+      "alpha": false,
+      "sha256": "78d198b696b1de1c7e30c05b3745bda64baa93e2d24463d60ddc71391f5b2452",
+      "prompt": "Use case: illustration-story. ONE full-bleed portrait 2:3 mobile visual novel environment background for LUMI. Old VANTA rehearsal room, worn parquet, mirror wall with a hairline crack, black upright piano, a small cassette player and coiled audio cables, faded rehearsal marks taped on floor, cold late afternoon light through frosted upper windows, melancholy dust. No people. Match attached reference's premium Korean webtoon painterly grounded adult-world art, delicate ink details, cinematic moody lighting, sophisticated colors. Important action zone center upper 65 percent, slight negative space lower third for dialogue, coherent perspective, high quality environment art. No character figures, no collage, no logos from real companies, no watermarks. ECLIPSE and VANTA are fictional."
+    },
+    {
+      "path": "assets/last-online/ep2/backgrounds/archive.webp",
+      "bytes": 104570,
+      "width": 900,
+      "height": 1350,
+      "alpha": false,
+      "sha256": "ed2236bd076bdb85093c802efab960a7366c3f3cc13ab5a813893510ea51c2ee",
+      "prompt": "Use case: illustration-story. ONE full-bleed portrait 2:3 mobile visual novel environment background for LUMI. VANTA archive room, secure old monitor workstation and stacked labelled analog video tapes, drawers and compact shelving, dim cyan monitor glow with amber desk lamp. Screen shows abstract paused hallway image without readable detail, no people. Match attached reference's premium Korean webtoon painterly grounded adult-world art, delicate ink details, cinematic moody lighting, sophisticated colors. Important action zone center upper 65 percent, slight negative space lower third for dialogue, coherent perspective, high quality environment art. No character figures, no collage, no logos from real companies, no watermarks. ECLIPSE and VANTA are fictional."
+    },
+    {
+      "path": "assets/last-online/ep2/backgrounds/rooftop.webp",
+      "bytes": 180044,
+      "width": 900,
+      "height": 1350,
+      "alpha": false,
+      "sha256": "5c6725f58173baec4922e82689ff1d3e3bb9f11c2d7df52c7c3af3fa4d91bafb",
+      "prompt": "Use case: illustration-story. ONE full-bleed portrait 2:3 mobile visual novel environment background for LUMI. VANTA rooftop at blue-hour sunset over fictional Korean city Hansu, waist-height concrete parapet and metal railing, small utility door and ventilation fan behind, distant tower and bridge reflected in city windows, soft wind implied, dusk lavender and peach sky, quiet intimate atmosphere. No people. Match attached reference's premium Korean webtoon painterly grounded adult-world art, delicate ink details, cinematic moody lighting, sophisticated colors. Important action zone center upper 65 percent, slight negative space lower third for dialogue, coherent perspective, high quality environment art. No character figures, no collage, no logos from real companies, no watermarks. ECLIPSE and VANTA are fictional."
+    },
+    {
+      "path": "assets/last-online/ep2/backgrounds/service-lift.webp",
+      "bytes": 133368,
+      "width": 900,
+      "height": 1350,
+      "alpha": false,
+      "sha256": "21cd4e56c9a4dddd86ae56bbb531e6d186d5569cf2f849be2eee22e8141d1dd9",
+      "prompt": "Use case: illustration-story. ONE full-bleed portrait 2:3 mobile visual novel environment background for LUMI. VANTA service corridor and freight elevator, brushed steel lift doors partly open, dim overhead linear fluorescent light, cool gray and subtle violet palette, EXIT indicator and concrete walls, security card reader beside elevator, tense nighttime atmosphere. No people. Match attached reference's premium Korean webtoon painterly grounded adult-world art, delicate ink details, cinematic moody lighting, sophisticated colors. Important action zone center upper 65 percent, slight negative space lower third for dialogue, coherent perspective, high quality environment art. No character figures, no collage, no logos from real companies, no watermarks. ECLIPSE and VANTA are fictional."
+    },
+    {
+      "path": "assets/last-online/ep2/cg/recognized-number.webp",
+      "bytes": 182292,
+      "width": 900,
+      "height": 1350,
+      "alpha": false,
+      "sha256": "8b97d06f9d29eaa4e0aa7a9878609233eb5111065e887f6f008d7081208de3a2",
+      "prompt": "Use case: precise-object-edit. Fix ONLY Taeyun's phone in attached LUMI event illustration. We see the REAR of his smartphone with camera lenses; remove all glowing incoming-call avatar and red/green UI buttons from the phone's BACK. Replace those graphics by a plain matte black rear case below the unchanged camera lenses. He reads the screen on the opposite side, facing him. Preserve every face, hair, clothing, pose, composition, hand anatomy, lighting and all other elements pixel-faithfully. No other changes."
+    },
+    {
+      "path": "assets/last-online/ep2/cg/archive-0226.webp",
+      "bytes": 146956,
+      "width": 900,
+      "height": 1350,
+      "alpha": false,
+      "sha256": "d3ad366dbfb1dfc2ec9011e7118f19de111a5f1fc84956bb0e2fab551c6e1e5b",
+      "prompt": "Use case: illustration-story. Create ONE premium Korean webtoon event CG for mobile visual novel LUMI, full-bleed PORTRAIT 2:3. One paused security camera image from three years ago, high corner viewpoint on dim service hallway door clearly marked B-17. Soa (first reference far-right woman: black bangs, pale blue blouse, cream skirt, silver star pendant) stands beside door at upper center. Beside her is male with BACK to camera, black ECLIPSE rehearsal jacket, hood hides face entirely. A wall mirror on the right shows young Taeyun reflection (second reference face/hair, three years younger adult 22, wearing simple light practice shirt, dark trousers), running toward them, worried, body in motion. Taeyun visible ONLY in mirror reflection; hidden man identity stays ambiguous. Timestamp exact '02:26' small top-left. Grainy blue gray CCTV but details readable, single scene, no split panels, no violence. First image is canonical Lera/Junho/Mina/Soa identity and painterly adult webtoon style. Second image canonical Taeyun identity. Preserve each relevant face/hair/clothing. Refined linework, expressive faces, cinematic light and painterly shading, grounded adult anatomy. Key faces and objects centered with top 12% margin and bottom 18% safe for dialogue. No real idols, no real group, no watermark, no collage."
+    },
+    {
+      "path": "assets/last-online/ep2/cg/night-access.webp",
+      "bytes": 129626,
+      "width": 900,
+      "height": 1350,
+      "alpha": false,
+      "sha256": "7f80af50fe96e0a573bd7d768adb3c7ad32b8e958673b81ef2f4233679cd51a0",
+      "prompt": "Use case: illustration-story. Create ONE premium Korean webtoon event CG for mobile visual novel LUMI, full-bleed PORTRAIT 2:3. Macro event illustration of worn matte black access card held between Taeyun's fingers, ivory blazer cuff and silver bracelet visible. Card centered large, exact crisp silver sans-serif text 'B-17' then smaller 'NIGHT ACCESS', subtle VANTA mark below. Old edges and magnetic stripe imply three years age. Lera's rose cardigan sleeve and open hand visible approaching card from lower left but not holding yet. Blurred rooftop blue hour city background. Card and readable text central upper half, no character faces needed. First image is canonical Lera/Junho/Mina/Soa identity and painterly adult webtoon style. Second image canonical Taeyun identity. Preserve each relevant face/hair/clothing. Refined linework, expressive faces, cinematic light and painterly shading, grounded adult anatomy. Key faces and objects centered with top 12% margin and bottom 18% safe for dialogue. No real idols, no real group, no watermark, no collage."
+    },
+    {
+      "path": "assets/last-online/ep2/cg/elevator-cliffhanger.webp",
+      "bytes": 150958,
+      "width": 900,
+      "height": 1350,
+      "alpha": false,
+      "sha256": "287f82d50d2fa68fd215d9f161372fdcb6861adeaf7eb04519d4d73b29ec6919",
+      "prompt": "Use case: precise-object-edit. Edit ONLY scar details in attached final elevator CG. Canon for Junho (black-haired man on LEFT in black jacket): one thin pale old scar crossing the visible outer eyebrow, which is slightly revealed beneath fringe. Add that subtle recognisable eyebrow scar. His raised hand blocking elevator must have normal healthy skin: REMOVE reddish scratch lines/scars from raised hand. Preserve exact character identities, expressions, poses, costumes, card text, framing, other faces and entire scene. No other changes."
+    },
+    {
+      "path": "assets/last-online/ep2/cg/elevator-hand.webp",
+      "bytes": 102288,
+      "width": 900,
+      "height": 1350,
+      "alpha": false,
+      "sha256": "8693ae7fcc39296ee7374752944ac09c451e64661b7bbec63b3643b767dee92a",
+      "prompt": "Use case: illustration-story. Create a single dramatic close detail CG for LUMI based on attached elevator scene, portrait 2:3. ONLY the healthy pale right hand and black jacket cuff/sleeve of Junho from the left side of reference, stopping the two nearly closed brushed-steel elevator doors from closing. His spread hand contacts metal at upper center, black sleeve enters from left, narrow dark gap with hint of cold light. Tight crop deliberately hides all faces, all other characters, and the access card: this is the first suspense beat before his face is revealed. Same premium painted Korean webtoon style, ink, cinematic cold gray light. Hands anatomically correct five fingers, no wounds, no blood, no text. No other people, no face, hand and sleeve occupy middle third and door mechanisms provide background. Full bleed."
+    }
+  ]
+}
