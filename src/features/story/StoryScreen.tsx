@@ -102,7 +102,7 @@ function ScenePlayer({ storyId = 'last-online', seasonId = 'season-1', episode, 
       {nextEpisode && onNextEpisode ? <>
         <p>{nextEpisode.title}</p>
         <button className="lumi-primary" type="button" disabled={pending || disabled} onClick={() => void run(onNextEpisode)}>Продолжить — Эпизод {episodeNumber + 1}</button>
-      </> : <p>Продолжение истории появится позже.</p>}
+      </> : <p>{seasonComplete ? 'Финал сезона сохранён.' : 'Продолжение истории появится позже.'}</p>}
       {onMenu ? <button className="lumi-primary" type="button" onClick={onMenu}>К сезону</button> : null}
       {error && !disabled ? <p role="alert">Не удалось продолжить. Попробуйте ещё раз.</p> : null}
     </div>
