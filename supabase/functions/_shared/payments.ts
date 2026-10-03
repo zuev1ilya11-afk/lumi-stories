@@ -1,3 +1,5 @@
+import type { SaveProgressInput } from './repository.ts';
+
 export type StarPaymentStatus = 'pending' | 'approved' | 'paid' | 'refunded';
 
 export type StarPaymentOrder = {
@@ -41,6 +43,7 @@ export interface StarPaymentStore {
   markPaid(order: StarPaymentOrder, telegramPaymentChargeId: string, providerPaymentChargeId: string): Promise<boolean>;
   markRefunded(order: StarPaymentOrder, telegramPaymentChargeId: string): Promise<boolean>;
   markFulfilled(order: StarPaymentOrder): Promise<boolean>;
+  fulfillEpisodeRewind(order: StarPaymentOrder, input: SaveProgressInput): Promise<boolean>;
   hasPaidSeason(playerId: string): Promise<boolean>;
   setSeasonOwned(playerId: string, owned: boolean): Promise<void>;
   createSupportRequest(telegramUserId: number, messageText: string): Promise<void>;
@@ -246,6 +249,31 @@ export function createStarPaymentStore(
       const current = await findByPayload(order.invoicePayload);
       if (current?.fulfilledAt) return false;
       throw new Error('PAYMENT_FULFILLMENT_CONFLICT');
+    },
+
+    async fulfillEpisodeRewind(order, input) {
+      const response = await fetcher(root + '/rest/v1/rpc/fulfill_episode_rewind', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          p_payment_id: order.id,
+          p_player_id: order.playerId,
+          p_episode_id: input.episodeId,
+          p_scene_id: input.sceneId,
+          p_junho_score: input.junhoScore,
+          p_taeyun_score: input.taeyunScore,
+          p_truth_score: input.truthScore,
+          p_risk_score: input.riskScore,
+          p_flags: input.flags,
+        }),
+      });
+      if (!response.ok) {
+        const body = await response.text();
+        throw new Error('Supabase rewind fulfillment ' + response.status + ': ' + body.slice(0, 300));
+      }
+      const data = await response.json();
+      if (typeof data !== 'boolean') throw new Error('Supabase rewind fulfillment returned invalid response');
+      return data;
     },
 
     async hasPaidSeason(playerId) {
