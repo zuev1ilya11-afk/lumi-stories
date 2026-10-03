@@ -24,7 +24,7 @@ export async function enterStory(page: Page, store = createMockApiStore(), reduc
   await installTelegram(page, await signTelegramInitData());
   await installMockLumiApi(page, store);
   await page.goto('/');
-  await page.getByRole('button', { name: 'Начать историю', exact: true }).click();
+  await page.getByRole('button', { name: /(?:Начать|Продолжить) историю/ }).click();
   await page.getByRole('button', { name: store.progress && store.progress.sceneId !== episode.startSceneId ? 'Продолжить' : 'Начать', exact: true }).click();
   await expect(page.locator('[data-scene-id]')).toBeVisible();
   return store;
