@@ -17,10 +17,10 @@ type StartScreenProps = {
 type StartTab = 'home' | 'stories' | 'profile' | 'settings';
 
 const FEATURES = [
-  ['♡', 'Любовные линии'],
-  ['◈', 'Неожиданные повороты'],
-  ['⌁', 'Твои решения имеют значение'],
-  ['✦', 'Новые истории каждую неделю'],
+  ['▱', 'Увлекательные истории', 'Погружайся в новые миры'],
+  ['♡', 'Герои, которые трогают', 'Настоящие эмоции и выборы'],
+  ['✦', 'Твой путь, твои решения', 'Истории, в которых ты важна'],
+  ['♙', 'Сообщество единомышленников', 'Делись, обсуждай, вдохновляйся'],
 ] as const;
 
 function episodeLabel(id?: string): string {
@@ -81,6 +81,11 @@ export function StartScreen({
 
   return (
     <main className={`lumi-start lumi-start--minimal${motionEnabled ? '' : ' is-calm'}`} data-tab={tab} aria-label="LUMI">
+      <div
+        className="lumi-start__hero-art"
+        aria-hidden="true"
+        style={{ backgroundImage: `url(${publicAsset('assets/ui/lumi-home-bg-v2.webp')})` }}
+      />
       <div className="lumi-start__stars" aria-hidden="true" />
       <div className="lumi-start__shooting-stars" aria-hidden="true">
         <i /><i /><i />
@@ -101,10 +106,10 @@ export function StartScreen({
           </div>
 
           <div className="lumi-start__features" aria-label="Возможности LUMI">
-            {FEATURES.map(([icon, label]) => (
+            {FEATURES.map(([icon, label, description]) => (
               <div className="lumi-start__feature" key={label}>
                 <span aria-hidden="true">{icon}</span>
-                <p>{label}</p>
+                <p><strong>{label}</strong><small>{description}</small></p>
               </div>
             ))}
           </div>
