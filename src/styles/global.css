@@ -1837,7 +1837,7 @@ button { color: inherit; }
 
 /* Place the live UI over the illustration rather than trying to redraw the illustration in CSS. */
 .lumi-start--minimal[data-tab="home"] .lumi-start__minimal-content {
-  padding-top: clamp(238px, 36dvh, 335px);
+  padding-top: clamp(214px, 27dvh, 250px);
 }
 .lumi-start--minimal[data-tab="home"] .lumi-logo--minimal {
   font-family: Georgia, "Times New Roman", serif;
@@ -1859,11 +1859,11 @@ button { color: inherit; }
   text-shadow: 0 2px 12px rgba(0,0,0,.6);
 }
 .lumi-start--minimal[data-tab="home"] .lumi-start__features {
-  margin-top: clamp(18px, 3dvh, 28px);
+  margin-top: clamp(86px, 12dvh, 112px);
   gap: 8px;
 }
 .lumi-start--minimal[data-tab="home"] .lumi-start__feature {
-  min-height: 61px;
+  min-height: 52px;
   grid-template-columns: 48px 1fr;
   padding: 7px 42px 7px 8px;
   border-color: rgba(255,238,203,.2);
@@ -1902,7 +1902,7 @@ button { color: inherit; }
 }
 .lumi-start--minimal[data-tab="home"] .lumi-start__cta {
   min-height: 57px;
-  margin-bottom: 68px;
+  margin-bottom: 112px;
   border: 1px solid rgba(255,250,222,.92);
   border-radius: 21px;
   color: #21170d;
@@ -1915,6 +1915,7 @@ button { color: inherit; }
     0 15px 34px rgba(0,0,0,.32);
 }
 .lumi-start--minimal[data-tab="home"] .lumi-start__nav {
+  min-height: 72px;
   border-color: rgba(218,222,246,.17);
   background: rgba(5,8,17,.82);
   box-shadow: 0 18px 38px rgba(0,0,0,.38);
@@ -1985,6 +1986,9 @@ button { color: inherit; }
   .lumi-start--minimal[data-tab="home"] .lumi-start__feature p small { font-size: .62rem; }
   .lumi-start--minimal[data-tab="home"] .lumi-start__cta {
     min-height: 49px;
-    margin-bottom: 59px;
+    margin-bottom: 64px;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__nav {
+    min-height: 56px;
   }
 }
