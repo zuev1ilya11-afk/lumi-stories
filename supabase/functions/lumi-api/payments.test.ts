@@ -80,6 +80,10 @@ function storeMock(current = order()): StarPaymentStore & {
       value = { ...existing, fulfilledAt: 'now' };
       return true;
     },
+    async fulfillEpisodeRewind(existing, input) {
+      value = { ...existing, fulfilledAt: 'now' };
+      return Boolean(input.episodeId && input.sceneId);
+    },
     async hasPaidSeason() { return value?.status === 'paid'; },
     async setSeasonOwned(_playerId, owned) { this.ownership = owned; },
     async createSupportRequest(_userId, messageText) { this.support.push(messageText); },
@@ -213,7 +217,7 @@ Deno.test('successful_payment grants season ownership after charge is recorded',
         return { playerId, ...input, updatedAt: 'now' };
       },
     },
-    store,
+    store: rewindStore,
     async answerPreCheckout() {},
     async sendMessage() {},
   };
@@ -268,6 +272,15 @@ Deno.test('successful rewind payment resets canonical progress to the paid episo
   const store = storeMock(rewindOrder);
   let savedScene = '';
   let savedEpisode = '';
+  const baseStore = store;
+  const rewindStore: StarPaymentStore = {
+    ...baseStore,
+    async fulfillEpisodeRewind(existing, input) {
+      savedEpisode = input.episodeId;
+      savedScene = input.sceneId;
+      return baseStore.fulfillEpisodeRewind(existing, input);
+    },
+  };
   const deps: TelegramWebhookDependencies = {
     webhookSecret: 'secret',
     seasonPriceStars: 149,
