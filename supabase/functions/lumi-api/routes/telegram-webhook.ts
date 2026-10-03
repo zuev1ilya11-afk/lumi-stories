@@ -45,7 +45,7 @@ type TelegramUpdate = {
 
 export type TelegramWebhookRepository = Pick<
   LumiRepository,
-  'getOrCreatePlayer' | 'getEpisodeCheckpoint' | 'saveProgress'
+  'getOrCreatePlayer' | 'getEpisodeCheckpoint'
 >;
 
 export type TelegramWebhookDependencies = {
