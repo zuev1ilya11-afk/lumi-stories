@@ -75,12 +75,23 @@ export async function seasonAccess(
   };
 }
 
+type RewindTarget = {
+  index: number;
+  startSceneId: string;
+  terminalSceneIds: readonly string[];
+};
+
 export const EPISODE_REWIND_TARGETS = {
-  'last-online-s1-e1': { index: 0, startSceneId: 'ep1_arrival', terminalSceneId: 'ep1_end_paywall' },
-  'last-online-s1-e2': { index: 1, startSceneId: 'ep2_morning', terminalSceneId: 'ep2_end' },
-  'last-online-s1-e3': { index: 2, startSceneId: 'ep3_elevator', terminalSceneId: 'ep3_end' },
-  'last-online-s1-e4': { index: 3, startSceneId: 'ep4_morning', terminalSceneId: 'ep4_end' },
-} as const;
+  'last-online-s1-e1': { index: 0, startSceneId: 'ep1_arrival', terminalSceneIds: ['ep1_end_paywall'] },
+  'last-online-s1-e2': { index: 1, startSceneId: 'ep2_morning', terminalSceneIds: ['ep2_end'] },
+  'last-online-s1-e3': { index: 2, startSceneId: 'ep3_elevator', terminalSceneIds: ['ep3_end'] },
+  'last-online-s1-e4': { index: 3, startSceneId: 'ep4_morning', terminalSceneIds: ['ep4_end'] },
+  'last-online-s1-e5': {
+    index: 4,
+    startSceneId: 'ep5_morning',
+    terminalSceneIds: ['ep5_end_junho', 'ep5_end_taeyun', 'ep5_end_self'],
+  },
+} as const satisfies Record<string, RewindTarget>;
 
 type RewindEpisodeId = keyof typeof EPISODE_REWIND_TARGETS;
 
@@ -128,7 +139,7 @@ function targetCompleted(progress: Progress | null, episodeId: RewindEpisodeId):
   const target = EPISODE_REWIND_TARGETS[episodeId];
   if (!current) return false;
   if (current.index > target.index) return true;
-  return current.index === target.index && progress.sceneId === target.terminalSceneId;
+  return current.index === target.index && target.terminalSceneIds.includes(progress.sceneId);
 }
 
 async function canRewind(
