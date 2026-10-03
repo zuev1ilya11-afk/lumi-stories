@@ -9,6 +9,7 @@ export type BootstrapPayload = {
   telegramUserId: number;
   season1Owned: boolean;
   season1PriceStars: number;
+  episodeRewindPriceStars: number;
   progress: unknown | null;
 };
 
