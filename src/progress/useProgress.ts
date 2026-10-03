@@ -13,6 +13,8 @@ export function useProgress(initData: string): {
   state: ProgressState | null;
   season1Owned: boolean;
   season1PriceStars: number;
+  episodeRewindPriceStars: number;
+  reload(): Promise<void>;
   choose(choiceId: string): Promise<void>;
   advance(): Promise<void>;
   nextEpisode(): Promise<void>;
@@ -23,6 +25,7 @@ export function useProgress(initData: string): {
   const [state, setState] = useState<ProgressState | null>(null);
   const [season1Owned, setSeason1Owned] = useState(false);
   const [season1PriceStars, setSeason1PriceStars] = useState(149);
+  const [episodeRewindPriceStars, setEpisodeRewindPriceStars] = useState(49);
   const [bootstrapAttempt, setBootstrapAttempt] = useState(0);
   const machineRef = useRef<ReturnType<typeof createProgressMachine> | null>(null);
   const bootstrapBusy = useRef(true);
@@ -49,6 +52,7 @@ export function useProgress(initData: string): {
         });
         setSeason1Owned(payload.season1Owned);
         setSeason1PriceStars(payload.season1PriceStars ?? 149);
+        setEpisodeRewindPriceStars(payload.episodeRewindPriceStars ?? 49);
         setState(initial);
         setStatus('ready');
       })
@@ -61,6 +65,7 @@ export function useProgress(initData: string): {
     const payment = await getPaymentStatus(initData);
     setSeason1Owned(payment.season1Owned);
     setSeason1PriceStars(payment.priceStars);
+    setEpisodeRewindPriceStars(payment.episodeRewindPriceStars ?? 49);
     return payment.season1Owned;
   }, [initData]);
 
@@ -115,11 +120,38 @@ export function useProgress(initData: string): {
     return inFlight.current;
   }, []);
 
+  const reload = useCallback(async (): Promise<void> => {
+    if (inFlight.current) await inFlight.current;
+    setStatus('loading');
+    try {
+      const payload = await bootstrap(initData);
+      const episode = getEpisode(payload.progress?.episodeId);
+      const initial = progressFromDto(normalizeEpisode2Progress(payload.progress, episode), episode);
+      machineRef.current = createProgressMachine({
+        episode: firstEpisode,
+        episodes,
+        initial,
+        save: (progress) => saveProgress(initData, progress),
+      });
+      pendingAnalyticsRef.current = null;
+      setSeason1Owned(payload.season1Owned);
+      setSeason1PriceStars(payload.season1PriceStars ?? 149);
+      setEpisodeRewindPriceStars(payload.episodeRewindPriceStars ?? 49);
+      setState(initial);
+      setStatus('ready');
+    } catch (error) {
+      setStatus('error');
+      throw error;
+    }
+  }, [initData]);
+
   return {
     status,
     state,
     season1Owned,
     season1PriceStars,
+    episodeRewindPriceStars,
+    reload,
     choose: choiceId => run('choose', choiceId),
     advance: () => run('advance'),
     nextEpisode: () => run('nextEpisode'),
