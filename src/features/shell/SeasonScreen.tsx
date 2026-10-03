@@ -1,4 +1,5 @@
 import { publicAsset } from '../../publicAsset';
+import { episodes, getEpisodeNumber } from '../../story/episodes';
 
 type SeasonScreenProps = {
   hasProgress: boolean;
@@ -14,19 +15,19 @@ type SeasonScreenProps = {
 const EPISODES = [
   ['01', 'last-online-s1-e1', 'Номер, который не должен отвечать'],
   ['02', 'last-online-s1-e2', 'Тот, кого все знают'],
-  ['03', undefined, 'Все лгут'],
+  ['03', 'last-online-s1-e3', 'Все лгут'],
   ['04', undefined, 'Ночь исчезновения'],
   ['05', undefined, 'Последний онлайн'],
 ] as const;
 
 export function SeasonScreen({ hasProgress, currentEpisodeId = 'last-online-s1-e1', episodeCompleted = false, season1Owned = false, season1PriceStars = 149, onPlay, onOpenRecap, onBack }: SeasonScreenProps) {
-  const currentEpisode = currentEpisodeId === 'last-online-s1-e2' ? 2 : 1;
+  const currentEpisode = getEpisodeNumber(currentEpisodeId);
   function episodeStatus(number: number) {
-    if (number > 2) return 'В разработке';
+    if (number > episodes.length) return 'В разработке';
     if (number < currentEpisode || (number === currentEpisode && episodeCompleted)) return 'Завершён';
     if (number === currentEpisode) return hasProgress ? 'Текущий эпизод' : 'Бесплатно';
-    if (number === 2 && episodeCompleted && !season1Owned) return `${season1PriceStars} ⭐`;
-    return episodeCompleted ? 'Доступно' : 'После Эпизода 1';
+    if (number === currentEpisode + 1 && episodeCompleted) return season1Owned ? 'Доступно' : `${season1PriceStars} ⭐`;
+    return `После Эпизода ${number - 1}`;
   }
   return (
     <main className="lumi-season">
@@ -56,7 +57,7 @@ export function SeasonScreen({ hasProgress, currentEpisodeId = 'last-online-s1-e
         {EPISODES.map(([number, episodeId, title]) => {
           const episodeNumber = Number(number);
           const status = episodeStatus(episodeNumber);
-          const locked = status === 'В разработке' || status === 'После Эпизода 1' || status.endsWith('⭐');
+          const locked = status === 'В разработке' || status.startsWith('После Эпизода ') || status.endsWith('⭐');
           const completed = episodeNumber < currentEpisode || (episodeNumber === currentEpisode && episodeCompleted);
           const selectable = Boolean(episodeId && onOpenRecap && completed && !locked);
           const activate = () => {

@@ -112,7 +112,7 @@ export function PrototypePaywall({
     <div className="lumi-paywall__body">
       <p className="lumi-eyebrow">Эпизод {episodeNumber} завершён</p>
       <h2>Продолжить: {nextEpisodeTitle}</h2>
-      <p>Открой полный сезон «Последний онлайн». Эпизод 2 доступен сразу, следующие эпизоды откроются автоматически после выхода.</p>
+      <p>Открой полный сезон «Последний онлайн». Эпизоды 2–3 доступны сейчас, следующие эпизоды откроются автоматически после выхода.</p>
       <div className="lumi-paywall__offer"><strong>Полный сезон</strong><span>{priceStars} ⭐</span></div>
       <small>Оплата проходит внутри Telegram через Telegram Stars. Доступ выдаётся только после подтверждения платежа Telegram.</small>
       <button className="lumi-primary" type="button" disabled={pending || checking} onClick={() => void handlePurchase()}>

@@ -1,9 +1,15 @@
 import episodeOneRaw from '../content/last-online/season-1/episode-1.json';
 import episodeTwoRaw from '../content/last-online/season-1/episode-2.json';
+import episodeThreeRaw from '../content/last-online/season-1/episode-3.json';
 import { parseEpisode, type Episode } from './schema';
 
-export const episodes: readonly Episode[] = [parseEpisode(episodeOneRaw), parseEpisode(episodeTwoRaw)];
+export const episodes: readonly Episode[] = [parseEpisode(episodeOneRaw), parseEpisode(episodeTwoRaw), parseEpisode(episodeThreeRaw)];
 export const firstEpisode = episodes[0];
+
+export function getEpisodeNumber(episodeId = firstEpisode.id): number {
+  const id = episodeId === 'episode-2' ? 'last-online-s1-e2' : episodeId;
+  return Math.max(1, episodes.findIndex(episode => episode.id === id) + 1);
+}
 
 export function getEpisode(episodeId = firstEpisode.id): Episode {
   const canonicalId = episodeId === 'episode-2' ? 'last-online-s1-e2' : episodeId;

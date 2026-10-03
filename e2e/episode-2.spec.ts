@@ -100,7 +100,7 @@ test('three full Episode 2 routes preserve real Episode 1 endings and cover all 
       expect(store.saves.length - saveCount, `${route.name}: ${id} → ${nextId ?? 'completion'}`).toBe(nextId && nextId !== id ? 1 : 0);
     }
     await expect(page.getByText('Эпизод 2 завершён', { exact: true })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Эпизод 3 в разработке' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Продолжить — Эпизод 3', exact: true })).toBeVisible();
     expect(actualScenes, route.name).toEqual(expected.sceneIds);
     expect(actualScenes).toEqual(expect.arrayContaining(criticalScenes));
     expect(seenText.join('\n')).toContain('02:26');

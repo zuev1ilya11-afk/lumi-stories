@@ -8,6 +8,7 @@ export const REWIND_PRODUCT_PREFIX = 'episode-rewind:';
 export const EPISODE_REWIND_TARGETS = {
   'last-online-s1-e1': { index: 0, startSceneId: 'ep1_arrival', terminalSceneId: 'ep1_end_paywall' },
   'last-online-s1-e2': { index: 1, startSceneId: 'ep2_morning', terminalSceneId: 'ep2_end' },
+  'last-online-s1-e3': { index: 2, startSceneId: 'ep3_elevator', terminalSceneId: 'ep3_end' },
 } as const;
 
 type RewindEpisodeId = keyof typeof EPISODE_REWIND_TARGETS;

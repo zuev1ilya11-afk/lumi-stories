@@ -8,7 +8,7 @@ it('marks episode 2 current and opens a recap for the completed episode', () => 
   render(<SeasonScreen hasProgress currentEpisodeId="last-online-s1-e2" onPlay={onPlay} onOpenRecap={onOpenRecap} onBack={vi.fn()} />);
   expect(within(screen.getByText('Номер, который не должен отвечать').closest('article')!).getByText('Завершён · Краткая сводка')).toBeVisible();
   expect(within(screen.getByText('Тот, кого все знают').closest('article')!).getByText('Текущий эпизод')).toBeVisible();
-  expect(screen.getAllByText('В разработке')).toHaveLength(3);
+  expect(screen.getAllByText('В разработке')).toHaveLength(2);
   fireEvent.click(screen.getByRole('button', { name: 'Эпизод 1: Номер, который не должен отвечать. Краткая сводка' }));
   expect(onOpenRecap).toHaveBeenCalledExactlyOnceWith('last-online-s1-e1');
   fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
@@ -17,4 +17,17 @@ it('marks episode 2 current and opens a recap for the completed episode', () => 
 it('makes episode 2 available at the end of episode 1', () => {
   render(<SeasonScreen hasProgress episodeCompleted currentEpisodeId="last-online-s1-e1" onPlay={vi.fn()} onBack={vi.fn()} />);
   expect(within(screen.getByText('Тот, кого все знают').closest('article')!).getByText('149 ⭐')).toBeVisible();
+});
+
+it('tracks Episode 3 and exposes only completed recaps without unlocking Episode 4', () => {
+  const onOpenRecap = vi.fn();
+  const { rerender } = render(<SeasonScreen hasProgress currentEpisodeId="last-online-s1-e3" season1Owned onPlay={vi.fn()} onOpenRecap={onOpenRecap} onBack={vi.fn()} />);
+  expect(within(screen.getByText('Все лгут').closest('article')!).getByText('Текущий эпизод')).toBeVisible();
+  fireEvent.click(screen.getByRole('button', { name: /Эпизод 2:.*Краткая сводка/ }));
+  expect(onOpenRecap).toHaveBeenCalledWith('last-online-s1-e2');
+  expect(screen.queryByRole('button', { name: /Эпизод 3:.*Краткая сводка/ })).toBeNull();
+  rerender(<SeasonScreen hasProgress episodeCompleted currentEpisodeId="last-online-s1-e3" season1Owned onPlay={vi.fn()} onOpenRecap={onOpenRecap} onBack={vi.fn()} />);
+  fireEvent.click(screen.getByRole('button', { name: /Эпизод 3:.*Краткая сводка/ }));
+  expect(onOpenRecap).toHaveBeenLastCalledWith('last-online-s1-e3');
+  expect(within(screen.getByText('Ночь исчезновения').closest('article')!).getByText('В разработке')).toBeVisible();
 });

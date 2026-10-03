@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { trackEvent } from '../../analytics/events';
 import { getAvailableChoices, getScene } from '../../story/engine';
+import { getEpisodeNumber } from '../../story/episodes';
 import type { Episode, Scene, StoryState } from '../../story/schema';
 import { SoaChatScreen, type ChatTimelineEvent } from '../messages/SoaChatScreen';
 import { PrototypePaywall } from '../paywall/PrototypePaywall';
@@ -70,11 +71,12 @@ function ScenePlayer({ episode, scene, state, onChoose, onAdvance, onMenu, nextE
     }
   }
   const entitlement = season1Owned || purchased;
+  const episodeNumber = getEpisodeNumber(episode.id);
   if (offer && nextEpisode && onNextEpisode && !entitlement) {
     return <PrototypePaywall
       episodeId={episode.id}
       sceneId={scene.id}
-      episodeNumber={episode.id === 'last-online-s1-e2' ? 2 : 1}
+      episodeNumber={episodeNumber}
       nextEpisodeTitle={nextEpisode.title}
       imageSrc={art}
       priceStars={season1PriceStars}
@@ -88,11 +90,11 @@ function ScenePlayer({ episode, scene, state, onChoose, onAdvance, onMenu, nextE
   if (offer) return <section className="lumi-paywall" aria-label="Продолжение сезона">
     {art ? <img src={art} alt="Финал эпизода" /> : null}
     <div className="lumi-paywall__body">
-      <p className="lumi-eyebrow">Эпизод {episode.id === 'last-online-s1-e2' ? 2 : 1} завершён</p>
-      <h2>{nextEpisode ? 'История только начинается' : 'Эпизод 3 в разработке'}</h2>
+      <p className="lumi-eyebrow">Эпизод {episodeNumber} завершён</p>
+      <h2>{nextEpisode ? 'История только начинается' : `Эпизод ${episodeNumber + 1} в разработке`}</h2>
       {nextEpisode && onNextEpisode ? <>
         <p>{nextEpisode.title}</p>
-        <button className="lumi-primary" type="button" disabled={pending || disabled} onClick={() => void run(onNextEpisode)}>Продолжить — Эпизод 2</button>
+        <button className="lumi-primary" type="button" disabled={pending || disabled} onClick={() => void run(onNextEpisode)}>Продолжить — Эпизод {episodeNumber + 1}</button>
       </> : <p>Продолжение расследования появится позже.</p>}
       {onMenu ? <button className="lumi-primary" type="button" onClick={onMenu}>К сезону</button> : null}
       {error && !disabled ? <p role="alert">Не удалось продолжить. Попробуйте ещё раз.</p> : null}
@@ -100,7 +102,7 @@ function ScenePlayer({ episode, scene, state, onChoose, onAdvance, onMenu, nextE
   </section>;
   if (scene.kind === 'message') return <main className="lumi-chat-stage" data-scene-id={scene.id} data-motion="phone">
     <div className="lumi-chat-stage__wallpaper" aria-hidden="true" />
-    <SoaChatScreen scene={scene} availableChoices={choices} onChoose={id => run(() => onChoose(id), id)} onAdvance={() => run(onAdvance)} disabled={pending || disabled} onMenu={onMenu} history={chatHistory} onHistory={onHistory} dateLabel={episode.id === 'last-online-s1-e2' ? 'Сегодня' : undefined} />
+    <SoaChatScreen scene={scene} availableChoices={choices} onChoose={id => run(() => onChoose(id), id)} onAdvance={() => run(onAdvance)} disabled={pending || disabled} onMenu={onMenu} history={chatHistory} onHistory={onHistory} dateLabel={episodeNumber > 1 ? 'Сегодня' : undefined} />
     {error && !disabled ? <p role="alert">Не удалось продолжить. Попробуйте ещё раз.</p> : null}
   </main>;
   const readyChoices = playback.final && playback.complete ? choices : [];

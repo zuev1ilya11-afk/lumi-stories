@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { publicAsset } from '../../publicAsset';
 import { STORY_CATALOG } from '../../story/catalog';
+import { getEpisodeNumber } from '../../story/episodes';
 
 type StartScreenProps = {
   onStart(): void;
@@ -22,7 +23,7 @@ const FEATURES = [
 ] as const;
 
 function episodeLabel(id?: string): string {
-  return id === 'last-online-s1-e2' ? 'Эпизод 2' : 'Эпизод 1';
+  return `Эпизод ${getEpisodeNumber(id)}`;
 }
 
 function Navigation({ tab, onTab }: { tab: StartTab; onTab(tab: StartTab): void }) {
