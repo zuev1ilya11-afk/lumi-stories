@@ -35,7 +35,8 @@ export type PaymentStatusResponse = {
 export type EpisodeRewindInvoiceResponse = {
   episodeId: string;
   priceStars: number;
-  invoiceUrl: string;
+  invoiceUrl?: string;
+  applied?: boolean;
 };
 
 export type EpisodeRewindStatusResponse = {

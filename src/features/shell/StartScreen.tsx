@@ -155,8 +155,8 @@ export function StartScreen({
             </article>
             <article className="lumi-start__card">
               <small>Доступ к сезону</small>
-              <strong>{season1Owned ? 'Полный сезон открыт' : `${season1PriceStars} ⭐`}</strong>
-              <span>{season1Owned ? 'Покупка подтверждена' : 'Эпизод 1 доступен бесплатно'}</span>
+              <strong>{season1PriceStars === 0 ? 'Бесплатный доступ' : season1Owned ? 'Полный сезон открыт' : `${season1PriceStars} ⭐`}</strong>
+              <span>{season1PriceStars === 0 ? 'Эпизоды 1–5 бесплатно' : season1Owned ? 'Покупка подтверждена' : 'Эпизод 1 доступен бесплатно'}</span>
             </article>
           </div>
 

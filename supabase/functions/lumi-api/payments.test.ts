@@ -1,6 +1,7 @@
 import { handleCreateEpisodeRewindInvoice, handleCreateSeasonInvoice, handlePaymentStatus, type PaymentDependencies } from './routes/payments.ts';
 import { handleTelegramWebhook, type TelegramWebhookDependencies } from './routes/telegram-webhook.ts';
 import type { StarPaymentOrder, StarPaymentStore } from '../_shared/payments.ts';
+import type { SaveProgressInput } from '../_shared/repository.ts';
 
 const BOT_TOKEN = '123456789:test_token_for_lumi';
 const NOW = 1_800_000_000;
@@ -100,6 +101,7 @@ function paymentDependencies(store: StarPaymentStore): PaymentDependencies {
       async getOrCreatePlayer(telegramUserId) {
         return { id: 'player-' + telegramUserId, telegramUserId, season1Owned: false, createdAt: 'now' };
       },
+      async saveProgress(playerId, input) { return { playerId, ...input, updatedAt: 'now' }; },
       async getProgress(playerId) {
         return {
           playerId,
@@ -168,6 +170,76 @@ Deno.test('payment status returns server-owned entitlement', async () => {
   }), deps);
   const payload = await response.json();
   assert(payload.season1Owned === true, 'ownership was not returned');
+});
+
+Deno.test('free season opens access without creating a payment or permanent purchase', async () => {
+  const store = storeMock();
+  let charged = false;
+  store.createOrder = async () => { charged = true; return order(); };
+  const deps = { ...paymentDependencies(store), seasonFree: true };
+  const headers = { 'X-Telegram-Init-Data': await validInitData() };
+  const invoice = await (await handleCreateSeasonInvoice(new Request('https://example.test/payments/invoice', { method: 'POST', headers }), deps)).json();
+  const status = await (await handlePaymentStatus(new Request('https://example.test/payments/status', { headers }), deps)).json();
+  assert(invoice.season1Owned && invoice.priceStars === 0 && !invoice.invoiceUrl, 'free season must bypass invoice');
+  assert(status.season1Owned && status.priceStars === 0 && status.episodeRewindPriceStars === 49, 'public free season must not grant free rewinds');
+  assert(!charged && !store.ownership, 'temporary free access must not create payment or permanent ownership');
+});
+
+Deno.test('personal free access survives end of public promotion and rewinds from the trusted checkpoint', async () => {
+  const base = paymentDependencies(storeMock());
+  const saved: SaveProgressInput[] = [];
+  const deps = {
+    ...base,
+    seasonFree: false,
+    repository: {
+      ...base.repository,
+      async getOrCreatePlayer(id: number) { return { ...await base.repository.getOrCreatePlayer(id), freeAccess: true }; },
+      async saveProgress(playerId: string, input: SaveProgressInput) { saved.push(input); return { playerId, ...input, updatedAt: 'now' }; },
+    },
+    telegram: {
+      async ensureWebhook() { throw new Error('free access must not contact Telegram payments'); },
+      async createInvoiceLink() { throw new Error('free access must not create invoice'); },
+    },
+  };
+  const headers = { 'X-Telegram-Init-Data': await validInitData() };
+  const status = await (await handlePaymentStatus(new Request('https://example.test/payments/status', { headers }), deps)).json();
+  assert(status.season1Owned && status.priceStars === 0 && status.episodeRewindPriceStars === 0, 'personal access must be free independently of promotion');
+  const response = await handleCreateEpisodeRewindInvoice(new Request('https://example.test/payments/rewind/invoice', {
+    method: 'POST', headers, body: JSON.stringify({ episodeId: 'last-online-s1-e2', allowFreeRewind: true, junhoScore: 999, flags: { forged: true } }),
+  }), deps);
+  const payload = await response.json();
+  assert(response.status === 200 && payload.applied && payload.priceStars === 0 && !payload.invoiceUrl, 'free rewind did not apply');
+  assert(saved.length === 1 && saved[0].sceneId === 'ep2_morning' && saved[0].junhoScore === 6 && saved[0].truthScore === 1 && !saved[0].flags.forged, 'rewind must restore trusted previous-episode state');
+  const legacy = await handleCreateEpisodeRewindInvoice(new Request('https://example.test/payments/rewind/invoice', {
+    method: 'POST', headers, body: JSON.stringify({ episodeId: 'last-online-s1-e2' }),
+  }), deps);
+  assert(legacy.status === 409 && saved.length === 1, 'old clients must reload before a free rewind can mutate progress');
+});
+
+Deno.test('public free season cannot be used to forge a free personal rewind', async () => {
+  const deps = { ...paymentDependencies(storeMock()), seasonFree: true };
+  const response = await handleCreateEpisodeRewindInvoice(new Request('https://example.test/payments/rewind/invoice', {
+    method: 'POST', headers: { 'X-Telegram-Init-Data': await validInitData() },
+    body: JSON.stringify({ episodeId: 'last-online-s1-e1', freeAccess: true, priceStars: 0 }),
+  }), deps);
+  const payload = await response.json();
+  assert(payload.priceStars === 49 && payload.invoiceUrl && !payload.applied, 'client must not grant itself free rewinds');
+});
+
+Deno.test('old season invoices are rejected at pre-checkout while the season is free', async () => {
+  const store = storeMock();
+  let approved: boolean | undefined;
+  const deps = {
+    webhookSecret: 'secret', seasonPriceStars: 149, rewindPriceStars: 49, seasonFree: true,
+    repository: paymentDependencies(store).repository, store,
+    async answerPreCheckout(_id: string, ok: boolean) { approved = ok; },
+    async sendMessage() {},
+  };
+  await handleTelegramWebhook(new Request('https://example.test/telegram/webhook', {
+    method: 'POST', headers: { 'X-Telegram-Bot-Api-Secret-Token': 'secret' },
+    body: JSON.stringify({ pre_checkout_query: { id: 'old-invoice', from: { id: 555111 }, currency: 'XTR', total_amount: 149, invoice_payload: order().invoicePayload } }),
+  }), deps);
+  assert(approved === false, 'old invoice must not charge for free season');
 });
 
 Deno.test('pre-checkout validates player, amount and order before approval', async () => {

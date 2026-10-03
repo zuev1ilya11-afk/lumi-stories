@@ -2,6 +2,7 @@ export type Player = {
   id: string;
   telegramUserId: number;
   season1Owned: boolean;
+  freeAccess?: boolean;
   createdAt: string;
 };
 
@@ -94,6 +95,7 @@ type PlayerDbRow = {
   id: string;
   telegram_user_id: number;
   season_1_owned: boolean;
+  free_access?: boolean;
   created_at: string;
 };
 
@@ -116,6 +118,7 @@ function playerFromRow(row: PlayerDbRow): Player {
     id: row.id,
     telegramUserId: Number(row.telegram_user_id),
     season1Owned: row.season_1_owned,
+    freeAccess: row.free_access === true,
     createdAt: row.created_at,
   };
 }
@@ -160,7 +163,7 @@ export function createSupabaseRestDatabaseAdapter(
   return {
     async upsertPlayerByTelegramId(telegramUserId) {
       const response = await fetcher(
-        `${root}/rest/v1/players?on_conflict=telegram_user_id&select=id,telegram_user_id,season_1_owned,created_at`,
+        `${root}/rest/v1/players?on_conflict=telegram_user_id&select=id,telegram_user_id,season_1_owned,free_access,created_at`,
         {
           method: 'POST',
           headers: { ...headers, Prefer: 'resolution=merge-duplicates,return=representation' },

@@ -68,9 +68,11 @@ export function EpisodeRecap({
   onBack,
 }: EpisodeRecapProps) {
   const recap = RECAPS[episodeId as keyof typeof RECAPS];
+  const freeRewind = rewindPriceStars === 0;
   const [confirming, setConfirming] = useState(false);
   const [pending, setPending] = useState(false);
   const [checking, setChecking] = useState(false);
+  const [needsCheck, setNeedsCheck] = useState(false);
   const [notice, setNotice] = useState<string>();
   if (!recap) return null;
 
@@ -78,8 +80,9 @@ export function EpisodeRecap({
     setChecking(true);
     try {
       const applied = await waitForRewind(initData, episodeId);
+      setNeedsCheck(false);
       if (!applied) {
-        setNotice('Оплата подтверждена, но перезапуск ещё применяется. Нажмите «Проверить».');
+        setNotice(freeRewind ? 'Перезапуск ещё применяется. Нажмите «Проверить».' : 'Оплата подтверждена, но перезапуск ещё применяется. Нажмите «Проверить».');
         return false;
       }
       setNotice('Эпизод перезапущен. Новые решения заменят прежнюю ветку сюжета.');
@@ -95,10 +98,16 @@ export function EpisodeRecap({
     if (pending || checking) return;
     setPending(true);
     setNotice(undefined);
-    void trackEvent('purchase_clicked', { episodeId, offer: 'episode-rewind', priceStars: rewindPriceStars });
+    setNeedsCheck(false);
+    if (!freeRewind) void trackEvent('purchase_clicked', { episodeId, offer: 'episode-rewind', priceStars: rewindPriceStars });
     try {
       const { initData } = getTelegramContext();
       const invoice = await createEpisodeRewindInvoice(initData, episodeId);
+      if (invoice.applied && invoice.priceStars === 0) {
+        await finishRewind(initData);
+        return;
+      }
+      if (!invoice.invoiceUrl) throw new Error('Missing rewind invoice');
       const status = await openTelegramInvoice(invoice.invoiceUrl);
       if (status === 'cancelled') {
         setNotice('Оплата отменена. Прогресс не изменён.');
@@ -110,7 +119,8 @@ export function EpisodeRecap({
       }
       await finishRewind(initData);
     } catch {
-      setNotice('Не удалось запустить перезапуск эпизода. Попробуйте ещё раз.');
+      setNeedsCheck(true);
+      setNotice('Не удалось подтвердить перезапуск. Нажмите «Проверить», чтобы загрузить актуальный прогресс.');
     } finally {
       setPending(false);
     }
@@ -124,6 +134,7 @@ export function EpisodeRecap({
       const applied = await finishRewind(initData);
       if (!applied) setNotice('Перезапуск пока не подтверждён сервером.');
     } catch {
+      setNeedsCheck(true);
       setNotice('Не удалось проверить перезапуск. Попробуйте ещё раз.');
     }
   }
@@ -131,7 +142,7 @@ export function EpisodeRecap({
   return (
     <main className="lumi-recap" aria-label={`Краткая сводка эпизода ${recap.number}`}>
       <header className="lumi-topbar">
-        <button className="lumi-icon-button" type="button" onClick={onBack} aria-label="Назад">‹</button>
+        <button className="lumi-icon-button" type="button" disabled={pending || checking || needsCheck} onClick={onBack} aria-label="Назад">‹</button>
         <strong>LUMI</strong>
         <span className="lumi-topbar__spacer" />
       </header>
@@ -154,24 +165,24 @@ export function EpisodeRecap({
             {!confirming ? (
               <>
                 <strong>Хотите изменить прошлые решения?</strong>
-                <p>Можно начать этот эпизод заново за Stars и выбрать другие варианты.</p>
+                <p>{freeRewind ? 'Для твоего аккаунта повторное прохождение бесплатно.' : 'Можно начать этот эпизод заново за Stars и выбрать другие варианты.'}</p>
                 <button className="lumi-primary" type="button" onClick={() => setConfirming(true)}>
-                  Изменить события — {rewindPriceStars} ⭐
+                  {freeRewind ? 'Изменить события — бесплатно' : `Изменить события — ${rewindPriceStars} ⭐`}
                 </button>
               </>
             ) : (
               <>
                 <strong>Переписать события эпизода?</strong>
-                <p>После оплаты этот эпизод начнётся заново. Прогресс всех следующих эпизодов будет сброшен, потому что новые решения могут изменить дальнейший сюжет.</p>
-                <button className="lumi-primary" type="button" disabled={pending || checking} onClick={() => void handleRewindPurchase()}>
-                  {pending ? 'Открываем оплату…' : `Подтвердить за ${rewindPriceStars} ⭐`}
+                <p>{freeRewind ? 'После подтверждения' : 'После оплаты'} этот эпизод начнётся заново. Прогресс всех следующих эпизодов будет сброшен, потому что новые решения могут изменить дальнейший сюжет.</p>
+                <button className="lumi-primary" type="button" disabled={pending || checking || needsCheck} onClick={() => void handleRewindPurchase()}>
+                  {pending ? (freeRewind ? 'Начинаем заново…' : 'Открываем оплату…') : (freeRewind ? 'Начать заново бесплатно' : `Подтвердить за ${rewindPriceStars} ⭐`)}
                 </button>
                 <button className="lumi-recap__secondary" type="button" disabled={pending || checking} onClick={() => setConfirming(false)}>
                   Отмена
                 </button>
               </>
             )}
-            {notice?.includes('применяется') || notice === 'Перезапуск пока не подтверждён сервером.' ? (
+            {needsCheck || notice?.includes('применяется') || notice === 'Перезапуск пока не подтверждён сервером.' ? (
               <button className="lumi-recap__secondary" type="button" disabled={pending || checking} onClick={() => void handleCheck()}>
                 {checking ? 'Проверяем…' : 'Проверить'}
               </button>
@@ -180,7 +191,7 @@ export function EpisodeRecap({
           </section>
         ) : null}
 
-        <button className="lumi-primary" type="button" disabled={pending || checking} onClick={onBack}>Назад к эпизодам</button>
+        <button className="lumi-primary" type="button" disabled={pending || checking || needsCheck} onClick={onBack}>Назад к эпизодам</button>
       </section>
     </main>
   );

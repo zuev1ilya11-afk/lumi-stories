@@ -104,7 +104,7 @@ export function createApiClient({ baseUrl, fetcher = fetch }: ApiClientOptions) 
       return parseJson<EpisodeRewindInvoiceResponse>(await fetcher(`${root}/payments/rewind/invoice`, {
         method: 'POST',
         headers: telegramHeaders(initData, true),
-        body: JSON.stringify({ episodeId }),
+        body: JSON.stringify({ episodeId, allowFreeRewind: true }),
       }));
     },
 

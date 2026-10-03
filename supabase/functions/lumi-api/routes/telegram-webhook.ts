@@ -1,8 +1,8 @@
 import { jsonResponse } from '../../_shared/http.ts';
 import type { StarPaymentOrder, StarPaymentStore } from '../../_shared/payments.ts';
-import type { LumiRepository, SaveProgressInput } from '../../_shared/repository.ts';
+import type { LumiRepository } from '../../_shared/repository.ts';
 import { constantTimeTextEqual } from '../../_shared/telegram-bot.ts';
-import { EPISODE_REWIND_TARGETS, REWIND_PRODUCT_PREFIX } from './payments.ts';
+import { EPISODE_REWIND_TARGETS, REWIND_PRODUCT_PREFIX, episodeRewindInput } from './payments.ts';
 
 type TelegramUser = { id?: number };
 type TelegramChat = { id?: number };
@@ -52,6 +52,7 @@ export type TelegramWebhookDependencies = {
   webhookSecret: string;
   seasonPriceStars: number;
   rewindPriceStars: number;
+  seasonFree?: boolean;
   repository: TelegramWebhookRepository;
   store: StarPaymentStore;
   answerPreCheckout(queryId: string, ok: boolean, errorMessage?: string): Promise<void>;
@@ -87,52 +88,6 @@ function rewindEpisodeId(productId: string): keyof typeof EPISODE_REWIND_TARGETS
     : null;
 }
 
-async function episodeRewindInput(
-  playerId: string,
-  productId: string,
-  dependencies: TelegramWebhookDependencies,
-): Promise<SaveProgressInput> {
-  const episodeId = rewindEpisodeId(productId);
-  if (!episodeId) throw new Error('REWIND_PRODUCT_INVALID');
-  const target = EPISODE_REWIND_TARGETS[episodeId];
-
-  let input: SaveProgressInput;
-  if (episodeId === 'last-online-s1-e1') {
-    input = {
-      storyId: 'last-online',
-      seasonId: 'season-1',
-      episodeId,
-      sceneId: target.startSceneId,
-      junhoScore: 0,
-      taeyunScore: 0,
-      truthScore: 0,
-      riskScore: 0,
-      flags: {},
-    };
-  } else {
-    const checkpoint = await dependencies.repository.getEpisodeCheckpoint(
-      playerId,
-      'last-online',
-      'season-1',
-      episodeId,
-    );
-    if (!checkpoint) throw new Error('REWIND_CHECKPOINT_MISSING');
-    input = {
-      storyId: checkpoint.storyId,
-      seasonId: checkpoint.seasonId,
-      episodeId: checkpoint.episodeId,
-      sceneId: target.startSceneId,
-      junhoScore: checkpoint.junhoScore,
-      taeyunScore: checkpoint.taeyunScore,
-      truthScore: checkpoint.truthScore,
-      riskScore: checkpoint.riskScore,
-      flags: checkpoint.flags,
-    };
-  }
-
-  return input;
-}
-
 async function handlePreCheckout(
   query: PreCheckoutQuery,
   dependencies: TelegramWebhookDependencies,
@@ -148,7 +103,8 @@ async function handlePreCheckout(
       const order = await dependencies.store.findByPayload(payload);
       if (
         validOrder(order, player.id, query.currency, query.total_amount, dependencies) &&
-        !(order.productId === 'season-1' && player.season1Owned)
+        player.freeAccess !== true &&
+        !(order.productId === 'season-1' && (player.season1Owned || dependencies.seasonFree === true))
       ) {
         const approved = await dependencies.store.approveOrder(order, queryId);
         ok = Boolean(approved);
@@ -201,7 +157,7 @@ async function handleSuccessfulPayment(
     await dependencies.store.setSeasonOwned(player.id, true);
     await dependencies.store.markFulfilled(paidOrder);
   } else {
-    const input = await episodeRewindInput(player.id, paidOrder.productId, dependencies);
+    const input = await episodeRewindInput(player.id, rewindEpisodeId(paidOrder.productId)!, dependencies.repository);
     await dependencies.store.fulfillEpisodeRewind(paidOrder, input);
   }
   return jsonResponse({ ok: true });

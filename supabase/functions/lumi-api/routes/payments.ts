@@ -1,6 +1,7 @@
 import { jsonResponse } from '../../_shared/http.ts';
+import { playerAccess } from '../../_shared/access.ts';
 import type { StarPaymentStore } from '../../_shared/payments.ts';
-import type { LumiRepository, Progress } from '../../_shared/repository.ts';
+import type { LumiRepository, Progress, SaveProgressInput } from '../../_shared/repository.ts';
 import { verifyTelegramInitData } from '../../_shared/telegram.ts';
 
 export const REWIND_PRODUCT_PREFIX = 'episode-rewind:';
@@ -15,7 +16,7 @@ type RewindEpisodeId = keyof typeof EPISODE_REWIND_TARGETS;
 
 export type PaymentRepository = Pick<
   LumiRepository,
-  'getOrCreatePlayer' | 'getProgress' | 'getEpisodeCheckpoint'
+  'getOrCreatePlayer' | 'getProgress' | 'getEpisodeCheckpoint' | 'saveProgress'
 >;
 
 export type PaymentTelegramGateway = {
@@ -28,6 +29,7 @@ export type PaymentDependencies = {
   nowSeconds: number;
   seasonPriceStars: number;
   rewindPriceStars: number;
+  seasonFree?: boolean;
   repository: PaymentRepository;
   store: StarPaymentStore;
   telegram: PaymentTelegramGateway;
@@ -76,6 +78,29 @@ async function canRewind(
   return Boolean(checkpoint);
 }
 
+export async function episodeRewindInput(
+  playerId: string,
+  episodeId: RewindEpisodeId,
+  repository: Pick<LumiRepository, 'getEpisodeCheckpoint'>,
+): Promise<SaveProgressInput> {
+  const target = EPISODE_REWIND_TARGETS[episodeId];
+  if (episodeId === 'last-online-s1-e1') {
+    return {
+      storyId: 'last-online', seasonId: 'season-1', episodeId,
+      sceneId: target.startSceneId, junhoScore: 0, taeyunScore: 0,
+      truthScore: 0, riskScore: 0, flags: {},
+    };
+  }
+  const checkpoint = await repository.getEpisodeCheckpoint(playerId, 'last-online', 'season-1', episodeId);
+  if (!checkpoint) throw new Error('REWIND_CHECKPOINT_MISSING');
+  return {
+    storyId: checkpoint.storyId, seasonId: checkpoint.seasonId, episodeId,
+    sceneId: target.startSceneId, junhoScore: checkpoint.junhoScore,
+    taeyunScore: checkpoint.taeyunScore, truthScore: checkpoint.truthScore,
+    riskScore: checkpoint.riskScore, flags: checkpoint.flags,
+  };
+}
+
 export async function handleCreateSeasonInvoice(
   request: Request,
   dependencies: PaymentDependencies,
@@ -91,10 +116,11 @@ export async function handleCreateSeasonInvoice(
     return jsonResponse({ error: 'UNAUTHORIZED' }, 401);
   }
 
-  if (player.season1Owned) {
+  const access = playerAccess(player, dependencies);
+  if (access.season1Owned) {
     return jsonResponse({
       season1Owned: true,
-      priceStars: dependencies.seasonPriceStars,
+      priceStars: access.season1PriceStars,
     });
   }
 
@@ -152,6 +178,20 @@ export async function handleCreateEpisodeRewindInvoice(
     return jsonResponse({ error: 'REWIND_NOT_AVAILABLE' }, 409);
   }
 
+  if (player.freeAccess === true) {
+    // Older clients always expect a Telegram invoice and cannot handle a direct rewind.
+    if ((body as { allowFreeRewind?: unknown }).allowFreeRewind !== true) {
+      return jsonResponse({ error: 'CLIENT_RELOAD_REQUIRED' }, 409);
+    }
+    try {
+      const input = await episodeRewindInput(player.id, episodeId, dependencies.repository);
+      await dependencies.repository.saveProgress(player.id, input);
+      return jsonResponse({ episodeId, priceStars: 0, applied: true });
+    } catch {
+      return jsonResponse({ error: 'REWIND_UNAVAILABLE' }, 503);
+    }
+  }
+
   try {
     await dependencies.telegram.ensureWebhook();
     const productId = REWIND_PRODUCT_PREFIX + episodeId;
@@ -201,7 +241,7 @@ export async function handleEpisodeRewindStatus(
   const target = EPISODE_REWIND_TARGETS[episodeId];
   return jsonResponse({
     episodeId,
-    priceStars: dependencies.rewindPriceStars,
+    priceStars: playerAccess(player, dependencies).episodeRewindPriceStars,
     applied: Boolean(
       progress &&
       progress.episodeId === episodeId &&
@@ -225,9 +265,10 @@ export async function handlePaymentStatus(
     return jsonResponse({ error: 'UNAUTHORIZED' }, 401);
   }
 
+  const access = playerAccess(player, dependencies);
   return jsonResponse({
-    season1Owned: player.season1Owned,
-    priceStars: dependencies.seasonPriceStars,
-    episodeRewindPriceStars: dependencies.rewindPriceStars,
+    season1Owned: access.season1Owned,
+    priceStars: access.season1PriceStars,
+    episodeRewindPriceStars: access.episodeRewindPriceStars,
   });
 }

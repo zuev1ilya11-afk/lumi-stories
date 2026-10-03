@@ -91,7 +91,7 @@ function StoryFrame(props: StoryFrameProps) {
         nextEpisode={getNextEpisode(episode.id)}
         onNextEpisode={props.onNextEpisode}
         onMenu={() => setScreen('season')}
-        disabled={props.status === 'saving' || props.status === 'error'}
+        disabled={props.status === 'loading' || props.status === 'saving' || props.status === 'error'}
         analytics={props.analytics}
         season1Owned={props.season1Owned}
         season1PriceStars={props.season1PriceStars}
@@ -107,7 +107,7 @@ function ConnectedPrototype({ context }: { context: TelegramContext }) {
   const progress = useProgress(context.initData);
   useEffect(() => { void trackEvent('app_opened'); }, []);
   if (progress.status === 'error' && !progress.state) return <main className="lumi-shell lumi-shell--error"><p role="alert">Не удалось загрузить историю.</p><button className="lumi-primary" type="button" onClick={() => void progress.retry().catch(() => undefined)}>Повторить</button></main>;
-  if (progress.status === 'loading' || !progress.state) return <main className="lumi-shell"><p>Загружаем историю…</p></main>;
+  if (!progress.state) return <main className="lumi-shell"><p>Загружаем историю…</p></main>;
   return <StoryFrame progress={progress.state} status={progress.status} season1Owned={progress.season1Owned} season1PriceStars={progress.season1PriceStars} episodeRewindPriceStars={progress.episodeRewindPriceStars} userDisplayName={context.userDisplayName} onRewindComplete={async () => { await progress.reload(); }} onChoose={progress.choose} onAdvance={progress.advance} onNextEpisode={progress.nextEpisode} onRefreshOwnership={progress.refreshOwnership} onRetry={progress.retry} analytics />;
 }
 

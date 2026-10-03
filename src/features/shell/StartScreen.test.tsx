@@ -2,6 +2,13 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { expect, it, vi } from 'vitest';
 import { StartScreen } from './StartScreen';
 
+it('describes the free first season without claiming a purchase', () => {
+  render(<StartScreen onStart={vi.fn()} season1Owned season1PriceStars={0} />);
+  fireEvent.click(screen.getByRole('button', { name: 'Профиль' }));
+  expect(screen.getByText('Эпизоды 1–5 бесплатно')).toBeVisible();
+  expect(screen.queryByText('Покупка подтверждена')).not.toBeInTheDocument();
+});
+
 it('opens the story catalog, profile and settings from the bottom navigation', () => {
   const onStart = vi.fn();
   render(<StartScreen onStart={onStart} userDisplayName="Илья" hasProgress currentEpisodeId="last-online-s1-e2" season1PriceStars={149} />);

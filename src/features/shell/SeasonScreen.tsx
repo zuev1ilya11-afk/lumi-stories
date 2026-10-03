@@ -48,6 +48,7 @@ export function SeasonScreen({ hasProgress, currentEpisodeId = 'last-online-s1-e
           <p className="lumi-eyebrow">История 1 · Сезон 1</p>
           <h1>Последний онлайн</h1>
           <p>Новый город. Загадочный сосед. И сообщения с аккаунта девушки, исчезнувшей три года назад.</p>
+          {season1PriceStars === 0 ? <p>Первый сезон — бесплатно. Эпизоды 1–5 открываются по мере выхода.</p> : null}
           <button className="lumi-primary" type="button" onClick={onPlay}>
             {hasProgress ? 'Продолжить' : 'Начать'}
           </button>

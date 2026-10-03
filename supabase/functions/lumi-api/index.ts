@@ -1,3 +1,4 @@
+import { playerAccess, SEASON_1_FREE } from '../_shared/access.ts';
 import { corsHeaders, jsonResponse } from '../_shared/http.ts';
 import { createStarPaymentStore, type StarPaymentStore } from '../_shared/payments.ts';
 import {
@@ -23,6 +24,11 @@ const STORY_ID = 'last-online';
 const SEASON_ID = 'season-1';
 const SEASON_1_PRICE_STARS = 149;
 const EPISODE_REWIND_PRICE_STARS = 49;
+const ACCESS_POLICY = {
+  seasonFree: SEASON_1_FREE,
+  seasonPriceStars: SEASON_1_PRICE_STARS,
+  rewindPriceStars: EPISODE_REWIND_PRICE_STARS,
+};
 let cachedRepository: LumiRepository | null = null;
 let cachedPaymentStore: StarPaymentStore | null = null;
 
@@ -69,7 +75,8 @@ Deno.serve(async (request: Request) => {
           readSupabaseServerSecret((name) => Deno.env.get(name)),
       ),
       paymentsConfigured: Boolean(botToken && supabaseUrl),
-      season1PriceStars: SEASON_1_PRICE_STARS,
+      season1PriceStars: SEASON_1_FREE ? 0 : SEASON_1_PRICE_STARS,
+      season1Free: SEASON_1_FREE,
       episodeRewindPriceStars: EPISODE_REWIND_PRICE_STARS,
     });
   }
@@ -91,8 +98,7 @@ Deno.serve(async (request: Request) => {
     const webhookSecret = await deriveTelegramWebhookSecret(botToken);
     return handleTelegramWebhook(request, {
       webhookSecret,
-      seasonPriceStars: SEASON_1_PRICE_STARS,
-      rewindPriceStars: EPISODE_REWIND_PRICE_STARS,
+      ...ACCESS_POLICY,
       repository,
       store: paymentStore,
       answerPreCheckout: (queryId, ok, errorMessage) =>
@@ -114,9 +120,7 @@ Deno.serve(async (request: Request) => {
           return {
             playerId: player.id,
             telegramUserId: player.telegramUserId,
-            season1Owned: player.season1Owned,
-            season1PriceStars: SEASON_1_PRICE_STARS,
-            episodeRewindPriceStars: EPISODE_REWIND_PRICE_STARS,
+            ...playerAccess(player, ACCESS_POLICY),
             progress,
           };
         },
@@ -127,8 +131,7 @@ Deno.serve(async (request: Request) => {
   const paymentDependencies = {
     botToken,
     nowSeconds,
-    seasonPriceStars: SEASON_1_PRICE_STARS,
-    rewindPriceStars: EPISODE_REWIND_PRICE_STARS,
+    ...ACCESS_POLICY,
     repository,
     store: paymentStore,
     telegram: {

@@ -9,6 +9,8 @@ export type MockApiStore = {
   failNextSave: boolean;
   saves: string[];
   season1Owned: boolean;
+  season1PriceStars?: number;
+  episodeRewindPriceStars?: number;
 };
 
 export function createMockApiStore(season1Owned = true): MockApiStore {
@@ -81,7 +83,7 @@ export async function installMockLumiApi(page: Page, store: MockApiStore): Promi
 
     if (url.pathname.endsWith('/bootstrap')) {
       await route.fulfill({ status: 200, headers: cors, body: JSON.stringify({
-        playerId: `player-${userId}`, telegramUserId: userId, season1Owned: store.season1Owned, season1PriceStars: 149, progress: store.progress,
+        playerId: `player-${userId}`, telegramUserId: userId, season1Owned: store.season1Owned, season1PriceStars: store.season1PriceStars ?? 149, episodeRewindPriceStars: store.episodeRewindPriceStars ?? 49, progress: store.progress,
       }) });
       return;
     }
