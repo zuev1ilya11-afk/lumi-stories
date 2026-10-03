@@ -25,6 +25,8 @@ type Props = {
   season1Owned?: boolean;
   season1PriceStars?: number;
   onRefreshOwnership?(): Promise<boolean>;
+  replayMode?: boolean;
+  onResumeCurrent?(): void;
 };
 
 export function StoryScreen(props: Props) {
@@ -36,7 +38,7 @@ export function StoryScreen(props: Props) {
   return <ScenePlayer key={`${props.episode.id}:${scene.id}`} {...props} scene={scene} previous={previousArt} onArt={src => { previous.current = src; }} chatHistory={chatHistory.current} onHistory={messages => { chatHistory.current = messages; }} />;
 }
 
-function ScenePlayer({ episode, scene, state, onChoose, onAdvance, onMenu, nextEpisode, onNextEpisode, disabled = false, analytics = false, season1Owned = false, season1PriceStars = 149, onRefreshOwnership, previous, onArt, chatHistory, onHistory }: Props & { scene: Scene; previous?: string; onArt(src?: string): void; chatHistory: ChatTimelineEvent[]; onHistory(messages: ChatTimelineEvent[]): void }) {
+function ScenePlayer({ episode, scene, state, onChoose, onAdvance, onMenu, nextEpisode, onNextEpisode, disabled = false, analytics = false, season1Owned = false, season1PriceStars = 149, onRefreshOwnership, replayMode = false, onResumeCurrent, previous, onArt, chatHistory, onHistory }: Props & { scene: Scene; previous?: string; onArt(src?: string): void; chatHistory: ChatTimelineEvent[]; onHistory(messages: ChatTimelineEvent[]): void }) {
   const reduced = useReducedMotion();
   const playback = useBeatPlayback(getSceneBeats(scene), reduced);
   const p = getScenePresentation(scene, playback.beat);
@@ -70,6 +72,16 @@ function ScenePlayer({ episode, scene, state, onChoose, onAdvance, onMenu, nextE
     }
   }
   const entitlement = season1Owned || purchased;
+  if (offer && replayMode) return <section className="lumi-paywall" aria-label="Повтор эпизода завершён">
+    {art ? <img src={art} alt="Финал эпизода" /> : null}
+    <div className="lumi-paywall__body">
+      <p className="lumi-eyebrow">Повтор эпизода завершён</p>
+      <h2>{episode.title}</h2>
+      <p>Основной прогресс истории сохранён без изменений.</p>
+      {onResumeCurrent ? <button className="lumi-primary" type="button" onClick={onResumeCurrent}>Вернуться к текущему эпизоду</button> : null}
+      {onMenu ? <button className="lumi-primary" type="button" onClick={onMenu}>К сезону</button> : null}
+    </div>
+  </section>;
   if (offer && nextEpisode && onNextEpisode && !entitlement) {
     return <PrototypePaywall
       episodeId={episode.id}
