@@ -99,7 +99,7 @@ it('parses beat overrides and rejects malformed presentation rather than silentl
 
 it('plays terminal beats before the offer without advancing or saving another logical scene', () => {
   const onAdvance = vi.fn();
-  render(<StoryScreen episode={raw as unknown as Episode} sceneId="b" state={state} onChoose={vi.fn()} onAdvance={onAdvance} nextEpisode={{ ...raw, id: 'last-online-s1-e2' } as unknown as Episode} onNextEpisode={vi.fn()} />);
+  render(<StoryScreen episode={raw as unknown as Episode} sceneId="b" state={state} onChoose={vi.fn()} onAdvance={onAdvance} nextEpisode={{ ...raw, id: 'last-online-s1-e2' } as unknown as Episode} onNextEpisode={vi.fn()} season1Owned />);
   expect(screen.queryByText('История только начинается')).not.toBeInTheDocument();
   tap();
   expect(screen.getByText('End')).toBeVisible();
