@@ -130,13 +130,14 @@ Deno.test('payment status returns server-owned entitlement', async () => {
 
 Deno.test('pre-checkout validates player, amount and order before approval', async () => {
   const store = storeMock();
-  let answer: { ok: boolean; id: string } | null = null;
+  let answeredId = '';
+  let answeredOk = false;
   const deps: TelegramWebhookDependencies = {
     webhookSecret: 'secret',
     priceStars: 249,
     repository: paymentDependencies(store).repository,
     store,
-    async answerPreCheckout(id, ok) { answer = { id, ok }; },
+    async answerPreCheckout(id, ok) { answeredId = id; answeredOk = ok; },
     async sendMessage() {},
   };
   const response = await handleTelegramWebhook(new Request('https://example.test/telegram/webhook', {
@@ -153,7 +154,7 @@ Deno.test('pre-checkout validates player, amount and order before approval', asy
     }),
   }), deps);
   assert(response.status === 200, 'pre-checkout webhook failed');
-  assert(answer?.ok === true && answer.id === 'pcq-1', 'pre-checkout was not approved');
+  assert(answeredOk && answeredId === 'pcq-1', 'pre-checkout was not approved');
 });
 
 Deno.test('successful_payment grants season ownership after charge is recorded', async () => {
