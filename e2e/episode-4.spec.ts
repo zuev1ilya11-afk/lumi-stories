@@ -60,7 +60,7 @@ for (const route of routes) {
       } else await step(page, route.choices, episode);
     }
     await expect(page.getByText('Эпизод 4 завершён', { exact: true })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Эпизод 5 в разработке' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Продолжить — Эпизод 5', exact: true })).toBeVisible();
     expect([...visited]).toEqual(expected.sceneIds);
     expect(store.progress).toMatchObject({ ...expected.state, episodeId: episode.id, sceneId: 'ep4_end' });
     const saved = structuredClone(store.progress);
