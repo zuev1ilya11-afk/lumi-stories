@@ -210,3 +210,13 @@ Deno.test('analytics derives player id from verified Telegram identity', async (
   assert(repository.events.length === 1, 'event not recorded');
   assert(repository.events[0]?.playerId === 'player-555111', 'player id was not derived server-side');
 });
+
+
+import { corsHeaders } from '../_shared/http.ts';
+
+Deno.test('CORS allows progress PUT requests from the Mini App', () => {
+  const methods = corsHeaders['Access-Control-Allow-Methods']
+    .split(',')
+    .map((method) => method.trim());
+  assert(methods.includes('PUT'), 'CORS does not allow PUT progress saves');
+});
