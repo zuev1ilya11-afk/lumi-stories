@@ -7,18 +7,19 @@ type SeasonScreenProps = {
   season1Owned?: boolean;
   season1PriceStars?: number;
   onPlay(): void;
+  onSelectEpisode?(episodeId: string): void;
   onBack(): void;
 };
 
 const EPISODES = [
-  ['01', 'Номер, который не должен отвечать'],
-  ['02', 'Тот, кого все знают'],
-  ['03', 'Все лгут'],
-  ['04', 'Ночь исчезновения'],
-  ['05', 'Последний онлайн'],
+  ['01', 'last-online-s1-e1', 'Номер, который не должен отвечать'],
+  ['02', 'last-online-s1-e2', 'Тот, кого все знают'],
+  ['03', undefined, 'Все лгут'],
+  ['04', undefined, 'Ночь исчезновения'],
+  ['05', undefined, 'Последний онлайн'],
 ] as const;
 
-export function SeasonScreen({ hasProgress, currentEpisodeId = 'last-online-s1-e1', episodeCompleted = false, season1Owned = false, season1PriceStars = 149, onPlay, onBack }: SeasonScreenProps) {
+export function SeasonScreen({ hasProgress, currentEpisodeId = 'last-online-s1-e1', episodeCompleted = false, season1Owned = false, season1PriceStars = 149, onPlay, onSelectEpisode, onBack }: SeasonScreenProps) {
   const currentEpisode = currentEpisodeId === 'last-online-s1-e2' ? 2 : 1;
   function episodeStatus(number: number) {
     if (number > 2) return 'В разработке';
@@ -52,14 +53,33 @@ export function SeasonScreen({ hasProgress, currentEpisodeId = 'last-online-s1-e
         </div>
       </section>
       <section className="lumi-episodes" aria-label="Эпизоды сезона">
-        {EPISODES.map(([number, title]) => {
-          const status = episodeStatus(Number(number));
+        {EPISODES.map(([number, episodeId, title]) => {
+          const episodeNumber = Number(number);
+          const status = episodeStatus(episodeNumber);
           const locked = status === 'В разработке' || status === 'После Эпизода 1' || status.endsWith('⭐');
+          const replayable = episodeNumber < currentEpisode;
+          const selectable = Boolean(episodeId && onSelectEpisode && !locked && episodeNumber <= currentEpisode);
+          const activate = () => {
+            if (selectable && episodeId) onSelectEpisode?.(episodeId);
+          };
           return (
-          <article className={`lumi-episode${locked ? ' lumi-episode--locked' : ''}`} key={number}>
+          <article
+            className={`lumi-episode${locked ? ' lumi-episode--locked' : ''}`}
+            key={number}
+            data-episode-id={episodeId}
+            role={selectable ? 'button' : undefined}
+            tabIndex={selectable ? 0 : undefined}
+            aria-label={selectable ? `Эпизод ${episodeNumber}: ${title}. ${replayable ? 'Пройти снова' : 'Продолжить'}` : undefined}
+            onClick={activate}
+            onKeyDown={event => {
+              if (!selectable || (event.key !== 'Enter' && event.key !== ' ')) return;
+              event.preventDefault();
+              activate();
+            }}
+          >
             <span className="lumi-episode__number">{number}</span>
-            <div><strong>{title}</strong><small>{status}</small></div>
-            <span aria-label={locked ? 'Закрыто' : 'Доступно'}>{locked ? '⌁' : '→'}</span>
+            <div><strong>{title}</strong><small>{replayable ? `${status} · Пройти снова` : status}</small></div>
+            <span aria-label={locked ? 'Закрыто' : replayable ? 'Пройти снова' : 'Доступно'}>{locked ? '⌁' : replayable ? '↺' : '→'}</span>
           </article>
           );
         })}
