@@ -94,3 +94,50 @@ button:focus-visible { outline: 2px solid #edcff7; outline-offset: 3px; }
 .lumi-stage-layers[data-cg="true"] .lumi-framing { top: calc(62px + var(--lumi-safe-top)); bottom: 15%; }
 .lumi-stage-layers[data-cg="true"] .lumi-story__backdrop { object-position: center top; }
 .lumi-paywall > img { object-position: center top; }
+
+/* House of Black Roses uses a code-only gothic stage until authored CG is connected. */
+.lumi-story[data-story-id="house-of-black-roses"] {
+  background:
+    radial-gradient(circle at 50% 10%, #64556b33 0 8%, transparent 28%),
+    linear-gradient(180deg, #151018 0%, #0b0910 58%, #08070b 100%);
+}
+.lumi-story[data-story-id="house-of-black-roses"] .lumi-stage-layers::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(90deg, transparent 0 12%, #0a080db3 12% 16%, transparent 16% 84%, #0a080db3 84% 88%, transparent 88%),
+    radial-gradient(ellipse at 50% 22%, #d9d0db14 0 12%, transparent 38%),
+    linear-gradient(180deg, #201622 0%, #100c14 58%, #09080c 100%);
+}
+.lumi-story[data-story-id="house-of-black-roses"][data-scene-id*="arrival"] .lumi-stage-layers::before,
+.lumi-story[data-story-id="house-of-black-roses"][data-scene-id*="foyer"] .lumi-stage-layers::before {
+  background:
+    linear-gradient(180deg, #17161db8 0 34%, #08080dbf 35% 100%),
+    radial-gradient(ellipse at 50% 38%, #77647f47 0 8%, transparent 35%),
+    linear-gradient(140deg, #221628, #09080d 70%);
+}
+.lumi-story[data-story-id="house-of-black-roses"][data-scene-id*="gallery"] .lumi-stage-layers::before,
+.lumi-story[data-story-id="house-of-black-roses"][data-scene-id*="portrait"] .lumi-stage-layers::before,
+.lumi-story[data-story-id="house-of-black-roses"][data-scene-id*="nameplate"] .lumi-stage-layers::before {
+  background:
+    repeating-linear-gradient(90deg, #120d15 0 14%, #241826 14% 16%, #120d15 16% 30%),
+    linear-gradient(180deg, #2a1a29, #0a080d);
+}
+.lumi-story[data-story-id="house-of-black-roses"] .lumi-story__shade {
+  background: linear-gradient(180deg, #08070bb8 0%, transparent 24%, transparent 48%, #09070db8 72%, #08070b 94%);
+}
+.lumi-story[data-story-id="house-of-black-roses"] .lumi-dialogue {
+  border-color: #9f7aa038;
+  border-top-color: #c6a4bd70;
+  background: linear-gradient(135deg, #1b121cf2, #0c0a10f7);
+}
+.lumi-story[data-story-id="house-of-black-roses"] .lumi-dialogue__speaker {
+  background: #c8b2c1;
+  color: #281722;
+}
+.lumi-story[data-story-id="house-of-black-roses"] .lumi-choice {
+  border-color: #9e79944f;
+  background: linear-gradient(120deg, #301d2bf2, #151018f5);
+}

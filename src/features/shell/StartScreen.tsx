@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { publicAsset } from '../../publicAsset';
-import { STORY_CATALOG } from '../../story/catalog';
+import { STORY_CATALOG, getStoryCatalogEntry } from '../../story/catalog';
 import { getEpisodeNumber } from '../../story/episodes';
 
 type StartScreenProps = {
@@ -8,6 +8,7 @@ type StartScreenProps = {
   onOpenStory?(storyId: string): void;
   userDisplayName?: string;
   hasProgress?: boolean;
+  currentStoryId?: string;
   currentEpisodeId?: string;
   season1Owned?: boolean;
   season1PriceStars?: number;
@@ -45,11 +46,22 @@ function Navigation({ tab, onTab }: { tab: StartTab; onTab(tab: StartTab): void 
   );
 }
 
+function storyCover(story: (typeof STORY_CATALOG)[number]): string {
+  if (story.coverAsset) {
+    return `linear-gradient(180deg, transparent 30%, rgba(7,5,12,.82) 100%), url(${publicAsset(story.coverAsset)})`;
+  }
+  if (story.theme === 'gothic') {
+    return 'radial-gradient(circle at 50% 18%, rgba(202,190,217,.28), transparent 19%), linear-gradient(160deg, #17111e 0%, #261428 42%, #09080d 100%)';
+  }
+  return 'linear-gradient(160deg, #21162c, #0a0910)';
+}
+
 export function StartScreen({
   onStart,
   onOpenStory,
   userDisplayName = 'Игрок LUMI',
   hasProgress = false,
+  currentStoryId = 'last-online',
   currentEpisodeId = 'last-online-s1-e1',
   season1Owned = false,
   season1PriceStars = 149,
@@ -57,13 +69,14 @@ export function StartScreen({
   const [tab, setTab] = useState<StartTab>('home');
   const [motionEnabled, setMotionEnabled] = useState(true);
   const [hapticsEnabled, setHapticsEnabled] = useState(true);
+  const currentStory = getStoryCatalogEntry(currentStoryId);
 
   function openStory(storyId: string) {
     if (onOpenStory) {
       onOpenStory(storyId);
       return;
     }
-    if (storyId === 'last-online') onStart();
+    if (storyId === currentStoryId) onStart();
   }
 
   return (
@@ -105,7 +118,7 @@ export function StartScreen({
 
           <div className="lumi-story-catalog">
             {STORY_CATALOG.map(story => {
-              const isCurrentStory = story.id === 'last-online';
+              const isCurrentStory = story.id === currentStoryId;
               const progressLabel = isCurrentStory
                 ? (hasProgress ? `${episodeLabel(currentEpisodeId)} · продолжить` : 'Эпизод 1 · бесплатно')
                 : story.seasonLabel;
@@ -122,7 +135,7 @@ export function StartScreen({
                   <span
                     className="lumi-story-card__cover"
                     aria-hidden="true"
-                    style={{ backgroundImage: `linear-gradient(180deg, transparent 30%, rgba(7,5,12,.82) 100%), url(${publicAsset(story.coverAsset)})` }}
+                    style={{ backgroundImage: storyCover(story) }}
                   />
                   <span className="lumi-story-card__body">
                     <small>{story.seasonLabel}</small>
@@ -150,13 +163,13 @@ export function StartScreen({
           <div className="lumi-start__cards">
             <article className="lumi-start__card">
               <small>Текущая история</small>
-              <strong>Последний онлайн</strong>
+              <strong>{currentStory.title}</strong>
               <span>{episodeLabel(currentEpisodeId)} · {hasProgress ? 'в процессе' : 'не начато'}</span>
             </article>
             <article className="lumi-start__card">
               <small>Доступ к сезону</small>
               <strong>{season1PriceStars === 0 ? 'Бесплатный доступ' : season1Owned ? 'Полный сезон открыт' : `${season1PriceStars} ⭐`}</strong>
-              <span>{season1PriceStars === 0 ? 'Эпизоды 1–5 бесплатно' : season1Owned ? 'Покупка подтверждена' : 'Эпизод 1 доступен бесплатно'}</span>
+              <span>{season1PriceStars === 0 ? 'Эпизоды сезона доступны бесплатно' : season1Owned ? 'Покупка подтверждена' : 'Эпизод 1 доступен бесплатно'}</span>
             </article>
           </div>
 

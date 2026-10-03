@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { bootstrap, getPaymentStatus, saveProgress } from '../api/client';
+import { bootstrap, getPaymentStatus, loadProgress, saveProgress } from '../api/client';
 import { trackEvent } from '../analytics/events';
-import { episodes, firstEpisode, getEpisode } from '../story/episodes';
+import { getStoryEpisode, getStoryRuntime } from '../story/stories';
 import { createProgressMachine, progressFromDto, type ProgressState } from './model';
 import { normalizeEpisode2Progress } from './legacyEpisode2';
 
 type ProgressStatus = 'loading' | 'ready' | 'saving' | 'error';
 type Operation = 'advance' | 'choose' | 'nextEpisode';
 
-export function useProgress(initData: string): {
+export function useProgress(initData: string, storyId = 'last-online'): {
   status: ProgressStatus;
   state: ProgressState | null;
   season1Owned: boolean;
@@ -21,8 +21,10 @@ export function useProgress(initData: string): {
   retry(): Promise<void>;
   refreshOwnership(): Promise<boolean>;
 } {
+  const story = getStoryRuntime(storyId);
   const [status, setStatus] = useState<ProgressStatus>('loading');
   const [state, setState] = useState<ProgressState | null>(null);
+  const [loadedStoryId, setLoadedStoryId] = useState<string | null>(null);
   const [season1Owned, setSeason1Owned] = useState(false);
   const [season1PriceStars, setSeason1PriceStars] = useState(149);
   const [episodeRewindPriceStars, setEpisodeRewindPriceStars] = useState(49);
@@ -32,42 +34,68 @@ export function useProgress(initData: string): {
   const inFlight = useRef<Promise<void> | null>(null);
   const pendingAnalyticsRef = useRef<{ operation: Operation; episodeId: string; sceneId: string; choiceId?: string } | null>(null);
 
+  function configureAccess(payload: { season1Owned: boolean; season1PriceStars?: number; episodeRewindPriceStars?: number }) {
+    setSeason1Owned(story.free ? true : payload.season1Owned);
+    setSeason1PriceStars(story.free ? 0 : (payload.season1PriceStars ?? 149));
+    setEpisodeRewindPriceStars(story.id === 'last-online' ? (payload.episodeRewindPriceStars ?? 49) : 0);
+  }
+
+  function normalizeProgress(progress: Awaited<ReturnType<typeof loadProgress>> | null, episode: ReturnType<typeof getStoryEpisode>) {
+    return story.id === 'last-online' ? normalizeEpisode2Progress(progress, episode) : progress;
+  }
+
   useEffect(() => {
     let active = true;
     bootstrapBusy.current = true;
     machineRef.current = null;
     pendingAnalyticsRef.current = null;
+    setLoadedStoryId(null);
     setState(null);
     setStatus('loading');
-    bootstrap(initData)
-      .then((payload) => {
+
+    void (async () => {
+      try {
+        const payload = await bootstrap(initData);
+        const rawProgress = story.id === 'last-online'
+          ? payload.progress
+          : await loadProgress(initData, story.id, story.seasonId);
         if (!active) return;
-        const episode = getEpisode(payload.progress?.episodeId);
-        const initial = progressFromDto(normalizeEpisode2Progress(payload.progress, episode), episode);
+        const episode = getStoryEpisode(story.id, rawProgress?.episodeId);
+        const initial = progressFromDto(normalizeProgress(rawProgress, episode), episode);
         machineRef.current = createProgressMachine({
-          episode: firstEpisode,
-          episodes,
+          episode: story.firstEpisode,
+          episodes: story.episodes,
+          storyId: story.id,
+          seasonId: story.seasonId,
           initial,
           save: (progress) => saveProgress(initData, progress),
         });
-        setSeason1Owned(payload.season1Owned);
-        setSeason1PriceStars(payload.season1PriceStars ?? 149);
-        setEpisodeRewindPriceStars(payload.episodeRewindPriceStars ?? 49);
+        configureAccess(payload);
         setState(initial);
+        setLoadedStoryId(story.id);
         setStatus('ready');
-      })
-      .catch(() => { if (active) setStatus('error'); })
-      .finally(() => { if (active) bootstrapBusy.current = false; });
+      } catch {
+        if (active) setStatus('error');
+      } finally {
+        if (active) bootstrapBusy.current = false;
+      }
+    })();
+
     return () => { active = false; };
-  }, [initData, bootstrapAttempt]);
+  }, [initData, storyId, bootstrapAttempt]);
 
   const refreshOwnership = useCallback(async (): Promise<boolean> => {
+    if (story.free) {
+      setSeason1Owned(true);
+      setSeason1PriceStars(0);
+      return true;
+    }
     const payment = await getPaymentStatus(initData);
     setSeason1Owned(payment.season1Owned);
     setSeason1PriceStars(payment.priceStars);
     setEpisodeRewindPriceStars(payment.episodeRewindPriceStars ?? 49);
     return payment.season1Owned;
-  }, [initData]);
+  }, [initData, storyId]);
 
   const run = useCallback((operation: Operation | 'retry', choiceId?: string): Promise<void> => {
     if (inFlight.current) return inFlight.current;
@@ -83,7 +111,7 @@ export function useProgress(initData: string): {
     if (operation === 'retry' && !machine.pending()) return Promise.resolve();
     if (operation !== 'retry') {
       const current = machine.current();
-      pendingAnalyticsRef.current = { operation, episodeId: current.episodeId ?? firstEpisode.id, sceneId: current.sceneId, ...(choiceId ? { choiceId } : {}) };
+      pendingAnalyticsRef.current = { operation, episodeId: current.episodeId ?? story.firstEpisode.id, sceneId: current.sceneId, ...(choiceId ? { choiceId } : {}) };
     }
     setStatus('saving');
     inFlight.current = (async () => {
@@ -100,7 +128,7 @@ export function useProgress(initData: string): {
         setState(next);
         setStatus('ready');
         const pending = pendingAnalyticsRef.current;
-        const episodeId = next.episodeId ?? firstEpisode.id;
+        const episodeId = next.episodeId ?? story.firstEpisode.id;
         if (pending && next !== before) {
           if (pending.operation === 'choose') void trackEvent('choice_selected', { episodeId: pending.episodeId, sceneId: pending.sceneId, choiceId: pending.choiceId });
           if (pending.operation === 'nextEpisode') void trackEvent('episode_started', { episodeId, sceneId: next.sceneId });
@@ -118,36 +146,41 @@ export function useProgress(initData: string): {
       }
     })();
     return inFlight.current;
-  }, []);
+  }, [storyId]);
 
   const reload = useCallback(async (): Promise<void> => {
     if (inFlight.current) await inFlight.current;
     setStatus('loading');
+    setLoadedStoryId(null);
     try {
       const payload = await bootstrap(initData);
-      const episode = getEpisode(payload.progress?.episodeId);
-      const initial = progressFromDto(normalizeEpisode2Progress(payload.progress, episode), episode);
+      const rawProgress = story.id === 'last-online'
+        ? payload.progress
+        : await loadProgress(initData, story.id, story.seasonId);
+      const episode = getStoryEpisode(story.id, rawProgress?.episodeId);
+      const initial = progressFromDto(normalizeProgress(rawProgress, episode), episode);
       machineRef.current = createProgressMachine({
-        episode: firstEpisode,
-        episodes,
+        episode: story.firstEpisode,
+        episodes: story.episodes,
+        storyId: story.id,
+        seasonId: story.seasonId,
         initial,
         save: (progress) => saveProgress(initData, progress),
       });
       pendingAnalyticsRef.current = null;
-      setSeason1Owned(payload.season1Owned);
-      setSeason1PriceStars(payload.season1PriceStars ?? 149);
-      setEpisodeRewindPriceStars(payload.episodeRewindPriceStars ?? 49);
+      configureAccess(payload);
       setState(initial);
+      setLoadedStoryId(story.id);
       setStatus('ready');
     } catch (error) {
       setStatus('error');
       throw error;
     }
-  }, [initData]);
+  }, [initData, storyId]);
 
   return {
     status,
-    state,
+    state: loadedStoryId === storyId ? state : null,
     season1Owned,
     season1PriceStars,
     episodeRewindPriceStars,

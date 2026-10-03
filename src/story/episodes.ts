@@ -8,8 +8,10 @@ export const episodes: readonly Episode[] = [parseEpisode(episodeOneRaw), parseE
 export const firstEpisode = episodes[0];
 
 export function getEpisodeNumber(episodeId = firstEpisode.id): number {
-  const id = episodeId === 'episode-2' ? 'last-online-s1-e2' : episodeId;
-  return Math.max(1, episodes.findIndex(episode => episode.id === id) + 1);
+  if (episodeId === 'episode-2') return 2;
+  const canonicalMatch = episodeId.match(/-s\d+-e(\d+)$/);
+  if (canonicalMatch) return Math.max(1, Number(canonicalMatch[1]));
+  return Math.max(1, episodes.findIndex(episode => episode.id === episodeId) + 1);
 }
 
 export function getEpisode(episodeId = firstEpisode.id): Episode {

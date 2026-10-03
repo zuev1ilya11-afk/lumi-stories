@@ -13,6 +13,7 @@ import { useBeatPlayback } from './useBeatPlayback';
 import { useReducedMotion } from './useReducedMotion';
 
 type Props = {
+  storyId?: string;
   episode: Episode;
   sceneId: string;
   state: StoryState;
@@ -37,7 +38,7 @@ export function StoryScreen(props: Props) {
   return <ScenePlayer key={`${props.episode.id}:${scene.id}`} {...props} scene={scene} previous={previousArt} onArt={src => { previous.current = src; }} chatHistory={chatHistory.current} onHistory={messages => { chatHistory.current = messages; }} />;
 }
 
-function ScenePlayer({ episode, scene, state, onChoose, onAdvance, onMenu, nextEpisode, onNextEpisode, disabled = false, analytics = false, season1Owned = false, season1PriceStars = 149, onRefreshOwnership, previous, onArt, chatHistory, onHistory }: Props & { scene: Scene; previous?: string; onArt(src?: string): void; chatHistory: ChatTimelineEvent[]; onHistory(messages: ChatTimelineEvent[]): void }) {
+function ScenePlayer({ storyId = 'last-online', episode, scene, state, onChoose, onAdvance, onMenu, nextEpisode, onNextEpisode, disabled = false, analytics = false, season1Owned = false, season1PriceStars = 149, onRefreshOwnership, previous, onArt, chatHistory, onHistory }: Props & { scene: Scene; previous?: string; onArt(src?: string): void; chatHistory: ChatTimelineEvent[]; onHistory(messages: ChatTimelineEvent[]): void }) {
   const reduced = useReducedMotion();
   const playback = useBeatPlayback(getSceneBeats(scene), reduced);
   const p = getScenePresentation(scene, playback.beat);
@@ -95,7 +96,7 @@ function ScenePlayer({ episode, scene, state, onChoose, onAdvance, onMenu, nextE
       {nextEpisode && onNextEpisode ? <>
         <p>{nextEpisode.title}</p>
         <button className="lumi-primary" type="button" disabled={pending || disabled} onClick={() => void run(onNextEpisode)}>Продолжить — Эпизод {episodeNumber + 1}</button>
-      </> : <p>Продолжение расследования появится позже.</p>}
+      </> : <p>Продолжение истории появится позже.</p>}
       {onMenu ? <button className="lumi-primary" type="button" onClick={onMenu}>К сезону</button> : null}
       {error && !disabled ? <p role="alert">Не удалось продолжить. Попробуйте ещё раз.</p> : null}
     </div>
@@ -106,7 +107,7 @@ function ScenePlayer({ episode, scene, state, onChoose, onAdvance, onMenu, nextE
     {error && !disabled ? <p role="alert">Не удалось продолжить. Попробуйте ещё раз.</p> : null}
   </main>;
   const readyChoices = playback.final && playback.complete ? choices : [];
-  return <main className={`lumi-story lumi-story--${p.mode}`} data-testid="story-stage" data-scene-id={scene.id} data-beat-index={playback.index} data-beat-count={getSceneBeats(scene).length}
+  return <main className={`lumi-story lumi-story--${p.mode}`} data-testid="story-stage" data-story-id={storyId} data-scene-id={scene.id} data-beat-index={playback.index} data-beat-count={getSceneBeats(scene).length}
     data-presentation={p.mode} data-motion={p.motion} data-camera={p.camera} data-transition={p.transition}>
     <CinematicStage scene={scene} beat={playback.beat} presentation={p} previous={previous} />
     <header className="lumi-story__topbar"><div><small>LUMI · {p.location ?? 'История'}</small><strong>{episode.title}</strong></div><button className="lumi-icon-button" type="button" onClick={onMenu} aria-label="Меню">⋯</button></header>

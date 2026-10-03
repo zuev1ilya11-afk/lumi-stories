@@ -69,8 +69,8 @@ export function createApiClient({ baseUrl, fetcher = fetch }: ApiClientOptions) 
       }));
     },
 
-    async loadProgress(initData: string): Promise<ProgressDto | null> {
-      const query = new URLSearchParams({ storyId: STORY_ID, seasonId: SEASON_ID });
+    async loadProgress(initData: string, storyId = STORY_ID, seasonId = SEASON_ID): Promise<ProgressDto | null> {
+      const query = new URLSearchParams({ storyId, seasonId });
       const payload = await parseJson<ProgressEnvelope>(await fetcher(`${root}/progress?${query.toString()}`, {
         headers: telegramHeaders(initData),
       }));
@@ -134,8 +134,8 @@ export function bootstrap(initData: string): Promise<BootstrapResponse> {
   return createApiClient({ baseUrl: configuredBaseUrl() }).bootstrap(initData);
 }
 
-export function loadProgress(initData: string): Promise<ProgressDto | null> {
-  return createApiClient({ baseUrl: configuredBaseUrl() }).loadProgress(initData);
+export function loadProgress(initData: string, storyId = STORY_ID, seasonId = SEASON_ID): Promise<ProgressDto | null> {
+  return createApiClient({ baseUrl: configuredBaseUrl() }).loadProgress(initData, storyId, seasonId);
 }
 
 export function saveProgress(initData: string, progress: ProgressDto): Promise<ProgressDto> {

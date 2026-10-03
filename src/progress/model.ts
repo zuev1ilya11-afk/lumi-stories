@@ -9,6 +9,7 @@ export type ProgressState = {
 };
 
 type SaveProgressFn = (progress: ProgressDto) => Promise<ProgressDto>;
+type ProgressIdentity = { storyId: string; seasonId: string };
 
 type ProgressMachine = {
   current(): ProgressState;
@@ -18,6 +19,8 @@ type ProgressMachine = {
   nextEpisode(): Promise<ProgressState>;
   retry(): Promise<ProgressState>;
 };
+
+const DEFAULT_IDENTITY: ProgressIdentity = { storyId: 'last-online', seasonId: 'season-1' };
 
 function cleanFlags(flags: Record<string, unknown>): Record<string, FlagValue> {
   const cleaned: Record<string, FlagValue> = {};
@@ -51,10 +54,10 @@ export function progressFromDto(progress: ProgressDto | null, episode: Episode):
   };
 }
 
-export function progressToDto(progress: ProgressState, episode: Episode): ProgressDto {
+export function progressToDto(progress: ProgressState, episode: Episode, identity: ProgressIdentity = DEFAULT_IDENTITY): ProgressDto {
   return {
-    storyId: 'last-online',
-    seasonId: 'season-1',
+    storyId: identity.storyId,
+    seasonId: identity.seasonId,
     episodeId: progress.episodeId ?? episode.id,
     sceneId: progress.sceneId,
     junhoScore: progress.storyState.junhoScore,
@@ -88,11 +91,17 @@ export function createProgressMachine(options: {
   episodes?: readonly Episode[];
   initial: ProgressState;
   save: SaveProgressFn;
+  storyId?: string;
+  seasonId?: string;
 }): ProgressMachine {
   let committed = options.initial;
   let pendingState: ProgressState | null = null;
   let inFlight: Promise<ProgressState> | null = null;
   const episodes = options.episodes ?? [options.episode];
+  const identity = {
+    storyId: options.storyId ?? DEFAULT_IDENTITY.storyId,
+    seasonId: options.seasonId ?? DEFAULT_IDENTITY.seasonId,
+  };
 
   function episodeFor(state: ProgressState): Episode {
     const id = state.episodeId ?? options.episode.id;
@@ -104,7 +113,7 @@ export function createProgressMachine(options: {
   async function saveCandidate(candidate: ProgressState): Promise<ProgressState> {
     pendingState = candidate;
     const episode = episodeFor(candidate);
-    const saved = await options.save(progressToDto(candidate, episode));
+    const saved = await options.save(progressToDto(candidate, episode, identity));
     committed = progressFromDto(saved, episode);
     pendingState = null;
     return committed;
