@@ -19,6 +19,8 @@ type StoryFrameProps = {
   status?: string;
   season1Owned: boolean;
   season1PriceStars: number;
+  episodeRewindPriceStars: number;
+  onRewindComplete?(episodeId: string): Promise<void>;
   onChoose(id: string): Promise<void>;
   onAdvance(): Promise<void>;
   onNextEpisode(): Promise<void>;
@@ -70,6 +72,12 @@ function StoryFrame(props: StoryFrameProps) {
   />;
   if (screen === 'recap' && recapEpisodeId) return <EpisodeRecap
     episodeId={recapEpisodeId}
+    rewindPriceStars={props.episodeRewindPriceStars}
+    onRewindComplete={props.onRewindComplete ? async (episodeId) => {
+      await props.onRewindComplete?.(episodeId);
+      setRecapEpisodeId(undefined);
+      setScreen('story');
+    } : undefined}
     onBack={() => setScreen('season')}
   />;
   return (
@@ -100,13 +108,13 @@ function ConnectedPrototype({ context }: { context: TelegramContext }) {
   useEffect(() => { void trackEvent('app_opened'); }, []);
   if (progress.status === 'error' && !progress.state) return <main className="lumi-shell lumi-shell--error"><p role="alert">Не удалось загрузить историю.</p><button className="lumi-primary" type="button" onClick={() => void progress.retry().catch(() => undefined)}>Повторить</button></main>;
   if (progress.status === 'loading' || !progress.state) return <main className="lumi-shell"><p>Загружаем историю…</p></main>;
-  return <StoryFrame progress={progress.state} status={progress.status} season1Owned={progress.season1Owned} season1PriceStars={progress.season1PriceStars} userDisplayName={context.userDisplayName} onChoose={progress.choose} onAdvance={progress.advance} onNextEpisode={progress.nextEpisode} onRefreshOwnership={progress.refreshOwnership} onRetry={progress.retry} analytics />;
+  return <StoryFrame progress={progress.state} status={progress.status} season1Owned={progress.season1Owned} season1PriceStars={progress.season1PriceStars} episodeRewindPriceStars={progress.episodeRewindPriceStars} userDisplayName={context.userDisplayName} onRewindComplete={async () => { await progress.reload(); }} onChoose={progress.choose} onAdvance={progress.advance} onNextEpisode={progress.nextEpisode} onRefreshOwnership={progress.refreshOwnership} onRetry={progress.retry} analytics />;
 }
 
 function LocalPrototype() {
   const [machine] = useState(() => createProgressMachine({ episode: firstEpisode, episodes, initial: progressFromDto(null, firstEpisode), save: async progress => progress }));
   const [progress, setProgress] = useState(machine.current());
-  return <StoryFrame progress={progress} season1Owned season1PriceStars={149} userDisplayName="Игрок LUMI" onChoose={async id => { setProgress(await machine.choose(id)); }} onAdvance={async () => { setProgress(await machine.advance()); }} onNextEpisode={async () => { setProgress(await machine.nextEpisode()); }} />;
+  return <StoryFrame progress={progress} season1Owned season1PriceStars={149} episodeRewindPriceStars={49} userDisplayName="Игрок LUMI" onChoose={async id => { setProgress(await machine.choose(id)); }} onAdvance={async () => { setProgress(await machine.advance()); }} onNextEpisode={async () => { setProgress(await machine.nextEpisode()); }} />;
 }
 
 export function App({ production = isProductionBuild() }: { production?: boolean } = {}) {
