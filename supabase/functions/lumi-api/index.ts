@@ -1,31 +1,53 @@
 import { corsHeaders, jsonResponse } from '../_shared/http.ts';
+import { createStarPaymentStore, type StarPaymentStore } from '../_shared/payments.ts';
 import {
   createRepository,
   createSupabaseRestDatabaseAdapter,
   readSupabaseServerSecret,
   type LumiRepository,
 } from '../_shared/repository.ts';
+import {
+  answerTelegramPreCheckout,
+  createStarsInvoiceLink,
+  deriveTelegramWebhookSecret,
+  ensureTelegramPaymentsWebhook,
+  sendTelegramMessage,
+} from '../_shared/telegram-bot.ts';
 import { handleAnalytics } from './routes/analytics.ts';
 import { handleBootstrap } from './routes/bootstrap.ts';
+import { handleCreateSeasonInvoice, handlePaymentStatus } from './routes/payments.ts';
 import { handleProgress } from './routes/progress.ts';
+import { handleTelegramWebhook } from './routes/telegram-webhook.ts';
 
 const STORY_ID = 'last-online';
 const SEASON_ID = 'season-1';
+const SEASON_1_PRICE_STARS = 249;
 let cachedRepository: LumiRepository | null = null;
+let cachedPaymentStore: StarPaymentStore | null = null;
 
-function runtimeRepository(): LumiRepository {
-  if (cachedRepository) return cachedRepository;
-
+function runtimeCredentials(): { supabaseUrl: string; secretKey: string } {
   const supabaseUrl = Deno.env.get('SUPABASE_URL');
   const secretKey = readSupabaseServerSecret((name) => Deno.env.get(name));
   if (!supabaseUrl || !secretKey) {
     throw new Error('Supabase server credentials are not configured');
   }
+  return { supabaseUrl, secretKey };
+}
 
+function runtimeRepository(): LumiRepository {
+  if (cachedRepository) return cachedRepository;
+  const { supabaseUrl, secretKey } = runtimeCredentials();
   cachedRepository = createRepository(
     createSupabaseRestDatabaseAdapter(supabaseUrl, secretKey),
   );
   return cachedRepository;
+}
+
+function runtimePaymentStore(): StarPaymentStore {
+  if (cachedPaymentStore) return cachedPaymentStore;
+  const { supabaseUrl, secretKey } = runtimeCredentials();
+  cachedPaymentStore = createStarPaymentStore(supabaseUrl, secretKey);
+  return cachedPaymentStore;
 }
 
 Deno.serve(async (request: Request) => {
@@ -35,15 +57,18 @@ Deno.serve(async (request: Request) => {
 
   const url = new URL(request.url);
   const botToken = Deno.env.get('TELEGRAM_BOT_TOKEN');
+  const supabaseUrl = Deno.env.get('SUPABASE_URL');
 
   if (url.pathname.endsWith('/health')) {
     return jsonResponse({
       ok: true,
       telegramConfigured: Boolean(botToken),
       databaseConfigured: Boolean(
-        Deno.env.get('SUPABASE_URL') &&
+        supabaseUrl &&
           readSupabaseServerSecret((name) => Deno.env.get(name)),
       ),
+      paymentsConfigured: Boolean(botToken && supabaseUrl),
+      season1PriceStars: SEASON_1_PRICE_STARS,
     });
   }
 
@@ -52,10 +77,25 @@ Deno.serve(async (request: Request) => {
   }
 
   let repository: LumiRepository;
+  let paymentStore: StarPaymentStore;
   try {
     repository = runtimeRepository();
+    paymentStore = runtimePaymentStore();
   } catch {
     return jsonResponse({ error: 'SERVER_NOT_CONFIGURED' }, 500);
+  }
+
+  if (url.pathname.endsWith('/telegram/webhook')) {
+    const webhookSecret = await deriveTelegramWebhookSecret(botToken);
+    return handleTelegramWebhook(request, {
+      webhookSecret,
+      priceStars: SEASON_1_PRICE_STARS,
+      repository,
+      store: paymentStore,
+      answerPreCheckout: (queryId, ok, errorMessage) =>
+        answerTelegramPreCheckout(botToken, queryId, ok, errorMessage),
+      sendMessage: (chatId, text) => sendTelegramMessage(botToken, chatId, text),
+    });
   }
 
   const nowSeconds = Math.floor(Date.now() / 1000);
@@ -72,11 +112,37 @@ Deno.serve(async (request: Request) => {
             playerId: player.id,
             telegramUserId: player.telegramUserId,
             season1Owned: player.season1Owned,
+            season1PriceStars: SEASON_1_PRICE_STARS,
             progress,
           };
         },
       },
     });
+  }
+
+  const paymentDependencies = {
+    botToken,
+    nowSeconds,
+    priceStars: SEASON_1_PRICE_STARS,
+    repository,
+    store: paymentStore,
+    telegram: {
+      ensureWebhook: async () => {
+        if (!supabaseUrl) throw new Error('SERVER_NOT_CONFIGURED');
+        const webhookUrl = supabaseUrl.replace(/\/$/, '') + '/functions/v1/lumi-api/telegram/webhook';
+        await ensureTelegramPaymentsWebhook(botToken, webhookUrl);
+      },
+      createInvoiceLink: (invoicePayload: string, priceStars: number) =>
+        createStarsInvoiceLink(botToken, invoicePayload, priceStars),
+    },
+  };
+
+  if (url.pathname.endsWith('/payments/invoice')) {
+    return handleCreateSeasonInvoice(request, paymentDependencies);
+  }
+
+  if (url.pathname.endsWith('/payments/status')) {
+    return handlePaymentStatus(request, paymentDependencies);
   }
 
   if (url.pathname.endsWith('/progress')) {

@@ -59,6 +59,7 @@ Deno.test('bootstrap returns verified Telegram identity from repository', async 
         playerId: 'player-1',
         telegramUserId: user.id,
         season1Owned: false,
+        season1PriceStars: 249,
         progress: null,
       };
     },
@@ -74,6 +75,7 @@ Deno.test('bootstrap returns verified Telegram identity from repository', async 
   assert(payload.telegramUserId === 555111, 'wrong telegramUserId');
   assert(payload.playerId === 'player-1', 'wrong playerId');
   assert(payload.season1Owned === false, 'wrong ownership');
+  assert(payload.season1PriceStars === 249, 'wrong Stars price');
 });
 
 import { handleProgress, type ProgressRepository } from './routes/progress.ts';
