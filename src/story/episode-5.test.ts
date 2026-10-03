@@ -70,6 +70,31 @@ it('Episode 5 keeps every visual asset real and every beat short enough for mobi
   }
   for (const asset of assets) {
     expect(existsSync(`public/${asset}`), asset).toBe(true);
-    expect(readFileSync(`public/${asset}`).subarray(8, 12).toString(), asset).toBe('WEBP');
+    const bytes = readFileSync(`public/${asset}`);
+    if (asset.endsWith('.svg')) expect(bytes.toString('utf8').trimStart().startsWith('<svg'), asset).toBe(true);
+    else expect(bytes.subarray(8, 12).toString(), asset).toBe('WEBP');
   }
+});
+
+it('Episode 5 keeps characters on every non-chat scene and makes Han visible through the reveal', () => {
+  const episode = getNextEpisode('last-online-s1-e4');
+  expect(episode).toBeDefined();
+  if (!episode) return;
+
+  const empty = episode.scenes
+    .filter(scene => scene.kind !== 'message')
+    .filter(scene => !scene.presentation?.cg && !(scene.presentation?.characters?.length))
+    .map(scene => scene.id);
+  expect(empty).toEqual([]);
+
+  const hanScenes = episode.scenes.filter(scene =>
+    scene.presentation?.characters?.some(character => character.id === 'han'));
+  expect(hanScenes.length).toBeGreaterThanOrEqual(20);
+
+  for (const id of ['ep5_archive_arrival', 'ep5_registry', 'ep5_han_admission', 'ep5_sender_reveal', 'ep5_device_handover']) {
+    const scene = episode.scenes.find(candidate => candidate.id === id);
+    expect(scene?.presentation?.characters?.some(character => character.id === 'han'), id).toBe(true);
+  }
+
+  expect(episode.scenes.some(scene => scene.presentation?.cg?.includes('/ep4/'))).toBe(false);
 });
