@@ -6,7 +6,7 @@ import { getStoryRuntime } from './stories';
 it('registers House of Black Roses as an independent playable story', () => {
   const story = getStoryRuntime('house-of-black-roses');
   expect(story.seasonId).toBe('season-1');
-  expect(story.free).toBe(true);
+  expect(story.free).toBe(false);
   expect(story.episodes).toHaveLength(1);
   expect(story.firstEpisode.id).toBe('house-of-black-roses-s1-e1');
   expect(validateEpisode(story.firstEpisode)).toEqual([]);
