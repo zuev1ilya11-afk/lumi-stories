@@ -34,6 +34,13 @@ export async function signTelegramInitData(userId = 555111, nowSeconds = 1_800_0
 }
 
 export async function installTelegram(page: Page, initData: string, userId = 555111): Promise<void> {
+  await page.route('https://telegram.org/js/telegram-web-app.js*', async (route: Route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/javascript',
+      body: '',
+    });
+  });
   await page.addInitScript(({ signed, id }: { signed: string; id: number }) => {
     window.Telegram = {
       WebApp: {
