@@ -88,6 +88,17 @@ export async function installMockLumiApi(page: Page, store: MockApiStore): Promi
       return;
     }
 
+    if (url.pathname.endsWith('/payments/status')) {
+      await route.fulfill({ status: 200, headers: cors, body: JSON.stringify({
+        season1Owned: store.season1Owned,
+        priceStars: store.season1PriceStars ?? 149,
+        episodeRewindPriceStars: store.episodeRewindPriceStars ?? 49,
+        storyId: url.searchParams.get('storyId') ?? 'last-online',
+        seasonId: url.searchParams.get('seasonId') ?? 'season-1',
+      }) });
+      return;
+    }
+
     if (url.pathname.endsWith('/progress') && request.method() === 'PUT') {
       if (store.failNextSave) {
         store.failNextSave = false;
