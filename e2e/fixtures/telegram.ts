@@ -8,10 +8,11 @@ export type MockApiStore = {
   analytics: string[];
   failNextSave: boolean;
   saves: string[];
+  season1Owned: boolean;
 };
 
-export function createMockApiStore(): MockApiStore {
-  return { progress: null, analytics: [], failNextSave: false, saves: [] };
+export function createMockApiStore(season1Owned = true): MockApiStore {
+  return { progress: null, analytics: [], failNextSave: false, saves: [], season1Owned };
 }
 
 async function hmac(key: Uint8Array, value: string): Promise<Uint8Array> {
@@ -80,7 +81,7 @@ export async function installMockLumiApi(page: Page, store: MockApiStore): Promi
 
     if (url.pathname.endsWith('/bootstrap')) {
       await route.fulfill({ status: 200, headers: cors, body: JSON.stringify({
-        playerId: `player-${userId}`, telegramUserId: userId, season1Owned: false, progress: store.progress,
+        playerId: `player-${userId}`, telegramUserId: userId, season1Owned: store.season1Owned, season1PriceStars: 249, progress: store.progress,
       }) });
       return;
     }
