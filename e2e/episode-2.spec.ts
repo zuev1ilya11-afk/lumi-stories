@@ -136,7 +136,7 @@ test('reload during Episode 2 retains the episode, state and logical scene with 
   const before = structuredClone(store.progress);
   const saveCount = store.saves.length;
   await page.reload();
-  await page.getByRole('button', { name: 'Начать историю', exact: true }).click();
+  await page.getByRole('button', { name: 'Продолжить историю', exact: true }).click();
   await page.getByRole('button', { name: 'Продолжить', exact: true }).click();
   await expect(page.locator('[data-scene-id]')).toHaveAttribute('data-scene-id', 'ep2_phone_demand');
   await expect(page.locator('[data-beat-index]')).toHaveAttribute('data-beat-index', '0');
