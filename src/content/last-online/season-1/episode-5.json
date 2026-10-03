@@ -710,8 +710,8 @@
           },
           {
             "id": "han",
-            "src": "assets/last-online/ep5/characters/han/neutral.svg",
-            "emotion": "neutral",
+            "src": "assets/last-online/ep5/characters/han/remorseful.svg",
+            "emotion": "remorseful",
             "position": "center",
             "framing": "medium",
             "depth": "foreground"
@@ -905,8 +905,8 @@
           },
           {
             "id": "han",
-            "src": "assets/last-online/ep5/characters/han/neutral.svg",
-            "emotion": "neutral",
+            "src": "assets/last-online/ep5/characters/han/remorseful.svg",
+            "emotion": "remorseful",
             "position": "right",
             "framing": "medium",
             "depth": "foreground"
@@ -965,8 +965,8 @@
           },
           {
             "id": "han",
-            "src": "assets/last-online/ep5/characters/han/neutral.svg",
-            "emotion": "neutral",
+            "src": "assets/last-online/ep5/characters/han/remorseful.svg",
+            "emotion": "remorseful",
             "position": "right",
             "framing": "medium",
             "depth": "foreground"
@@ -1163,8 +1163,8 @@
           },
           {
             "id": "han",
-            "src": "assets/last-online/ep5/characters/han/neutral.svg",
-            "emotion": "neutral",
+            "src": "assets/last-online/ep5/characters/han/remorseful.svg",
+            "emotion": "remorseful",
             "position": "center",
             "framing": "medium",
             "depth": "foreground"
@@ -1313,7 +1313,7 @@
           },
           {
             "id": "han",
-            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "src": "assets/last-online/ep5/characters/han/serious.svg",
             "emotion": "serious",
             "position": "center",
             "framing": "medium",
@@ -1388,8 +1388,8 @@
           },
           {
             "id": "han",
-            "src": "assets/last-online/ep5/characters/han/neutral.svg",
-            "emotion": "neutral",
+            "src": "assets/last-online/ep5/characters/han/serious.svg",
+            "emotion": "serious",
             "position": "center",
             "framing": "medium",
             "depth": "foreground"
@@ -1508,7 +1508,7 @@
           },
           {
             "id": "han",
-            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "src": "assets/last-online/ep5/characters/han/serious.svg",
             "emotion": "serious",
             "position": "right",
             "framing": "medium",
@@ -1829,8 +1829,8 @@
           },
           {
             "id": "han",
-            "src": "assets/last-online/ep5/characters/han/neutral.svg",
-            "emotion": "neutral",
+            "src": "assets/last-online/ep5/characters/han/serious.svg",
+            "emotion": "serious",
             "position": "center",
             "framing": "medium",
             "depth": "foreground"
@@ -2515,8 +2515,8 @@
           },
           {
             "id": "han",
-            "src": "assets/last-online/ep5/characters/han/neutral.svg",
-            "emotion": "neutral",
+            "src": "assets/last-online/ep5/characters/han/remorseful.svg",
+            "emotion": "remorseful",
             "position": "center",
             "framing": "medium",
             "depth": "foreground"
@@ -2908,8 +2908,8 @@
           },
           {
             "id": "han",
-            "src": "assets/last-online/ep5/characters/han/neutral.svg",
-            "emotion": "neutral",
+            "src": "assets/last-online/ep5/characters/han/remorseful.svg",
+            "emotion": "remorseful",
             "position": "center",
             "framing": "medium",
             "depth": "foreground"
