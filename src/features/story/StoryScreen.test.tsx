@@ -228,3 +228,20 @@ it('marks key scenes as cinematic and exposes motion variant', () => {
   expect(stage).toHaveAttribute('data-motion', 'tension');
   expect(stage.querySelector('.lumi-story__backdrop')).toBeInTheDocument();
 });
+
+
+it('shows the completed season state after Episode 5', () => {
+  const terminal: Episode = {
+    id: 'last-online-s1-e5',
+    title: 'Последний онлайн',
+    startSceneId: 'ep5_end_self',
+    scenes: [{ id: 'ep5_end_self', kind: 'terminal', text: 'Конец сезона' }],
+  };
+  render(<StoryScreen episode={terminal} sceneId="ep5_end_self" state={state} onChoose={vi.fn()} onAdvance={vi.fn()} onMenu={vi.fn()} />);
+  fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
+  expect(screen.getByText('Эпизод 5 завершён')).toBeVisible();
+  expect(screen.getByRole('heading', { name: 'Сезон 1 завершён' })).toBeVisible();
+  expect(screen.getByText(/Финал сезона сохранён/)).toBeVisible();
+  expect(screen.queryByText('Эпизод 6 в разработке')).not.toBeInTheDocument();
+});
