@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useInterfacePreference } from '../../interfacePreferences';
 import { publicAsset } from '../../publicAsset';
 import { STORY_CATALOG, getStoryCatalogEntry } from '../../story/catalog';
 import { getEpisodeNumber } from '../../story/episodes';
@@ -17,11 +18,23 @@ type StartScreenProps = {
 type StartTab = 'home' | 'stories' | 'profile' | 'settings';
 
 const FEATURES = [
-  ['▱', 'Увлекательные истории', 'Погружайся в новые миры'],
-  ['♡', 'Герои, которые трогают', 'Настоящие эмоции и выборы'],
-  ['✦', 'Твой путь, твои решения', 'Истории, в которых ты важна'],
-  ['♙', 'Сообщество единомышленников', 'Делись, обсуждай, вдохновляйся'],
+  ['book', 'Увлекательные истории', 'Погружайся в новые миры'],
+  ['heart', 'Герои, которые трогают', 'Настоящие эмоции и выборы'],
+  ['spark', 'Твой путь, твои решения', 'Истории, в которых ты важна'],
+  ['people', 'Сообщество единомышленников', 'Делись, обсуждай, вдохновляйся'],
 ] as const;
+
+function Icon({ name }: { name: 'book' | 'heart' | 'spark' | 'people' | 'profile' | 'settings' }) {
+  const paths = {
+    book: 'M12 5C8 2 4 3 2 4v15c3-1 7-1 10 1 3-2 7-2 10-1V4c-2-1-6-2-10 1Zm0 0v15',
+    heart: 'M20.5 5.5c-2-2-5.5-2-8.5 1-3-3-6.5-3-8.5-1s-2 5.5 0 8L12 21l8.5-7.5c2-2.5 2-6 0-8Z',
+    spark: 'm12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5L12 2Z',
+    people: 'M15 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM5 21v-3a7 7 0 0 1 14 0v3M20 5a3 3 0 0 1 0 6m1 3a5 5 0 0 1 2 4M4 5a3 3 0 0 0 0 6m-1 3a5 5 0 0 0-2 4',
+    profile: 'M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM4 22v-2a8 8 0 0 1 16 0v2',
+    settings: 'm9 3 1-2h4l1 2 3 2 2 1 2 3-1 3v3l-2 3-3 1-2 2h-4l-2-2-3-1-2-3v-3L1 9l2-3 2-1 4-2ZM16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z',
+  };
+  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[name]} /></svg>;
+}
 
 function episodeLabel(id?: string): string {
   return `Эпизод ${getEpisodeNumber(id)}`;
@@ -31,15 +44,15 @@ function Navigation({ tab, onTab }: { tab: StartTab; onTab(tab: StartTab): void 
   return (
     <nav className="lumi-start__nav" aria-label="Навигация LUMI">
       <button type="button" className={tab === 'stories' ? 'is-active' : ''} aria-current={tab === 'stories' ? 'page' : undefined} onClick={() => onTab('stories')}>
-        <span aria-hidden="true">▱</span>
+        <Icon name="book" />
         Истории
       </button>
       <button type="button" className={tab === 'profile' ? 'is-active' : ''} aria-current={tab === 'profile' ? 'page' : undefined} onClick={() => onTab('profile')}>
-        <span aria-hidden="true">○</span>
+        <Icon name="profile" />
         Профиль
       </button>
       <button type="button" className={tab === 'settings' ? 'is-active' : ''} aria-current={tab === 'settings' ? 'page' : undefined} onClick={() => onTab('settings')}>
-        <span aria-hidden="true">⚙</span>
+        <Icon name="settings" />
         Настройки
       </button>
     </nav>
@@ -67,11 +80,12 @@ export function StartScreen({
   season1PriceStars = 149,
 }: StartScreenProps) {
   const [tab, setTab] = useState<StartTab>('home');
-  const [motionEnabled, setMotionEnabled] = useState(true);
-  const [hapticsEnabled, setHapticsEnabled] = useState(true);
+  const [motionEnabled, toggleMotion] = useInterfacePreference('motion');
+  const [hapticsEnabled, toggleHaptics] = useInterfacePreference('haptics');
   const currentStory = getStoryCatalogEntry(currentStoryId);
 
   function openStory(storyId: string) {
+    if (!STORY_CATALOG.some(story => story.id === storyId && story.available)) return;
     if (onOpenStory) {
       onOpenStory(storyId);
       return;
@@ -80,7 +94,7 @@ export function StartScreen({
   }
 
   return (
-    <main className={`lumi-start lumi-start--minimal${motionEnabled ? '' : ' is-calm'}`} data-tab={tab} aria-label="LUMI">
+    <main className={`lumi-start${motionEnabled ? '' : ' is-calm'}`} data-tab={tab} aria-label="LUMI">
       <div
         className="lumi-start__hero-art"
         aria-hidden="true"
@@ -96,18 +110,20 @@ export function StartScreen({
 
       {tab === 'home' ? (
         <section className="lumi-start__minimal-content">
-          <div className="lumi-start__brand-block">
-            <h1 className="lumi-logo lumi-logo--minimal">LUMI</h1>
-            <p className="lumi-start__subtitle">Больше, чем истории</p>
-          </div>
+          <div className="lumi-start__home-scroll" role="region" aria-label="Главный экран LUMI" tabIndex={0}>
+            <div className="lumi-start__brand-block">
+              <h1 className="lumi-logo lumi-logo--minimal">LUMI</h1>
+              <p className="lumi-start__subtitle">Больше, чем истории</p>
+            </div>
 
-          <div className="lumi-start__features" aria-label="Возможности LUMI">
-            {FEATURES.map(([icon, label, description]) => (
-              <div className="lumi-start__feature" key={label}>
-                <span aria-hidden="true">{icon}</span>
-                <p><strong>{label}</strong><small>{description}</small></p>
-              </div>
-            ))}
+            <div className="lumi-start__features" aria-label="Возможности LUMI">
+              {FEATURES.map(([icon, label, description]) => (
+                <div className="lumi-start__feature" key={label}>
+                  <span className="lumi-start__feature-icon"><Icon name={icon} /></span>
+                  <p><strong>{label}</strong><small>{description}</small></p>
+                </div>
+              ))}
+            </div>
           </div>
 
           <button className="lumi-start__cta" type="button" aria-label={hasProgress ? 'Продолжить историю' : 'Начать историю'} onClick={onStart}>
@@ -115,6 +131,13 @@ export function StartScreen({
             {hasProgress ? 'Продолжить' : 'Начать'}
           </button>
         </section>
+      ) : null}
+
+      {tab !== 'home' ? (
+        <header className="lumi-start__panel-header">
+          <button type="button" aria-label="На главный экран" onClick={() => setTab('home')}>‹</button>
+          <span>LUMI</span>
+        </header>
       ) : null}
 
       {tab === 'stories' ? (
@@ -193,11 +216,11 @@ export function StartScreen({
           <p className="lumi-start__panel-muted">Интерфейс и ощущения от истории</p>
 
           <div className="lumi-settings">
-            <button type="button" className="lumi-settings__row" aria-pressed={motionEnabled} onClick={() => setMotionEnabled(value => !value)}>
+            <button type="button" className="lumi-settings__row" aria-pressed={motionEnabled} onClick={toggleMotion}>
               <span><strong>Анимации интерфейса</strong><small>Плавные переходы на главном экране</small></span>
               <b>{motionEnabled ? 'Вкл' : 'Выкл'}</b>
             </button>
-            <button type="button" className="lumi-settings__row" aria-pressed={hapticsEnabled} onClick={() => setHapticsEnabled(value => !value)}>
+            <button type="button" className="lumi-settings__row" aria-pressed={hapticsEnabled} onClick={toggleHaptics}>
               <span><strong>Тактильная отдача</strong><small>Отклик при действиях в Telegram</small></span>
               <b>{hapticsEnabled ? 'Вкл' : 'Выкл'}</b>
             </button>

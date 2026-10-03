@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { trackEvent } from '../../analytics/events';
+import { readInterfacePreference } from '../../interfacePreferences';
 import { getAvailableChoices, getScene } from '../../story/engine';
 import { getEpisodeNumber } from '../../story/episodes';
 import type { Episode, Scene, StoryState } from '../../story/schema';
@@ -55,7 +56,7 @@ function ScenePlayer({ storyId = 'last-online', episode, scene, state, onChoose,
   useEffect(() => { if (offer && analytics) void trackEvent('episode_finished', { episodeId: episode.id, sceneId: scene.id }); }, [offer, analytics, episode.id, scene.id]);
   useEffect(() => { assets.split('\n').filter(Boolean).forEach(src => { const image = new Image(); image.src = src; }); }, [assets]);
   useEffect(() => {
-    if (!p.haptic || reduced) return;
+    if (!p.haptic || reduced || !readInterfacePreference('haptics')) return;
     try { window.Telegram?.WebApp?.HapticFeedback?.impactOccurred(p.haptic); } catch { /* Unsupported Telegram client. */ }
   }, [p.haptic, reduced]);
   async function run(action: () => Promise<void> | void, choiceId?: string) {

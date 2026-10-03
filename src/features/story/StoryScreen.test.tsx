@@ -2,6 +2,7 @@ import { act, fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import type { Episode, StoryState } from '../../story/schema';
 import { StoryScreen } from './StoryScreen';
+import { StartScreen } from '../shell/StartScreen';
 
 const state: StoryState = {
   junhoScore: 0,
@@ -43,6 +44,29 @@ const episode: Episode = {
     },
   ],
 };
+
+it('applies the haptics setting to real story impacts and restores them when enabled', () => {
+  const previousTelegram = window.Telegram;
+  const impactOccurred = vi.fn();
+  window.Telegram = { WebApp: { HapticFeedback: { impactOccurred } } };
+  sessionStorage.clear();
+  const withImpact: Episode = { ...episode, scenes: episode.scenes.map(scene => ({ ...scene, presentation: { haptic: 'light' } })) };
+  try {
+    const menu = render(<StartScreen onStart={vi.fn()} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Настройки' }));
+    fireEvent.click(screen.getByRole('button', { name: /Тактильная отдача/ }));
+    menu.unmount();
+    const story = render(<StoryScreen episode={withImpact} sceneId="dialogue" state={state} onChoose={vi.fn()} onAdvance={vi.fn()} />);
+    expect(impactOccurred).not.toHaveBeenCalled();
+    story.unmount();
+    const menuAgain = render(<StartScreen onStart={vi.fn()} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Настройки' }));
+    fireEvent.click(screen.getByRole('button', { name: /Тактильная отдача/ }));
+    menuAgain.unmount();
+    render(<StoryScreen episode={withImpact} sceneId="dialogue" state={state} onChoose={vi.fn()} onAdvance={vi.fn()} />);
+    expect(impactOccurred).toHaveBeenCalledWith('light');
+  } finally { window.Telegram = previousTelegram; sessionStorage.clear(); }
+});
 
 describe('StoryScreen', () => {
   it('renders dialogue speaker, text and background asset', () => {
