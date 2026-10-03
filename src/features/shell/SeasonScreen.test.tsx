@@ -14,5 +14,5 @@ it('marks episode 2 current after transition and future episodes in development'
 
 it('makes episode 2 available at the end of episode 1', () => {
   render(<SeasonScreen hasProgress episodeCompleted currentEpisodeId="last-online-s1-e1" onPlay={vi.fn()} onBack={vi.fn()} />);
-  expect(within(screen.getByText('Тот, кого все знают').closest('article')!).getByText('Доступно')).toBeVisible();
+  expect(within(screen.getByText('Тот, кого все знают').closest('article')!).getByText('249 ⭐')).toBeVisible();
 });
