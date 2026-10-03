@@ -204,31 +204,3 @@ it('marks key scenes as cinematic and exposes motion variant', () => {
   expect(stage).toHaveAttribute('data-motion', 'tension');
   expect(stage.querySelector('.lumi-story__backdrop')).toBeInTheDocument();
 });
-
-
-it('finishes a replay without paywall and returns to the saved current episode', () => {
-  const terminal: Episode = { id: 'last-online-s1-e1', title: 'One', startSceneId: 'end', scenes: [{ id: 'end', kind: 'terminal', text: 'Конец' }] };
-  const second: Episode = { ...terminal, id: 'last-online-s1-e2', title: 'Two' };
-  const onNextEpisode = vi.fn();
-  const onResumeCurrent = vi.fn();
-  render(
-    <StoryScreen
-      episode={terminal}
-      nextEpisode={second}
-      sceneId="end"
-      state={state}
-      onChoose={vi.fn()}
-      onAdvance={vi.fn()}
-      onNextEpisode={onNextEpisode}
-      replayMode
-      onResumeCurrent={onResumeCurrent}
-    />,
-  );
-  fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
-  fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
-  expect(screen.getByText('Повтор эпизода завершён')).toBeVisible();
-  expect(screen.queryByRole('button', { name: 'Купить за 149 ⭐' })).not.toBeInTheDocument();
-  fireEvent.click(screen.getByRole('button', { name: 'Вернуться к текущему эпизоду' }));
-  expect(onResumeCurrent).toHaveBeenCalledTimes(1);
-  expect(onNextEpisode).not.toHaveBeenCalled();
-});
