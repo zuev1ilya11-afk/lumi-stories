@@ -1,0 +1,304 @@
+{
+  "id": "house-of-black-roses-s1-e1",
+  "title": "Наследница",
+  "startSceneId": "gothic_ep1_arrival",
+  "requiredSceneIds": ["gothic_ep1_portrait", "gothic_ep1_adrian_portrait", "gothic_ep1_end"],
+  "scenes": [
+    {
+      "id": "gothic_ep1_arrival",
+      "kind": "narrative",
+      "text": "Рейвенхолл возникает из тумана на склоне холма.",
+      "beats": [
+        {"text": "К вечеру дождь превращает дорогу в чёрное зеркало.", "presentation": {"location": "Дорога к Рейвенхоллу", "motion": "slow-zoom", "ambient": "rain"}},
+        {"text": "За мокрым стеклом появляется поместье — слишком большое для одного человека и слишком тихое для живого дома.", "presentation": {"location": "Рейвенхолл", "camera": "wide", "motion": "push-in", "ambient": "rain"}},
+        {"text": "По завещанию Эвелин должна прожить здесь тридцать дней. Тогда Рейвенхолл станет её.", "presentation": {"location": "Рейвенхолл", "camera": "medium", "motion": "none"}}
+      ],
+      "nextSceneId": "gothic_ep1_foyer"
+    },
+    {
+      "id": "gothic_ep1_foyer",
+      "kind": "narrative",
+      "text": "Дверь открывается раньше, чем Эвелин успевает постучать.",
+      "beats": [
+        {"text": "Тяжёлая дверь медленно распахивается сама.", "presentation": {"location": "Главный холл", "camera": "wide", "motion": "reveal", "effect": "dark-pulse"}},
+        {"text": "Внутри пахнет воском, пылью и мокрыми розами.", "presentation": {"location": "Главный холл", "camera": "medium", "motion": "drift-right"}},
+        {"text": "Под лестницей её уже ждёт мужчина в чёрном.", "presentation": {"location": "Главный холл", "camera": "close", "motion": "push-in"}}
+      ],
+      "nextSceneId": "gothic_ep1_adrian_intro"
+    },
+    {
+      "id": "gothic_ep1_adrian_intro",
+      "kind": "dialogue",
+      "speaker": "Адриан",
+      "text": "Добро пожаловать домой, мисс Рейвен.",
+      "beats": [
+        {"speaker": "Адриан", "text": "Добро пожаловать домой, мисс Рейвен.", "presentation": {"location": "Главный холл", "camera": "close", "motion": "none"}},
+        {"speaker": "Эвелин", "text": "Домой? Я здесь впервые.", "presentation": {"location": "Главный холл", "camera": "medium", "motion": "drift-left"}},
+        {"speaker": "Адриан", "text": "Разумеется. Простите. Старый дом располагает к старым словам.", "presentation": {"location": "Главный холл", "camera": "close", "motion": "tension"}}
+      ],
+      "nextSceneId": "gothic_ep1_rules_choice"
+    },
+    {
+      "id": "gothic_ep1_rules_choice",
+      "kind": "dialogue",
+      "speaker": "Адриан",
+      "text": "У Рейвенхолла есть три правила.",
+      "beats": [
+        {"speaker": "Адриан", "text": "До утра вам нужно запомнить три правила.", "presentation": {"location": "Главный холл", "camera": "medium", "motion": "none"}},
+        {"speaker": "Адриан", "text": "После полуночи не открывайте дверь спальни. Не входите в западное крыло.", "presentation": {"location": "Главный холл", "camera": "close", "motion": "push-in"}},
+        {"speaker": "Адриан", "text": "И никогда не срывайте чёрные розы в саду.", "presentation": {"location": "Главный холл", "camera": "extreme-close", "motion": "tension"}}
+      ],
+      "choices": [
+        {
+          "id": "gothic_ep1_rules_question",
+          "text": "«Почему? Что случится?»",
+          "nextSceneId": "gothic_ep1_question_rules",
+          "effects": [
+            {"kind": "inc", "score": "truthScore", "by": 1},
+            {"kind": "inc", "score": "junhoScore", "by": 1},
+            {"kind": "setFlag", "flag": "gothic_rules_response", "value": "question"}
+          ]
+        },
+        {
+          "id": "gothic_ep1_rules_defy",
+          "text": "«Не люблю, когда мне запрещают.»",
+          "nextSceneId": "gothic_ep1_defy_rules",
+          "effects": [
+            {"kind": "inc", "score": "riskScore", "by": 2},
+            {"kind": "setFlag", "flag": "gothic_rules_response", "value": "defy"}
+          ]
+        },
+        {
+          "id": "gothic_ep1_rules_accept",
+          "text": "«Хорошо. Я запомню.»",
+          "nextSceneId": "gothic_ep1_accept_rules",
+          "effects": [
+            {"kind": "inc", "score": "junhoScore", "by": 1},
+            {"kind": "setFlag", "flag": "gothic_rules_response", "value": "accept"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gothic_ep1_question_rules",
+      "kind": "dialogue",
+      "speaker": "Адриан",
+      "text": "Потому что некоторые двери лучше считать стенами.",
+      "beats": [
+        {"speaker": "Адриан", "text": "Потому что некоторые двери лучше считать стенами.", "presentation": {"location": "Главный холл", "camera": "close", "motion": "tension"}},
+        {"speaker": "Эвелин", "text": "Это не ответ.", "presentation": {"location": "Главный холл", "camera": "medium", "motion": "none"}},
+        {"speaker": "Адриан", "text": "В Рейвенхолле ответы редко делают людей спокойнее.", "presentation": {"location": "Главный холл", "camera": "close", "motion": "pull-out"}}
+      ],
+      "nextSceneId": "gothic_ep1_room"
+    },
+    {
+      "id": "gothic_ep1_defy_rules",
+      "kind": "dialogue",
+      "speaker": "Адриан",
+      "text": "Дом тоже.",
+      "beats": [
+        {"speaker": "Эвелин", "text": "Не люблю, когда мне запрещают.", "presentation": {"location": "Главный холл", "camera": "medium", "motion": "none"}},
+        {"speaker": "Адриан", "text": "Дом тоже.", "presentation": {"location": "Главный холл", "camera": "close", "motion": "push-in"}},
+        {"speaker": "Адриан", "text": "Поэтому постарайтесь не давать ему повода спорить с вами.", "presentation": {"location": "Главный холл", "camera": "extreme-close", "motion": "tension"}}
+      ],
+      "nextSceneId": "gothic_ep1_room"
+    },
+    {
+      "id": "gothic_ep1_accept_rules",
+      "kind": "dialogue",
+      "speaker": "Адриан",
+      "text": "Спасибо.",
+      "beats": [
+        {"speaker": "Эвелин", "text": "Хорошо. Я запомню.", "presentation": {"location": "Главный холл", "camera": "medium", "motion": "none"}},
+        {"speaker": "Адриан", "text": "Спасибо.", "presentation": {"location": "Главный холл", "camera": "close", "motion": "none"}},
+        {"speaker": "Адриан", "text": "И если ночью услышите своё имя — не отвечайте.", "presentation": {"location": "Главный холл", "camera": "close", "motion": "tension", "effect": "dark-pulse"}}
+      ],
+      "nextSceneId": "gothic_ep1_room"
+    },
+    {
+      "id": "gothic_ep1_room",
+      "kind": "narrative",
+      "text": "Полночь приходит вместе с грозой.",
+      "beats": [
+        {"text": "Спальня больше похожа на комнату из музея: балдахин, камин и потемневшее зеркало.", "presentation": {"location": "Спальня Эвелин", "camera": "wide", "motion": "drift-left", "ambient": "rain"}},
+        {"text": "На столике стоят свежие чёрные розы. Эвелин точно помнит: их не было, когда она вошла.", "presentation": {"location": "Спальня Эвелин", "camera": "close", "motion": "push-in"}},
+        {"text": "Часы в коридоре начинают бить двенадцать.", "presentation": {"location": "Спальня Эвелин", "camera": "medium", "motion": "tension", "effect": "dark-pulse"}}
+      ],
+      "nextSceneId": "gothic_ep1_voice"
+    },
+    {
+      "id": "gothic_ep1_voice",
+      "kind": "narrative",
+      "text": "Из-за двери кто-то произносит её имя.",
+      "beats": [
+        {"text": "Первый удар часов. Второй. Третий.", "presentation": {"location": "Спальня Эвелин", "camera": "close", "motion": "none"}},
+        {"text": "Между ударами слышится женский шёпот.", "presentation": {"location": "Спальня Эвелин", "camera": "extreme-close", "motion": "tension"}},
+        {"speaker": "Голос", "text": "Эвелин…", "presentation": {"location": "За дверью", "camera": "extreme-close", "motion": "push-in", "effect": "dark-pulse", "haptic": "medium"}}
+      ],
+      "nextSceneId": "gothic_ep1_door_choice"
+    },
+    {
+      "id": "gothic_ep1_door_choice",
+      "kind": "narrative",
+      "text": "Ручка двери медленно опускается.",
+      "beats": [
+        {"text": "Ручка двери медленно опускается сама.", "presentation": {"location": "Спальня Эвелин", "camera": "extreme-close", "motion": "tension"}},
+        {"text": "За дверью снова шепчут её имя — теперь совсем близко.", "presentation": {"location": "Спальня Эвелин", "camera": "close", "motion": "push-in"}}
+      ],
+      "choices": [
+        {
+          "id": "gothic_ep1_open_door",
+          "text": "Открыть дверь",
+          "nextSceneId": "gothic_ep1_opened_door",
+          "effects": [
+            {"kind": "inc", "score": "riskScore", "by": 2},
+            {"kind": "inc", "score": "truthScore", "by": 1},
+            {"kind": "setFlag", "flag": "gothic_opened_midnight_door", "value": true}
+          ]
+        },
+        {
+          "id": "gothic_ep1_ignore_door",
+          "text": "Не открывать",
+          "nextSceneId": "gothic_ep1_ignored_door",
+          "effects": [
+            {"kind": "inc", "score": "truthScore", "by": 1},
+            {"kind": "setFlag", "flag": "gothic_opened_midnight_door", "value": false}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gothic_ep1_opened_door",
+      "kind": "narrative",
+      "text": "Коридор пуст.",
+      "beats": [
+        {"text": "Эвелин распахивает дверь.", "presentation": {"location": "Ночной коридор", "camera": "wide", "motion": "reveal", "ambient": "rain"}},
+        {"text": "Никого. Только холодный воздух и цепочка чёрных лепестков на полу.", "presentation": {"location": "Ночной коридор", "camera": "medium", "motion": "drift-right"}},
+        {"text": "Последний лепесток лежит у лестницы.", "presentation": {"location": "Ночной коридор", "camera": "close", "motion": "push-in"}}
+      ],
+      "nextSceneId": "gothic_ep1_corridor"
+    },
+    {
+      "id": "gothic_ep1_ignored_door",
+      "kind": "narrative",
+      "text": "Эвелин не касается двери.",
+      "beats": [
+        {"text": "Она отступает от двери и ждёт.", "presentation": {"location": "Спальня Эвелин", "camera": "medium", "motion": "pull-out"}},
+        {"text": "Шёпот стихает. На несколько секунд становится совсем тихо.", "presentation": {"location": "Спальня Эвелин", "camera": "close", "motion": "none"}},
+        {"text": "А потом из коридора доносится звук разбитого стекла.", "presentation": {"location": "Спальня Эвелин", "camera": "close", "motion": "shake", "haptic": "medium"}}
+      ],
+      "nextSceneId": "gothic_ep1_corridor"
+    },
+    {
+      "id": "gothic_ep1_corridor",
+      "kind": "narrative",
+      "text": "На полу лежат лепестки чёрной розы.",
+      "beats": [
+        {"text": "Когда Эвелин всё-таки выходит, под дверью уже лежит первый лепесток.", "presentation": {"location": "Ночной коридор", "camera": "close", "motion": "push-in"}},
+        {"text": "За ним второй. Третий. Они уходят по коридору к парадной лестнице.", "presentation": {"location": "Ночной коридор", "camera": "wide", "motion": "drift-left"}},
+        {"text": "Внизу, в темноте холла, что-то блестит.", "presentation": {"location": "Главный холл", "camera": "wide", "motion": "tension"}}
+      ],
+      "nextSceneId": "gothic_ep1_petals_choice"
+    },
+    {
+      "id": "gothic_ep1_petals_choice",
+      "kind": "narrative",
+      "text": "След ведёт к закрытой галерее портретов.",
+      "beats": [
+        {"text": "Лепестки заканчиваются у двери семейной галереи.", "presentation": {"location": "Галерея", "camera": "medium", "motion": "push-in"}},
+        {"text": "Изнутри доносится тихий скрип, будто кто-то только что отступил от двери.", "presentation": {"location": "Галерея", "camera": "close", "motion": "tension"}}
+      ],
+      "choices": [
+        {
+          "id": "gothic_ep1_follow_petals",
+          "text": "Войти самой",
+          "nextSceneId": "gothic_ep1_enter_gallery",
+          "effects": [
+            {"kind": "inc", "score": "truthScore", "by": 2},
+            {"kind": "inc", "score": "riskScore", "by": 1},
+            {"kind": "setFlag", "flag": "gothic_gallery_choice", "value": "alone"}
+          ]
+        },
+        {
+          "id": "gothic_ep1_call_adrian",
+          "text": "Позвать Адриана",
+          "nextSceneId": "gothic_ep1_call_adrian_scene",
+          "effects": [
+            {"kind": "inc", "score": "junhoScore", "by": 1},
+            {"kind": "inc", "score": "riskScore", "by": -1},
+            {"kind": "setFlag", "flag": "gothic_gallery_choice", "value": "adrian"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gothic_ep1_enter_gallery",
+      "kind": "narrative",
+      "text": "Эвелин входит одна.",
+      "beats": [
+        {"text": "Замок не заперт. Дверь поддаётся от лёгкого прикосновения.", "presentation": {"location": "Галерея", "camera": "close", "motion": "reveal"}},
+        {"text": "Десятки мёртвых Рейвенов смотрят на неё со стен.", "presentation": {"location": "Галерея", "camera": "wide", "motion": "slow-zoom"}},
+        {"text": "Один портрет в конце зала освещён луной.", "presentation": {"location": "Галерея", "camera": "medium", "motion": "push-in"}}
+      ],
+      "nextSceneId": "gothic_ep1_portrait"
+    },
+    {
+      "id": "gothic_ep1_call_adrian_scene",
+      "kind": "dialogue",
+      "speaker": "Адриан",
+      "text": "Вы должны были остаться в комнате.",
+      "beats": [
+        {"text": "Адриан появляется почти сразу — слишком быстро для человека, которого звали шёпотом.", "presentation": {"location": "Галерея", "camera": "medium", "motion": "reveal"}},
+        {"speaker": "Адриан", "text": "Вы должны были остаться в комнате.", "presentation": {"location": "Галерея", "camera": "close", "motion": "tension"}},
+        {"speaker": "Эвелин", "text": "Тогда объясните, почему кто-то привёл меня сюда.", "presentation": {"location": "Галерея", "camera": "medium", "motion": "push-in"}},
+        {"text": "Адриан смотрит не на Эвелин, а на портрет в конце зала.", "presentation": {"location": "Галерея", "camera": "close", "motion": "pull-out"}}
+      ],
+      "nextSceneId": "gothic_ep1_portrait"
+    },
+    {
+      "id": "gothic_ep1_portrait",
+      "kind": "narrative",
+      "text": "На портрете — лицо Эвелин.",
+      "beats": [
+        {"text": "Женщина на портрете одета по моде прошлого века.", "presentation": {"location": "Галерея", "camera": "medium", "motion": "slow-zoom"}},
+        {"text": "Но её лицо невозможно перепутать.", "presentation": {"location": "Галерея", "camera": "close", "motion": "push-in"}},
+        {"speaker": "Эвелин", "text": "Это… я.", "presentation": {"location": "Галерея", "camera": "extreme-close", "motion": "tension", "effect": "dark-pulse"}}
+      ],
+      "nextSceneId": "gothic_ep1_nameplate"
+    },
+    {
+      "id": "gothic_ep1_nameplate",
+      "kind": "narrative",
+      "text": "На табличке под рамой написано её имя.",
+      "beats": [
+        {"text": "Эвелин проводит пальцами по латунной табличке.", "presentation": {"location": "Галерея", "camera": "close", "motion": "none"}},
+        {"text": "«Эвелин Рейвен. 1879–1901.»", "presentation": {"location": "Галерея", "camera": "extreme-close", "motion": "push-in"}},
+        {"text": "Дата смерти — ровно сто двадцать пять лет назад.", "presentation": {"location": "Галерея", "camera": "close", "motion": "tension"}}
+      ],
+      "nextSceneId": "gothic_ep1_adrian_portrait"
+    },
+    {
+      "id": "gothic_ep1_adrian_portrait",
+      "kind": "narrative",
+      "text": "Рядом с женщиной на портрете стоит Адриан.",
+      "beats": [
+        {"text": "Сначала Эвелин смотрит только на своё лицо.", "presentation": {"location": "Галерея", "camera": "close", "motion": "none"}},
+        {"text": "Потом замечает мужскую руку на плече женщины.", "presentation": {"location": "Галерея", "camera": "close", "motion": "push-in"}},
+        {"text": "Она поднимает взгляд выше.", "presentation": {"location": "Галерея", "camera": "medium", "motion": "reveal"}},
+        {"speaker": "Эвелин", "text": "Адриан?..", "presentation": {"location": "Галерея", "camera": "extreme-close", "motion": "tension", "effect": "dark-pulse", "haptic": "medium"}}
+      ],
+      "nextSceneId": "gothic_ep1_end"
+    },
+    {
+      "id": "gothic_ep1_end",
+      "kind": "terminal",
+      "text": "Мужчина на портрете выглядит точно так же, как Адриан сегодня.",
+      "beats": [
+        {"text": "На портрете стоит Адриан. То же лицо. Тот же взгляд.", "presentation": {"location": "Галерея", "camera": "close", "motion": "slow-zoom"}},
+        {"text": "В углу полотна выведена дата: 1901 год.", "presentation": {"location": "Галерея", "camera": "extreme-close", "motion": "push-in"}},
+        {"text": "За спиной Эвелин раздаётся его голос.", "presentation": {"location": "Галерея", "camera": "close", "motion": "tension"}},
+        {"speaker": "Адриан", "text": "Я надеялся, что у нас будет больше времени.", "presentation": {"location": "Галерея", "camera": "extreme-close", "motion": "push-in", "effect": "dark-pulse", "haptic": "medium"}}
+      ]
+    }
+  ]
+}
