@@ -1,5 +1,12 @@
+import { useState } from 'react';
+import { createEpisodeRewindInvoice, getEpisodeRewindStatus } from '../../api/client';
+import { trackEvent } from '../../analytics/events';
+import { getTelegramContext, openTelegramInvoice } from '../../telegram/telegram';
+
 type EpisodeRecapProps = {
   episodeId: string;
+  rewindPriceStars?: number;
+  onRewindComplete?(episodeId: string): Promise<void> | void;
   onBack(): void;
 };
 
@@ -28,9 +35,87 @@ const RECAPS = {
   },
 } as const;
 
-export function EpisodeRecap({ episodeId, onBack }: EpisodeRecapProps) {
+const CONFIRM_ATTEMPTS = 8;
+
+function delay(milliseconds: number): Promise<void> {
+  return new Promise(resolve => window.setTimeout(resolve, milliseconds));
+}
+
+async function waitForRewind(initData: string, episodeId: string): Promise<boolean> {
+  for (let attempt = 0; attempt < CONFIRM_ATTEMPTS; attempt += 1) {
+    const status = await getEpisodeRewindStatus(initData, episodeId);
+    if (status.applied) return true;
+    if (attempt < CONFIRM_ATTEMPTS - 1) await delay(350);
+  }
+  return false;
+}
+
+export function EpisodeRecap({
+  episodeId,
+  rewindPriceStars = 49,
+  onRewindComplete,
+  onBack,
+}: EpisodeRecapProps) {
   const recap = RECAPS[episodeId as keyof typeof RECAPS];
+  const [confirming, setConfirming] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [checking, setChecking] = useState(false);
+  const [notice, setNotice] = useState<string>();
   if (!recap) return null;
+
+  async function finishRewind(initData: string): Promise<boolean> {
+    setChecking(true);
+    try {
+      const applied = await waitForRewind(initData, episodeId);
+      if (!applied) {
+        setNotice('Оплата подтверждена, но перезапуск ещё применяется. Нажмите «Проверить».');
+        return false;
+      }
+      setNotice('Эпизод перезапущен. Новые решения заменят прежнюю ветку сюжета.');
+      void trackEvent('replay_started', { episodeId, offer: 'episode-rewind', priceStars: rewindPriceStars });
+      await onRewindComplete?.(episodeId);
+      return true;
+    } finally {
+      setChecking(false);
+    }
+  }
+
+  async function handleRewindPurchase() {
+    if (pending || checking) return;
+    setPending(true);
+    setNotice(undefined);
+    void trackEvent('purchase_clicked', { episodeId, offer: 'episode-rewind', priceStars: rewindPriceStars });
+    try {
+      const { initData } = getTelegramContext();
+      const invoice = await createEpisodeRewindInvoice(initData, episodeId);
+      const status = await openTelegramInvoice(invoice.invoiceUrl);
+      if (status === 'cancelled') {
+        setNotice('Оплата отменена. Прогресс не изменён.');
+        return;
+      }
+      if (status === 'failed') {
+        setNotice('Telegram не завершил оплату. Прогресс не изменён.');
+        return;
+      }
+      await finishRewind(initData);
+    } catch {
+      setNotice('Не удалось запустить перезапуск эпизода. Попробуйте ещё раз.');
+    } finally {
+      setPending(false);
+    }
+  }
+
+  async function handleCheck() {
+    if (pending || checking) return;
+    try {
+      const { initData } = getTelegramContext();
+      setNotice(undefined);
+      const applied = await finishRewind(initData);
+      if (!applied) setNotice('Перезапуск пока не подтверждён сервером.');
+    } catch {
+      setNotice('Не удалось проверить перезапуск. Попробуйте ещё раз.');
+    }
+  }
 
   return (
     <main className="lumi-recap" aria-label={`Краткая сводка эпизода ${recap.number}`}>
@@ -51,8 +136,40 @@ export function EpisodeRecap({ episodeId, onBack }: EpisodeRecapProps) {
             </li>
           ))}
         </ol>
-        <p className="lumi-recap__note">Ранее сделанные выборы сохранены. Этот экран только напоминает события и ничего не меняет в истории.</p>
-        <button className="lumi-primary" type="button" onClick={onBack}>Назад к эпизодам</button>
+        <p className="lumi-recap__note">Ранее сделанные выборы сохранены. Сводка ничего не меняет в истории.</p>
+
+        {onRewindComplete ? (
+          <section className="lumi-recap__rewind" aria-label="Изменить события эпизода">
+            {!confirming ? (
+              <>
+                <strong>Хотите изменить прошлые решения?</strong>
+                <p>Можно начать этот эпизод заново за Stars и выбрать другие варианты.</p>
+                <button className="lumi-primary" type="button" onClick={() => setConfirming(true)}>
+                  Изменить события — {rewindPriceStars} ⭐
+                </button>
+              </>
+            ) : (
+              <>
+                <strong>Переписать события эпизода?</strong>
+                <p>После оплаты этот эпизод начнётся заново. Прогресс всех следующих эпизодов будет сброшен, потому что новые решения могут изменить дальнейший сюжет.</p>
+                <button className="lumi-primary" type="button" disabled={pending || checking} onClick={() => void handleRewindPurchase()}>
+                  {pending ? 'Открываем оплату…' : `Подтвердить за ${rewindPriceStars} ⭐`}
+                </button>
+                <button className="lumi-recap__secondary" type="button" disabled={pending || checking} onClick={() => setConfirming(false)}>
+                  Отмена
+                </button>
+              </>
+            )}
+            {notice?.includes('применяется') || notice === 'Перезапуск пока не подтверждён сервером.' ? (
+              <button className="lumi-recap__secondary" type="button" disabled={pending || checking} onClick={() => void handleCheck()}>
+                {checking ? 'Проверяем…' : 'Проверить'}
+              </button>
+            ) : null}
+            {notice ? <p className="lumi-recap__status" role="status">{notice}</p> : null}
+          </section>
+        ) : null}
+
+        <button className="lumi-primary" type="button" disabled={pending || checking} onClick={onBack}>Назад к эпизодам</button>
       </section>
     </main>
   );
