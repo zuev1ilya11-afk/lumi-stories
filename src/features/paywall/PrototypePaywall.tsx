@@ -17,7 +17,7 @@ export function PrototypePaywall() {
 
   return (
     <section className="lumi-paywall" aria-label="Продолжение сезона">
-      <img src={publicAsset('assets/last-online/cg/soa-junho-old-photo.webp')} alt="Старая фотография Соа и Джунхо" />
+      <img src={publicAsset('assets/last-online/v2/cg/cliffhanger.webp')} alt="Лера с телефоном прислушивается к закрытой двери" />
       <div className="lumi-paywall__body">
         <p className="lumi-eyebrow">Эпизод 1 завершён</p>
         <h2>История только начинается</h2>

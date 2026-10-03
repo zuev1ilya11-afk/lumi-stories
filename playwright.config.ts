@@ -7,6 +7,7 @@ export default defineConfig({
     baseURL: 'http://127.0.0.1:4173',
     viewport: { width: 390, height: 844 },
     trace: 'retain-on-failure',
+    launchOptions: process.env.LUMI_CHROMIUM_PATH ? { executablePath: process.env.LUMI_CHROMIUM_PATH } : undefined,
   },
   webServer: {
     command: 'VITE_LUMI_API_URL=http://lumi.test npm run build && npx vite preview --host 127.0.0.1 --port 4173',

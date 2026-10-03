@@ -1,19 +1,288 @@
 {
+  "style": "Original adult characters; Korean webtoon, K-drama romance/mystery. One identity reference shared across all generations.",
+  "reference": "assets/last-online/v2/cg/character-reference.webp",
   "backgrounds": [
-    { "id": "hansu_arrival_evening", "purpose": "Прибытие Леры в Хансу, вечерний город" },
-    { "id": "apartment_hall_night", "purpose": "Коридор дома Леры и Джунхо" },
-    { "id": "lera_room_night", "purpose": "Комната Леры ночью, переписка SOA" },
-    { "id": "hansu_university_day", "purpose": "Университет Хансу и дневные сцены" }
+    {
+      "id": "cafe",
+      "src": "assets/last-online/v2/backgrounds/cafe.webp",
+      "bytes": 153762,
+      "sha256": "e52c45c00d491c177942503fdda0ae8caaf96f3fc0fcb0ab9c191de25598abab"
+    },
+    {
+      "id": "campus",
+      "src": "assets/last-online/v2/backgrounds/campus.webp",
+      "bytes": 269598,
+      "sha256": "9eadb15696ff151646cb5a0f4f278a1e321414031869bbe605c4b33e9d6496df"
+    },
+    {
+      "id": "classroom",
+      "src": "assets/last-online/v2/backgrounds/classroom.webp",
+      "bytes": 141180,
+      "sha256": "9f1becf35fb9821bd9df64ae7d634f10973e24d7aa0b60681000a225c232d8a4"
+    },
+    {
+      "id": "hallway",
+      "src": "assets/last-online/v2/backgrounds/hallway.webp",
+      "bytes": 133412,
+      "sha256": "88482d4167980cf801fa3a6b616eaed00da24c313c9f851df0e193175aa23678"
+    },
+    {
+      "id": "room",
+      "src": "assets/last-online/v2/backgrounds/room.webp",
+      "bytes": 149926,
+      "sha256": "a783c09202a696cec8e5ca76b7b7112dde861338fcd042641063028abe2788f3"
+    }
   ],
   "characters": [
-    { "id": "lera-neutral", "character": "Лера", "emotion": "neutral" },
-    { "id": "lera-concerned", "character": "Лера", "emotion": "concerned" },
-    { "id": "lera-shocked", "character": "Лера", "emotion": "shocked" },
-    { "id": "junho-neutral", "character": "Кан Джунхо", "emotion": "neutral" },
-    { "id": "junho-guarded", "character": "Кан Джунхо", "emotion": "guarded" },
-    { "id": "junho-soft", "character": "Кан Джунхо", "emotion": "soft" }
+    {
+      "id": "distant",
+      "src": "assets/last-online/v2/characters/junho/distant.webp",
+      "bytes": 38572,
+      "sha256": "094ce882aa3cd373ea0effc664773829f43824715cc727e4546762ec3a3f6af3",
+      "character": "junho",
+      "emotion": "distant"
+    },
+    {
+      "id": "frightened",
+      "src": "assets/last-online/v2/characters/junho/frightened.webp",
+      "bytes": 45470,
+      "sha256": "939bd9b89c32a2fcef1ed870e5d008b62d6efc4ef102f4f6c549d621328d6925",
+      "character": "junho",
+      "emotion": "frightened"
+    },
+    {
+      "id": "guarded",
+      "src": "assets/last-online/v2/characters/junho/guarded.webp",
+      "bytes": 40010,
+      "sha256": "2c1fa7af913aeffd8f7eb355c727d7bded8852aa5157082b196f747e6f0147b4",
+      "character": "junho",
+      "emotion": "guarded"
+    },
+    {
+      "id": "intense",
+      "src": "assets/last-online/v2/characters/junho/intense.webp",
+      "bytes": 45270,
+      "sha256": "824556852d69632a8cb82fb9c3db4f4719a1a707694d579aa3eee6907efcbba5",
+      "character": "junho",
+      "emotion": "intense"
+    },
+    {
+      "id": "neutral",
+      "src": "assets/last-online/v2/characters/junho/neutral.webp",
+      "bytes": 40028,
+      "sha256": "4da6b8335d44fa964ca86ba1381be7ab32bb3f82126bbbf06691bb99719d5c2d",
+      "character": "junho",
+      "emotion": "neutral"
+    },
+    {
+      "id": "soft",
+      "src": "assets/last-online/v2/characters/junho/soft.webp",
+      "bytes": 40600,
+      "sha256": "812d69636c32deb384600800bdd0859a9b4f070d008695b418d4f377931c2d96",
+      "character": "junho",
+      "emotion": "soft"
+    },
+    {
+      "id": "surprised",
+      "src": "assets/last-online/v2/characters/junho/surprised.webp",
+      "bytes": 43928,
+      "sha256": "0b2882cb951c7d4f226d189d0066b120a00f4634b07abdd5d326bfe7ece0158f",
+      "character": "junho",
+      "emotion": "surprised"
+    },
+    {
+      "id": "suspicious",
+      "src": "assets/last-online/v2/characters/junho/suspicious.webp",
+      "bytes": 41658,
+      "sha256": "05b748f9604ec2c3858e83068a9bf52c279e4c30bbc06cecd626e45c6075ce83",
+      "character": "junho",
+      "emotion": "suspicious"
+    },
+    {
+      "id": "vulnerable",
+      "src": "assets/last-online/v2/characters/junho/vulnerable.webp",
+      "bytes": 37856,
+      "sha256": "a4a0482fc50a835974a9d251e281cef28537d4264876b3f9aba2d8c56238766b",
+      "character": "junho",
+      "emotion": "vulnerable"
+    },
+    {
+      "id": "warning",
+      "src": "assets/last-online/v2/characters/junho/warning.webp",
+      "bytes": 42454,
+      "sha256": "a688c53949a537a2ce64a56d4c355f9309cae9d629921e4234e013490deb80c2",
+      "character": "junho",
+      "emotion": "warning"
+    },
+    {
+      "id": "arrival",
+      "src": "assets/last-online/v2/characters/lera/arrival.webp",
+      "bytes": 79074,
+      "sha256": "681601474c2827b4081cdea526bf6996e15d689688d08621c23e46e04750caec",
+      "character": "lera",
+      "emotion": "arrival"
+    },
+    {
+      "id": "concerned",
+      "src": "assets/last-online/v2/characters/lera/concerned.webp",
+      "bytes": 58850,
+      "sha256": "0dfab1606d09fc09ee145e132514cea72bf57da2b3836440eed08ba262eacd8e",
+      "character": "lera",
+      "emotion": "concerned"
+    },
+    {
+      "id": "curious",
+      "src": "assets/last-online/v2/characters/lera/curious.webp",
+      "bytes": 64678,
+      "sha256": "d8f6187eba801192fde1cbcbb13372dcda435fa247b27f8301d2fc005351de81",
+      "character": "lera",
+      "emotion": "curious"
+    },
+    {
+      "id": "defensive",
+      "src": "assets/last-online/v2/characters/lera/defensive.webp",
+      "bytes": 67208,
+      "sha256": "986ca57b9fda2c793b3584f1efba13f0d2e309778c2c84015d2f877778316f18",
+      "character": "lera",
+      "emotion": "defensive"
+    },
+    {
+      "id": "frightened",
+      "src": "assets/last-online/v2/characters/lera/frightened.webp",
+      "bytes": 69980,
+      "sha256": "d983c5d0c44366a572400081264953cbdd0f8aafd807b6915d9817b20d832636",
+      "character": "lera",
+      "emotion": "frightened"
+    },
+    {
+      "id": "neutral",
+      "src": "assets/last-online/v2/characters/lera/neutral.webp",
+      "bytes": 62262,
+      "sha256": "0e8d34f495edfe890cf25c1c98e5ffc5084133f5cf953bc44e70fe107d27fc2e",
+      "character": "lera",
+      "emotion": "neutral"
+    },
+    {
+      "id": "phone-reading",
+      "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+      "bytes": 59206,
+      "sha256": "2c5bf387620903cf7dd5cf20d731afc8ef4ee3d7519c11dbe34867beaa1df0a8",
+      "character": "lera",
+      "emotion": "phone-reading"
+    },
+    {
+      "id": "shocked",
+      "src": "assets/last-online/v2/characters/lera/shocked.webp",
+      "bytes": 65682,
+      "sha256": "4d2972b64b44448289299719ffe305aacf0b739339ca0b822dd6b8e865d666f2",
+      "character": "lera",
+      "emotion": "shocked"
+    },
+    {
+      "id": "shy",
+      "src": "assets/last-online/v2/characters/lera/shy.webp",
+      "bytes": 60950,
+      "sha256": "d5873842e2b5f9d6de16efe9b6d1797d7a8813d4fccb03cf2ffeac24a116c832",
+      "character": "lera",
+      "emotion": "shy"
+    },
+    {
+      "id": "suspicious",
+      "src": "assets/last-online/v2/characters/lera/suspicious.webp",
+      "bytes": 59108,
+      "sha256": "aa8ee942aa09121da8c280b4b0c547a77b398cd9cc4685e941a206bee17de1ee",
+      "character": "lera",
+      "emotion": "suspicious"
+    },
+    {
+      "id": "tired",
+      "src": "assets/last-online/v2/characters/lera/tired.webp",
+      "bytes": 61270,
+      "sha256": "a6b67ec8f0cface8aa389824f68a4128edbfc5aade22548baaffef3440ff68e8",
+      "character": "lera",
+      "emotion": "tired"
+    },
+    {
+      "id": "excited",
+      "src": "assets/last-online/v2/characters/mina/excited.webp",
+      "bytes": 68374,
+      "sha256": "1b9e679074b1fe8ee825dec24feb41a9e1f34507d6942c1de25d6a70b9df6068",
+      "character": "mina",
+      "emotion": "excited"
+    },
+    {
+      "id": "friendly",
+      "src": "assets/last-online/v2/characters/mina/friendly.webp",
+      "bytes": 61100,
+      "sha256": "dbb920582d9f9724a79261345db4cbf8c325c9cfb4a0754703aada00e5cdbdb0",
+      "character": "mina",
+      "emotion": "friendly"
+    },
+    {
+      "id": "gossip",
+      "src": "assets/last-online/v2/characters/mina/gossip.webp",
+      "bytes": 60930,
+      "sha256": "c7a3aa8afcbcaa57b6dca875d7d511eab1fc5e2285322ad9e6820b64db2acbc5",
+      "character": "mina",
+      "emotion": "gossip"
+    },
+    {
+      "id": "surprised",
+      "src": "assets/last-online/v2/characters/mina/surprised.webp",
+      "bytes": 55690,
+      "sha256": "61c26f13f5af760364ca7d54c82ee0c2466690c88114e84bef1db346d54329f6",
+      "character": "mina",
+      "emotion": "surprised"
+    }
   ],
   "cg": [
-    { "id": "soa-junho-old-photo", "purpose": "Старая фотография Соа и Джунхо, снятая из квартиры Леры" }
+    {
+      "id": "arrival",
+      "src": "assets/last-online/v2/cg/arrival.webp",
+      "bytes": 151364,
+      "sha256": "a003ba36bfeea84fea7f06fdff14619d45d61c8b082123d41231a59f78bd84d4"
+    },
+    {
+      "id": "cliffhanger",
+      "src": "assets/last-online/v2/cg/cliffhanger.webp",
+      "bytes": 73744,
+      "sha256": "a91daf84ce672409a4a42e6f6053d000a94b0c508743f8421364f09f268b1866"
+    },
+    {
+      "id": "first-meet",
+      "src": "assets/last-online/v2/cg/first-meet.webp",
+      "bytes": 128576,
+      "sha256": "3fd1e8483cc737c4fd2941f9cbac82c53b916e72b44121a6ef8bcd25980df555"
+    },
+    {
+      "id": "old-photo",
+      "src": "assets/last-online/v2/cg/old-photo.webp",
+      "bytes": 130462,
+      "sha256": "b4aefec5dbdf9f768ad94d6ff061693a9b7e3e047bb3a5ad50076797b6e73efd"
+    },
+    {
+      "id": "pendant-shock",
+      "src": "assets/last-online/v2/cg/pendant-shock.webp",
+      "bytes": 134550,
+      "sha256": "e6fda1f7476cd831bc7504d0227d5b1054b86adf0a1c5ad91dac4c14a806424d"
+    },
+    {
+      "id": "pendant",
+      "src": "assets/last-online/v2/cg/pendant.webp",
+      "bytes": 141278,
+      "sha256": "251b8184611218bab0d084211a8793b7408008444fd0fa97839f14d881b17afb"
+    },
+    {
+      "id": "reveal",
+      "src": "assets/last-online/v2/cg/reveal.webp",
+      "bytes": 173996,
+      "sha256": "178a90d461d6be6d16d00b2bac553b3d8c7f3d8be301787d41ce5fdcbc6e219c"
+    },
+    {
+      "id": "soa-ping",
+      "src": "assets/last-online/v2/cg/soa-ping.webp",
+      "bytes": 135940,
+      "sha256": "0178ee43c17990b1d644936d1351bf359949db324c56adeeacbc339c77d61d44"
+    }
   ]
 }

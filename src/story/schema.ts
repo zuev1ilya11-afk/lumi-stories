@@ -42,8 +42,31 @@ export type ChatMessage = {
 export type ChatPresentation = {
   status?: string;
   typing?: boolean;
+  context?: string;
   messages: ChatMessage[];
 };
+
+export type CharacterPresentation = {
+  id: string; src: string; emotion: string; pose?: string;
+  position?: 'left' | 'center' | 'right';
+  depth?: 'foreground' | 'background';
+  framing?: 'close-up' | 'medium' | 'full-body';
+};
+export type ScenePresentation = {
+  mode?: 'standard' | 'cinematic' | 'phone';
+  location?: string;
+  camera?: 'wide' | 'medium' | 'close' | 'extreme-close';
+  position?: 'left' | 'center' | 'right';
+  motion?: 'none' | 'slow-zoom' | 'push-in' | 'pull-out' | 'drift-left' | 'drift-right' | 'tension' | 'reveal' | 'shake';
+  transition?: 'fade' | 'crossfade' | 'cut';
+  effect?: 'none' | 'flash' | 'dark-pulse';
+  ambient?: 'none' | 'rain' | 'dust';
+  cg?: string;
+  characters?: CharacterPresentation[];
+  haptic?: 'light' | 'medium';
+  sound?: string;
+};
+export type Beat = { text: string; speaker?: string; background?: string; presentation?: ScenePresentation; delay?: number };
 
 export type Scene = {
   id: string;
@@ -54,6 +77,8 @@ export type Scene = {
   character?: string;
   attachment?: string;
   chat?: ChatPresentation;
+  beats?: Beat[];
+  presentation?: ScenePresentation;
   choices?: Choice[];
   transitions?: Transition[];
   nextSceneId?: string;
@@ -212,9 +237,58 @@ function parseChat(raw: unknown, label: string): ChatPresentation | undefined {
   }
   return {
     status: value.status === undefined ? undefined : stringValue(value.status, `${label}.status`),
+    context: value.context === undefined ? undefined : stringValue(value.context, `${label}.context`),
     typing: value.typing === undefined ? undefined : value.typing,
     messages,
   };
+}
+
+function enumValue<T extends string>(raw: unknown, values: readonly T[], label: string): T | undefined {
+  if (raw === undefined) return undefined;
+  if (typeof raw !== 'string' || !values.includes(raw as T)) throw new StorySchemaError(`${label} is unknown: ${String(raw)}`);
+  return raw as T;
+}
+function parsePresentation(raw: unknown, label: string): ScenePresentation | undefined {
+  if (raw === undefined) return undefined;
+  const v = record(raw, label);
+  if (v.characters !== undefined && !Array.isArray(v.characters)) throw new StorySchemaError(`${label}.characters must be an array`);
+  return {
+    mode: enumValue(v.mode, ['standard', 'cinematic', 'phone'], `${label}.mode`),
+    camera: enumValue(v.camera, ['wide', 'medium', 'close', 'extreme-close'], `${label}.camera`),
+    position: enumValue(v.position, ['left', 'center', 'right'], `${label}.position`),
+    motion: enumValue(v.motion, ['none', 'slow-zoom', 'push-in', 'pull-out', 'drift-left', 'drift-right', 'tension', 'reveal', 'shake'], `${label}.motion`),
+    transition: enumValue(v.transition, ['fade', 'crossfade', 'cut'], `${label}.transition`),
+    effect: enumValue(v.effect, ['none', 'flash', 'dark-pulse'], `${label}.effect`),
+    ambient: enumValue(v.ambient, ['none', 'rain', 'dust'], `${label}.ambient`),
+    haptic: enumValue(v.haptic, ['light', 'medium'], `${label}.haptic`),
+    ...Object.fromEntries(['location', 'cg', 'sound'].filter(k => v[k] !== undefined).map(k => [k, stringValue(v[k], `${label}.${k}`)])),
+    characters: Array.isArray(v.characters) ? v.characters.map((rawCharacter, i) => {
+      const c = record(rawCharacter, `${label}.characters[${i}]`);
+      return {
+        id: stringValue(c.id, `${label}.character.id`), src: stringValue(c.src, `${label}.character.src`),
+        emotion: stringValue(c.emotion, `${label}.character.emotion`),
+        pose: c.pose === undefined ? undefined : stringValue(c.pose, `${label}.character.pose`),
+        position: enumValue(c.position, ['left', 'center', 'right'], `${label}.character.position`),
+        depth: enumValue(c.depth, ['foreground', 'background'], `${label}.character.depth`),
+        framing: enumValue(c.framing, ['close-up', 'medium', 'full-body'], `${label}.character.framing`),
+      };
+    }) : undefined,
+  };
+}
+function parseBeats(raw: unknown, label: string): Beat[] | undefined {
+  if (raw === undefined) return undefined;
+  if (!Array.isArray(raw) || raw.length === 0) throw new StorySchemaError(`${label} must be a non-empty array`);
+  return raw.map((item, i) => {
+    const v = record(item, `${label}[${i}]`);
+    const delay = v.delay === undefined ? undefined : finiteNumber(v.delay, `${label}.delay`);
+    if (delay !== undefined && (delay < 0 || delay > 2000)) throw new StorySchemaError(`${label}.delay must be between 0 and 2000`);
+    return {
+      text: stringValue(v.text, `${label}.text`),
+      speaker: v.speaker === undefined ? undefined : stringValue(v.speaker, `${label}.speaker`),
+      background: v.background === undefined ? undefined : stringValue(v.background, `${label}.background`),
+      presentation: parsePresentation(v.presentation, `${label}.presentation`), delay,
+    };
+  });
 }
 
 function parseScene(raw: unknown, index: number): Scene {
@@ -246,6 +320,8 @@ function parseScene(raw: unknown, index: number): Scene {
     character: value.character === undefined ? undefined : stringValue(value.character, `${label}.character`),
     attachment: value.attachment === undefined ? undefined : stringValue(value.attachment, `${label}.attachment`),
     chat: parseChat(value.chat, `${label}.chat`),
+    beats: parseBeats(value.beats, `${label}.beats`),
+    presentation: parsePresentation(value.presentation, `${label}.presentation`),
     choices,
     transitions,
     nextSceneId: value.nextSceneId === undefined ? undefined : stringValue(value.nextSceneId, `${label}.nextSceneId`),

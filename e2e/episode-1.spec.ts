@@ -1,44 +1,52 @@
 import { expect, test } from '@playwright/test';
-import { createMockApiStore, installMockLumiApi, installTelegram, signTelegramInitData } from './fixtures/telegram';
+import { enterStory, episode, marker, step } from './fixtures/story';
 
-test('plays Episode 1 through SOA route to prototype paywall without unlocking paid chapters', async ({ page }: { page: import('@playwright/test').Page }) => {
-  const store = createMockApiStore();
-  const initData = await signTelegramInitData();
-  await installTelegram(page, initData);
-  await installMockLumiApi(page, store);
-  await page.goto('/');
-
-  await page.getByRole('button', { name: 'Начать историю' }).click();
-  await page.getByRole('button', { name: 'Начать' }).click();
-
-  let choseHide = false;
-  let sawAttachment = false;
-  for (let step = 0; step < 100; step += 1) {
-    if (await page.getByText('История только начинается').isVisible().catch(() => false)) break;
-    if (await page.getByRole('img', { name: 'Вложение от SOA' }).isVisible().catch(() => false)) sawAttachment = true;
-
-    const hide = page.getByRole('button', { name: 'Скрыть сообщение' });
-    if (await hide.isVisible().catch(() => false)) {
-      choseHide = true;
-      await hide.click();
-    } else if (await page.locator('.lumi-choice:not(:disabled)').count()) {
-      await page.locator('.lumi-choice:not(:disabled)').first().click();
-    } else if (await page.locator('.lumi-soa__replies button:not(:disabled)').count()) {
-      await page.locator('.lumi-soa__replies button:not(:disabled)').first().click();
-    } else if (await page.locator('.lumi-dialogue__advance').count()) {
-      await page.locator('.lumi-dialogue__advance').click();
-    } else {
-      throw new Error(`No actionable story control at step ${step}`);
+const routes = [
+  { name: 'romance / trust', choices: [0, 2, 0, 0, 0] },
+  { name: 'truth / risk', choices: [1, 0, 2, 1, 2] },
+  { name: 'mixed', choices: [2, 1, 1, 0, 1] },
+];
+test('three complete routes cover all 44 scenes and every choice; all reach the offer', async ({ page }) => {
+  test.setTimeout(180_000);
+  const reached = new Set<string>();
+  const chosen = new Set<string>();
+  const errors: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
+  page.on('response', response => { if (response.url().includes('/assets/last-online/') && response.status() >= 400) errors.push(response.url()); });
+  for (const route of routes) {
+    // Separate context avoids stacking route handlers and simulated Telegram identity.
+    const context = await page.context().browser()!.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });
+    const routePage = await context.newPage();
+    routePage.on('pageerror', error => errors.push(error.message));
+    routePage.on('response', response => { if (response.url().includes('/assets/last-online/') && response.status() >= 400) errors.push(response.url()); });
+    const store = await enterStory(routePage);
+    let attachment = false;
+    for (let i = 0; i < 260 && await marker(routePage) !== 'offer'; i++) {
+      const id = (await routePage.locator('[data-scene-id]').getAttribute('data-scene-id'))!;
+      reached.add(id);
+      const scene = episode.scenes.find(s => s.id === id)!;
+      if ('choices' in scene && await routePage.locator('.lumi-choice, .lumi-soa__replies button:not(.lumi-soa__skip):not(.lumi-soa__advance)').count()) {
+        const branch = episode.scenes.filter(s => 'choices' in s).findIndex(s => s.id === id);
+        chosen.add(scene.choices![route.choices[branch]].id);
+      }
+      if (await routePage.getByRole('button', { name: 'Открыть IMG_0317_old.jpg' }).isVisible()) {
+        attachment = true;
+        await routePage.getByRole('button', { name: 'Открыть IMG_0317_old.jpg' }).click();
+        await expect(routePage.getByRole('dialog')).toBeVisible();
+        await routePage.getByRole('button', { name: 'Закрыть фотографию' }).click();
+      }
+      await step(routePage, route.choices);
     }
-    await page.waitForTimeout(10);
+    await expect(routePage.getByText('История только начинается'), route.name).toBeVisible();
+    expect(store.progress?.sceneId).toBe('ep1_end_paywall');
+    expect(attachment).toBe(true);
+    expect(store.saves.length).toBeLessThan(45); // Beats never create server progress writes.
+    await routePage.getByRole('button', { name: 'Продолжить', exact: true }).click();
+    await expect(routePage.getByText('Покупка появится в полной версии')).toBeVisible();
+    expect(store.analytics).toEqual(expect.arrayContaining(['episode_started', 'scene_reached', 'choice_selected', 'episode_finished', 'paywall_opened', 'purchase_clicked']));
+    await context.close();
   }
-
-  await expect(page.getByText('История только начинается')).toBeVisible();
-  expect(choseHide).toBe(true);
-  expect(sawAttachment).toBe(true);
-  await expect(page.getByText(/Эпизоды 2–5/)).toBeVisible();
-  await page.getByRole('button', { name: 'Продолжить' }).click();
-  await expect(page.getByText('Покупка появится в полной версии')).toBeVisible();
-  expect(store.analytics).toContain('purchase_clicked');
-  expect(store.progress?.sceneId).toBe('ep1_end_paywall');
+  expect([...reached].sort()).toEqual(episode.scenes.map(s => s.id).sort());
+  expect(chosen.size).toBe(14);
+  expect(errors).toEqual([]);
 });

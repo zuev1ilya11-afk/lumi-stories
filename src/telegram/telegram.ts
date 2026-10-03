@@ -8,6 +8,7 @@ export type TelegramUserDisplay = {
 export type TelegramWebAppLike = {
   initData?: string;
   initDataUnsafe?: { user?: TelegramUserDisplay };
+  HapticFeedback?: { impactOccurred(style: 'light' | 'medium'): void };
   ready?: () => void;
   expand?: () => void;
 };

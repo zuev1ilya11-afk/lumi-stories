@@ -1,50 +1,37 @@
 import { expect, test } from '@playwright/test';
-import { createMockApiStore, installMockLumiApi, installTelegram, signTelegramInitData } from './fixtures/telegram';
+import { createMockApiStore } from './fixtures/telegram';
+import { enterStory, step } from './fixtures/story';
 
-async function enterStory(page: import('@playwright/test').Page, initData: string, store: ReturnType<typeof createMockApiStore>) {
-  await installTelegram(page, initData);
-  await installMockLumiApi(page, store);
-  await page.goto('/');
-  await page.getByRole('button', { name: 'Начать историю' }).click();
-  await page.getByRole('button', { name: store.progress ? 'Продолжить' : 'Начать' }).click();
-}
-
-test('reopens the same Telegram player at saved server scene', async ({ browser }: { browser: any }) => {
+test('resumes the saved logical scene with local beat zero', async ({ browser }) => {
   const store = createMockApiStore();
-  const initData = await signTelegramInitData(700001);
-  const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });
   let page = await context.newPage();
-  await enterStory(page, initData, store);
-
-  await page.locator('.lumi-dialogue__advance').click();
-  await page.locator('.lumi-dialogue__advance').click();
-  await expect(page.getByText('Чья-то рука удержала чемодан прежде, чем тот рухнул набок.')).toBeVisible();
-  const savedScene = store.progress?.sceneId;
-  expect(savedScene).toBe('ep1_first_meet');
+  await enterStory(page, store);
+  while (await page.locator('[data-scene-id]').getAttribute('data-scene-id') !== 'ep1_first_meet') await step(page);
+  await step(page); // Beat 1 remains client-side.
+  expect(store.progress?.sceneId).toBe('ep1_first_meet');
   await page.close();
-
   page = await context.newPage();
-  await enterStory(page, initData, store);
-  await expect(page.getByText('Чья-то рука удержала чемодан прежде, чем тот рухнул набок.')).toBeVisible();
-  expect(store.progress?.sceneId).toBe(savedScene);
+  await enterStory(page, store);
+  await expect(page.locator('[data-scene-id]')).toHaveAttribute('data-scene-id', 'ep1_first_meet');
+  await expect(page.locator('[data-beat-index]')).toHaveAttribute('data-beat-index', '0');
   await context.close();
 });
 
-test('failed progress save keeps current scene and retry advances once', async ({ page }: { page: import('@playwright/test').Page }) => {
-  const store = createMockApiStore();
-  const initData = await signTelegramInitData(700002);
-  await enterStory(page, initData, store);
-  const initialText = 'Хансу встретил Леру дождём, светом рекламных экранов';
-  await expect(page.getByText(new RegExp(initialText))).toBeVisible();
-
+test('failed save preserves final beat and retry advances exactly once', async ({ page }) => {
+  const store = await enterStory(page);
+  const stage = page.locator('[data-scene-id]');
+  const count = Number(await stage.getAttribute('data-beat-count'));
+  for (let i = 1; i < count; i++) await step(page);
+  const text = await page.locator('.lumi-dialogue__copy').innerText();
   store.failNextSave = true;
-  await page.locator('.lumi-dialogue__advance').click();
+  await page.getByRole('button', { name: 'Продолжить', exact: true }).click();
   await expect(page.getByRole('alert')).toContainText('Не удалось сохранить');
-  await expect(page.getByText(new RegExp(initialText))).toBeVisible();
+  await expect(stage).toHaveAttribute('data-scene-id', 'ep1_arrival');
+  expect(await page.locator('.lumi-dialogue__copy').innerText()).toBe(text);
   expect(store.progress).toBeNull();
-
   await page.getByRole('button', { name: 'Повторить' }).click();
   await expect(page.getByRole('alert')).toHaveCount(0);
-  expect(store.progress?.sceneId).toBe('ep1_building');
-  await expect(page.getByText(/Дом оказался тише улицы/)).toBeVisible();
+  await expect(stage).toHaveAttribute('data-scene-id', 'ep1_building');
+  expect(store.saves).toEqual(['ep1_building']);
 });

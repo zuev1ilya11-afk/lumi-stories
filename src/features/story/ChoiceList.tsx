@@ -3,10 +3,11 @@ import type { Choice } from '../../story/schema';
 type ChoiceListProps = {
   choices: Choice[];
   disabled: boolean;
+  selected?: string;
   onChoose(choiceId: string): Promise<void> | void;
 };
 
-export function ChoiceList({ choices, disabled, onChoose }: ChoiceListProps) {
+export function ChoiceList({ choices, disabled, selected, onChoose }: ChoiceListProps) {
   if (choices.length === 0) return null;
   return (
     <div className="lumi-choices" aria-label="Выбор">
@@ -16,6 +17,7 @@ export function ChoiceList({ choices, disabled, onChoose }: ChoiceListProps) {
           type="button"
           key={choice.id}
           disabled={disabled}
+          data-selected={selected === choice.id}
           onClick={() => void onChoose(choice.id)}
         >
           <span>{choice.text}</span><span aria-hidden="true">›</span>

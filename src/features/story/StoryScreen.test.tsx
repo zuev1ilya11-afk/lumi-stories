@@ -49,15 +49,15 @@ describe('StoryScreen', () => {
     render(
       <StoryScreen episode={episode} sceneId="dialogue" state={state} onChoose={vi.fn()} onAdvance={vi.fn()} />,
     );
+    fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
     expect(screen.getByText('Кан Джунхо')).toBeInTheDocument();
     expect(screen.getByText('Ты ведь что-то от меня скрываешь?')).toBeInTheDocument();
-    expect(screen.getByTestId('story-stage')).toHaveStyle({
-      backgroundImage: 'url(/assets/last-online/backgrounds/apartment_hall_night.webp)',
-    });
+    expect(screen.getByTestId('story-stage').querySelector('.lumi-story__backdrop')).toHaveAttribute('src', '/assets/last-online/backgrounds/apartment_hall_night.webp');
   });
 
   it('renders only available choices', () => {
     render(<StoryScreen episode={episode} sceneId="choice" state={state} onChoose={vi.fn()} onAdvance={vi.fn()} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
     expect(screen.getByRole('button', { name: 'Рассказать правду' })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Показать улику' })).not.toBeInTheDocument();
   });
@@ -68,6 +68,7 @@ describe('StoryScreen', () => {
     const onChoose = vi.fn(() => pending);
     render(<StoryScreen episode={episode} sceneId="choice" state={state} onChoose={onChoose} onAdvance={vi.fn()} />);
 
+    fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
     const button = screen.getByRole('button', { name: 'Рассказать правду' });
     fireEvent.click(button);
     fireEvent.click(button);
@@ -119,6 +120,7 @@ it('marks key scenes as cinematic and exposes motion variant', () => {
       id: 'ep1_noise_hall',
       kind: 'narrative',
       text: 'Джунхо увидел подвеску и остановился.',
+      presentation: { mode: 'cinematic', motion: 'tension' },
       background: 'apartment_hall_night',
       character: 'junho-guarded',
       nextSceneId: 'end',

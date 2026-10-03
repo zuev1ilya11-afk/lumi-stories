@@ -7,10 +7,11 @@ export type MockApiStore = {
   progress: ProgressDto | null;
   analytics: string[];
   failNextSave: boolean;
+  saves: string[];
 };
 
 export function createMockApiStore(): MockApiStore {
-  return { progress: null, analytics: [], failNextSave: false };
+  return { progress: null, analytics: [], failNextSave: false, saves: [] };
 }
 
 async function hmac(key: Uint8Array, value: string): Promise<Uint8Array> {
@@ -91,6 +92,7 @@ export async function installMockLumiApi(page: Page, store: MockApiStore): Promi
         return;
       }
       const body = request.postDataJSON() as ProgressDto;
+      store.saves.push(body.sceneId);
       store.progress = { ...body, updatedAt: '2026-10-02T20:00:00.000Z' };
       await route.fulfill({ status: 200, headers: cors, body: JSON.stringify({ progress: store.progress }) });
       return;
