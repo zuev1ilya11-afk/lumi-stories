@@ -30,7 +30,8 @@ async function setup(page: Page, store: Store) {
         store.progress.set(dto.storyId, structuredClone(dto));
         data={progress:dto};
       } else data={progress:store.progress.get(url.searchParams.get('storyId')!) ?? null};
-    } else if(url.pathname.endsWith('/analytics')) return route.fulfill({status:204,headers,body:''});
+    } else if(url.pathname.endsWith('/payments/status')) data = { season1Owned:false, priceStars:149, episodeRewindPriceStars:49, storyId, seasonId:'season-1' };
+    else if(url.pathname.endsWith('/analytics')) return route.fulfill({status:204,headers,body:''});
     else return route.fulfill({status:404,headers,body:'{}'});
     return route.fulfill({status:200,headers,body:JSON.stringify(data)});
   });

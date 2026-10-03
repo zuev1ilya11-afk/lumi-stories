@@ -13,7 +13,7 @@ test('free public season continues without Stars and preserves earlier decisions
   await page.getByRole('button', { name: 'Профиль', exact: true }).click();
   await expect(page.getByText('Эпизоды 1–5 бесплатно')).toBeVisible();
   await page.getByRole('button', { name: 'Продолжить историю', exact: true }).click();
-  await expect(page.getByText('Первый сезон — бесплатно. Эпизоды 1–5 открываются по мере выхода.')).toBeVisible();
+  await expect(page.getByText('Сезон открыт для вашего аккаунта.')).toBeVisible();
   await page.getByRole('button', { name: 'Продолжить', exact: true }).click();
   while (await marker(page) !== 'offer') await step(page);
   await expect(page.getByRole('button', { name: /Купить/ })).toHaveCount(0);
