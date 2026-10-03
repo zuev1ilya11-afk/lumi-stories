@@ -29,14 +29,14 @@ it('renders a usable retry when bootstrap contains an unknown episode', async ()
   await screen.findByText('Не удалось загрузить историю.');
   bootstrap.mockResolvedValue({ playerId: 'p1', telegramUserId: 42, season1Owned: false, progress: saved });
   fireEvent.click(screen.getByRole('button', { name: 'Повторить' }));
-  await screen.findByRole('button', { name: 'Начать историю' });
+  await screen.findByRole('button', { name: /(?:Начать|Продолжить) историю/ });
   expect(bootstrap).toHaveBeenCalledTimes(2);
 });
 
 it('opens the saved episode 2 and returns from the menu without resetting it', async () => {
   connected({ ...saved, episodeId: 'last-online-s1-e2', sceneId: 'ep2_morning' });
   render(<App production />);
-  fireEvent.click(await screen.findByRole('button', { name: 'Начать историю' }));
+  fireEvent.click(await screen.findByRole('button', { name: /(?:Начать|Продолжить) историю/ }));
   fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
   expect(screen.getByTestId('story-stage')).toHaveAttribute('data-scene-id', 'ep2_morning');
   expect(screen.getByText('Тот, кого все знают')).toBeVisible();
@@ -51,7 +51,7 @@ it('keeps episode 2 behind Stars when the server says the season is not owned', 
   connected(saved, false);
   vi.stubGlobal('matchMedia', () => ({ matches: true, addEventListener() {}, removeEventListener() {} }));
   render(<App production />);
-  fireEvent.click(await screen.findByRole('button', { name: 'Начать историю' }));
+  fireEvent.click(await screen.findByRole('button', { name: /(?:Начать|Продолжить) историю/ }));
   fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
   for (let i = 0; i < 30 && !screen.queryByRole('button', { name: 'Купить за 149 ⭐' }); i += 1) fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
   expect(screen.getByRole('button', { name: 'Купить за 149 ⭐' })).toBeVisible();
@@ -63,7 +63,7 @@ it('continues from the episode 1 terminal into episode 2 without resetting saved
   vi.stubGlobal('matchMedia', () => ({ matches: true, addEventListener() {}, removeEventListener() {} }));
   saveProgress.mockImplementation(async (_init: string, dto: ProgressDto) => dto);
   render(<App production />);
-  fireEvent.click(await screen.findByRole('button', { name: 'Начать историю' }));
+  fireEvent.click(await screen.findByRole('button', { name: /(?:Начать|Продолжить) историю/ }));
   fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
   for (let i = 0; i < 30 && !screen.queryByRole('button', { name: 'Продолжить — Эпизод 2' }); i += 1) fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
   expect(saveProgress).not.toHaveBeenCalled();
