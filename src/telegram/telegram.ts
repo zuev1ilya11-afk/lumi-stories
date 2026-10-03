@@ -13,6 +13,7 @@ export type TelegramWebAppLike = {
   HapticFeedback?: { impactOccurred(style: 'light' | 'medium'): void };
   ready?: () => void;
   expand?: () => void;
+  requestFullscreen?: () => void;
   openInvoice?: (url: string, callback?: (status: TelegramInvoiceStatus) => void) => void;
 };
 
@@ -99,6 +100,11 @@ export function getTelegramContext(
 export function readyTelegramApp(webApp: TelegramWebAppLike | undefined = window.Telegram?.WebApp): void {
   webApp?.ready?.();
   webApp?.expand?.();
+  try {
+    webApp?.requestFullscreen?.();
+  } catch {
+    // Unsupported clients remain in expanded mode.
+  }
 }
 
 export function openTelegramInvoice(
