@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { trackEvent } from './analytics/events';
+import { EpisodeRecap } from './features/shell/EpisodeRecap';
 import { SeasonScreen } from './features/shell/SeasonScreen';
 import { StartScreen } from './features/shell/StartScreen';
 import { StoryScreen } from './features/story/StoryScreen';
 import { useProgress } from './progress/useProgress';
-import { advanceTransition, choiceTransition, createProgressMachine, progressFromDto, type ProgressState } from './progress/model';
+import { createProgressMachine, progressFromDto, type ProgressState } from './progress/model';
 import { getScene } from './story/engine';
 import { episodes, firstEpisode, getEpisode, getNextEpisode } from './story/episodes';
 import { getTelegramContext, TelegramContextError, type TelegramContext } from './telegram/telegram';
@@ -28,88 +29,72 @@ type StoryFrameProps = {
 };
 
 function StoryFrame(props: StoryFrameProps) {
-  const [screen, setScreen] = useState<'start' | 'season' | 'story'>('start');
-  const [replayProgress, setReplayProgress] = useState<ProgressState | null>(null);
-  const savedEpisode = getEpisode(props.progress.episodeId);
-  const hasProgress = savedEpisode.id !== firstEpisode.id || props.progress.sceneId !== firstEpisode.startSceneId;
-  const activeProgress = replayProgress ?? props.progress;
-  const episode = getEpisode(activeProgress.episodeId);
-  const replaying = replayProgress !== null;
+  const [screen, setScreen] = useState<'start' | 'season' | 'story' | 'recap'>('start');
+  const [recapEpisodeId, setRecapEpisodeId] = useState<string>();
+  const { sceneId, storyState } = props.progress;
+  const episode = getEpisode(props.progress.episodeId);
+  const hasProgress = episode.id !== firstEpisode.id || sceneId !== firstEpisode.startSceneId;
+  const episodeCompleted = getScene(episode, sceneId).kind === 'terminal';
 
   function openSavedEpisode() {
-    setReplayProgress(null);
     setScreen('story');
-    if (props.analytics) void trackEvent('episode_started', { episodeId: savedEpisode.id, sceneId: props.progress.sceneId });
+    if (props.analytics) void trackEvent('episode_started', { episodeId: episode.id, sceneId });
   }
 
-  function openEpisode(episodeId: string) {
-    const selected = getEpisode(episodeId);
-    const selectedIndex = episodes.findIndex(candidate => candidate.id === selected.id);
-    const savedIndex = episodes.findIndex(candidate => candidate.id === savedEpisode.id);
-    if (selectedIndex < 0 || selectedIndex > savedIndex) return;
-    if (selected.id === savedEpisode.id) {
-      openSavedEpisode();
-      return;
-    }
-    setReplayProgress(progressFromDto(null, selected));
-    setScreen('story');
-    if (props.analytics) void trackEvent('replay_started', { episodeId: selected.id, sceneId: selected.startSceneId });
-  }
-
-  async function replayChoose(choiceId: string) {
-    if (!replayProgress) return;
-    setReplayProgress(choiceTransition(getEpisode(replayProgress.episodeId), replayProgress, choiceId));
-  }
-
-  async function replayAdvance() {
-    if (!replayProgress) return;
-    setReplayProgress(advanceTransition(getEpisode(replayProgress.episodeId), replayProgress));
+  function openRecap(episodeId: string) {
+    const selectedIndex = episodes.findIndex(candidate => candidate.id === episodeId);
+    const currentIndex = episodes.findIndex(candidate => candidate.id === episode.id);
+    const completed = selectedIndex >= 0 && (selectedIndex < currentIndex || (selectedIndex === currentIndex && episodeCompleted));
+    if (!completed) return;
+    setRecapEpisodeId(episodeId);
+    setScreen('recap');
   }
 
   if (screen === 'start') return <StartScreen
     onStart={() => setScreen('season')}
     userDisplayName={props.userDisplayName}
     hasProgress={hasProgress}
-    currentEpisodeId={savedEpisode.id}
+    currentEpisodeId={episode.id}
     season1Owned={props.season1Owned}
     season1PriceStars={props.season1PriceStars}
   />;
   if (screen === 'season') return <SeasonScreen
     hasProgress={hasProgress}
-    currentEpisodeId={savedEpisode.id}
-    episodeCompleted={getScene(savedEpisode, props.progress.sceneId).kind === 'terminal'}
+    currentEpisodeId={episode.id}
+    episodeCompleted={episodeCompleted}
     season1Owned={props.season1Owned}
     season1PriceStars={props.season1PriceStars}
     onPlay={openSavedEpisode}
-    onSelectEpisode={openEpisode}
+    onOpenRecap={openRecap}
     onBack={() => setScreen('start')}
+  />;
+  if (screen === 'recap' && recapEpisodeId) return <EpisodeRecap
+    episodeId={recapEpisodeId}
+    onBack={() => setScreen('season')}
   />;
   return (
     <>
       <StoryScreen
         episode={episode}
-        sceneId={activeProgress.sceneId}
-        state={activeProgress.storyState}
-        onChoose={replaying ? replayChoose : props.onChoose}
-        onAdvance={replaying ? replayAdvance : props.onAdvance}
-        nextEpisode={replaying ? undefined : getNextEpisode(episode.id)}
-        onNextEpisode={replaying ? undefined : props.onNextEpisode}
-        replayMode={replaying}
-        onResumeCurrent={replaying ? openSavedEpisode : undefined}
-        onMenu={() => { setReplayProgress(null); setScreen('season'); }}
-        disabled={!replaying && (props.status === 'saving' || props.status === 'error')}
-        analytics={props.analytics && !replaying}
+        sceneId={sceneId}
+        state={storyState}
+        onChoose={props.onChoose}
+        onAdvance={props.onAdvance}
+        nextEpisode={getNextEpisode(episode.id)}
+        onNextEpisode={props.onNextEpisode}
+        onMenu={() => setScreen('season')}
+        disabled={props.status === 'saving' || props.status === 'error'}
+        analytics={props.analytics}
         season1Owned={props.season1Owned}
         season1PriceStars={props.season1PriceStars}
         onRefreshOwnership={props.onRefreshOwnership}
       />
-      {!replaying && props.status === 'error' && props.onRetry ? (
+      {props.status === 'error' && props.onRetry ? (
         <aside className="lumi-save-error" role="alert">Не удалось сохранить. <button type="button" onClick={() => void props.onRetry?.().catch(() => undefined)}>Повторить</button></aside>
       ) : null}
     </>
   );
 }
-
 function ConnectedPrototype({ context }: { context: TelegramContext }) {
   const progress = useProgress(context.initData);
   useEffect(() => { void trackEvent('app_opened'); }, []);
