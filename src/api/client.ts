@@ -2,6 +2,8 @@ import {
   LumiApiError,
   type AnalyticsPayload,
   type BootstrapResponse,
+  type EpisodeRewindInvoiceResponse,
+  type EpisodeRewindStatusResponse,
   type PaymentInvoiceResponse,
   type PaymentStatusResponse,
   type ProgressDto,
@@ -98,6 +100,21 @@ export function createApiClient({ baseUrl, fetcher = fetch }: ApiClientOptions) 
       }));
     },
 
+    async createEpisodeRewindInvoice(initData: string, episodeId: string): Promise<EpisodeRewindInvoiceResponse> {
+      return parseJson<EpisodeRewindInvoiceResponse>(await fetcher(`${root}/payments/rewind/invoice`, {
+        method: 'POST',
+        headers: telegramHeaders(initData, true),
+        body: JSON.stringify({ episodeId }),
+      }));
+    },
+
+    async getEpisodeRewindStatus(initData: string, episodeId: string): Promise<EpisodeRewindStatusResponse> {
+      const query = new URLSearchParams({ episodeId });
+      return parseJson<EpisodeRewindStatusResponse>(await fetcher(`${root}/payments/rewind/status?${query.toString()}`, {
+        headers: telegramHeaders(initData),
+      }));
+    },
+
     async sendAnalytics(initData: string, event: AnalyticsPayload): Promise<void> {
       const response = await fetcher(`${root}/analytics`, {
         method: 'POST',
@@ -131,6 +148,14 @@ export function createSeasonInvoice(initData: string): Promise<PaymentInvoiceRes
 
 export function getPaymentStatus(initData: string): Promise<PaymentStatusResponse> {
   return createApiClient({ baseUrl: configuredBaseUrl() }).getPaymentStatus(initData);
+}
+
+export function createEpisodeRewindInvoice(initData: string, episodeId: string): Promise<EpisodeRewindInvoiceResponse> {
+  return createApiClient({ baseUrl: configuredBaseUrl() }).createEpisodeRewindInvoice(initData, episodeId);
+}
+
+export function getEpisodeRewindStatus(initData: string, episodeId: string): Promise<EpisodeRewindStatusResponse> {
+  return createApiClient({ baseUrl: configuredBaseUrl() }).getEpisodeRewindStatus(initData, episodeId);
 }
 
 export function sendAnalytics(initData: string, event: AnalyticsPayload): Promise<void> {
