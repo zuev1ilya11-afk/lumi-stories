@@ -2,7 +2,6 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { afterEach, expect, it, vi } from 'vitest';
 import type { ProgressDto } from './api/types';
 import { App } from './App';
-import { firstEpisode } from './story/episodes';
 
 const { bootstrap, saveProgress } = vi.hoisted(() => ({ bootstrap: vi.fn(), saveProgress: vi.fn() }));
 vi.mock('./api/client', async () => ({ ...await vi.importActual('./api/client'), bootstrap, saveProgress, sendAnalytics: vi.fn().mockResolvedValue(undefined) }));
@@ -73,21 +72,20 @@ it('continues from the episode 1 terminal into episode 2 without resetting saved
   expect(saveProgress).toHaveBeenCalledExactlyOnceWith('signed', { ...saved, episodeId: 'last-online-s1-e2', sceneId: 'ep2_morning' });
 });
 
-
-it('replays episode 1 from the season without overwriting saved episode 2 progress', async () => {
+it('opens a read-only episode 1 recap without changing saved episode 2 progress', async () => {
   connected({ ...saved, episodeId: 'last-online-s1-e2', sceneId: 'ep2_morning' }, true);
   render(<App production />);
   fireEvent.click(await screen.findByRole('button', { name: /(?:Начать|Продолжить) историю/ }));
-  fireEvent.click(screen.getByRole('button', { name: 'Эпизод 1: Номер, который не должен отвечать. Пройти снова' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Эпизод 1: Номер, который не должен отвечать. Краткая сводка' }));
 
-  expect(screen.getByTestId('story-stage')).toHaveAttribute('data-scene-id', firstEpisode.startSceneId);
-  expect(screen.getByText('Номер, который не должен отвечать')).toBeVisible();
+  expect(screen.getByRole('heading', { name: 'Номер, который не должен отвечать' })).toBeVisible();
+  expect(screen.getByText(/аккаунт исчезнувшей Юн Соа/)).toBeVisible();
+  expect(screen.queryByTestId('story-stage')).not.toBeInTheDocument();
+  expect(screen.queryByRole('button', { name: /Рассказать|Ответить|Скрыть|Пройти снова/ })).not.toBeInTheDocument();
   expect(saveProgress).not.toHaveBeenCalled();
 
-  fireEvent.click(screen.getByRole('button', { name: 'Меню' }));
-  expect(screen.getByText('Текущий эпизод')).toBeVisible();
+  fireEvent.click(screen.getByRole('button', { name: 'Назад к эпизодам' }));
   fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
-
   expect(screen.getByTestId('story-stage')).toHaveAttribute('data-scene-id', 'ep2_morning');
   expect(saveProgress).not.toHaveBeenCalled();
 });
