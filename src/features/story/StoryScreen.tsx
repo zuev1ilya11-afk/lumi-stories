@@ -75,6 +75,7 @@ function ScenePlayer({ storyId = 'last-online', seasonId = 'season-1', episode, 
   }
   const entitlement = season1Owned || purchased;
   const episodeNumber = getEpisodeNumber(episode.id);
+  const seasonComplete = !nextEpisode && episodeNumber >= 5;
   if (offer && nextEpisode && onNextEpisode && !entitlement) {
     return <PrototypePaywall
       storyId={storyId}
@@ -96,7 +97,7 @@ function ScenePlayer({ storyId = 'last-online', seasonId = 'season-1', episode, 
     {art ? <img src={art} alt="Финал эпизода" /> : null}
     <div className="lumi-paywall__body">
       <p className="lumi-eyebrow">Эпизод {episodeNumber} завершён</p>
-      <h2>{nextEpisode ? 'История только начинается' : `Эпизод ${episodeNumber + 1} в разработке`}</h2>
+      <h2>{nextEpisode ? 'История только начинается' : seasonComplete ? 'Сезон завершён' : `Эпизод ${episodeNumber + 1} в разработке`}</h2>
       {nextEpisode && onNextEpisode ? <>
         <p>{nextEpisode.title}</p>
         <button className="lumi-primary" type="button" disabled={pending || disabled} onClick={() => void run(onNextEpisode)}>Продолжить — Эпизод {episodeNumber + 1}</button>
