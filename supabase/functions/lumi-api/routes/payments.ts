@@ -139,7 +139,7 @@ function targetCompleted(progress: Progress | null, episodeId: RewindEpisodeId):
   const target = EPISODE_REWIND_TARGETS[episodeId];
   if (!current) return false;
   if (current.index > target.index) return true;
-  return current.index === target.index && target.terminalSceneIds.includes(progress.sceneId);
+  return current.index === target.index && (target.terminalSceneIds as readonly string[]).includes(progress.sceneId);
 }
 
 async function canRewind(
