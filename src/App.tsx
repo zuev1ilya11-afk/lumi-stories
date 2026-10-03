@@ -54,7 +54,7 @@ function ConnectedPrototype({ context }: { context: TelegramContext }) {
 function LocalPrototype() {
   const [machine] = useState(() => createProgressMachine({ episode: firstEpisode, episodes, initial: progressFromDto(null, firstEpisode), save: async progress => progress }));
   const [progress, setProgress] = useState(machine.current());
-  return <StoryFrame progress={progress} season1Owned season1PriceStars={249} onChoose={async id => { setProgress(await machine.choose(id)); }} onAdvance={async () => { setProgress(await machine.advance()); }} onNextEpisode={async () => { setProgress(await machine.nextEpisode()); }} />;
+  return <StoryFrame progress={progress} season1Owned season1PriceStars={149} onChoose={async id => { setProgress(await machine.choose(id)); }} onAdvance={async () => { setProgress(await machine.advance()); }} onNextEpisode={async () => { setProgress(await machine.nextEpisode()); }} />;
 }
 
 export function App({ production = isProductionBuild() }: { production?: boolean } = {}) {

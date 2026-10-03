@@ -21,7 +21,7 @@ import { handleTelegramWebhook } from './routes/telegram-webhook.ts';
 
 const STORY_ID = 'last-online';
 const SEASON_ID = 'season-1';
-const SEASON_1_PRICE_STARS = 249;
+const SEASON_1_PRICE_STARS = 149;
 let cachedRepository: LumiRepository | null = null;
 let cachedPaymentStore: StarPaymentStore | null = null;
 

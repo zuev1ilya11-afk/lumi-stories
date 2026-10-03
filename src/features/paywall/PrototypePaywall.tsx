@@ -35,7 +35,7 @@ export function PrototypePaywall({
   episodeNumber = 1,
   nextEpisodeTitle = 'Тот, кого все знают',
   imageSrc,
-  priceStars = 249,
+  priceStars = 149,
   onPurchased,
   onMenu,
 }: Props = {}) {

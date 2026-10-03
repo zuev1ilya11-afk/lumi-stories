@@ -36,7 +36,7 @@ export function StoryScreen(props: Props) {
   return <ScenePlayer key={`${props.episode.id}:${scene.id}`} {...props} scene={scene} previous={previousArt} onArt={src => { previous.current = src; }} chatHistory={chatHistory.current} onHistory={messages => { chatHistory.current = messages; }} />;
 }
 
-function ScenePlayer({ episode, scene, state, onChoose, onAdvance, onMenu, nextEpisode, onNextEpisode, disabled = false, analytics = false, season1Owned = false, season1PriceStars = 249, onRefreshOwnership, previous, onArt, chatHistory, onHistory }: Props & { scene: Scene; previous?: string; onArt(src?: string): void; chatHistory: ChatTimelineEvent[]; onHistory(messages: ChatTimelineEvent[]): void }) {
+function ScenePlayer({ episode, scene, state, onChoose, onAdvance, onMenu, nextEpisode, onNextEpisode, disabled = false, analytics = false, season1Owned = false, season1PriceStars = 149, onRefreshOwnership, previous, onArt, chatHistory, onHistory }: Props & { scene: Scene; previous?: string; onArt(src?: string): void; chatHistory: ChatTimelineEvent[]; onHistory(messages: ChatTimelineEvent[]): void }) {
   const reduced = useReducedMotion();
   const playback = useBeatPlayback(getSceneBeats(scene), reduced);
   const p = getScenePresentation(scene, playback.beat);

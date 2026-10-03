@@ -22,7 +22,7 @@ export function useProgress(initData: string): {
   const [status, setStatus] = useState<ProgressStatus>('loading');
   const [state, setState] = useState<ProgressState | null>(null);
   const [season1Owned, setSeason1Owned] = useState(false);
-  const [season1PriceStars, setSeason1PriceStars] = useState(249);
+  const [season1PriceStars, setSeason1PriceStars] = useState(149);
   const [bootstrapAttempt, setBootstrapAttempt] = useState(0);
   const machineRef = useRef<ReturnType<typeof createProgressMachine> | null>(null);
   const bootstrapBusy = useRef(true);
@@ -48,7 +48,7 @@ export function useProgress(initData: string): {
           save: (progress) => saveProgress(initData, progress),
         });
         setSeason1Owned(payload.season1Owned);
-        setSeason1PriceStars(payload.season1PriceStars ?? 249);
+        setSeason1PriceStars(payload.season1PriceStars ?? 149);
         setState(initial);
         setStatus('ready');
       })

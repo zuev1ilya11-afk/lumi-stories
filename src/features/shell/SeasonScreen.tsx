@@ -18,7 +18,7 @@ const EPISODES = [
   ['05', 'Последний онлайн'],
 ] as const;
 
-export function SeasonScreen({ hasProgress, currentEpisodeId = 'last-online-s1-e1', episodeCompleted = false, season1Owned = false, season1PriceStars = 249, onPlay, onBack }: SeasonScreenProps) {
+export function SeasonScreen({ hasProgress, currentEpisodeId = 'last-online-s1-e1', episodeCompleted = false, season1Owned = false, season1PriceStars = 149, onPlay, onBack }: SeasonScreenProps) {
   const currentEpisode = currentEpisodeId === 'last-online-s1-e2' ? 2 : 1;
   function episodeStatus(number: number) {
     if (number > 2) return 'В разработке';
