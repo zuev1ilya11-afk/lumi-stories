@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { publicAsset } from '../../publicAsset';
 import { STORY_CATALOG, getStoryCatalogEntry } from '../../story/catalog';
 import { getEpisodeNumber } from '../../story/episodes';
-import { HOME_BACKGROUND_DATA_URL } from './homeArt/homeBackground';
 
 type StartScreenProps = {
   onStart(): void;
@@ -85,7 +84,7 @@ export function StartScreen({
       <div
         className="lumi-start__hero-art"
         aria-hidden="true"
-        style={{ backgroundImage: `url("${HOME_BACKGROUND_DATA_URL}")` }}
+        style={{ backgroundImage: `url(${publicAsset('assets/ui/lumi-home-bg-v2.webp')})` }}
       />
       <div className="lumi-start__stars" aria-hidden="true" />
       <div className="lumi-start__shooting-stars" aria-hidden="true">
