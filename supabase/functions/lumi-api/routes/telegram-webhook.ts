@@ -1,7 +1,8 @@
 import { jsonResponse } from '../../_shared/http.ts';
 import type { StarPaymentOrder, StarPaymentStore } from '../../_shared/payments.ts';
-import type { LumiRepository } from '../../_shared/repository.ts';
+import type { LumiRepository, SaveProgressInput } from '../../_shared/repository.ts';
 import { constantTimeTextEqual } from '../../_shared/telegram-bot.ts';
+import { EPISODE_REWIND_TARGETS, REWIND_PRODUCT_PREFIX } from './payments.ts';
 
 type TelegramUser = { id?: number };
 type TelegramChat = { id?: number };
@@ -42,33 +43,94 @@ type TelegramUpdate = {
   message?: TelegramMessage;
 };
 
-export type TelegramWebhookRepository = Pick<LumiRepository, 'getOrCreatePlayer'>;
+export type TelegramWebhookRepository = Pick<
+  LumiRepository,
+  'getOrCreatePlayer' | 'getEpisodeCheckpoint' | 'saveProgress'
+>;
 
 export type TelegramWebhookDependencies = {
   webhookSecret: string;
-  priceStars: number;
+  seasonPriceStars: number;
+  rewindPriceStars: number;
   repository: TelegramWebhookRepository;
   store: StarPaymentStore;
   answerPreCheckout(queryId: string, ok: boolean, errorMessage?: string): Promise<void>;
   sendMessage(chatId: number, text: string): Promise<void>;
 };
 
+function productPrice(productId: string, dependencies: TelegramWebhookDependencies): number | null {
+  if (productId === 'season-1') return dependencies.seasonPriceStars;
+  if (productId.startsWith(REWIND_PRODUCT_PREFIX)) {
+    const episodeId = productId.slice(REWIND_PRODUCT_PREFIX.length);
+    if (episodeId in EPISODE_REWIND_TARGETS) return dependencies.rewindPriceStars;
+  }
+  return null;
+}
+
 function validOrder(
   order: StarPaymentOrder | null,
   playerId: string,
   currency: unknown,
   amount: unknown,
-  priceStars: number,
+  dependencies: TelegramWebhookDependencies,
 ): order is StarPaymentOrder {
-  return Boolean(
-    order &&
-    order.playerId === playerId &&
-    order.productId === 'season-1' &&
-    order.currency === 'XTR' &&
-    currency === 'XTR' &&
-    order.amount === priceStars &&
-    amount === priceStars,
-  );
+  if (!order || order.playerId !== playerId || order.currency !== 'XTR' || currency !== 'XTR') return false;
+  const expectedPrice = productPrice(order.productId, dependencies);
+  return expectedPrice !== null && order.amount === expectedPrice && amount === expectedPrice;
+}
+
+function rewindEpisodeId(productId: string): keyof typeof EPISODE_REWIND_TARGETS | null {
+  if (!productId.startsWith(REWIND_PRODUCT_PREFIX)) return null;
+  const episodeId = productId.slice(REWIND_PRODUCT_PREFIX.length);
+  return episodeId in EPISODE_REWIND_TARGETS
+    ? episodeId as keyof typeof EPISODE_REWIND_TARGETS
+    : null;
+}
+
+async function applyEpisodeRewind(
+  playerId: string,
+  productId: string,
+  dependencies: TelegramWebhookDependencies,
+): Promise<void> {
+  const episodeId = rewindEpisodeId(productId);
+  if (!episodeId) throw new Error('REWIND_PRODUCT_INVALID');
+  const target = EPISODE_REWIND_TARGETS[episodeId];
+
+  let input: SaveProgressInput;
+  if (episodeId === 'last-online-s1-e1') {
+    input = {
+      storyId: 'last-online',
+      seasonId: 'season-1',
+      episodeId,
+      sceneId: target.startSceneId,
+      junhoScore: 0,
+      taeyunScore: 0,
+      truthScore: 0,
+      riskScore: 0,
+      flags: {},
+    };
+  } else {
+    const checkpoint = await dependencies.repository.getEpisodeCheckpoint(
+      playerId,
+      'last-online',
+      'season-1',
+      episodeId,
+    );
+    if (!checkpoint) throw new Error('REWIND_CHECKPOINT_MISSING');
+    input = {
+      storyId: checkpoint.storyId,
+      seasonId: checkpoint.seasonId,
+      episodeId: checkpoint.episodeId,
+      sceneId: target.startSceneId,
+      junhoScore: checkpoint.junhoScore,
+      taeyunScore: checkpoint.taeyunScore,
+      truthScore: checkpoint.truthScore,
+      riskScore: checkpoint.riskScore,
+      flags: checkpoint.flags,
+    };
+  }
+
+  await dependencies.repository.saveProgress(playerId, input);
 }
 
 async function handlePreCheckout(
@@ -85,8 +147,8 @@ async function handlePreCheckout(
       const player = await dependencies.repository.getOrCreatePlayer(telegramUserId);
       const order = await dependencies.store.findByPayload(payload);
       if (
-        !player.season1Owned &&
-        validOrder(order, player.id, query.currency, query.total_amount, dependencies.priceStars)
+        validOrder(order, player.id, query.currency, query.total_amount, dependencies) &&
+        !(order.productId === 'season-1' && player.season1Owned)
       ) {
         const approved = await dependencies.store.approveOrder(order, queryId);
         ok = Boolean(approved);
@@ -124,12 +186,16 @@ async function handleSuccessfulPayment(
 
   const player = await dependencies.repository.getOrCreatePlayer(telegramUserId);
   const order = await dependencies.store.findByPayload(payload);
-  if (!validOrder(order, player.id, payment.currency, payment.total_amount, dependencies.priceStars)) {
+  if (!validOrder(order, player.id, payment.currency, payment.total_amount, dependencies)) {
     return jsonResponse({ error: 'PAYMENT_MISMATCH' }, 400);
   }
 
   await dependencies.store.markPaid(order, telegramChargeId, providerChargeId);
-  await dependencies.store.setSeasonOwned(player.id, true);
+  if (order.productId === 'season-1') {
+    await dependencies.store.setSeasonOwned(player.id, true);
+  } else {
+    await applyEpisodeRewind(player.id, order.productId, dependencies);
+  }
   return jsonResponse({ ok: true });
 }
 
@@ -162,8 +228,10 @@ async function handleRefund(
   }
 
   await dependencies.store.markRefunded(order, telegramChargeId);
-  const stillOwned = await dependencies.store.hasPaidSeason(player.id);
-  await dependencies.store.setSeasonOwned(player.id, stillOwned);
+  if (order.productId === 'season-1') {
+    const stillOwned = await dependencies.store.hasPaidSeason(player.id);
+    await dependencies.store.setSeasonOwned(player.id, stillOwned);
+  }
   return jsonResponse({ ok: true });
 }
 
