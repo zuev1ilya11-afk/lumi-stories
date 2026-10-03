@@ -56,7 +56,7 @@ for (const route of routes) {
     expect(store.progress?.episodeId).toBe('last-online-s1-e5');
     expect(store.progress?.sceneId).toBe(route.terminal);
     await expect(page.getByText('Эпизод 5 завершён', { exact: true })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Сезон завершён' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Сезон 1 завершён' })).toBeVisible();
 
     const saved = structuredClone(store.progress);
     const saves = store.saves.length;
