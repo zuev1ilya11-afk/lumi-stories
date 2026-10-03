@@ -9,7 +9,7 @@ it('marks episode 2 current and opens a recap for the completed episode', () => 
   expect(within(screen.getByText('Номер, который не должен отвечать').closest('article')!).getByText('Завершён · Краткая сводка')).toBeVisible();
   expect(within(screen.getByText('Тот, кого все знают').closest('article')!).getByText('Текущий эпизод')).toBeVisible();
   expect(screen.queryByText('В разработке')).toBeNull();
-  expect(within(screen.getByText('Последний онлайн').closest('article')!).getByText('После Эпизода 4')).toBeVisible();
+  expect(within(screen.getByText('05').closest('article')!).getByText('После Эпизода 4')).toBeVisible();
   fireEvent.click(screen.getByRole('button', { name: 'Эпизод 1: Номер, который не должен отвечать. Краткая сводка' }));
   expect(onOpenRecap).toHaveBeenCalledExactlyOnceWith('last-online-s1-e1');
   fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
