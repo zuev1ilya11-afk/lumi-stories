@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { bootstrap, saveProgress } from '../api/client';
+import { bootstrap, getPaymentStatus, saveProgress } from '../api/client';
 import { trackEvent } from '../analytics/events';
 import { episodes, firstEpisode, getEpisode } from '../story/episodes';
 import { createProgressMachine, progressFromDto, type ProgressState } from './model';
@@ -11,13 +11,18 @@ type Operation = 'advance' | 'choose' | 'nextEpisode';
 export function useProgress(initData: string): {
   status: ProgressStatus;
   state: ProgressState | null;
+  season1Owned: boolean;
+  season1PriceStars: number;
   choose(choiceId: string): Promise<void>;
   advance(): Promise<void>;
   nextEpisode(): Promise<void>;
   retry(): Promise<void>;
+  refreshOwnership(): Promise<boolean>;
 } {
   const [status, setStatus] = useState<ProgressStatus>('loading');
   const [state, setState] = useState<ProgressState | null>(null);
+  const [season1Owned, setSeason1Owned] = useState(false);
+  const [season1PriceStars, setSeason1PriceStars] = useState(249);
   const [bootstrapAttempt, setBootstrapAttempt] = useState(0);
   const machineRef = useRef<ReturnType<typeof createProgressMachine> | null>(null);
   const bootstrapBusy = useRef(true);
@@ -42,6 +47,8 @@ export function useProgress(initData: string): {
           initial,
           save: (progress) => saveProgress(initData, progress),
         });
+        setSeason1Owned(payload.season1Owned);
+        setSeason1PriceStars(payload.season1PriceStars ?? 249);
         setState(initial);
         setStatus('ready');
       })
@@ -49,6 +56,13 @@ export function useProgress(initData: string): {
       .finally(() => { if (active) bootstrapBusy.current = false; });
     return () => { active = false; };
   }, [initData, bootstrapAttempt]);
+
+  const refreshOwnership = useCallback(async (): Promise<boolean> => {
+    const payment = await getPaymentStatus(initData);
+    setSeason1Owned(payment.season1Owned);
+    setSeason1PriceStars(payment.priceStars);
+    return payment.season1Owned;
+  }, [initData]);
 
   const run = useCallback((operation: Operation | 'retry', choiceId?: string): Promise<void> => {
     if (inFlight.current) return inFlight.current;
@@ -101,5 +115,15 @@ export function useProgress(initData: string): {
     return inFlight.current;
   }, []);
 
-  return { status, state, choose: choiceId => run('choose', choiceId), advance: () => run('advance'), nextEpisode: () => run('nextEpisode'), retry: () => run('retry') };
+  return {
+    status,
+    state,
+    season1Owned,
+    season1PriceStars,
+    choose: choiceId => run('choose', choiceId),
+    advance: () => run('advance'),
+    nextEpisode: () => run('nextEpisode'),
+    retry: () => run('retry'),
+    refreshOwnership,
+  };
 }

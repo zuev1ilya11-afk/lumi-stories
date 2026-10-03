@@ -1,23 +1,58 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import { describe, expect, it, vi } from 'vitest';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { PrototypePaywall } from './PrototypePaywall';
 
-const { trackEvent } = vi.hoisted(() => ({ trackEvent: vi.fn() }));
-vi.mock('../../analytics/events', () => ({ trackEvent }));
+const mocks = vi.hoisted(() => ({
+  trackEvent: vi.fn(),
+  createSeasonInvoice: vi.fn(),
+  getPaymentStatus: vi.fn(),
+  getTelegramContext: vi.fn(),
+  openTelegramInvoice: vi.fn(),
+}));
+
+vi.mock('../../analytics/events', () => ({ trackEvent: mocks.trackEvent }));
+vi.mock('../../api/client', () => ({
+  createSeasonInvoice: mocks.createSeasonInvoice,
+  getPaymentStatus: mocks.getPaymentStatus,
+}));
+vi.mock('../../telegram/telegram', () => ({
+  getTelegramContext: mocks.getTelegramContext,
+  openTelegramInvoice: mocks.openTelegramInvoice,
+}));
 
 describe('PrototypePaywall', () => {
-  it('explains the future season offer without pretending ruble payment works in Telegram', () => {
-    render(<PrototypePaywall />);
-    expect(screen.getByText('История только начинается')).toBeInTheDocument();
-    expect(screen.getByText(/Следующие эпизоды/)).toBeInTheDocument();
-    expect(screen.getByText('249 ₽', { selector: 'span' })).toBeInTheDocument();
-    expect(screen.getByText(/ориентир будущей цены/i)).toBeInTheDocument();
+  beforeEach(() => {
+    Object.values(mocks).forEach(mock => mock.mockReset());
+    mocks.getTelegramContext.mockReturnValue({ initData: 'signed' });
+    mocks.createSeasonInvoice.mockResolvedValue({ season1Owned: false, priceStars: 249, invoiceUrl: 'https://t.me/$invoice' });
+    mocks.getPaymentStatus.mockResolvedValue({ season1Owned: true, priceStars: 249 });
+    mocks.openTelegramInvoice.mockResolvedValue('paid');
   });
 
-  it('tracks click and does not unlock anything or invoke an invoice', () => {
-    render(<PrototypePaywall />);
-    fireEvent.click(screen.getByRole('button', { name: /Продолжить/i }));
-    expect(trackEvent).toHaveBeenCalledWith('purchase_clicked', expect.any(Object));
-    expect(screen.getByText('Покупка появится в полной версии')).toBeInTheDocument();
+  it('shows a real Telegram Stars offer', () => {
+    render(<PrototypePaywall priceStars={249} />);
+    expect(screen.getByText('249 ⭐', { selector: 'span' })).toBeInTheDocument();
+    expect(screen.getByText(/Telegram Stars/i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Купить за 249 ⭐' })).toBeInTheDocument();
+  });
+
+  it('opens Telegram invoice and unlocks only after server ownership is confirmed', async () => {
+    const onPurchased = vi.fn();
+    render(<PrototypePaywall priceStars={249} onPurchased={onPurchased} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Купить за 249 ⭐' }));
+    await waitFor(() => expect(mocks.createSeasonInvoice).toHaveBeenCalledWith('signed'));
+    expect(mocks.openTelegramInvoice).toHaveBeenCalledWith('https://t.me/$invoice');
+    await waitFor(() => expect(mocks.getPaymentStatus).toHaveBeenCalledWith('signed'));
+    await waitFor(() => expect(onPurchased).toHaveBeenCalledOnce());
+  });
+
+  it('does not unlock when the Telegram invoice is cancelled', async () => {
+    mocks.openTelegramInvoice.mockResolvedValue('cancelled');
+    const onPurchased = vi.fn();
+    render(<PrototypePaywall onPurchased={onPurchased} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Купить за 249 ⭐' }));
+    expect(await screen.findByText('Оплата отменена. Доступ не изменён.')).toBeVisible();
+    expect(onPurchased).not.toHaveBeenCalled();
+    expect(mocks.getPaymentStatus).not.toHaveBeenCalled();
   });
 });

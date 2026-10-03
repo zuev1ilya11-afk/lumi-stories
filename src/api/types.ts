@@ -15,7 +15,19 @@ export type BootstrapResponse = {
   playerId: string;
   telegramUserId: number;
   season1Owned: boolean;
+  season1PriceStars?: number;
   progress: ProgressDto | null;
+};
+
+export type PaymentInvoiceResponse = {
+  season1Owned: boolean;
+  priceStars: number;
+  invoiceUrl?: string;
+};
+
+export type PaymentStatusResponse = {
+  season1Owned: boolean;
+  priceStars: number;
 };
 
 export class LumiApiError extends Error {
@@ -24,7 +36,6 @@ export class LumiApiError extends Error {
     this.name = 'LumiApiError';
   }
 }
-
 
 export type AnalyticsPayload = {
   eventName: string;

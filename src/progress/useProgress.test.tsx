@@ -13,9 +13,10 @@ const bootstrapPayload: BootstrapResponse = {
   playerId: 'p1', telegramUserId: 42, season1Owned: false, progress: saved,
 };
 
-const { bootstrap, saveProgress, trackEvent } = vi.hoisted(() => ({
+const { bootstrap, saveProgress, getPaymentStatus, trackEvent } = vi.hoisted(() => ({
   bootstrap: vi.fn(),
   saveProgress: vi.fn(),
+  getPaymentStatus: vi.fn(),
   trackEvent: vi.fn(),
 }));
 
@@ -23,7 +24,7 @@ vi.mock('../analytics/events', () => ({ trackEvent }));
 
 vi.mock('../api/client', async () => {
   const actual = await vi.importActual('../api/client') as typeof import('../api/client');
-  return { ...actual, bootstrap, saveProgress };
+  return { ...actual, bootstrap, saveProgress, getPaymentStatus };
 });
 
 describe('useProgress', () => {
@@ -31,7 +32,9 @@ describe('useProgress', () => {
     bootstrap.mockReset();
     saveProgress.mockReset();
     trackEvent.mockReset();
+    getPaymentStatus.mockReset();
     bootstrap.mockResolvedValue(bootstrapPayload);
+    getPaymentStatus.mockResolvedValue({ season1Owned: true, priceStars: 249 });
   });
 
   it('boots from server progress instead of episode start', async () => {
@@ -39,6 +42,15 @@ describe('useProgress', () => {
     await waitFor(() => expect(result.current.status).toBe('ready'));
     expect(result.current.state?.sceneId).toBe('ep1_first_meet');
     expect(result.current.state?.storyState.junhoScore).toBe(2);
+  });
+
+  it('refreshes the paid season entitlement from the server', async () => {
+    const { result } = renderHook(() => useProgress('signed'));
+    await waitFor(() => expect(result.current.status).toBe('ready'));
+    expect(result.current.season1Owned).toBe(false);
+    await act(async () => { await expect(result.current.refreshOwnership()).resolves.toBe(true); });
+    expect(result.current.season1Owned).toBe(true);
+    expect(result.current.season1PriceStars).toBe(249);
   });
 
   it('does not advance visible state when save fails and retry commits exactly once', async () => {

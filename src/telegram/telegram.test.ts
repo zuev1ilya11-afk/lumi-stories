@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 import {
   TelegramContextError,
   getTelegramContext,
+  openTelegramInvoice,
   readyTelegramApp,
   resolveTelegramContext,
 } from './telegram';
@@ -54,6 +55,12 @@ describe('Telegram adapter', () => {
     readyTelegramApp({ ready, expand });
     expect(ready).toHaveBeenCalledOnce();
     expect(expand).toHaveBeenCalledOnce();
+  });
+
+  it('opens a Telegram invoice and resolves its payment status', async () => {
+    const openInvoice = vi.fn((_url: string, callback?: (status: 'paid') => void) => callback?.('paid'));
+    await expect(openTelegramInvoice('https://t.me/$invoice', { openInvoice })).resolves.toBe('paid');
+    expect(openInvoice).toHaveBeenCalledWith('https://t.me/$invoice', expect.any(Function));
   });
 
   it('exposes a typed TelegramContextError', () => {

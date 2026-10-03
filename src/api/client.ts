@@ -2,6 +2,8 @@ import {
   LumiApiError,
   type AnalyticsPayload,
   type BootstrapResponse,
+  type PaymentInvoiceResponse,
+  type PaymentStatusResponse,
   type ProgressDto,
 } from './types';
 
@@ -83,6 +85,18 @@ export function createApiClient({ baseUrl, fetcher = fetch }: ApiClientOptions) 
       return payload.progress;
     },
 
+    async createSeasonInvoice(initData: string): Promise<PaymentInvoiceResponse> {
+      return parseJson<PaymentInvoiceResponse>(await fetcher(`${root}/payments/invoice`, {
+        method: 'POST',
+        headers: telegramHeaders(initData),
+      }));
+    },
+
+    async getPaymentStatus(initData: string): Promise<PaymentStatusResponse> {
+      return parseJson<PaymentStatusResponse>(await fetcher(`${root}/payments/status`, {
+        headers: telegramHeaders(initData),
+      }));
+    },
 
     async sendAnalytics(initData: string, event: AnalyticsPayload): Promise<void> {
       const response = await fetcher(`${root}/analytics`, {
@@ -111,6 +125,13 @@ export function saveProgress(initData: string, progress: ProgressDto): Promise<P
   return createApiClient({ baseUrl: configuredBaseUrl() }).saveProgress(initData, progress);
 }
 
+export function createSeasonInvoice(initData: string): Promise<PaymentInvoiceResponse> {
+  return createApiClient({ baseUrl: configuredBaseUrl() }).createSeasonInvoice(initData);
+}
+
+export function getPaymentStatus(initData: string): Promise<PaymentStatusResponse> {
+  return createApiClient({ baseUrl: configuredBaseUrl() }).getPaymentStatus(initData);
+}
 
 export function sendAnalytics(initData: string, event: AnalyticsPayload): Promise<void> {
   return createApiClient({ baseUrl: configuredBaseUrl() }).sendAnalytics(initData, event);

@@ -5,12 +5,15 @@ export type TelegramUserDisplay = {
   username?: string;
 };
 
+export type TelegramInvoiceStatus = 'paid' | 'cancelled' | 'failed' | 'pending';
+
 export type TelegramWebAppLike = {
   initData?: string;
   initDataUnsafe?: { user?: TelegramUserDisplay };
   HapticFeedback?: { impactOccurred(style: 'light' | 'medium'): void };
   ready?: () => void;
   expand?: () => void;
+  openInvoice?: (url: string, callback?: (status: TelegramInvoiceStatus) => void) => void;
 };
 
 export type TelegramContext = {
@@ -96,4 +99,18 @@ export function getTelegramContext(
 export function readyTelegramApp(webApp: TelegramWebAppLike | undefined = window.Telegram?.WebApp): void {
   webApp?.ready?.();
   webApp?.expand?.();
+}
+
+export function openTelegramInvoice(
+  url: string,
+  webApp: TelegramWebAppLike | undefined = window.Telegram?.WebApp,
+): Promise<TelegramInvoiceStatus> {
+  if (!webApp?.openInvoice) return Promise.reject(new Error('TELEGRAM_INVOICE_UNAVAILABLE'));
+  return new Promise<TelegramInvoiceStatus>((resolve, reject) => {
+    try {
+      webApp.openInvoice?.(url, resolve);
+    } catch (error) {
+      reject(error);
+    }
+  });
 }

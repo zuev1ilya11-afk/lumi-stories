@@ -85,7 +85,7 @@ it('continues a completed episode only once while its save is pending', async ()
   let release!: () => void;
   const onNextEpisode = vi.fn(() => new Promise<void>(resolve => { release = resolve; }));
   const onAdvance = vi.fn();
-  render(<StoryScreen episode={terminal} nextEpisode={second} sceneId="end" state={state} onChoose={vi.fn()} onAdvance={onAdvance} onNextEpisode={onNextEpisode} />);
+  render(<StoryScreen episode={terminal} nextEpisode={second} sceneId="end" state={state} onChoose={vi.fn()} onAdvance={onAdvance} onNextEpisode={onNextEpisode} season1Owned />);
   expect(screen.queryByRole('button', { name: 'Продолжить — Эпизод 2' })).not.toBeInTheDocument();
   fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
   fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
@@ -96,6 +96,16 @@ it('continues a completed episode only once while its save is pending', async ()
   expect(onNextEpisode).toHaveBeenCalledTimes(1);
   expect(onAdvance).not.toHaveBeenCalled();
   await act(async () => release());
+});
+
+it('shows the Stars paywall instead of entering episode 2 for an unpaid player', () => {
+  const terminal: Episode = { id: 'last-online-s1-e1', title: 'One', startSceneId: 'end', scenes: [{ id: 'end', kind: 'terminal', text: 'Конец' }] };
+  const second: Episode = { ...terminal, id: 'last-online-s1-e2', title: 'Two' };
+  render(<StoryScreen episode={terminal} nextEpisode={second} sceneId="end" state={state} onChoose={vi.fn()} onAdvance={vi.fn()} onNextEpisode={vi.fn()} season1PriceStars={249} />);
+  fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
+  expect(screen.getByRole('button', { name: 'Купить за 249 ⭐' })).toBeVisible();
+  expect(screen.queryByRole('button', { name: 'Продолжить — Эпизод 2' })).not.toBeInTheDocument();
 });
 
 it('finishes episode 2 with development notice and a return to season', () => {

@@ -3,6 +3,7 @@ import { trackEvent } from '../../analytics/events';
 import { getAvailableChoices, getScene } from '../../story/engine';
 import type { Episode, Scene, StoryState } from '../../story/schema';
 import { SoaChatScreen, type ChatTimelineEvent } from '../messages/SoaChatScreen';
+import { PrototypePaywall } from '../paywall/PrototypePaywall';
 import { ChoiceList } from './ChoiceList';
 import { CinematicStage } from './CinematicStage';
 import { DialogueBox } from './DialogueBox';
@@ -10,7 +11,21 @@ import { getSceneBeats, getScenePresentation, nearbyAssets, sceneAsset } from '.
 import { useBeatPlayback } from './useBeatPlayback';
 import { useReducedMotion } from './useReducedMotion';
 
-type Props = { episode: Episode; sceneId: string; state: StoryState; onChoose(choiceId: string): Promise<void> | void; onAdvance(): Promise<void> | void; onMenu?(): void; nextEpisode?: Episode; onNextEpisode?(): Promise<void> | void; disabled?: boolean; analytics?: boolean };
+type Props = {
+  episode: Episode;
+  sceneId: string;
+  state: StoryState;
+  onChoose(choiceId: string): Promise<void> | void;
+  onAdvance(): Promise<void> | void;
+  onMenu?(): void;
+  nextEpisode?: Episode;
+  onNextEpisode?(): Promise<void> | void;
+  disabled?: boolean;
+  analytics?: boolean;
+  season1Owned?: boolean;
+  season1PriceStars?: number;
+  onRefreshOwnership?(): Promise<boolean>;
+};
 
 export function StoryScreen(props: Props) {
   const scene = getScene(props.episode, props.sceneId);
@@ -21,12 +36,13 @@ export function StoryScreen(props: Props) {
   return <ScenePlayer key={`${props.episode.id}:${scene.id}`} {...props} scene={scene} previous={previousArt} onArt={src => { previous.current = src; }} chatHistory={chatHistory.current} onHistory={messages => { chatHistory.current = messages; }} />;
 }
 
-function ScenePlayer({ episode, scene, state, onChoose, onAdvance, onMenu, nextEpisode, onNextEpisode, disabled = false, analytics = false, previous, onArt, chatHistory, onHistory }: Props & { scene: Scene; previous?: string; onArt(src?: string): void; chatHistory: ChatTimelineEvent[]; onHistory(messages: ChatTimelineEvent[]): void }) {
+function ScenePlayer({ episode, scene, state, onChoose, onAdvance, onMenu, nextEpisode, onNextEpisode, disabled = false, analytics = false, season1Owned = false, season1PriceStars = 249, onRefreshOwnership, previous, onArt, chatHistory, onHistory }: Props & { scene: Scene; previous?: string; onArt(src?: string): void; chatHistory: ChatTimelineEvent[]; onHistory(messages: ChatTimelineEvent[]): void }) {
   const reduced = useReducedMotion();
   const playback = useBeatPlayback(getSceneBeats(scene), reduced);
   const p = getScenePresentation(scene, playback.beat);
   const choices = getAvailableChoices(scene, state);
   const [offer, setOffer] = useState(false);
+  const [purchased, setPurchased] = useState(false);
   const art = sceneAsset(p.cg ?? playback.beat.background ?? scene.background);
   useEffect(() => { onArt(art); }, [art, onArt]);
   const lock = useRef(false);
@@ -52,6 +68,22 @@ function ScenePlayer({ episode, scene, state, onChoose, onAdvance, onMenu, nextE
       if (scene.kind === 'terminal') setOffer(true);
       else void run(onAdvance);
     }
+  }
+  const entitlement = season1Owned || purchased;
+  if (offer && nextEpisode && onNextEpisode && !entitlement) {
+    return <PrototypePaywall
+      episodeId={episode.id}
+      sceneId={scene.id}
+      episodeNumber={episode.id === 'last-online-s1-e2' ? 2 : 1}
+      nextEpisodeTitle={nextEpisode.title}
+      imageSrc={art}
+      priceStars={season1PriceStars}
+      onPurchased={async () => {
+        const confirmed = onRefreshOwnership ? await onRefreshOwnership() : true;
+        if (confirmed) setPurchased(true);
+      }}
+      onMenu={onMenu}
+    />;
   }
   if (offer) return <section className="lumi-paywall" aria-label="Продолжение сезона">
     {art ? <img src={art} alt="Финал эпизода" /> : null}

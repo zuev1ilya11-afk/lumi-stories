@@ -8,9 +8,9 @@ vi.mock('./api/client', async () => ({ ...await vi.importActual('./api/client'),
 afterEach(() => { delete window.Telegram; vi.unstubAllGlobals(); bootstrap.mockReset(); saveProgress.mockReset(); });
 
 const saved: ProgressDto = { storyId: 'last-online', seasonId: 'season-1', episodeId: 'last-online-s1-e1', sceneId: 'ep1_end_paywall', junhoScore: 4, taeyunScore: 1, truthScore: 2, riskScore: 3, flags: { clue: true } };
-function connected(progress: ProgressDto) {
+function connected(progress: ProgressDto, season1Owned = false) {
   window.Telegram = { WebApp: { initData: 'signed' } };
-  bootstrap.mockResolvedValue({ playerId: 'p1', telegramUserId: 42, season1Owned: false, progress });
+  bootstrap.mockResolvedValue({ playerId: 'p1', telegramUserId: 42, season1Owned, season1PriceStars: 249, progress });
 }
 
 it('renders the LUMI shell', () => {
@@ -47,8 +47,19 @@ it('opens the saved episode 2 and returns from the menu without resetting it', a
   expect(saveProgress).not.toHaveBeenCalled();
 });
 
+it('keeps episode 2 behind Stars when the server says the season is not owned', async () => {
+  connected(saved, false);
+  vi.stubGlobal('matchMedia', () => ({ matches: true, addEventListener() {}, removeEventListener() {} }));
+  render(<App production />);
+  fireEvent.click(await screen.findByRole('button', { name: 'Начать историю' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
+  for (let i = 0; i < 30 && !screen.queryByRole('button', { name: 'Купить за 249 ⭐' }); i += 1) fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
+  expect(screen.getByRole('button', { name: 'Купить за 249 ⭐' })).toBeVisible();
+  expect(saveProgress).not.toHaveBeenCalled();
+});
+
 it('continues from the episode 1 terminal into episode 2 without resetting saved state', async () => {
-  connected(saved);
+  connected(saved, true);
   vi.stubGlobal('matchMedia', () => ({ matches: true, addEventListener() {}, removeEventListener() {} }));
   saveProgress.mockImplementation(async (_init: string, dto: ProgressDto) => dto);
   render(<App production />);
