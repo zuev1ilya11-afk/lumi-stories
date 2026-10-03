@@ -87,11 +87,11 @@ function rewindEpisodeId(productId: string): keyof typeof EPISODE_REWIND_TARGETS
     : null;
 }
 
-async function applyEpisodeRewind(
+async function episodeRewindInput(
   playerId: string,
   productId: string,
   dependencies: TelegramWebhookDependencies,
-): Promise<void> {
+): Promise<SaveProgressInput> {
   const episodeId = rewindEpisodeId(productId);
   if (!episodeId) throw new Error('REWIND_PRODUCT_INVALID');
   const target = EPISODE_REWIND_TARGETS[episodeId];
@@ -130,7 +130,7 @@ async function applyEpisodeRewind(
     };
   }
 
-  await dependencies.repository.saveProgress(playerId, input);
+  return input;
 }
 
 async function handlePreCheckout(
@@ -199,10 +199,11 @@ async function handleSuccessfulPayment(
 
   if (paidOrder.productId === 'season-1') {
     await dependencies.store.setSeasonOwned(player.id, true);
+    await dependencies.store.markFulfilled(paidOrder);
   } else {
-    await applyEpisodeRewind(player.id, paidOrder.productId, dependencies);
+    const input = await episodeRewindInput(player.id, paidOrder.productId, dependencies);
+    await dependencies.store.fulfillEpisodeRewind(paidOrder, input);
   }
-  await dependencies.store.markFulfilled(paidOrder);
   return jsonResponse({ ok: true });
 }
 
