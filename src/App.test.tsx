@@ -79,7 +79,7 @@ it('opens a read-only episode 1 recap without changing saved episode 2 progress'
   fireEvent.click(screen.getByRole('button', { name: 'Эпизод 1: Номер, который не должен отвечать. Краткая сводка' }));
 
   expect(screen.getByRole('heading', { name: 'Номер, который не должен отвечать' })).toBeVisible();
-  expect(screen.getByText(/аккаунт исчезнувшей Юн Соа/)).toBeVisible();
+  expect(screen.getByText(/аккаунт исчезнувшей Юн Соа/i)).toBeVisible();
   expect(screen.queryByTestId('story-stage')).not.toBeInTheDocument();
   expect(screen.queryByRole('button', { name: /Рассказать|Ответить|Скрыть|Пройти снова/ })).not.toBeInTheDocument();
   expect(saveProgress).not.toHaveBeenCalled();
