@@ -1094,7 +1094,7 @@
         "transition": "crossfade",
         "ambient": "none",
         "characters": [],
-        "cg": "assets/last-online/v2/cg/reveal-v3.webp"
+        "cg": "assets/last-online/v2/cg/reveal-hologram-v1.webp"
       },
       "beats": [
         {
