@@ -51,7 +51,7 @@ export function SeasonScreen({ storyId = 'last-online', hasProgress, currentEpis
           <p className="lumi-eyebrow">История {story.order} · {story.seasonLabel}</p>
           <h1>{story.title}</h1>
           <p>{story.description}</p>
-          {season1PriceStars === 0 ? <p>Первый сезон — бесплатно. Новые эпизоды открываются по мере выхода.</p> : null}
+          {season1PriceStars === 0 ? <p>{storyId === 'last-online' ? 'Первый сезон — бесплатно. Эпизоды 1–5 открываются по мере выхода.' : 'Первый сезон — бесплатно. Новые эпизоды открываются по мере выхода.'}</p> : null}
           <button className="lumi-primary" type="button" onClick={onPlay}>
             {hasProgress ? 'Продолжить' : 'Начать'}
           </button>
