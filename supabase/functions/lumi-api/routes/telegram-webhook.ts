@@ -191,11 +191,18 @@ async function handleSuccessfulPayment(
   }
 
   await dependencies.store.markPaid(order, telegramChargeId, providerChargeId);
-  if (order.productId === 'season-1') {
+  const paidOrder = await dependencies.store.findByPayload(payload);
+  if (!paidOrder || paidOrder.status !== 'paid') {
+    return jsonResponse({ error: 'PAYMENT_STATE_CONFLICT' }, 409);
+  }
+  if (paidOrder.fulfilledAt) return jsonResponse({ ok: true });
+
+  if (paidOrder.productId === 'season-1') {
     await dependencies.store.setSeasonOwned(player.id, true);
   } else {
-    await applyEpisodeRewind(player.id, order.productId, dependencies);
+    await applyEpisodeRewind(player.id, paidOrder.productId, dependencies);
   }
+  await dependencies.store.markFulfilled(paidOrder);
   return jsonResponse({ ok: true });
 }
 
