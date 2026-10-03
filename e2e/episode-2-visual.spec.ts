@@ -99,7 +99,7 @@ for (const [width, height] of [[320, 568], [360, 740], [390, 844], [430, 932]]) 
       }
       if (scene.kind === 'terminal') {
         await step(page, [], episodeTwo);
-        await expect(page.getByRole('heading', { name: 'Эпизод 3 в разработке' })).toBeVisible();
+        await expect(page.getByRole('button', { name: 'Продолжить — Эпизод 3', exact: true })).toBeVisible();
         await assertMobileFrame(page, width, height, 'completion');
         await page.screenshot({ path: `docs/visual-qa/screenshots/episode-2/${width}/completion.png` });
         captured.add('completion');
