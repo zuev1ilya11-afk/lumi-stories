@@ -927,3 +927,39 @@ button { color: inherit; }
     box-shadow: 0 0 80px rgba(0,0,0,.5);
   }
 }
+
+
+.lumi-recap__rewind {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 16px;
+  padding: 15px;
+  border: 1px solid rgba(211, 194, 255, .14);
+  border-radius: 17px;
+  background: rgba(37, 29, 55, .72);
+}
+.lumi-recap__rewind > strong {
+  font-size: .96rem;
+}
+.lumi-recap__rewind > p {
+  margin: 0;
+  color: #b5aabe;
+  font-size: .82rem;
+  line-height: 1.45;
+}
+.lumi-recap__secondary {
+  min-height: 46px;
+  width: 100%;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 15px;
+  background: rgba(18, 15, 27, .72);
+  color: #d7cfdf;
+  font-weight: 700;
+}
+.lumi-recap__secondary:disabled {
+  opacity: .55;
+}
+.lumi-recap__status {
+  color: var(--lumi-accent) !important;
+  text-align: center;
+}
