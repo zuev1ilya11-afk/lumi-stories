@@ -39,7 +39,10 @@ export function getStoryRuntime(storyId = 'last-online'): StoryRuntime {
 export function getStoryEpisode(storyId: string, episodeId?: string): Episode {
   const story = getStoryRuntime(storyId);
   if (!episodeId) return story.firstEpisode;
-  const episode = story.episodes.find(candidate => candidate.id === episodeId);
+  const canonicalEpisodeId = storyId === 'last-online' && episodeId === 'episode-2'
+    ? 'last-online-s1-e2'
+    : episodeId;
+  const episode = story.episodes.find(candidate => candidate.id === canonicalEpisodeId);
   if (!episode) throw new Error(`Episode not available for ${storyId}: ${episodeId}`);
   return episode;
 }

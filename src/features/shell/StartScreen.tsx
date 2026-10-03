@@ -169,7 +169,7 @@ export function StartScreen({
             <article className="lumi-start__card">
               <small>Доступ к сезону</small>
               <strong>{season1PriceStars === 0 ? 'Бесплатный доступ' : season1Owned ? 'Полный сезон открыт' : `${season1PriceStars} ⭐`}</strong>
-              <span>{season1PriceStars === 0 ? 'Эпизоды сезона доступны бесплатно' : season1Owned ? 'Покупка подтверждена' : 'Эпизод 1 доступен бесплатно'}</span>
+              <span>{season1PriceStars === 0 ? (currentStoryId === 'last-online' ? 'Эпизоды 1–5 бесплатно' : 'Эпизоды сезона доступны бесплатно') : season1Owned ? 'Покупка подтверждена' : 'Эпизод 1 доступен бесплатно'}</span>
             </article>
           </div>
 
