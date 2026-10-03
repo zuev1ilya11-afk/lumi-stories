@@ -447,6 +447,26 @@ Deno.test('Episode 4 progress permits rewinding completed earlier episodes and i
 });
 
 
+Deno.test('Episode 5 progress permits rewinding its completed chapter from every ending', async () => {
+  for (const [sceneId, wanted] of [
+    ['ep5_morning', 409],
+    ['ep5_end_junho', 200],
+    ['ep5_end_taeyun', 200],
+    ['ep5_end_self', 200],
+  ] as const) {
+    const target = 'last-online-s1-e5';
+    const deps = paymentDependencies(storeMock(order({ productId: 'episode-rewind:' + target, amount: 49 })));
+    const getProgress = deps.repository.getProgress;
+    deps.repository.getProgress = async (...args) => ({ ...(await getProgress(...args))!, episodeId: target, sceneId });
+    const response = await handleCreateEpisodeRewindInvoice(new Request('https://example.test/payments/rewind/invoice', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Telegram-Init-Data': await validInitData() },
+      body: JSON.stringify({ episodeId: target }),
+    }), deps);
+    assert(response.status === wanted, `${target} from ${sceneId}: expected ${wanted}, got ${response.status}`);
+  }
+});
+
 Deno.test('season invoice product is scoped to the selected story', async () => {
   const store = storeMock();
   let createdProduct = '';
