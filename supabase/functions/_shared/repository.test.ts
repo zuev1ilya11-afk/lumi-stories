@@ -13,6 +13,7 @@ function assert(condition: unknown, message: string): asserts condition {
 function createMemoryDatabase(): LumiDatabaseAdapter & { playerCount(): number; progressCount(): number } {
   const players = new Map<number, Player>();
   const progress = new Map<string, ProgressRow>();
+  const checkpoints = new Map<string, ProgressRow>();
   return {
     async upsertPlayerByTelegramId(telegramUserId) {
       const existing = players.get(telegramUserId);
@@ -31,6 +32,13 @@ function createMemoryDatabase(): LumiDatabaseAdapter & { playerCount(): number; 
     },
     async upsertProgress(row) {
       progress.set(`${row.playerId}:${row.storyId}:${row.seasonId}`, row);
+      return row;
+    },
+    async findEpisodeCheckpoint(playerId, storyId, seasonId, episodeId) {
+      return checkpoints.get(`${playerId}:${storyId}:${seasonId}:${episodeId}`) ?? null;
+    },
+    async upsertEpisodeCheckpoint(row) {
+      checkpoints.set(`${row.playerId}:${row.storyId}:${row.seasonId}:${row.episodeId}`, row);
       return row;
     },
     async insertAnalyticsEvent() {},
