@@ -56,7 +56,7 @@ jobs:
           deno-version: v2.x
 
       - name: Backend Deno tests
-        run: deno test supabase/functions/_shared/telegram.test.ts supabase/functions/_shared/repository.test.ts supabase/functions/lumi-api/routes.test.ts
+        run: deno test supabase/functions/_shared/telegram.test.ts supabase/functions/_shared/repository.test.ts supabase/functions/lumi-api/routes.test.ts supabase/functions/lumi-api/payments.test.ts
 
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
