@@ -16,6 +16,7 @@ export type BootstrapResponse = {
   telegramUserId: number;
   season1Owned: boolean;
   season1PriceStars?: number;
+  episodeRewindPriceStars?: number;
   progress: ProgressDto | null;
 };
 
@@ -28,6 +29,19 @@ export type PaymentInvoiceResponse = {
 export type PaymentStatusResponse = {
   season1Owned: boolean;
   priceStars: number;
+  episodeRewindPriceStars?: number;
+};
+
+export type EpisodeRewindInvoiceResponse = {
+  episodeId: string;
+  priceStars: number;
+  invoiceUrl: string;
+};
+
+export type EpisodeRewindStatusResponse = {
+  episodeId: string;
+  priceStars: number;
+  applied: boolean;
 };
 
 export class LumiApiError extends Error {
