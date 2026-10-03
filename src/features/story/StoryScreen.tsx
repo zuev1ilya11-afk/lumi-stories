@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { trackEvent } from '../../analytics/events';
 import { readInterfacePreference } from '../../interfacePreferences';
+import { getStoryCatalogEntry } from '../../story/catalog';
 import { getAvailableChoices, getScene } from '../../story/engine';
 import { getEpisodeNumber } from '../../story/episodes';
 import type { Episode, Scene, StoryState } from '../../story/schema';
@@ -75,7 +76,7 @@ function ScenePlayer({ storyId = 'last-online', seasonId = 'season-1', episode, 
   }
   const entitlement = season1Owned || purchased;
   const episodeNumber = getEpisodeNumber(episode.id);
-  const seasonComplete = !nextEpisode && episodeNumber >= 5;
+  const seasonComplete = !nextEpisode && episodeNumber >= getStoryCatalogEntry(storyId).episodes.length;
   if (offer && nextEpisode && onNextEpisode && !entitlement) {
     return <PrototypePaywall
       storyId={storyId}
@@ -97,7 +98,7 @@ function ScenePlayer({ storyId = 'last-online', seasonId = 'season-1', episode, 
     {art ? <img src={art} alt="Финал эпизода" /> : null}
     <div className="lumi-paywall__body">
       <p className="lumi-eyebrow">Эпизод {episodeNumber} завершён</p>
-      <h2>{nextEpisode ? 'История только начинается' : seasonComplete ? 'Сезон завершён' : `Эпизод ${episodeNumber + 1} в разработке`}</h2>
+      <h2>{nextEpisode ? 'История только начинается' : seasonComplete ? 'Сезон 1 завершён' : `Эпизод ${episodeNumber + 1} в разработке`}</h2>
       {nextEpisode && onNextEpisode ? <>
         <p>{nextEpisode.title}</p>
         <button className="lumi-primary" type="button" disabled={pending || disabled} onClick={() => void run(onNextEpisode)}>Продолжить — Эпизод {episodeNumber + 1}</button>
