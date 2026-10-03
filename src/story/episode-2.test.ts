@@ -214,7 +214,7 @@ describe('Episode 2 visual and continuity contract', () => {
       }
     }
     expect(states).toEqual(new Set(['neutral', 'stage', 'amused', 'guarded', 'serious', 'surprised', 'vulnerable']));
-    expect([...cgs].map(path => path.split('/').at(-1)).sort()).toEqual(['archive-0226.webp', 'elevator-cliffhanger.webp', 'elevator-hand.webp', 'night-access.webp', 'recognized-number.webp']);
+    expect([...cgs].map(path => path.split('/').at(-1)).sort()).toEqual(['archive-0226.webp', 'elevator-cliffhanger.webp', 'elevator-hand.webp', 'night-access-v2.webp', 'recognized-number-v2.webp']);
     for (const path of assets) {
       expect(path).toMatch(/^assets\/last-online\/(?:v2|ep2)\/(?:backgrounds|characters|cg)\/[a-z0-9/-]+\.webp$/);
       // Episode 2 art is produced independently; its delivery is asserted by the asset manifest suite.

@@ -5,7 +5,7 @@
 - Canonical episode ID: `last-online-s1-e2`; start `ep2_morning`; terminal `ep2_end`.
 - 53 scenes, 243 authored beats, five decisions with three responses each (15 options).
 - 243 Episode 2 choice sequences for each of 162 real Episode 1 endings: 39,366 complete campaign routes. Every scene and option is reachable and all routes terminate.
-- 18 original WebP assets: seven Taeyun poses, six environments, five event CGs. Total 2,000,180 bytes. Asset manifest includes hashes and art direction.
+- 18 original WebP assets: seven Taeyun poses, six environments, five event CGs. Total 1,870,504 bytes. Asset manifest includes hashes and art direction.
 - Existing Scene/Beat renderer, typewriter, SOA messenger, local beat playback, bounded preloading, Telegram safe areas, reduced motion and haptics are reused.
 - E1→E2 uses the existing progress row and server-confirmed save, retaining every score and flag. Failed saves retry the same candidate. Beat changes do not save.
 - All 41 checkpoints from the earlier partial E2 and 15 older response flags normalize without replaying score effects. Original flags remain present.

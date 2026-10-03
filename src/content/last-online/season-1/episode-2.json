@@ -1344,7 +1344,7 @@
         "transition": "crossfade",
         "ambient": "none",
         "characters": [],
-        "cg": "assets/last-online/ep2/cg/recognized-number.webp"
+        "cg": "assets/last-online/ep2/cg/recognized-number-v2.webp"
       },
       "beats": [
         {
@@ -4176,7 +4176,7 @@
         "transition": "crossfade",
         "ambient": "none",
         "characters": [],
-        "cg": "assets/last-online/ep2/cg/night-access.webp"
+        "cg": "assets/last-online/ep2/cg/night-access-v2.webp"
       },
       "beats": [
         {
