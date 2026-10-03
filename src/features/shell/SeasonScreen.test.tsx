@@ -8,7 +8,7 @@ it('marks episode 2 current and opens a recap for the completed episode', () => 
   render(<SeasonScreen hasProgress currentEpisodeId="last-online-s1-e2" onPlay={onPlay} onOpenRecap={onOpenRecap} onBack={vi.fn()} />);
   expect(within(screen.getByText('Номер, который не должен отвечать').closest('article')!).getByText('Завершён · Краткая сводка')).toBeVisible();
   expect(within(screen.getByText('Тот, кого все знают').closest('article')!).getByText('Текущий эпизод')).toBeVisible();
-  expect(screen.getAllByText('В разработке')).toHaveLength(2);
+  expect(screen.getAllByText('В разработке')).toHaveLength(1);
   fireEvent.click(screen.getByRole('button', { name: 'Эпизод 1: Номер, который не должен отвечать. Краткая сводка' }));
   expect(onOpenRecap).toHaveBeenCalledExactlyOnceWith('last-online-s1-e1');
   fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
@@ -19,7 +19,7 @@ it('makes episode 2 available at the end of episode 1', () => {
   expect(within(screen.getByText('Тот, кого все знают').closest('article')!).getByText('149 ⭐')).toBeVisible();
 });
 
-it('tracks Episode 3 and exposes only completed recaps without unlocking Episode 4', () => {
+it('tracks Episode 3 and exposes only completed recaps and unlocks Episode 4 after completion', () => {
   const onOpenRecap = vi.fn();
   const { rerender } = render(<SeasonScreen hasProgress currentEpisodeId="last-online-s1-e3" season1Owned onPlay={vi.fn()} onOpenRecap={onOpenRecap} onBack={vi.fn()} />);
   expect(within(screen.getByText('Все лгут').closest('article')!).getByText('Текущий эпизод')).toBeVisible();
@@ -29,5 +29,5 @@ it('tracks Episode 3 and exposes only completed recaps without unlocking Episode
   rerender(<SeasonScreen hasProgress episodeCompleted currentEpisodeId="last-online-s1-e3" season1Owned onPlay={vi.fn()} onOpenRecap={onOpenRecap} onBack={vi.fn()} />);
   fireEvent.click(screen.getByRole('button', { name: /Эпизод 3:.*Краткая сводка/ }));
   expect(onOpenRecap).toHaveBeenLastCalledWith('last-online-s1-e3');
-  expect(within(screen.getByText('Ночь исчезновения').closest('article')!).getByText('В разработке')).toBeVisible();
+  expect(within(screen.getByText('Ночь исчезновения').closest('article')!).getByText('Доступно')).toBeVisible();
 });

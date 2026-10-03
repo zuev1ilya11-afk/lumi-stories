@@ -426,3 +426,21 @@ Deno.test('Episode 3 progress permits rewinding completed earlier episodes and i
     assert(response.status === wanted, `${target} from ${sceneId}: expected ${wanted}, got ${response.status}`);
   }
 });
+
+Deno.test('Episode 4 progress permits rewinding completed earlier episodes and its own completed chapter', async () => {
+  for (const [target, sceneId, wanted] of [
+    ['last-online-s1-e1', 'ep4_morning', 200],
+    ['last-online-s1-e2', 'ep4_morning', 200],
+    ['last-online-s1-e3', 'ep4_morning', 200],
+    ['last-online-s1-e4', 'ep4_morning', 409],
+    ['last-online-s1-e4', 'ep4_end', 200],
+  ] as const) {
+    const deps = paymentDependencies(storeMock(order({ productId: 'episode-rewind:' + target, amount: 49 })));
+    const getProgress = deps.repository.getProgress;
+    deps.repository.getProgress = async (...args) => ({ ...(await getProgress(...args))!, episodeId: 'last-online-s1-e4', sceneId });
+    const response = await handleCreateEpisodeRewindInvoice(new Request('https://example.test/payments/rewind/invoice', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Telegram-Init-Data': await validInitData() }, body: JSON.stringify({ episodeId: target }),
+    }), deps);
+    assert(response.status === wanted, `${target} from ${sceneId}: expected ${wanted}, got ${response.status}`);
+  }
+});
