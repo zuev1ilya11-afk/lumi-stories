@@ -41,7 +41,7 @@ function order(overrides: Partial<StarPaymentOrder> = {}): StarPaymentOrder {
     playerId: 'player-555111',
     productId: 'season-1',
     currency: 'XTR',
-    amount: 249,
+    amount: 149,
     invoicePayload: 'lumi:s1:11111111-1111-4111-8111-111111111111',
     status: 'pending',
     createdAt: '2026-10-03T00:00:00.000Z',
@@ -84,7 +84,7 @@ function paymentDependencies(store: StarPaymentStore): PaymentDependencies {
   return {
     botToken: BOT_TOKEN,
     nowSeconds: NOW,
-    priceStars: 249,
+    priceStars: 149,
     repository: {
       async getOrCreatePlayer(telegramUserId) {
         return { id: 'player-' + telegramUserId, telegramUserId, season1Owned: false, createdAt: 'now' };
@@ -110,7 +110,7 @@ Deno.test('Stars invoice is created only for verified Telegram player', async ()
   assert(good.status === 200, 'verified invoice request failed');
   const payload = await good.json();
   assert(payload.invoiceUrl === 'https://t.me/$invoice', 'invoice link missing');
-  assert(payload.priceStars === 249, 'wrong Stars price');
+  assert(payload.priceStars === 149, 'wrong Stars price');
 });
 
 Deno.test('payment status returns server-owned entitlement', async () => {
@@ -134,7 +134,7 @@ Deno.test('pre-checkout validates player, amount and order before approval', asy
   let answeredOk = false;
   const deps: TelegramWebhookDependencies = {
     webhookSecret: 'secret',
-    priceStars: 249,
+    priceStars: 149,
     repository: paymentDependencies(store).repository,
     store,
     async answerPreCheckout(id, ok) { answeredId = id; answeredOk = ok; },
@@ -148,7 +148,7 @@ Deno.test('pre-checkout validates player, amount and order before approval', asy
         id: 'pcq-1',
         from: { id: 555111 },
         currency: 'XTR',
-        total_amount: 249,
+        total_amount: 149,
         invoice_payload: order().invoicePayload,
       },
     }),
@@ -161,7 +161,7 @@ Deno.test('successful_payment grants season ownership after charge is recorded',
   const store = storeMock(order({ status: 'approved', preCheckoutQueryId: 'pcq-1' }));
   const deps: TelegramWebhookDependencies = {
     webhookSecret: 'secret',
-    priceStars: 249,
+    priceStars: 149,
     repository: paymentDependencies(store).repository,
     store,
     async answerPreCheckout() {},
@@ -175,7 +175,7 @@ Deno.test('successful_payment grants season ownership after charge is recorded',
         from: { id: 555111 },
         successful_payment: {
           currency: 'XTR',
-          total_amount: 249,
+          total_amount: 149,
           invoice_payload: order().invoicePayload,
           telegram_payment_charge_id: 'charge-1',
           provider_payment_charge_id: '',
@@ -193,7 +193,7 @@ Deno.test('/paysupport accepts a payment support request through the bot webhook
   let reply = '';
   const deps: TelegramWebhookDependencies = {
     webhookSecret: 'secret',
-    priceStars: 249,
+    priceStars: 149,
     repository: paymentDependencies(store).repository,
     store,
     async answerPreCheckout() {},

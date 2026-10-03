@@ -34,7 +34,7 @@ describe('useProgress', () => {
     trackEvent.mockReset();
     getPaymentStatus.mockReset();
     bootstrap.mockResolvedValue(bootstrapPayload);
-    getPaymentStatus.mockResolvedValue({ season1Owned: true, priceStars: 249 });
+    getPaymentStatus.mockResolvedValue({ season1Owned: true, priceStars: 149 });
   });
 
   it('boots from server progress instead of episode start', async () => {
@@ -50,7 +50,7 @@ describe('useProgress', () => {
     expect(result.current.season1Owned).toBe(false);
     await act(async () => { await expect(result.current.refreshOwnership()).resolves.toBe(true); });
     expect(result.current.season1Owned).toBe(true);
-    expect(result.current.season1PriceStars).toBe(249);
+    expect(result.current.season1PriceStars).toBe(149);
   });
 
   it('does not advance visible state when save fails and retry commits exactly once', async () => {

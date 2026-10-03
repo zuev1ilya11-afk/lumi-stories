@@ -10,7 +10,7 @@ afterEach(() => { delete window.Telegram; vi.unstubAllGlobals(); bootstrap.mockR
 const saved: ProgressDto = { storyId: 'last-online', seasonId: 'season-1', episodeId: 'last-online-s1-e1', sceneId: 'ep1_end_paywall', junhoScore: 4, taeyunScore: 1, truthScore: 2, riskScore: 3, flags: { clue: true } };
 function connected(progress: ProgressDto, season1Owned = false) {
   window.Telegram = { WebApp: { initData: 'signed' } };
-  bootstrap.mockResolvedValue({ playerId: 'p1', telegramUserId: 42, season1Owned, season1PriceStars: 249, progress });
+  bootstrap.mockResolvedValue({ playerId: 'p1', telegramUserId: 42, season1Owned, season1PriceStars: 149, progress });
 }
 
 it('renders the LUMI shell', () => {
@@ -53,8 +53,8 @@ it('keeps episode 2 behind Stars when the server says the season is not owned', 
   render(<App production />);
   fireEvent.click(await screen.findByRole('button', { name: 'Начать историю' }));
   fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
-  for (let i = 0; i < 30 && !screen.queryByRole('button', { name: 'Купить за 249 ⭐' }); i += 1) fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
-  expect(screen.getByRole('button', { name: 'Купить за 249 ⭐' })).toBeVisible();
+  for (let i = 0; i < 30 && !screen.queryByRole('button', { name: 'Купить за 149 ⭐' }); i += 1) fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
+  expect(screen.getByRole('button', { name: 'Купить за 149 ⭐' })).toBeVisible();
   expect(saveProgress).not.toHaveBeenCalled();
 });
 

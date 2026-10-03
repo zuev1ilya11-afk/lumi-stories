@@ -101,10 +101,10 @@ it('continues a completed episode only once while its save is pending', async ()
 it('shows the Stars paywall instead of entering episode 2 for an unpaid player', () => {
   const terminal: Episode = { id: 'last-online-s1-e1', title: 'One', startSceneId: 'end', scenes: [{ id: 'end', kind: 'terminal', text: 'Конец' }] };
   const second: Episode = { ...terminal, id: 'last-online-s1-e2', title: 'Two' };
-  render(<StoryScreen episode={terminal} nextEpisode={second} sceneId="end" state={state} onChoose={vi.fn()} onAdvance={vi.fn()} onNextEpisode={vi.fn()} season1PriceStars={249} />);
+  render(<StoryScreen episode={terminal} nextEpisode={second} sceneId="end" state={state} onChoose={vi.fn()} onAdvance={vi.fn()} onNextEpisode={vi.fn()} season1PriceStars={149} />);
   fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
   fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
-  expect(screen.getByRole('button', { name: 'Купить за 249 ⭐' })).toBeVisible();
+  expect(screen.getByRole('button', { name: 'Купить за 149 ⭐' })).toBeVisible();
   expect(screen.queryByRole('button', { name: 'Продолжить — Эпизод 2' })).not.toBeInTheDocument();
 });
 
@@ -116,7 +116,7 @@ it('finishes episode 2 with development notice and a return to season', () => {
   fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
   expect(screen.getByText('Эпизод 2 завершён')).toBeVisible();
   expect(screen.getByText('Эпизод 3 в разработке')).toBeVisible();
-  expect(screen.queryByText('249 ₽')).not.toBeInTheDocument();
+  expect(screen.queryByText('149 ₽')).not.toBeInTheDocument();
   fireEvent.click(screen.getByRole('button', { name: 'К сезону' }));
   expect(onMenu).toHaveBeenCalledTimes(1);
 });

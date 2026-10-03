@@ -11,9 +11,9 @@ test('api client sends Telegram initData on progress and Stars payment requests'
     const url = String(input);
     calls.push({ url, init });
     let payload: unknown;
-    if (url.endsWith('/bootstrap')) payload = { playerId: 'p1', telegramUserId: 1, season1Owned: false, season1PriceStars: 249, progress: null };
-    else if (url.endsWith('/payments/invoice')) payload = { season1Owned: false, priceStars: 249, invoiceUrl: 'https://t.me/$invoice' };
-    else if (url.endsWith('/payments/status')) payload = { season1Owned: true, priceStars: 249 };
+    if (url.endsWith('/bootstrap')) payload = { playerId: 'p1', telegramUserId: 1, season1Owned: false, season1PriceStars: 149, progress: null };
+    else if (url.endsWith('/payments/invoice')) payload = { season1Owned: false, priceStars: 149, invoiceUrl: 'https://t.me/$invoice' };
+    else if (url.endsWith('/payments/status')) payload = { season1Owned: true, priceStars: 149 };
     else if (init?.method === 'PUT') payload = { progress: JSON.parse(String(init.body)) };
     else payload = { progress: null };
     return new Response(JSON.stringify(payload), { status: 200, headers: { 'Content-Type': 'application/json' } });
@@ -37,5 +37,5 @@ test('api client sends Telegram initData on progress and Stars payment requests'
   assert(saveBody.updatedAt === undefined && saveBody.playerId === undefined, 'save request leaked server-owned fields');
   assert(calls[3].init?.method === 'POST' && calls[3].url.endsWith('/payments/invoice'), 'Stars invoice request is wrong');
   assert(calls[4].url.endsWith('/payments/status'), 'Stars status request is wrong');
-  assert(invoice.priceStars === 249 && status.season1Owned === true, 'Stars response parsing failed');
+  assert(invoice.priceStars === 149 && status.season1Owned === true, 'Stars response parsing failed');
 });

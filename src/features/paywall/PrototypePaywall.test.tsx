@@ -24,22 +24,22 @@ describe('PrototypePaywall', () => {
   beforeEach(() => {
     Object.values(mocks).forEach(mock => mock.mockReset());
     mocks.getTelegramContext.mockReturnValue({ initData: 'signed' });
-    mocks.createSeasonInvoice.mockResolvedValue({ season1Owned: false, priceStars: 249, invoiceUrl: 'https://t.me/$invoice' });
-    mocks.getPaymentStatus.mockResolvedValue({ season1Owned: true, priceStars: 249 });
+    mocks.createSeasonInvoice.mockResolvedValue({ season1Owned: false, priceStars: 149, invoiceUrl: 'https://t.me/$invoice' });
+    mocks.getPaymentStatus.mockResolvedValue({ season1Owned: true, priceStars: 149 });
     mocks.openTelegramInvoice.mockResolvedValue('paid');
   });
 
   it('shows a real Telegram Stars offer', () => {
-    render(<PrototypePaywall priceStars={249} />);
-    expect(screen.getByText('249 ⭐', { selector: 'span' })).toBeInTheDocument();
+    render(<PrototypePaywall priceStars={149} />);
+    expect(screen.getByText('149 ⭐', { selector: 'span' })).toBeInTheDocument();
     expect(screen.getByText(/Telegram Stars/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Купить за 249 ⭐' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Купить за 149 ⭐' })).toBeInTheDocument();
   });
 
   it('opens Telegram invoice and unlocks only after server ownership is confirmed', async () => {
     const onPurchased = vi.fn();
-    render(<PrototypePaywall priceStars={249} onPurchased={onPurchased} />);
-    fireEvent.click(screen.getByRole('button', { name: 'Купить за 249 ⭐' }));
+    render(<PrototypePaywall priceStars={149} onPurchased={onPurchased} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Купить за 149 ⭐' }));
     await waitFor(() => expect(mocks.createSeasonInvoice).toHaveBeenCalledWith('signed'));
     expect(mocks.openTelegramInvoice).toHaveBeenCalledWith('https://t.me/$invoice');
     await waitFor(() => expect(mocks.getPaymentStatus).toHaveBeenCalledWith('signed'));
@@ -50,7 +50,7 @@ describe('PrototypePaywall', () => {
     mocks.openTelegramInvoice.mockResolvedValue('cancelled');
     const onPurchased = vi.fn();
     render(<PrototypePaywall onPurchased={onPurchased} />);
-    fireEvent.click(screen.getByRole('button', { name: 'Купить за 249 ⭐' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Купить за 149 ⭐' }));
     expect(await screen.findByText('Оплата отменена. Доступ не изменён.')).toBeVisible();
     expect(onPurchased).not.toHaveBeenCalled();
     expect(mocks.getPaymentStatus).not.toHaveBeenCalled();
