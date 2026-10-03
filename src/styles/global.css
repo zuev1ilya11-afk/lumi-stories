@@ -1992,3 +1992,84 @@ button { color: inherit; }
     min-height: 56px;
   }
 }
+
+
+/* Compact-height safety for the art-backed LUMI home */
+@media (max-height: 780px) {
+  .lumi-start--minimal[data-tab="home"] .lumi-start__minimal-content {
+    padding-top: clamp(128px, 20dvh, 154px);
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-logo--minimal {
+    font-size: clamp(2.55rem, 11.5vw, 3.45rem);
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__subtitle {
+    font-size: .62rem;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__features {
+    margin-top: 24px;
+    gap: 6px;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__feature {
+    min-height: 46px;
+    grid-template-columns: 38px minmax(0, 1fr);
+    padding: 4px 38px 4px 7px;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__feature > span {
+    width: 32px;
+    height: 32px;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__feature p strong {
+    font-size: .8rem;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__feature p small {
+    font-size: .61rem;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__cta {
+    min-height: 50px;
+    margin-bottom: 72px;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__nav {
+    min-height: 58px;
+  }
+}
+
+@media (max-height: 620px) {
+  .lumi-start--minimal[data-tab="home"] .lumi-start__minimal-content {
+    padding-top: 84px;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-logo--minimal {
+    font-size: clamp(2.15rem, 10.5vw, 2.75rem);
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__subtitle {
+    font-size: .56rem;
+    letter-spacing: .22em;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__features {
+    margin-top: 8px;
+    gap: 4px;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__feature {
+    min-height: 40px;
+    grid-template-columns: 32px minmax(0, 1fr);
+    padding: 3px 34px 3px 5px;
+    border-radius: 14px;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__feature > span {
+    width: 28px;
+    height: 28px;
+    font-size: .95rem;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__feature p strong {
+    font-size: .72rem;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__feature p small {
+    display: none;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__cta {
+    min-height: 46px;
+    margin-bottom: 60px;
+  }
+  .lumi-start--minimal[data-tab="home"] .lumi-start__nav {
+    min-height: 52px;
+  }
+}
