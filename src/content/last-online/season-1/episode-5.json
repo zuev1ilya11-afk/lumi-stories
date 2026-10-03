@@ -74,8 +74,16 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/final.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -144,7 +152,16 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -177,7 +194,16 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -210,7 +236,16 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -243,7 +278,16 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -292,7 +336,16 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -347,8 +400,24 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/junho.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/guarded.webp",
+            "emotion": "guarded",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -381,8 +450,24 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/taeyun.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -415,8 +500,24 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/independent.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -449,8 +550,32 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/records.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -499,8 +624,32 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/records.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -550,7 +699,32 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -600,7 +774,32 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -695,7 +894,24 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -738,7 +954,24 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -780,7 +1013,24 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -829,8 +1079,32 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/night.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -878,7 +1152,32 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -928,7 +1227,32 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -978,7 +1302,32 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/suspicious.webp",
+            "emotion": "suspicious",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "serious",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -1028,7 +1377,32 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -1123,7 +1497,24 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/suspicious.webp",
+            "emotion": "suspicious",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "serious",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -1166,7 +1557,24 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -1208,7 +1616,24 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -1249,8 +1674,32 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/records.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -1297,7 +1746,32 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -1344,7 +1818,32 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -1449,7 +1948,32 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -1489,7 +2013,32 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -1529,7 +2078,32 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -1569,7 +2143,16 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -1624,8 +2207,24 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/junho.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/vulnerable.webp",
+            "emotion": "vulnerable",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -1675,8 +2274,24 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/taeyun.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/vulnerable.webp",
+            "emotion": "vulnerable",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -1726,8 +2341,24 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/independent.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -1768,7 +2399,16 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -1808,8 +2448,16 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/final.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -1856,7 +2504,32 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -1942,7 +2615,32 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -2083,7 +2781,32 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -2116,7 +2839,32 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -2149,8 +2897,32 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/final.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/surprised.webp",
+            "emotion": "surprised",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -2197,7 +2969,16 @@
         "motion": "none",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": []
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/curious.webp",
+            "emotion": "curious",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -2296,8 +3077,24 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/junho.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/vulnerable.webp",
+            "emotion": "vulnerable",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -2346,8 +3143,24 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/junho.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/vulnerable.webp",
+            "emotion": "vulnerable",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -2397,8 +3210,24 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/junho.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/shy.webp",
+            "emotion": "shy",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/soft.webp",
+            "emotion": "soft",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -2447,8 +3276,24 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/junho.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/vulnerable.webp",
+            "emotion": "vulnerable",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -2494,8 +3339,24 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/taeyun.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -2544,8 +3405,24 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/taeyun.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -2592,8 +3469,24 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/taeyun.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/shy.webp",
+            "emotion": "shy",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/amused.webp",
+            "emotion": "amused",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -2642,8 +3535,24 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/taeyun.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -2689,8 +3598,24 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/independent.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -2739,8 +3664,24 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/independent.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -2780,8 +3721,16 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/final.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
@@ -2828,8 +3777,16 @@
         "motion": "slow-zoom",
         "transition": "crossfade",
         "ambient": "none",
-        "characters": [],
-        "cg": "assets/last-online/ep4/cg/final.webp"
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
       },
       "beats": [
         {
