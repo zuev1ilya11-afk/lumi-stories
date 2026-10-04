@@ -27,7 +27,7 @@ async function setup(page: Page, store: Store, reduced=true) {
       }
       return route.fulfill({status:200,headers,body:JSON.stringify({progress:store.progress})});
     }
-    if(url.pathname.endsWith('/payments/status')) return route.fulfill({status:200,headers,body:JSON.stringify({season1Owned:true,priceStars:149,episodeRewindPriceStars:49,storyId,seasonId:'season-1'})});
+    if(url.pathname.endsWith('/payments/status')) return route.fulfill({status:200,headers,body:JSON.stringify({season1Owned:true,priceStars:249,episodeRewindPriceStars:49,storyId,seasonId:'season-1'})});
     if(url.pathname.endsWith('/analytics')) return route.fulfill({status:204,headers,body:''});
     return route.fulfill({status:404,headers,body:'{}'});
   });
