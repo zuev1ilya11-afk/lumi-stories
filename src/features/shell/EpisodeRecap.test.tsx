@@ -20,3 +20,13 @@ it('personal free replay requires confirmation and applies without Telegram paym
   await waitFor(() => expect(onRewindComplete).toHaveBeenCalledWith('last-online-s1-e1'));
   expect(mocks.open).not.toHaveBeenCalled();
 });
+
+
+it('shows a read-only Black Roses recap without replay controls', () => {
+  render(<EpisodeRecap episodeId="house-of-black-roses-s1-e1" onBack={vi.fn()} />);
+  expect(screen.getByRole('heading', { name: 'Наследница' })).toBeVisible();
+  expect(screen.getByText(/тридцать дней/i)).toBeVisible();
+  expect(screen.getByText(/портрет женщины 1901 года/i)).toBeVisible();
+  expect(screen.queryByRole('button', { name: /Изменить события/ })).not.toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'Назад к эпизодам' })).toBeVisible();
+});
