@@ -1,0 +1,3823 @@
+{
+  "id": "last-online-s1-e5",
+  "title": "Последний онлайн",
+  "startSceneId": "ep5_morning",
+  "requiredSceneIds": [
+    "ep5_morning",
+    "ep5_morning_proof",
+    "ep5_morning_limit",
+    "ep5_morning_silent",
+    "ep5_han_call",
+    "ep5_partner_gate",
+    "ep5_partner_junho",
+    "ep5_partner_taeyun",
+    "ep5_partner_none",
+    "ep5_archive_arrival",
+    "ep5_registry",
+    "ep5_han_admission",
+    "ep5_han_question",
+    "ep5_ask_silence",
+    "ep5_ask_soa",
+    "ep5_ask_account",
+    "ep5_survival_proof",
+    "ep5_escape",
+    "ep5_device",
+    "ep5_sender_reveal",
+    "ep5_han_response",
+    "ep5_han_angry",
+    "ep5_han_understand",
+    "ep5_han_evidence",
+    "ep5_second_copy",
+    "ep5_statement",
+    "ep5_release_choice",
+    "ep5_release_lawyer",
+    "ep5_release_joint",
+    "ep5_release_public",
+    "ep5_commit_gate",
+    "ep5_commit_junho",
+    "ep5_commit_taeyun",
+    "ep5_commit_none",
+    "ep5_submission",
+    "ep5_aftermath",
+    "ep5_device_handover",
+    "ep5_last_message",
+    "ep5_last_reply_choice",
+    "ep5_last_reply_thanks",
+    "ep5_last_reply_silent",
+    "ep5_last_reply_save",
+    "ep5_account_gone",
+    "ep5_future_choice",
+    "ep5_junho_epilogue",
+    "ep5_junho_music",
+    "ep5_junho_romance",
+    "ep5_end_junho",
+    "ep5_taeyun_epilogue",
+    "ep5_taeyun_statement",
+    "ep5_taeyun_romance",
+    "ep5_end_taeyun",
+    "ep5_self_epilogue",
+    "ep5_self_story",
+    "ep5_self_future",
+    "ep5_end_self"
+  ],
+  "scenes": [
+    {
+      "id": "ep5_morning",
+      "kind": "narrative",
+      "text": "Ответ из архива приходит раньше обещанного. В реестре нашли строку, которой вчера не было в разрешённой выписке.\n\nВторой комплект документов приняли в 02:41 — через пятнадцать минут после коридорной записи.\n\nВ графе получателя стоит не журналистка. Там имя координатора: Хан Сора.\n\nЛера перечитывает строку дважды. Человек, который помогал им проверять архив, был частью последней точки той ночи.",
+      "background": "assets/last-online/ep4/backgrounds/morning-room.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Квартира Леры · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Ответ из архива приходит раньше обещанного. В реестре нашли строку, которой вчера не было в разрешённой выписке.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Второй комплект документов приняли в 02:41 — через пятнадцать минут после коридорной записи.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "В графе получателя стоит не журналистка. Там имя координатора: Хан Сора.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Лера перечитывает строку дважды. Человек, который помогал им проверять архив, был частью последней точки той ночи.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_morning_silent",
+      "transitions": [
+        {
+          "nextSceneId": "ep5_morning_proof",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "ep4_soa_response",
+              "value": "proof"
+            }
+          ]
+        },
+        {
+          "nextSceneId": "ep5_morning_limit",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "ep4_soa_response",
+              "value": "limit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep5_morning_proof",
+      "kind": "narrative",
+      "text": "Вчера Лера потребовала у SOA имя. Ответа не получила — только фразу: «Спроси, кто принял».\n\nТеперь имя есть в реестре. Подсказка оказалась точной, но источник всё ещё ничего не доказал о себе.",
+      "background": "assets/last-online/ep4/backgrounds/morning-room.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Квартира Леры · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Вчера Лера потребовала у SOA имя. Ответа не получила — только фразу: «Спроси, кто принял».",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Теперь имя есть в реестре. Подсказка оказалась точной, но источник всё ещё ничего не доказал о себе.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_han_call"
+    },
+    {
+      "id": "ep5_morning_limit",
+      "kind": "narrative",
+      "text": "Лера обещала проверить реестр сама. Именно это она и сделала.\n\nСовпадение с подсказкой SOA слишком точное, чтобы игнорировать. Но сегодня она будет задавать вопросы по своим правилам.",
+      "background": "assets/last-online/ep4/backgrounds/morning-room.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Квартира Леры · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера обещала проверить реестр сама. Именно это она и сделала.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Совпадение с подсказкой SOA слишком точное, чтобы игнорировать. Но сегодня она будет задавать вопросы по своим правилам.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_han_call"
+    },
+    {
+      "id": "ep5_morning_silent",
+      "kind": "narrative",
+      "text": "Лера ничего не сообщила SOA о вчерашней находке. Утром архив всё равно вывел её к имени Хан.\n\nЗначит, отправитель либо знал реестр, либо был рядом с человеком, который знал.",
+      "background": "assets/last-online/ep4/backgrounds/morning-room.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Квартира Леры · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера ничего не сообщила SOA о вчерашней находке. Утром архив всё равно вывел её к имени Хан.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Значит, отправитель либо знал реестр, либо был рядом с человеком, который знал.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_han_call"
+    },
+    {
+      "id": "ep5_han_call",
+      "kind": "dialogue",
+      "text": "Лера звонит Хан раньше, чем успевает придумать мягкую формулировку.\n\nЛера: Я видела строку. 02:41. Второй комплект приняли вы.\n\nНа другом конце долго слышно только дыхание.\n\nХан · по телефону: Приходи в архив в десять. Возьми Мину. И никого из VANTA больше.",
+      "background": "assets/last-online/ep4/backgrounds/morning-room.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Квартира Леры · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера звонит Хан раньше, чем успевает придумать мягкую формулировку.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Я видела строку. 02:41. Второй комплект приняли вы.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "На другом конце долго слышно только дыхание.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Приходи в архив в десять. Возьми Мину. И никого из VANTA больше.",
+          "speaker": "Хан · по телефону",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_partner_gate"
+    },
+    {
+      "id": "ep5_partner_gate",
+      "kind": "narrative",
+      "text": "Перед встречей Лера отправляет одно короткое сообщение тому, кому доверила следующий шаг вчера.\n\nНе просьбу спасти её. Только место, время и правило: никто не входит без её согласия.",
+      "background": "assets/last-online/v2/backgrounds/campus.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Кампус · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Перед встречей Лера отправляет одно короткое сообщение тому, кому доверила следующий шаг вчера.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Не просьбу спасти её. Только место, время и правило: никто не входит без её согласия.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_partner_none",
+      "transitions": [
+        {
+          "nextSceneId": "ep5_partner_junho",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "ep4_trust",
+              "value": "junho"
+            }
+          ]
+        },
+        {
+          "nextSceneId": "ep5_partner_taeyun",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "ep4_trust",
+              "value": "taeyun"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep5_partner_junho",
+      "kind": "dialogue",
+      "text": "Джунхо отвечает почти сразу: «Буду рядом. Внутрь — только если позовёшь».\n\nЛера сохраняет сообщение. Впервые его обещание не требует немедленной проверки.",
+      "background": "assets/last-online/v2/backgrounds/campus.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Кампус · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/guarded.webp",
+            "emotion": "guarded",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Джунхо отвечает почти сразу: «Буду рядом. Внутрь — только если позовёшь».",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Лера сохраняет сообщение. Впервые его обещание не требует немедленной проверки.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_archive_arrival"
+    },
+    {
+      "id": "ep5_partner_taeyun",
+      "kind": "dialogue",
+      "text": "Тэюн пишет: «Понял. Я останусь снаружи. Если Хан захочет, чтобы я дал показания — дам».\n\nНи одного вопроса о том, что нашли. Лера замечает это.",
+      "background": "assets/last-online/v2/backgrounds/campus.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Кампус · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Тэюн пишет: «Понял. Я останусь снаружи. Если Хан захочет, чтобы я дал показания — дам».",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Ни одного вопроса о том, что нашли. Лера замечает это.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_archive_arrival"
+    },
+    {
+      "id": "ep5_partner_none",
+      "kind": "dialogue",
+      "text": "Лера пишет только Мине. Ответ приходит одним словом: «Иду».\n\nСегодня рядом с ней будет человек, который не требует права вести расследование вместо неё.",
+      "background": "assets/last-online/v2/backgrounds/campus.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Кампус · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера пишет только Мине. Ответ приходит одним словом: «Иду».",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Сегодня рядом с ней будет человек, который не требует права вести расследование вместо неё.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_archive_arrival"
+    },
+    {
+      "id": "ep5_archive_arrival",
+      "kind": "dialogue",
+      "text": "Хан ждёт у того же стола. Рядом лежат два прозрачных конверта и старый телефон без SIM-карты.\n\nХранитель остаётся в комнате. Мина садится рядом с Лерой и открывает чистую страницу блокнота.\n\nХан: Я должна была показать это три года назад.\n\nЛера: Тогда начните с 02:41.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "VANTA · архив · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Хан ждёт у того же стола. Рядом лежат два прозрачных конверта и старый телефон без SIM-карты.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Хранитель остаётся в комнате. Мина садится рядом с Лерой и открывает чистую страницу блокнота.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Я должна была показать это три года назад.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Тогда начните с 02:41.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_registry"
+    },
+    {
+      "id": "ep5_registry",
+      "kind": "dialogue",
+      "text": "Хан кладёт копию журнала приёма. В строке 02:41 стоит её подпись и номер внутреннего конверта.\n\nХан: Соа вышла через погрузочный коридор одна. У служебного выхода она передала мне папку.\n\nМина: То есть после 02:26 она была жива.\n\nХан: Да. Я видела её сама.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "VANTA · архив · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Хан кладёт копию журнала приёма. В строке 02:41 стоит её подпись и номер внутреннего конверта.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Соа вышла через погрузочный коридор одна. У служебного выхода она передала мне папку.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "То есть после 02:26 она была жива.",
+          "speaker": "Мина",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Да. Я видела её сама.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_han_admission"
+    },
+    {
+      "id": "ep5_han_admission",
+      "kind": "dialogue",
+      "text": "Хан не просит поверить ей на слово. Она показывает номер конверта в журнале и опись, подписанную тем же утром.\n\nХан: Соа сказала: если до полудня не напишет, передать комплект журналистке. Потом сняла SIM и отдала мне телефон.\n\nЛера: Почему телефон остался у вас?\n\nХан: Потому что она боялась, что через него её найдут.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архив · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/remorseful.svg",
+            "emotion": "remorseful",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Хан не просит поверить ей на слово. Она показывает номер конверта в журнале и опись, подписанную тем же утром.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Соа сказала: если до полудня не напишет, передать комплект журналистке. Потом сняла SIM и отдала мне телефон.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Почему телефон остался у вас?",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Потому что она боялась, что через него её найдут.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_han_question"
+    },
+    {
+      "id": "ep5_han_question",
+      "kind": "narrative",
+      "text": "Три года молчания помещаются между Хан и старым телефоном.\n\nЛера может начать с её молчания, с судьбы Соа или с аккаунта, который писал ей все эти дни.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архив · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Три года молчания помещаются между Хан и старым телефоном.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Лера может начать с её молчания, с судьбы Соа или с аккаунта, который писал ей все эти дни.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "ep5_ask_silence",
+          "text": "«Почему вы молчали три года?»",
+          "nextSceneId": "ep5_ask_silence",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": -1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep5_han_question",
+              "value": "silence"
+            }
+          ]
+        },
+        {
+          "id": "ep5_ask_soa",
+          "text": "«Где Соа после той ночи?»",
+          "nextSceneId": "ep5_ask_soa",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 2
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep5_han_question",
+              "value": "soa"
+            }
+          ]
+        },
+        {
+          "id": "ep5_ask_account",
+          "text": "«Кто писал мне с её аккаунта?»",
+          "nextSceneId": "ep5_ask_account",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep5_han_question",
+              "value": "account"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep5_ask_silence",
+      "kind": "dialogue",
+      "text": "Хан: Потому что я испугалась раньше всех остальных. А потом каждый день молчания делал признание тяжелее.\n\nЛера: Вы помогали нам искать правду, не сказав, что были последним человеком из VANTA, видевшим её.\n\nХан: Да. И это нельзя назвать помощью без этой части.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архив · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/remorseful.svg",
+            "emotion": "remorseful",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Потому что я испугалась раньше всех остальных. А потом каждый день молчания делал признание тяжелее.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Вы помогали нам искать правду, не сказав, что были последним человеком из VANTA, видевшим её.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Да. И это нельзя назвать помощью без этой части.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_survival_proof"
+    },
+    {
+      "id": "ep5_ask_soa",
+      "kind": "dialogue",
+      "text": "Хан: Я не скажу, где она сейчас. И не потому, что хочу снова выбирать за неё.\n\nХан достаёт второй конверт: подтверждение от независимого юриста, датированное через одиннадцать дней после исчезновения.\n\nХан: Личность клиента была проверена по документам. Имя в открытой копии закрыто, но номер дела совпадает.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архив · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/remorseful.svg",
+            "emotion": "remorseful",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Я не скажу, где она сейчас. И не потому, что хочу снова выбирать за неё.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Хан достаёт второй конверт: подтверждение от независимого юриста, датированное через одиннадцать дней после исчезновения.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Личность клиента была проверена по документам. Имя в открытой копии закрыто, но номер дела совпадает.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_survival_proof"
+    },
+    {
+      "id": "ep5_ask_account",
+      "kind": "dialogue",
+      "text": "Хан смотрит на старый телефон.\n\nХан: Я. Почти все сообщения отправляла я.\n\nМина перестаёт писать.\n\nЛера: Сначала доказательства жизни Соа. Потом вы объясните каждое сообщение.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архив · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Хан смотрит на старый телефон.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Я. Почти все сообщения отправляла я.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Мина перестаёт писать.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Сначала доказательства жизни Соа. Потом вы объясните каждое сообщение.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_survival_proof"
+    },
+    {
+      "id": "ep5_survival_proof",
+      "kind": "dialogue",
+      "text": "В конверте — письмо юриста и контрольная фраза, которую Хан попросила Соа назвать после побега.\n\nХан: Ответ пришёл через одиннадцать дней вместе с коротким видео. На нём Соа называет дату и ту же фразу.\n\nХранитель подтверждает: файл был внесён в закрытую опись три года назад и с тех пор не заменялся.\n\nЭто не раскрывает её нынешнее место. Но подтверждает главное: ту ночь она пережила.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "VANTA · архив · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "В конверте — письмо юриста и контрольная фраза, которую Хан попросила Соа назвать после побега.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Ответ пришёл через одиннадцать дней вместе с коротким видео. На нём Соа называет дату и ту же фразу.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Хранитель подтверждает: файл был внесён в закрытую опись три года назад и с тех пор не заменялся.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Это не раскрывает её нынешнее место. Но подтверждает главное: ту ночь она пережила.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_escape"
+    },
+    {
+      "id": "ep5_escape",
+      "kind": "dialogue",
+      "text": "Хан: Журналистка помогла Соа уехать из Хансу. Потом связь стала редкой и шла только через юриста.\n\nСоа просила не искать её и не превращать её новую жизнь в продолжение скандала.\n\nМина: Поэтому вы сохранили тайну.\n\nХан: Да. А заодно сохранила удобное оправдание для себя.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архив · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/remorseful.svg",
+            "emotion": "remorseful",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Журналистка помогла Соа уехать из Хансу. Потом связь стала редкой и шла только через юриста.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Соа просила не искать её и не превращать её новую жизнь в продолжение скандала.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Поэтому вы сохранили тайну.",
+          "speaker": "Мина",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Да. А заодно сохранила удобное оправдание для себя.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_device"
+    },
+    {
+      "id": "ep5_device",
+      "kind": "dialogue",
+      "text": "Хан подвигает к Лере старый телефон. Экран потёрт, SIM-лоток пуст.\n\nХан: Соа вышла из аккаунта не везде. На этом устройстве старая сессия осталась активной через Wi‑Fi.\n\nХан: Когда старый номер снова появился у нового владельца, я увидела имя Леры. Потом узнала адрес и поняла, кто живёт напротив.\n\nЛера: И решили сделать меня приманкой.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архив · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Хан подвигает к Лере старый телефон. Экран потёрт, SIM-лоток пуст.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Соа вышла из аккаунта не везде. На этом устройстве старая сессия осталась активной через Wi‑Fi.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Когда старый номер снова появился у нового владельца, я увидела имя Леры. Потом узнала адрес и поняла, кто живёт напротив.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "И решили сделать меня приманкой.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_sender_reveal"
+    },
+    {
+      "id": "ep5_sender_reveal",
+      "kind": "dialogue",
+      "text": "Хан: Я решила, что если Джунхо и Тэюн снова увидят имя Соа, они перестанут прятаться за тем, что прошло три года.\n\nФото, время, B17, второй комплект — всё это было на телефоне или в моих записях.\n\nЛера: Но сообщение «Ты уже выбрала не того» тоже ваше?\n\nХан: Да. Я хотела заставить тебя сомневаться в обоих. И перешла границу.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архив · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/suspicious.webp",
+            "emotion": "suspicious",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/serious.svg",
+            "emotion": "serious",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Я решила, что если Джунхо и Тэюн снова увидят имя Соа, они перестанут прятаться за тем, что прошло три года.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Фото, время, B17, второй комплект — всё это было на телефоне или в моих записях.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Но сообщение «Ты уже выбрала не того» тоже ваше?",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Да. Я хотела заставить тебя сомневаться в обоих. И перешла границу.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_han_response"
+    },
+    {
+      "id": "ep5_han_response",
+      "kind": "narrative",
+      "text": "Объяснение делает происходящее рациональнее. Оно не делает способ честным.\n\nЛера решает, что сказать Хан прежде, чем они откроют второй комплект.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архив · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/serious.svg",
+            "emotion": "serious",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Объяснение делает происходящее рациональнее. Оно не делает способ честным.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Лера решает, что сказать Хан прежде, чем они откроют второй комплект.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "ep5_han_angry",
+          "text": "«Вы использовали меня так же, как VANTA использовала страх»",
+          "nextSceneId": "ep5_han_angry",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep5_han_response",
+              "value": "angry"
+            }
+          ]
+        },
+        {
+          "id": "ep5_han_understand",
+          "text": "«Я понимаю мотив. Но больше не решайте за меня»",
+          "nextSceneId": "ep5_han_understand",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": -1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep5_han_response",
+              "value": "boundary"
+            }
+          ]
+        },
+        {
+          "id": "ep5_han_evidence",
+          "text": "«Сначала доказательства. О вас поговорим после»",
+          "nextSceneId": "ep5_han_evidence",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 2
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep5_han_response",
+              "value": "evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep5_han_angry",
+      "kind": "dialogue",
+      "text": "Лера: Вы использовали мой страх и чужую вину, чтобы получить нужный результат.\n\nХан: Да. Я ненавидела в VANTA именно это и повторила тот же приём.\n\nЛера: Тогда не называйте это защитой Соа.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архив · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/suspicious.webp",
+            "emotion": "suspicious",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/serious.svg",
+            "emotion": "serious",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Вы использовали мой страх и чужую вину, чтобы получить нужный результат.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Да. Я ненавидела в VANTA именно это и повторила тот же приём.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Тогда не называйте это защитой Соа.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_second_copy"
+    },
+    {
+      "id": "ep5_han_understand",
+      "kind": "dialogue",
+      "text": "Лера: Я понимаю, почему вы боялись раскрыть Соа. Но моими решениями вы распоряжаться не будете.\n\nХан: Не буду. Телефон сегодня уйдёт отсюда не со мной.\n\nМина ставит рядом с записью времени ещё одну отметку: устройство передадут независимому юристу.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архив · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Я понимаю, почему вы боялись раскрыть Соа. Но моими решениями вы распоряжаться не будете.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Не буду. Телефон сегодня уйдёт отсюда не со мной.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Мина ставит рядом с записью времени ещё одну отметку: устройство передадут независимому юристу.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_second_copy"
+    },
+    {
+      "id": "ep5_han_evidence",
+      "kind": "dialogue",
+      "text": "Лера не принимает ни извинение, ни обвинение. Пока ей нужны только проверяемые вещи.\n\nЛера: Покажите второй комплект. Потом устройство. Потом полную историю отправки сообщений.\n\nХан кивает и вскрывает прозрачный конверт при хранителе.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архив · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера не принимает ни извинение, ни обвинение. Пока ей нужны только проверяемые вещи.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Покажите второй комплект. Потом устройство. Потом полную историю отправки сообщений.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Хан кивает и вскрывает прозрачный конверт при хранителе.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_second_copy"
+    },
+    {
+      "id": "ep5_second_copy",
+      "kind": "dialogue",
+      "text": "Внутри — копии внутренних распоряжений, список ночных репетиций и таблица штрафов. Номера совпадают с архивом.\n\nПоследний лист — заявление Соа. Она пишет, что собирается уйти и передать доказательства вне агентства.\n\nНа полях рукой Хан отмечено время приёма: 02:41.\n\nТеперь история ночи соединяется без выдуманного кадра: B17, коридор, служебный выход, второй комплект.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "VANTA · архив · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Внутри — копии внутренних распоряжений, список ночных репетиций и таблица штрафов. Номера совпадают с архивом.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Последний лист — заявление Соа. Она пишет, что собирается уйти и передать доказательства вне агентства.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "На полях рукой Хан отмечено время приёма: 02:41.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Теперь история ночи соединяется без выдуманного кадра: B17, коридор, служебный выход, второй комплект.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_statement"
+    },
+    {
+      "id": "ep5_statement",
+      "kind": "dialogue",
+      "text": "Хан показывает ещё один документ: подготовленное юристом дополнение к материалам дела.\n\nДжунхо готов подтвердить, что провожал Соа. Тэюн — исправить своё прежнее объяснение. Хан — признать получение комплекта.\n\nОдних слов всё ещё мало. Но теперь слова можно сопоставить с журналом, описью и документами.\n\nОстаётся решить, как выпускать правду наружу.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архив · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Хан показывает ещё один документ: подготовленное юристом дополнение к материалам дела.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Джунхо готов подтвердить, что провожал Соа. Тэюн — исправить своё прежнее объяснение. Хан — признать получение комплекта.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Одних слов всё ещё мало. Но теперь слова можно сопоставить с журналом, описью и документами.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Остаётся решить, как выпускать правду наружу.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_release_choice"
+    },
+    {
+      "id": "ep5_release_choice",
+      "kind": "narrative",
+      "text": "У Леры есть три безопасных маршрута: через юриста и журналистку, совместное заявление свидетелей или публикация проверенных документов без личных подробностей Соа.\n\nКаждый путь открывает правду по-разному и по-разному рискует людьми, которые в ней остались.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архив · утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/serious.svg",
+            "emotion": "serious",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "У Леры есть три безопасных маршрута: через юриста и журналистку, совместное заявление свидетелей или публикация проверенных документов без личных подробностей Соа.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Каждый путь открывает правду по-разному и по-разному рискует людьми, которые в ней остались.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "ep5_release_lawyer",
+          "text": "Передать пакет юристу и журналистке",
+          "nextSceneId": "ep5_release_lawyer",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 2
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": -1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep5_release",
+              "value": "lawyer"
+            }
+          ]
+        },
+        {
+          "id": "ep5_release_joint",
+          "text": "Собрать совместное заявление свидетелей",
+          "nextSceneId": "ep5_release_joint",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "junhoScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "taeyunScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep5_release",
+              "value": "joint"
+            }
+          ]
+        },
+        {
+          "id": "ep5_release_public",
+          "text": "Опубликовать только проверенные документы",
+          "nextSceneId": "ep5_release_public",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 2
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep5_release",
+              "value": "documents"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep5_release_lawyer",
+      "kind": "dialogue",
+      "text": "Лера выбирает маршрут через независимого юриста и журналистку, которой Соа собиралась передать материалы.\n\nПубликация подождёт проверки подписей и номеров. Местонахождение Соа в пакет не входит.\n\nХан впервые за утро выглядит не облегчённой, а просто готовой отвечать за своё имя.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архив · день",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера выбирает маршрут через независимого юриста и журналистку, которой Соа собиралась передать материалы.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Публикация подождёт проверки подписей и номеров. Местонахождение Соа в пакет не входит.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Хан впервые за утро выглядит не облегчённой, а просто готовой отвечать за своё имя.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_commit_gate"
+    },
+    {
+      "id": "ep5_release_joint",
+      "kind": "dialogue",
+      "text": "Лера предлагает не прятать свидетелей за анонимным пакетом: каждый подписывает только то, что видел сам.\n\nНикаких общих версий и одинаковых формулировок. Джунхо, Тэюн и Хан отвечают за собственные действия.\n\nМина улыбается краем губ: «Наконец-то документ, где никто не говорит за другого».",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архив · день",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера предлагает не прятать свидетелей за анонимным пакетом: каждый подписывает только то, что видел сам.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Никаких общих версий и одинаковых формулировок. Джунхо, Тэюн и Хан отвечают за собственные действия.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Мина улыбается краем губ: «Наконец-то документ, где никто не говорит за другого».",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_commit_gate"
+    },
+    {
+      "id": "ep5_release_public",
+      "kind": "dialogue",
+      "text": "Лера выбирает документы: номера распоряжений, опись, временные отметки и заявление Соа без данных о её новой жизни.\n\nМина помогает убрать всё, что может выдать местонахождение или личные контакты.\n\nФакты должны выйти наружу. Соа не обязана возвращаться в старую историю, чтобы их подтвердить.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архив · день",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера выбирает документы: номера распоряжений, опись, временные отметки и заявление Соа без данных о её новой жизни.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Мина помогает убрать всё, что может выдать местонахождение или личные контакты.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Факты должны выйти наружу. Соа не обязана возвращаться в старую историю, чтобы их подтвердить.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_commit_gate"
+    },
+    {
+      "id": "ep5_commit_gate",
+      "kind": "narrative",
+      "text": "У двери архива Лера встречает человека, которому вчера доверила следующий шаг. Или только Мину, если выбрала идти без них.\n\nТеперь никто не может исправить прошлое. Можно только решить, что подписать сегодня.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · коридор · день",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "У двери архива Лера встречает человека, которому вчера доверила следующий шаг. Или только Мину, если выбрала идти без них.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Теперь никто не может исправить прошлое. Можно только решить, что подписать сегодня.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_commit_none",
+      "transitions": [
+        {
+          "nextSceneId": "ep5_commit_junho",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "ep4_trust",
+              "value": "junho"
+            }
+          ]
+        },
+        {
+          "nextSceneId": "ep5_commit_taeyun",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "ep4_trust",
+              "value": "taeyun"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep5_commit_junho",
+      "kind": "dialogue",
+      "text": "Джунхо читает только свою часть пакета.\n\nДжунхо: Я подпишу фотографию как есть: я удерживал её за руку. И подпишу, что через четыре дня помог ей выйти.\n\nЛера: Не проси один поступок стереть другой.\n\nДжунхо: Не прошу.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "VANTA · коридор · день",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/vulnerable.webp",
+            "emotion": "vulnerable",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Джунхо читает только свою часть пакета.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Я подпишу фотографию как есть: я удерживал её за руку. И подпишу, что через четыре дня помог ей выйти.",
+          "speaker": "Джунхо",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Не проси один поступок стереть другой.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Не прошу.",
+          "speaker": "Джунхо",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_submission"
+    },
+    {
+      "id": "ep5_commit_taeyun",
+      "kind": "dialogue",
+      "text": "Тэюн приносит подтверждение: дополнение к его прежнему объяснению уже зарегистрировано адвокатом.\n\nТэюн: В 02:19 я был у двери и не вошёл. Я больше не буду называть это «ничего не заметил».\n\nЛера: Даже если агентство попытается это использовать против тебя?\n\nТэюн: Особенно тогда.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "VANTA · коридор · день",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/vulnerable.webp",
+            "emotion": "vulnerable",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Тэюн приносит подтверждение: дополнение к его прежнему объяснению уже зарегистрировано адвокатом.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "В 02:19 я был у двери и не вошёл. Я больше не буду называть это «ничего не заметил».",
+          "speaker": "Тэюн",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Даже если агентство попытается это использовать против тебя?",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Особенно тогда.",
+          "speaker": "Тэюн",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_submission"
+    },
+    {
+      "id": "ep5_commit_none",
+      "kind": "dialogue",
+      "text": "Мина идёт рядом, не забирая папку из рук Леры.\n\nМина: Если они подпишут — хорошо. Если нет, у нас всё равно есть проверяемые документы.\n\nЛера кивает. Её история больше не зависит от того, кто из мужчин окажется смелее сегодня.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "VANTA · коридор · день",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Мина идёт рядом, не забирая папку из рук Леры.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Если они подпишут — хорошо. Если нет, у нас всё равно есть проверяемые документы.",
+          "speaker": "Мина",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Лера кивает. Её история больше не зависит от того, кто из мужчин окажется смелее сегодня.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_submission"
+    },
+    {
+      "id": "ep5_submission",
+      "kind": "narrative",
+      "text": "К полудню пакет уходит независимому юристу и журналистке. Получение подтверждено двумя отдельными адресатами.\n\nК вечеру VANTA получает официальный запрос о документах и старых объяснениях.\n\nНикто не объявляет победу. Но теперь стереть историю одним внутренним письмом уже не получится.",
+      "background": "assets/last-online/v2/backgrounds/campus.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Кампус · день",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "К полудню пакет уходит независимому юристу и журналистке. Получение подтверждено двумя отдельными адресатами.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "К вечеру VANTA получает официальный запрос о документах и старых объяснениях.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Никто не объявляет победу. Но теперь стереть историю одним внутренним письмом уже не получится.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_aftermath"
+    },
+    {
+      "id": "ep5_aftermath",
+      "kind": "narrative",
+      "text": "Первые публикации выходят осторожно: без адреса Соа и без предположений о её нынешней жизни.\n\nГлавное меняется в формулировке. Исчезновение больше не описывают как загадку, начавшуюся с Джунхо.\n\nВ центре оказываются документы VANTA, ложные сводки и подтверждённый маршрут Соа к служебному выходу.\n\nЛера выключает экран. Последняя незакрытая вещь — старый телефон Хан.",
+      "background": "assets/last-online/ep4/backgrounds/morning-room.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Квартира Леры · вечер",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Первые публикации выходят осторожно: без адреса Соа и без предположений о её нынешней жизни.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Главное меняется в формулировке. Исчезновение больше не описывают как загадку, начавшуюся с Джунхо.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "В центре оказываются документы VANTA, ложные сводки и подтверждённый маршрут Соа к служебному выходу.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Лера выключает экран. Последняя незакрытая вещь — старый телефон Хан.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_device_handover"
+    },
+    {
+      "id": "ep5_device_handover",
+      "kind": "dialogue",
+      "text": "Хан при Лере и Мине передаёт старый телефон юристу. Устройство помещают в пакет и фиксируют время.\n\nХан: Я больше не могу писать с него. И не буду входить в аккаунт с другого устройства.\n\nЛера видит, как пакет запечатывают.\n\nЧерез несколько секунд её собственный телефон вибрирует.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Независимый юридический офис · вечер",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/remorseful.svg",
+            "emotion": "remorseful",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Хан при Лере и Мине передаёт старый телефон юристу. Устройство помещают в пакет и фиксируют время.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Я больше не могу писать с него. И не буду входить в аккаунт с другого устройства.",
+          "speaker": "Хан",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Лера видит, как пакет запечатывают.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Через несколько секунд её собственный телефон вибрирует.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_last_message"
+    },
+    {
+      "id": "ep5_last_message",
+      "kind": "message",
+      "text": "SOA: Спасибо.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "phone",
+        "location": "Независимый юридический офис · вечер",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [],
+        "haptic": "light"
+      },
+      "beats": [
+        {
+          "text": "Спасибо.",
+          "speaker": "SOA",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_last_reply_choice",
+      "chat": {
+        "status": "в сети",
+        "context": "Сейчас",
+        "messages": [
+          {
+            "from": "soa",
+            "text": "Спасибо."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ep5_last_reply_choice",
+      "kind": "narrative",
+      "text": "Одно слово. Без фотографии, подсказки или требования.\n\nХан смотрит на запечатанный пакет. Мина — на Леру.\n\nЛера может ответить, оставить сообщение без ответа или просто сохранить экран.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Независимый юридический офис · вечер",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Одно слово. Без фотографии, подсказки или требования.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Хан смотрит на запечатанный пакет. Мина — на Леру.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Лера может ответить, оставить сообщение без ответа или просто сохранить экран.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "ep5_last_reply_thanks",
+          "text": "«Береги себя»",
+          "nextSceneId": "ep5_last_reply_thanks",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep5_last_reply",
+              "value": "care"
+            }
+          ]
+        },
+        {
+          "id": "ep5_last_reply_silent",
+          "text": "Не отвечать",
+          "nextSceneId": "ep5_last_reply_silent",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": -1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep5_last_reply",
+              "value": "silent"
+            }
+          ]
+        },
+        {
+          "id": "ep5_last_reply_save",
+          "text": "Сохранить сообщение как последнюю улику",
+          "nextSceneId": "ep5_last_reply_save",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep5_last_reply",
+              "value": "save"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep5_last_reply_thanks",
+      "kind": "message",
+      "text": "Лера: Береги себя.\n\nСообщение не доставлено.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "phone",
+        "location": "Независимый юридический офис · вечер",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [],
+        "haptic": "light"
+      },
+      "beats": [
+        {
+          "text": "Береги себя.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Сообщение не доставлено.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_account_gone",
+      "chat": {
+        "status": "не в сети",
+        "context": "Сейчас",
+        "messages": [
+          {
+            "from": "lera",
+            "text": "Береги себя."
+          },
+          {
+            "from": "system",
+            "text": "Сообщение не доставлено."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ep5_last_reply_silent",
+      "kind": "narrative",
+      "text": "Лера не отвечает. На этот раз молчание — её выбор, а не чужой приговор.\n\nОна обновляет чат. Статус исчезает.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Независимый юридический офис · вечер",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера не отвечает. На этот раз молчание — её выбор, а не чужой приговор.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Она обновляет чат. Статус исчезает.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_account_gone"
+    },
+    {
+      "id": "ep5_last_reply_save",
+      "kind": "narrative",
+      "text": "Лера сохраняет экран вместе со временем получения. Хан всё ещё стоит напротив запечатанного устройства.\n\nКогда Лера возвращается в чат, профиль уже недоступен.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Независимый юридический офис · вечер",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/neutral.svg",
+            "emotion": "neutral",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера сохраняет экран вместе со временем получения. Хан всё ещё стоит напротив запечатанного устройства.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Когда Лера возвращается в чат, профиль уже недоступен.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_account_gone"
+    },
+    {
+      "id": "ep5_account_gone",
+      "kind": "narrative",
+      "text": "Аккаунт SOA больше не открывается. Нет фотографии, статуса и истории профиля — только сохранённая переписка.\n\nХан не могла отправить последнее сообщение с телефона в пакете. Но у Соа могла остаться другая сессия.\n\nИли это было запланировано заранее. Или объяснение всё ещё впереди.\n\nЛера впервые позволяет вопросу остаться вопросом.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Независимый юридический офис · вечер",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "han",
+            "src": "assets/last-online/ep5/characters/han/remorseful.svg",
+            "emotion": "remorseful",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/surprised.webp",
+            "emotion": "surprised",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Аккаунт SOA больше не открывается. Нет фотографии, статуса и истории профиля — только сохранённая переписка.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Хан не могла отправить последнее сообщение с телефона в пакете. Но у Соа могла остаться другая сессия.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Или это было запланировано заранее. Или объяснение всё ещё впереди.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Лера впервые позволяет вопросу остаться вопросом.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_future_choice"
+    },
+    {
+      "id": "ep5_future_choice",
+      "kind": "narrative",
+      "text": "Через несколько недель расследование VANTA продолжается. Показания приняты, документы опубликованы, а имя Соа больше не используют как рекламную загадку.\n\nЛера закрывает папку. Теперь следующий шаг касается уже не той ночи, а её собственной жизни.",
+      "background": "assets/last-online/v2/backgrounds/campus.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Хансу · несколько недель спустя",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/curious.webp",
+            "emotion": "curious",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Через несколько недель расследование VANTA продолжается. Показания приняты, документы опубликованы, а имя Соа больше не используют как рекламную загадку.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Лера закрывает папку. Теперь следующий шаг касается уже не той ночи, а её собственной жизни.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "ep5_choose_junho",
+          "text": "Пойти к Джунхо",
+          "nextSceneId": "ep5_junho_epilogue",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "ep4_trust",
+              "value": "junho"
+            },
+            {
+              "kind": "scoreAtLeast",
+              "score": "junhoScore",
+              "value": 8
+            }
+          ],
+          "effects": [
+            {
+              "kind": "setFlag",
+              "flag": "ep5_ending",
+              "value": "junho"
+            }
+          ]
+        },
+        {
+          "id": "ep5_choose_taeyun",
+          "text": "Ответить Тэюну",
+          "nextSceneId": "ep5_taeyun_epilogue",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "ep4_trust",
+              "value": "taeyun"
+            },
+            {
+              "kind": "scoreAtLeast",
+              "score": "taeyunScore",
+              "value": 8
+            }
+          ],
+          "effects": [
+            {
+              "kind": "setFlag",
+              "flag": "ep5_ending",
+              "value": "taeyun"
+            }
+          ]
+        },
+        {
+          "id": "ep5_choose_self",
+          "text": "Выбрать свою историю",
+          "nextSceneId": "ep5_self_epilogue",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep5_ending",
+              "value": "self"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep5_junho_epilogue",
+      "kind": "dialogue",
+      "text": "У Джунхо снова открыто пианино. На этот раз на пюпитре не старая мелодия Соа, а чистый лист.\n\nПубликации перестали называть его единственной причиной исчезновения. Но он не просит стереть фотографию и свой поступок.\n\nДжунхо: Я начал писать снова. Без агентства. Пока только для себя.\n\nЛера: Это уже звучит как твоё решение.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Квартира Джунхо · вечер",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/vulnerable.webp",
+            "emotion": "vulnerable",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "У Джунхо снова открыто пианино. На этот раз на пюпитре не старая мелодия Соа, а чистый лист.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Публикации перестали называть его единственной причиной исчезновения. Но он не просит стереть фотографию и свой поступок.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Я начал писать снова. Без агентства. Пока только для себя.",
+          "speaker": "Джунхо",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Это уже звучит как твоё решение.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_junho_music"
+    },
+    {
+      "id": "ep5_junho_music",
+      "kind": "dialogue",
+      "text": "Он играет несколько тихих тактов и останавливается раньше, чем музыка превращается в выступление.\n\nДжунхо: Раньше я думал, что вернуться к музыке — значит доказать всем, что они ошибались.\n\nЛера: А сейчас?\n\nДжунхо: Сейчас хочу понять, что останется, если никому ничего не доказывать.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Квартира Джунхо · вечер",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/vulnerable.webp",
+            "emotion": "vulnerable",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Он играет несколько тихих тактов и останавливается раньше, чем музыка превращается в выступление.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Раньше я думал, что вернуться к музыке — значит доказать всем, что они ошибались.",
+          "speaker": "Джунхо",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "А сейчас?",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Сейчас хочу понять, что останется, если никому ничего не доказывать.",
+          "speaker": "Джунхо",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_junho_romance"
+    },
+    {
+      "id": "ep5_junho_romance",
+      "kind": "dialogue",
+      "text": "Лера садится рядом, оставляя между ними привычное расстояние. Джунхо не сокращает его первым.\n\nДжунхо: Можно я однажды приглашу тебя сюда не из-за Соа?\n\nЛера: Можно. Но без загадочных фотографий и признаний в два часа ночи.\n\nОн улыбается. На этот раз это похоже на начало, а не на возвращение.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Квартира Джунхо · вечер",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/shy.webp",
+            "emotion": "shy",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/soft.webp",
+            "emotion": "soft",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера садится рядом, оставляя между ними привычное расстояние. Джунхо не сокращает его первым.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Можно я однажды приглашу тебя сюда не из-за Соа?",
+          "speaker": "Джунхо",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Можно. Но без загадочных фотографий и признаний в два часа ночи.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Он улыбается. На этот раз это похоже на начало, а не на возвращение.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_end_junho"
+    },
+    {
+      "id": "ep5_end_junho",
+      "kind": "terminal",
+      "text": "Правда о VANTA стала публичной, имя Джунхо перестало быть удобным ответом на чужое исчезновение.\n\nОн возвращается к музыке на своих условиях. Лера остаётся рядом не потому, что должна закончить историю Соа.\n\nНа её телефоне больше нет аккаунта SOA. Только сохранённое одно слово: «Спасибо.»\n\nКОНЕЦ СЕЗОНА 1 · «ПОСЛЕДНИЙ ОНЛАЙН»",
+      "background": "assets/last-online/ep4/backgrounds/morning-room.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Хансу · ночь",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/vulnerable.webp",
+            "emotion": "vulnerable",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Правда о VANTA стала публичной, имя Джунхо перестало быть удобным ответом на чужое исчезновение.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Он возвращается к музыке на своих условиях. Лера остаётся рядом не потому, что должна закончить историю Соа.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "На её телефоне больше нет аккаунта SOA. Только сохранённое одно слово: «Спасибо.»",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "КОНЕЦ СЕЗОНА 1 · «ПОСЛЕДНИЙ ОНЛАЙН»",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep5_taeyun_epilogue",
+      "kind": "dialogue",
+      "text": "Тэюн выходит после закрытой встречи с группой. Его дополнение к показаниям уже стало публичным.\n\nАгентство называет его слова личной позицией. Он впервые не пытается подобрать безопаснее.\n\nТэюн: Мне страшно почти так же, как тогда.\n\nЛера: Разница в том, что сегодня ты всё-таки открыл дверь.",
+      "background": "assets/last-online/ep2/backgrounds/practice-room.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "VANTA · пустая сцена · вечер",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Тэюн выходит после закрытой встречи с группой. Его дополнение к показаниям уже стало публичным.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Агентство называет его слова личной позицией. Он впервые не пытается подобрать безопаснее.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Мне страшно почти так же, как тогда.",
+          "speaker": "Тэюн",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Разница в том, что сегодня ты всё-таки открыл дверь.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_taeyun_statement"
+    },
+    {
+      "id": "ep5_taeyun_statement",
+      "kind": "dialogue",
+      "text": "Тэюн признаёт перед камерой: в 02:19 он слышал угрозы Соа и промолчал.\n\nОн не просит считать признание смелостью и не использует Леру как доказательство собственной честности.\n\nПосле записи он выключает сценический свет сам.\n\nВпервые тишина вокруг него не выглядит подготовленной.",
+      "background": "assets/last-online/ep2/backgrounds/practice-room.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "VANTA · пустая сцена · вечер",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Тэюн признаёт перед камерой: в 02:19 он слышал угрозы Соа и промолчал.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Он не просит считать признание смелостью и не использует Леру как доказательство собственной честности.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "После записи он выключает сценический свет сам.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Впервые тишина вокруг него не выглядит подготовленной.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_taeyun_romance"
+    },
+    {
+      "id": "ep5_taeyun_romance",
+      "kind": "dialogue",
+      "text": "У выхода из кампуса Тэюн держит два бумажных стакана кофе и выглядит непривычно обычным.\n\nТэюн: Я всё ещё должен тебе встречу, где не говорю о VANTA.\n\nЛера: Должен — плохое начало.\n\nТогда: хочешь? Лера берёт один стакан. «Хочу».",
+      "background": "assets/last-online/v2/backgrounds/campus.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Кампус · вечер",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/shy.webp",
+            "emotion": "shy",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/amused.webp",
+            "emotion": "amused",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "У выхода из кампуса Тэюн держит два бумажных стакана кофе и выглядит непривычно обычным.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Я всё ещё должен тебе встречу, где не говорю о VANTA.",
+          "speaker": "Тэюн",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Должен — плохое начало.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Тогда: хочешь? Лера берёт один стакан. «Хочу».",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_end_taeyun"
+    },
+    {
+      "id": "ep5_end_taeyun",
+      "kind": "terminal",
+      "text": "Тэюн рискует карьерой и публично исправляет собственное молчание. Что будет с группой, решится позже.\n\nЛера выбирает быть рядом с ним не как свидетель старой ночи, а как человек со своей жизнью.\n\nАккаунт SOA исчез. Последнее сообщение осталось без объяснения: «Спасибо.»\n\nКОНЕЦ СЕЗОНА 1 · «ПОСЛЕДНИЙ ОНЛАЙН»",
+      "background": "assets/last-online/ep4/backgrounds/morning-room.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Хансу · ночь",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Тэюн рискует карьерой и публично исправляет собственное молчание. Что будет с группой, решится позже.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Лера выбирает быть рядом с ним не как свидетель старой ночи, а как человек со своей жизнью.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Аккаунт SOA исчез. Последнее сообщение осталось без объяснения: «Спасибо.»",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "КОНЕЦ СЕЗОНА 1 · «ПОСЛЕДНИЙ ОНЛАЙН»",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep5_self_epilogue",
+      "kind": "dialogue",
+      "text": "Лера и Мина раскладывают на столе только копии тех материалов, которые можно публиковать без риска для Соа.\n\nНикаких догадок о её новой жизни. Никаких романтических версий старой фотографии.\n\nМина: Ты понимаешь, что мы только что превратили самый громкий слух кампуса в скучный список источников?\n\nЛера: Именно поэтому он мне нравится.",
+      "background": "assets/last-online/v2/backgrounds/campus.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Кампус · библиотечная терраса · день",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера и Мина раскладывают на столе только копии тех материалов, которые можно публиковать без риска для Соа.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Никаких догадок о её новой жизни. Никаких романтических версий старой фотографии.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Ты понимаешь, что мы только что превратили самый громкий слух кампуса в скучный список источников?",
+          "speaker": "Мина",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Именно поэтому он мне нравится.",
+          "speaker": "Лера",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_self_story"
+    },
+    {
+      "id": "ep5_self_story",
+      "kind": "narrative",
+      "text": "Лера заканчивает материал своим именем. Не как девушка рядом с бывшим айдолом и не как случайная знакомая звезды.\n\nОна пишет о том, как документы меняют историю, когда перестаёшь просить людей выбрать за тебя готовую версию.\n\nДжунхо и Тэюн остаются частью правды. Но не становятся её будущим по умолчанию.",
+      "background": "assets/last-online/v2/backgrounds/campus.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Кампус · библиотечная терраса · день",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/neutral.webp",
+            "emotion": "neutral",
+            "position": "left",
+            "framing": "medium",
+            "depth": "foreground"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "position": "right",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера заканчивает материал своим именем. Не как девушка рядом с бывшим айдолом и не как случайная знакомая звезды.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Она пишет о том, как документы меняют историю, когда перестаёшь просить людей выбрать за тебя готовую версию.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Джунхо и Тэюн остаются частью правды. Но не становятся её будущим по умолчанию.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_self_future"
+    },
+    {
+      "id": "ep5_self_future",
+      "kind": "narrative",
+      "text": "Вечером Лера идёт домой одна и впервые не проверяет, горит ли свет у Джунхо и нет ли сообщений от Тэюна.\n\nНа перекрёстке телефон остаётся тихим.\n\nЕй это нравится.\n\nТолько перед сном она ещё раз открывает сохранённый скриншот: «Спасибо.»",
+      "background": "assets/last-online/ep4/backgrounds/morning-room.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Хансу · вечер",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Вечером Лера идёт домой одна и впервые не проверяет, горит ли свет у Джунхо и нет ли сообщений от Тэюна.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "На перекрёстке телефон остаётся тихим.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Ей это нравится.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Только перед сном она ещё раз открывает сохранённый скриншот: «Спасибо.»",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep5_end_self"
+    },
+    {
+      "id": "ep5_end_self",
+      "kind": "terminal",
+      "text": "Правда стала публичной без возвращения Соа в чужой скандал. Расследование VANTA продолжается уже без Леры в роли приманки.\n\nЛера выбирает собственную историю и людей рядом с собой по одной причине: потому что сама этого хочет.\n\nПоследний онлайн так и не получил окончательного объяснения.\n\nКОНЕЦ СЕЗОНА 1 · «ПОСЛЕДНИЙ ОНЛАЙН»",
+      "background": "assets/last-online/ep4/backgrounds/morning-room.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Квартира Леры · ночь",
+        "camera": "medium",
+        "position": "center",
+        "motion": "slow-zoom",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "position": "center",
+            "framing": "medium",
+            "depth": "foreground"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Правда стала публичной без возвращения Соа в чужой скандал. Расследование VANTA продолжается уже без Леры в роли приманки.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Лера выбирает собственную историю и людей рядом с собой по одной причине: потому что сама этого хочет.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Последний онлайн так и не получил окончательного объяснения.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "КОНЕЦ СЕЗОНА 1 · «ПОСЛЕДНИЙ ОНЛАЙН»",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+const files=['e2e/fixtures/telegram.ts','e2e/episode-1.spec.ts','e2e/resume-progress.spec.ts'];
+for(const file of files) if(!fs.existsSync(file)) throw new Error(`missing ${file}`);
+const fixture=fs.readFileSync(files[0],'utf8');
+for(const needle of ['signTelegramInitData','window.Telegram','failNextSave','http://lumi.test/**']) if(!fixture.includes(needle)) throw new Error(`fixture missing ${needle}`);
+const episode=fs.readFileSync(files[1],'utf8');
+for(const needle of ['Скрыть сообщение','История только начинается','purchase_clicked','ep1_end_paywall']) if(!episode.includes(needle)) throw new Error(`episode E2E missing ${needle}`);
+const resume=fs.readFileSync(files[2],'utf8');
+for(const needle of ['ep1_first_meet','failNextSave','Не удалось сохранить','Повторить']) if(!resume.includes(needle)) throw new Error(`resume E2E missing ${needle}`);
+console.log('PASS: deterministic Telegram E2E specs cover playthrough, resume, network retry, paywall');

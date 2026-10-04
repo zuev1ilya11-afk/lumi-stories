@@ -1,0 +1,33 @@
+{
+  "episodeId": "last-online-s1-e3",
+  "generation": "Built-in Imagegen; reference identities from published LUMI art. WEBP copies optimized for mobile delivery.",
+  "images": [
+    {
+      "id": "crowd",
+      "path": "assets/last-online/ep3/cg/crowd.webp",
+      "prompt": "Lera and Mina leave VANTA through the rainy side entrance while Taeyun asks fans to give them space. Preserve published identities and costumes. Portrait premium Korean webtoon.",
+      "correction": "Selected original edited: lower calming gesture, straight wrist, natural arm and hand. Rechecked after user correction."
+    },
+    {
+      "id": "archive",
+      "path": "assets/last-online/ep3/cg/archive.webp",
+      "prompt": "Restored security camera frame at 02:19: Taeyun in rehearsal clothes outside the closed B17 door, indistinct silhouette through wired glass. No fabricated resolution of the mystery. Portrait premium Korean webtoon.",
+      "correction": "Door, glass wall panel and light rehearsal shirt aligned with published E2 02:26 frame. Restored frame02:19 shows no person behind solid door."
+    },
+    {
+      "id": "junho",
+      "path": "assets/last-online/ep3/cg/junho.webp",
+      "prompt": "Use case: illustration-story. Create a single portrait 2:3 finished CG for premium Korean webtoon visual novel LUMI. Preserve adult Lera and Junho identities, faces and outfits from reference: Lera long wavy brown hair, rose cardigan, ivory lace top, dark pleated skirt; Junho black hair, black jacket and turtleneck, small brow scar. Quiet almost-romantic evening under glass canopy outside their apartment building, rain and violet city lights behind. They stand beside each other shoulder to shoulder but NOT touching, both leaning comfortably against a ledge, Lera looks at Junho with a hesitant gentle expression, he looks back warmly but guarded. Two takeaway paper cups sit separately on ledge. Hands are lowered relaxed mostly out of frame, no phone. Frame to knees, faces in upper third, elegant detailed manhwa illustration matching reference, natural anatomy, atmospheric environment. Space lower third for game dialogue. No kiss, no text, no logos, no panels. It must work for either cautious friendship or growing attraction."
+    },
+    {
+      "id": "taeyun",
+      "path": "assets/last-online/ep3/cg/taeyun.webp",
+      "prompt": "Use case: illustration-story. Create single portrait 2:3 finished CG for premium Korean webtoon visual novel LUMI, preserve adult Lera and Taeyun identities and attire from reference: Lera long wavy brown hair rose cable cardigan ivory top dark skirt, Taeyun light brown hair ivory blazer burgundy open collar shirt. New scene: quiet cozy university cafe at late evening, both seated at opposite adjacent sides of small wooden table, two ceramic tea cups. Intimate but cautious conversation with genuine small smiles, Taeyun appears tired without stage persona, Lera attentive and steady. NOT kissing or embracing, no mandatory touch. Taeyun's relaxed hand rests on his own side of table anatomically natural, Lera hands around her cup or below table. Warm amber pendant light with cool rainy blue window, beautifully drawn original environment. Faces and cups upper 65%, low area reserved for dialogue. Same high quality detailed manhwa rendering, no text no brands no watermark no collage."
+    },
+    {
+      "id": "final",
+      "path": "assets/last-online/ep3/cg/final.webp",
+      "prompt": "Use case: illustration-story. Create single portrait 2:3 finished story CG for LUMI Korean premium webtoon mystery visual novel. Use reference ONLY for adult Lera's identity and outfit: long wavy chestnut hair, green-hazel eyes, pink cardigan ivory top. Night in her quiet apartment, rainy neon city window behind, piano hinted in dark corner. Close medium shot of Lera seated at desk, looking down toward a smartphone that LIES FLAT screen upward on desk, cool violet-blue glow illuminating her worried thoughtful face. No hand holds the phone; both hands rest simply in her lap below frame. Camera sees phone only at a shallow side angle, no readable screen, no duplicated device. On desk a modest open notebook with indistinct small lines, no readable lettering. Psychological mystery atmosphere, subtle, no ghosts, no threat or violence. Faces in upper 45%, phone in central area, darker lower third for game dialogue. Beautiful coherent detailed Korean webtoon illustration matching reference. No text no logo no watermark."
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+import { test } from 'vitest';
+import { createApiClient } from './client';
+
+function assert(condition: unknown, message: string): asserts condition {
+  if (!condition) throw new Error(message);
+}
+
+test('api client sends Telegram initData on progress and Stars payment requests', async () => {
+  const calls: Array<{ url: string; init?: RequestInit }> = [];
+  const fetcher: typeof fetch = async (input, init) => {
+    const url = String(input);
+    calls.push({ url, init });
+    let payload: unknown;
+    if (url.endsWith('/bootstrap')) payload = { playerId: 'p1', telegramUserId: 1, season1Owned: false, season1PriceStars: 149, progress: null };
+    else if (url.endsWith('/payments/invoice')) payload = { season1Owned: false, priceStars: 149, invoiceUrl: 'https://t.me/$invoice' };
+    else if (url.endsWith('/payments/status')) payload = { season1Owned: true, priceStars: 149 };
+    else if (init?.method === 'PUT') payload = { progress: JSON.parse(String(init.body)) };
+    else payload = { progress: null };
+    return new Response(JSON.stringify(payload), { status: 200, headers: { 'Content-Type': 'application/json' } });
+  };
+  const api = createApiClient({ baseUrl: 'https://api.example.test', fetcher });
+  await api.bootstrap('signed-init');
+  await api.loadProgress('signed-init');
+  await api.saveProgress('signed-init', {
+    storyId: 'last-online', seasonId: 'season-1', episodeId: 'ep1', sceneId: 's1',
+    junhoScore: 0, taeyunScore: 0, truthScore: 0, riskScore: 0, flags: {}, updatedAt: 'ignored-by-save',
+  });
+  const invoice = await api.createSeasonInvoice('signed-init');
+  const status = await api.getPaymentStatus('signed-init');
+  assert(calls.length === 5, `expected 5 calls, got ${calls.length}`);
+  for (const call of calls) {
+    assert(new Headers(call.init?.headers).get('X-Telegram-Init-Data') === 'signed-init', 'missing Telegram initData header');
+  }
+  assert(calls[0].init?.method === 'POST', 'bootstrap must POST');
+  assert(calls[1].url.includes('storyId=last-online') && calls[1].url.includes('seasonId=season-1'), 'loadProgress missing story/season');
+  const saveBody = JSON.parse(String(calls[2].init?.body));
+  assert(saveBody.updatedAt === undefined && saveBody.playerId === undefined, 'save request leaked server-owned fields');
+  assert(calls[3].init?.method === 'POST' && calls[3].url.endsWith('/payments/invoice'), 'Stars invoice request is wrong');
+  assert(calls[4].url.endsWith('/payments/status'), 'Stars status request is wrong');
+  assert(invoice.priceStars === 149 && status.season1Owned === true, 'Stars response parsing failed');
+});

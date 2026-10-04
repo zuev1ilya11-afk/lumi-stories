@@ -1,0 +1,5024 @@
+{
+  "id": "last-online-s1-e2",
+  "title": "Тот, кого все знают",
+  "startSceneId": "ep2_morning",
+  "requiredSceneIds": [
+    "ep2_morning",
+    "ep2_morning_called",
+    "ep2_morning_saved",
+    "ep2_morning_replied",
+    "ep2_hall",
+    "ep2_hall_trust",
+    "ep2_hall_evaded",
+    "ep2_soa_history",
+    "ep2_soa_told",
+    "ep2_soa_hidden",
+    "ep2_soa_replied",
+    "ep2_mina",
+    "ep2_event",
+    "ep2_call",
+    "ep2_recognized",
+    "ep2_phone_truth",
+    "ep2_phone_demand",
+    "ep2_phone_lie",
+    "ep2_last_call",
+    "ep2_photo_choice",
+    "ep2_photo_full",
+    "ep2_photo_pendant",
+    "ep2_photo_refuse",
+    "ep2_soa_incoming",
+    "ep2_soa_outgoing",
+    "ep2_archive_choice",
+    "ep2_archive_taeyun",
+    "ep2_archive_mina",
+    "ep2_archive_soa",
+    "ep2_archive_permission",
+    "ep2_archive_0226",
+    "ep2_archive_reflection",
+    "ep2_archive_deep",
+    "ep2_archive_caution",
+    "ep2_rooftop",
+    "ep2_rooftop_choice",
+    "ep2_rooftop_believe",
+    "ep2_rooftop_suspect",
+    "ep2_rooftop_junho",
+    "ep2_junho_close",
+    "ep2_junho_distant",
+    "ep2_soa_door",
+    "ep2_card_intro",
+    "ep2_card_choice",
+    "ep2_card_take",
+    "ep2_card_refuse",
+    "ep2_card_send",
+    "ep2_lift_checkpoint",
+    "ep2_lift_yours",
+    "ep2_lift_his",
+    "ep2_blocked",
+    "ep2_confrontation",
+    "ep2_end"
+  ],
+  "scenes": [
+    {
+      "id": "ep2_morning",
+      "kind": "narrative",
+      "text": "Будильник звенит второй раз. Лера так и не запомнила, когда заснула.\n\nЗа стеной тихо. На телефоне — та же комната, чужая улыбка Соа и рука Джунхо на её запястье.\n\nУтро ничего не отменило.",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Квартира Леры · следующее утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/tired.webp",
+            "emotion": "tired",
+            "pose": "tired",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Будильник звенит второй раз. Лера так и не запомнила, когда заснула.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "За стеной тихо. На телефоне — та же комната, чужая улыбка Соа и рука Джунхо на её запястье.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Утро ничего не отменило.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_morning_saved",
+      "transitions": [
+        {
+          "nextSceneId": "ep2_morning_called",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "photo_called_junho",
+              "value": true
+            }
+          ]
+        },
+        {
+          "nextSceneId": "ep2_morning_replied",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "photo_replied_soa",
+              "value": true
+            }
+          ]
+        },
+        {
+          "nextSceneId": "ep2_morning_saved",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "photo_saved",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep2_morning_called",
+      "kind": "narrative",
+      "text": "Ночной вызов остался в журнале. Ноль секунд. Предупреждение SOA остановило Леру раньше первого гудка.\n\nОна открывает контакт Джунхо. Всё ещё не знает, с какого вопроса начать.\n\nЛера: Сегодня я хотя бы дослушаю ответ.",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Квартира Леры · следующее утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone-reading",
+            "pose": "phone-reading",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Ночной вызов остался в журнале. Ноль секунд. Предупреждение SOA остановило Леру раньше первого гудка.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Она открывает контакт Джунхо. Всё ещё не знает, с какого вопроса начать.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Сегодня я хотя бы дослушаю ответ.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/concerned.webp",
+                "emotion": "concerned",
+                "pose": "concerned",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Лера"
+        }
+      ],
+      "nextSceneId": "ep2_hall"
+    },
+    {
+      "id": "ep2_morning_saved",
+      "kind": "narrative",
+      "text": "Лера проверяет фотографию. Файл на месте; дата не стала от этого понятнее.\n\nНа пианино за спиной Соа лежат ноты. Вчерашняя мелодия теперь кажется частью снимка.\n\nОна увеличивает серебряную звезду и оставляет этот фрагмент открытым.",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Квартира Леры · следующее утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone-reading",
+            "pose": "phone-reading",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера проверяет фотографию. Файл на месте; дата не стала от этого понятнее.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "На пианино за спиной Соа лежат ноты. Вчерашняя мелодия теперь кажется частью снимка.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Она увеличивает серебряную звезду и оставляет этот фрагмент открытым.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_hall"
+    },
+    {
+      "id": "ep2_morning_replied",
+      "kind": "narrative",
+      "text": "Под вчерашним «Ты была здесь?» всё ещё стоят два ответа: «Да» и «И он знает почему».\n\nПоследний вопрос так и не отправился. Лера стирает его, но не закрывает переписку.\n\nЛера: У тебя было имя. Я хочу услышать твой голос.",
+      "background": "assets/last-online/v2/backgrounds/room.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Квартира Леры · следующее утро",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone-reading",
+            "pose": "phone-reading",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Под вчерашним «Ты была здесь?» всё ещё стоят два ответа: «Да» и «И он знает почему».",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Последний вопрос так и не отправился. Лера стирает его, но не закрывает переписку.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "У тебя было имя. Я хочу услышать твой голос.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/concerned.webp",
+                "emotion": "concerned",
+                "pose": "concerned",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Лера"
+        }
+      ],
+      "nextSceneId": "ep2_hall"
+    },
+    {
+      "id": "ep2_hall",
+      "kind": "dialogue",
+      "text": "Джунхо выходит одновременно с ней. В одной руке ключи, в другой — бумажный стакан.\n\nОн замечает телефон раньше, чем встречается с ней взглядом.\n\nДжунхо: Ты спала?",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Дом Леры · восьмой этаж",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/tired.webp",
+            "emotion": "tired",
+            "pose": "tired",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/guarded.webp",
+            "emotion": "guarded",
+            "pose": "guarded",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Джунхо выходит одновременно с ней. В одной руке ключи, в другой — бумажный стакан.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "reveal"
+          }
+        },
+        {
+          "text": "Он замечает телефон раньше, чем встречается с ней взглядом.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Ты спала?",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Джунхо"
+        }
+      ],
+      "nextSceneId": "ep2_hall_evaded",
+      "transitions": [
+        {
+          "nextSceneId": "ep2_hall_trust",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "trusted_junho_warning",
+              "value": true
+            }
+          ]
+        },
+        {
+          "nextSceneId": "ep2_hall_evaded",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "evaded_junho",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep2_hall_trust",
+      "kind": "dialogue",
+      "text": "Лера: Не очень. Я помню, что ты сказал. Про сообщения.\n\nДжунхо: И всё-таки идёшь куда-то с этим лицом.\n\nЛера: Мина позвала помочь на студенческом эфире.\n\nДжунхо: Напиши, когда закончите. Не отчёт. Просто чтобы я знал, что ты добралась.\n\nОн протягивает ей тёплый стакан. На этот раз Лера не делает вид, что не заметила заботу.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Дом Леры · восьмой этаж",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "pose": "concerned",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/soft.webp",
+            "emotion": "soft",
+            "pose": "soft",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Не очень. Я помню, что ты сказал. Про сообщения.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "И всё-таки идёшь куда-то с этим лицом.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/concerned.webp",
+                "emotion": "concerned",
+                "pose": "concerned",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/soft.webp",
+                "emotion": "soft",
+                "pose": "soft",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Джунхо"
+        },
+        {
+          "text": "Мина позвала помочь на студенческом эфире.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Напиши, когда закончите. Не отчёт. Просто чтобы я знал, что ты добралась.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Джунхо"
+        },
+        {
+          "text": "Он протягивает ей тёплый стакан. На этот раз Лера не делает вид, что не заметила заботу.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_soa_history"
+    },
+    {
+      "id": "ep2_hall_evaded",
+      "kind": "dialogue",
+      "text": "Лера убирает телефон. Джунхо следит за этим движением.\n\nЛера: Сегодня студенческий эфир. Меня ждут.\n\nДжунхо: Хорошо. Если там будет VANTA — держись Мины.\n\nЛера: Ты даже не спросил, где он.\n\nОн нажимает кнопку лифта. Ответа хватает только на одно слово.\n\nДжунхо: Спросил бы — ты сказала бы?",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Дом Леры · восьмой этаж",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/defensive.webp",
+            "emotion": "defensive",
+            "pose": "defensive",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/guarded.webp",
+            "emotion": "guarded",
+            "pose": "guarded",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера убирает телефон. Джунхо следит за этим движением.",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        },
+        {
+          "text": "Сегодня студенческий эфир. Меня ждут.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Хорошо. Если там будет VANTA — держись Мины.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Джунхо"
+        },
+        {
+          "text": "Ты даже не спросил, где он.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/suspicious.webp",
+                "emotion": "suspicious",
+                "pose": "suspicious",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/distant.webp",
+                "emotion": "distant",
+                "pose": "distant",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Он нажимает кнопку лифта. Ответа хватает только на одно слово.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Спросил бы — ты сказала бы?",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Джунхо"
+        }
+      ],
+      "nextSceneId": "ep2_soa_history"
+    },
+    {
+      "id": "ep2_soa_history",
+      "kind": "dialogue",
+      "text": "Двери лифта медлят. У Леры есть несколько секунд, пока разговор ещё можно вернуть.\n\nИмя SOA лежит между ними, хотя никто его не произносит.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Дом Леры · восьмой этаж",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "pose": "concerned",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/guarded.webp",
+            "emotion": "guarded",
+            "pose": "guarded",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Двери лифта медлят. У Леры есть несколько секунд, пока разговор ещё можно вернуть.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Имя SOA лежит между ними, хотя никто его не произносит.",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_soa_hidden",
+      "transitions": [
+        {
+          "nextSceneId": "ep2_soa_told",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "told_junho_soa",
+              "value": true
+            }
+          ]
+        },
+        {
+          "nextSceneId": "ep2_soa_hidden",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "hid_soa_message",
+              "value": true
+            }
+          ]
+        },
+        {
+          "nextSceneId": "ep2_soa_replied",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "replied_soa",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep2_soa_told",
+      "kind": "dialogue",
+      "text": "Лера: Вчера я собиралась показать тебе сообщения. Сделала скриншот. Не дошла до двери.\n\nОна показывает первую строку: «Ты живёшь напротив него?»\n\nДжунхо: Теперь я вижу. Если придёт что-то ещё, сохрани время. И пришли мне.\n\nЛера: Ты мне объяснишь?\n\nДжунхо: Я постараюсь начать раньше, чем ты перестанешь спрашивать.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Дом Леры · восьмой этаж",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone-reading",
+            "pose": "phone-reading",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/guarded.webp",
+            "emotion": "guarded",
+            "pose": "guarded",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Вчера я собиралась показать тебе сообщения. Сделала скриншот. Не дошла до двери.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Она показывает первую строку: «Ты живёшь напротив него?»",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Теперь я вижу. Если придёт что-то ещё, сохрани время. И пришли мне.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+                "emotion": "phone-reading",
+                "pose": "phone-reading",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/warning.webp",
+                "emotion": "warning",
+                "pose": "warning",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Джунхо"
+        },
+        {
+          "text": "Ты мне объяснишь?",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Я постараюсь начать раньше, чем ты перестанешь спрашивать.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Джунхо"
+        }
+      ],
+      "nextSceneId": "ep2_mina"
+    },
+    {
+      "id": "ep2_soa_hidden",
+      "kind": "dialogue",
+      "text": "Телефон вибрирует в кармане. Всего лишь расписание Мины, но Лера вздрагивает.\n\nДжунхо: Кто?\n\nЛера: Мина. Она ждёт в кафе.\n\nЭто правда. Остальную правду Лера оставляет при себе.\n\nДжунхо придерживает дверь лифта, пока она не проходит. Его молчание ощущается как вопрос.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Дом Леры · восьмой этаж",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "pose": "concerned",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/suspicious.webp",
+            "emotion": "suspicious",
+            "pose": "suspicious",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Телефон вибрирует в кармане. Всего лишь расписание Мины, но Лера вздрагивает.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Кто?",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Джунхо"
+        },
+        {
+          "text": "Мина. Она ждёт в кафе.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Это правда. Остальную правду Лера оставляет при себе.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/defensive.webp",
+                "emotion": "defensive",
+                "pose": "defensive",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/suspicious.webp",
+                "emotion": "suspicious",
+                "pose": "suspicious",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Джунхо придерживает дверь лифта, пока она не проходит. Его молчание ощущается как вопрос.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_mina"
+    },
+    {
+      "id": "ep2_soa_replied",
+      "kind": "dialogue",
+      "text": "Лера: Если человеку написать «Кто ты?», а он прочитает и промолчит…\n\nДжунхо: Значит, он знает, что ты уже слушаешь.\n\nЛера не называет аккаунт. Джунхо не просит показать экран.\n\nЛера: Я уже ответила.\n\nДжунхо: Тогда прежде следующего ответа позвони живому человеку. Хотя бы Мине.",
+      "background": "assets/last-online/v2/backgrounds/hallway.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Дом Леры · восьмой этаж",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone-reading",
+            "pose": "phone-reading",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "junho",
+            "src": "assets/last-online/v2/characters/junho/guarded.webp",
+            "emotion": "guarded",
+            "pose": "guarded",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Если человеку написать «Кто ты?», а он прочитает и промолчит…",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Значит, он знает, что ты уже слушаешь.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Джунхо"
+        },
+        {
+          "text": "Лера не называет аккаунт. Джунхо не просит показать экран.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Я уже ответила.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Тогда прежде следующего ответа позвони живому человеку. Хотя бы Мине.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/concerned.webp",
+                "emotion": "concerned",
+                "pose": "concerned",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "junho",
+                "src": "assets/last-online/v2/characters/junho/warning.webp",
+                "emotion": "warning",
+                "pose": "warning",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Джунхо"
+        }
+      ],
+      "nextSceneId": "ep2_mina"
+    },
+    {
+      "id": "ep2_mina",
+      "kind": "dialogue",
+      "text": "Мина кладёт перед Лерой бейдж: «Студенческий эфир — волонтёр».\n\nМина: Нам нужен человек у служебного телефона. Ты умеешь говорить «вас ждут за сценой»?\n\nЛера: Смотря кого ждут.\n\nМина: Ли Тэюна. Двадцать пять лет, действующий участник ECLIPSE. Того самого, которого все знают.\n\nЛера узнаёт лицо на афише. Безупречная улыбка — будто у этого человека никогда не было бессонной ночи.\n\nМина: Студенческий эфир снимают в VANTA. ECLIPSE снова выступают, но про Соа всё ещё молчат. Сегодня мы работаем. Держись рядом, ладно?",
+      "background": "assets/last-online/v2/backgrounds/cafe.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "Кампус · кафе",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/tired.webp",
+            "emotion": "tired",
+            "pose": "tired",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "mina",
+            "src": "assets/last-online/v2/characters/mina/friendly.webp",
+            "emotion": "friendly",
+            "pose": "friendly",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Мина кладёт перед Лерой бейдж: «Студенческий эфир — волонтёр».",
+          "presentation": {
+            "camera": "wide",
+            "motion": "reveal"
+          }
+        },
+        {
+          "text": "Нам нужен человек у служебного телефона. Ты умеешь говорить «вас ждут за сценой»?",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/tired.webp",
+                "emotion": "tired",
+                "pose": "tired",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "mina",
+                "src": "assets/last-online/v2/characters/mina/excited.webp",
+                "emotion": "excited",
+                "pose": "excited",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Мина"
+        },
+        {
+          "text": "Смотря кого ждут.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Ли Тэюна. Двадцать пять лет, действующий участник ECLIPSE. Того самого, которого все знают.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Мина"
+        },
+        {
+          "text": "Лера узнаёт лицо на афише. Безупречная улыбка — будто у этого человека никогда не было бессонной ночи.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Студенческий эфир снимают в VANTA. ECLIPSE снова выступают, но про Соа всё ещё молчат. Сегодня мы работаем. Держись рядом, ладно?",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/curious.webp",
+                "emotion": "curious",
+                "pose": "curious",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "mina",
+                "src": "assets/last-online/v2/characters/mina/friendly.webp",
+                "emotion": "friendly",
+                "pose": "friendly",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Мина"
+        }
+      ],
+      "nextSceneId": "ep2_event"
+    },
+    {
+      "id": "ep2_event",
+      "kind": "dialogue",
+      "text": "Зал пахнет нагретым пластиком и лаком. На обратном отсчёте — четыре минуты.\n\nТэюн поправляет микрофон волонтёру и улыбается в объектив так, словно знает каждого по имени.\n\nТэюн: Если я забуду слова, ты громко кашляни. Будем считать это режиссурой.\n\nКоординатор Хан вручает Лере лист вызовов. Внизу — номер Тэюна для связи на площадке.\n\nХан: Позвони со своего, пожалуйста. Рации заняты эфиром, а нам надо проверить, что он услышит вызов в гримёрке.\n\nЛера касается нового университетского номера в настройках SIM. Самого обычного номера.",
+      "background": "assets/last-online/ep2/backgrounds/event-hall.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · студенческий эфир университета",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/curious.webp",
+            "emotion": "curious",
+            "pose": "curious",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/stage.webp",
+            "emotion": "stage",
+            "pose": "stage",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Зал пахнет нагретым пластиком и лаком. На обратном отсчёте — четыре минуты.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Тэюн поправляет микрофон волонтёру и улыбается в объектив так, словно знает каждого по имени.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/curious.webp",
+                "emotion": "curious",
+                "pose": "curious",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/stage.webp",
+                "emotion": "stage",
+                "pose": "открытые плечи, уверенная публичная улыбка",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Если я забуду слова, ты громко кашляни. Будем считать это режиссурой.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/shy.webp",
+                "emotion": "shy",
+                "pose": "shy",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/amused.webp",
+                "emotion": "amused",
+                "pose": "amused",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Координатор Хан вручает Лере лист вызовов. Внизу — номер Тэюна для связи на площадке.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Позвони со своего, пожалуйста. Рации заняты эфиром, а нам надо проверить, что он услышит вызов в гримёрке.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Хан"
+        },
+        {
+          "text": "Лера касается нового университетского номера в настройках SIM. Самого обычного номера.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+                "emotion": "phone-reading",
+                "pose": "phone-reading",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/stage.webp",
+                "emotion": "stage",
+                "pose": "stage",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          }
+        }
+      ],
+      "nextSceneId": "ep2_call"
+    },
+    {
+      "id": "ep2_call",
+      "kind": "dialogue",
+      "text": "Гудок едва успевает начаться. У Тэюна в кармане загорается экран.\n\nОн достаёт телефон на ходу. Улыбка ещё держится — привычная, отрепетированная.\n\nПотом останавливается большой палец.\n\nТэюн смотрит на цифры. На Леру. Снова на цифры.\n\nТэюн: Откуда у тебя этот номер?",
+      "background": "assets/last-online/ep2/backgrounds/backstage.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · за сценой",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone-reading",
+            "pose": "phone-reading",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/neutral.webp",
+            "emotion": "neutral",
+            "pose": "neutral",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Гудок едва успевает начаться. У Тэюна в кармане загорается экран.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "Он достаёт телефон на ходу. Улыбка ещё держится — привычная, отрепетированная.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Потом останавливается большой палец.",
+          "presentation": {
+            "camera": "extreme-close",
+            "motion": "tension"
+          }
+        },
+        {
+          "text": "Тэюн смотрит на цифры. На Леру. Снова на цифры.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/curious.webp",
+                "emotion": "curious",
+                "pose": "curious",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/surprised.webp",
+                "emotion": "surprised",
+                "pose": "surprised",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Откуда у тебя этот номер?",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          },
+          "speaker": "Тэюн"
+        }
+      ],
+      "nextSceneId": "ep2_recognized"
+    },
+    {
+      "id": "ep2_recognized",
+      "kind": "dialogue",
+      "text": "Звонок всё ещё идёт. Тэюн не сбрасывает его.\n\nТак не смотрят на незнакомый вызов. Так смотрят на дверь, которую заперли изнутри.\n\nТэюн: Пожалуйста. Ответь мне сейчас.",
+      "background": "assets/last-online/ep2/backgrounds/backstage.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "VANTA · за сценой",
+        "camera": "wide",
+        "position": "center",
+        "motion": "push-in",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [],
+        "cg": "assets/last-online/ep2/cg/recognized-number-v2.webp"
+      },
+      "beats": [
+        {
+          "text": "Звонок всё ещё идёт. Тэюн не сбрасывает его.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom",
+            "effect": "flash",
+            "haptic": "light"
+          }
+        },
+        {
+          "text": "Так не смотрят на незнакомый вызов. Так смотрят на дверь, которую заперли изнутри.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Пожалуйста. Ответь мне сейчас.",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          },
+          "speaker": "Тэюн"
+        }
+      ],
+      "choices": [
+        {
+          "id": "ep2_phone_truth",
+          "text": "Сказать правду о новой SIM-карте",
+          "nextSceneId": "ep2_phone_truth",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "taeyunScore",
+              "by": 2
+            },
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep2_phone_response",
+              "value": "truth"
+            }
+          ]
+        },
+        {
+          "id": "ep2_phone_demand",
+          "text": "Потребовать объяснить, чей это номер",
+          "nextSceneId": "ep2_phone_demand",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 2
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep2_phone_response",
+              "value": "demand"
+            }
+          ]
+        },
+        {
+          "id": "ep2_phone_lie",
+          "text": "Сказать, что это временный рабочий телефон",
+          "nextSceneId": "ep2_phone_lie",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "taeyunScore",
+              "by": -1
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 2
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep2_phone_response",
+              "value": "lie"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep2_phone_truth",
+      "kind": "dialogue",
+      "text": "Лера: Мне выдал SIM-карту университет. Я приехала позавчера. До меня номер был у другой девушки.\n\nТэюн: Какой девушки?\n\nЛера: Соа.\n\nТэюн наконец отклоняет вызов. Рука остаётся у экрана.\n\nТэюн: Спасибо, что не заставила меня угадывать. Пойдём туда, где тише.",
+      "background": "assets/last-online/ep2/backgrounds/backstage.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · за сценой",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "pose": "concerned",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/surprised.webp",
+            "emotion": "surprised",
+            "pose": "surprised",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Мне выдал SIM-карту университет. Я приехала позавчера. До меня номер был у другой девушки.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Какой девушки?",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Соа.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Тэюн наконец отклоняет вызов. Рука остаётся у экрана.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/concerned.webp",
+                "emotion": "concerned",
+                "pose": "concerned",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/vulnerable.webp",
+                "emotion": "vulnerable",
+                "pose": "vulnerable",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Спасибо, что не заставила меня угадывать. Пойдём туда, где тише.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        }
+      ],
+      "nextSceneId": "ep2_last_call"
+    },
+    {
+      "id": "ep2_phone_demand",
+      "kind": "dialogue",
+      "text": "Лера: Ты первый его узнал. Сначала скажи, кого ждал услышать.\n\nЗа ширмой включают камеру. Тэюн поворачивается к ней с готовой улыбкой.\n\nТэюн: Минуту, я сейчас вернусь.\n\nКогда он снова смотрит на Леру, улыбки уже нет.\n\nТэюн: Соа. Но я не ждал. Я три года боялся, что однажды всё-таки услышу.",
+      "background": "assets/last-online/ep2/backgrounds/backstage.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · за сценой",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/suspicious.webp",
+            "emotion": "suspicious",
+            "pose": "suspicious",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/guarded.webp",
+            "emotion": "guarded",
+            "pose": "guarded",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Ты первый его узнал. Сначала скажи, кого ждал услышать.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "За ширмой включают камеру. Тэюн поворачивается к ней с готовой улыбкой.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/suspicious.webp",
+                "emotion": "suspicious",
+                "pose": "suspicious",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/stage.webp",
+                "emotion": "stage",
+                "pose": "stage",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Минуту, я сейчас вернусь.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Когда он снова смотрит на Леру, улыбки уже нет.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/suspicious.webp",
+                "emotion": "suspicious",
+                "pose": "suspicious",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/guarded.webp",
+                "emotion": "guarded",
+                "pose": "guarded",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Соа. Но я не ждал. Я три года боялся, что однажды всё-таки услышу.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        }
+      ],
+      "nextSceneId": "ep2_last_call"
+    },
+    {
+      "id": "ep2_phone_lie",
+      "kind": "dialogue",
+      "text": "Лера: Рабочий телефон. Мне его дали на день.\n\nТэюн: Тогда почему на чехле твой студенческий пропуск?\n\nЛера прижимает ладонь к прозрачному чехлу. Поздно.\n\nТэюн: Можешь не доверять мне. Но номер не случайный. Он принадлежал Соа.\n\nТэюн отступает, оставляя свободный проход. Лера идёт следом сама.",
+      "background": "assets/last-online/ep2/backgrounds/backstage.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · за сценой",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/defensive.webp",
+            "emotion": "defensive",
+            "pose": "defensive",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/guarded.webp",
+            "emotion": "guarded",
+            "pose": "guarded",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Рабочий телефон. Мне его дали на день.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Тогда почему на чехле твой студенческий пропуск?",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Лера прижимает ладонь к прозрачному чехлу. Поздно.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/defensive.webp",
+                "emotion": "defensive",
+                "pose": "defensive",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+                "emotion": "serious",
+                "pose": "serious",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Можешь не доверять мне. Но номер не случайный. Он принадлежал Соа.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Тэюн отступает, оставляя свободный проход. Лера идёт следом сама.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_last_call"
+    },
+    {
+      "id": "ep2_last_call",
+      "kind": "dialogue",
+      "text": "После короткого эфира Тэюн возвращается к Лере и проводит её в репетиционную. Зеркала закрыты шторами; телефон он кладёт экраном вниз.\n\nЛера: Ты увидел имя контакта?\n\nТэюн: Нет. Я помню номер наизусть. После её исчезновения набирал его столько раз, что пальцы делали это сами.\n\nТэюн: В ту ночь я позвонил ей в 02:17. Она ответила — тишина. Потом музыка, несколько нот. И связь оборвалась.\n\nЛера: Она ничего не сказала?\n\nТэюн: Я слышал, как она дышит. Всё время думаю: может, надо было молчать и слушать дольше.",
+      "background": "assets/last-online/ep2/backgrounds/practice-room.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · малая репетиционная",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "pose": "concerned",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "pose": "serious",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "После короткого эфира Тэюн возвращается к Лере и проводит её в репетиционную. Зеркала закрыты шторами; телефон он кладёт экраном вниз.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "pull-out"
+          }
+        },
+        {
+          "text": "Ты увидел имя контакта?",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Нет. Я помню номер наизусть. После её исчезновения набирал его столько раз, что пальцы делали это сами.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/concerned.webp",
+                "emotion": "concerned",
+                "pose": "concerned",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/vulnerable.webp",
+                "emotion": "vulnerable",
+                "pose": "vulnerable",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "В ту ночь я позвонил ей в 02:17. Она ответила — тишина. Потом музыка, несколько нот. И связь оборвалась.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Она ничего не сказала?",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Я слышал, как она дышит. Всё время думаю: может, надо было молчать и слушать дольше.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          },
+          "speaker": "Тэюн"
+        }
+      ],
+      "nextSceneId": "ep2_photo_choice"
+    },
+    {
+      "id": "ep2_photo_choice",
+      "kind": "dialogue",
+      "text": "Лера открывает вчерашнее вложение. На маленьком экране Джунхо всё ещё держит Соа за запястье.\n\nТэюн замечает серебряный отблеск, но не тянется к телефону.\n\nТэюн: У тебя есть что-то ещё?",
+      "background": "assets/last-online/ep2/backgrounds/practice-room.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · малая репетиционная",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone-reading",
+            "pose": "phone-reading",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/guarded.webp",
+            "emotion": "guarded",
+            "pose": "guarded",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера открывает вчерашнее вложение. На маленьком экране Джунхо всё ещё держит Соа за запястье.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Тэюн замечает серебряный отблеск, но не тянется к телефону.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "У тебя есть что-то ещё?",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        }
+      ],
+      "choices": [
+        {
+          "id": "ep2_photo_full",
+          "text": "Показать фотографию целиком",
+          "nextSceneId": "ep2_photo_full",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "taeyunScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 2
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep2_photo_evidence",
+              "value": "full"
+            }
+          ]
+        },
+        {
+          "id": "ep2_photo_pendant",
+          "text": "Показать только подвеску на снимке",
+          "nextSceneId": "ep2_photo_pendant",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "junhoScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep2_photo_evidence",
+              "value": "pendant"
+            }
+          ]
+        },
+        {
+          "id": "ep2_photo_refuse",
+          "text": "Убрать телефон: «Пока нет»",
+          "nextSceneId": "ep2_photo_refuse",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "taeyunScore",
+              "by": -1
+            },
+            {
+              "kind": "inc",
+              "score": "junhoScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep2_photo_evidence",
+              "value": "refuse"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep2_photo_full",
+      "kind": "dialogue",
+      "text": "Она разворачивает экран. Тэюн смотрит сначала на Соа, потом на чужую руку у её запястья.\n\nТэюн: Это до исчезновения. Я помню эти шторы.\n\nЛера: Ты был у неё дома? Сейчас там живу я.\n\nТэюн: Был в этой комнате. Это не значит, что я сделал снимок. И не значит, что он объясняет Джунхо.\n\nЛера: Ты очень быстро решил, что я собираюсь спросить.\n\nТэюн: Я три года репетирую ответы. Всё равно ни один не подходит.",
+      "background": "assets/last-online/ep2/backgrounds/practice-room.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · малая репетиционная",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone-reading",
+            "pose": "phone-reading",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "pose": "serious",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Она разворачивает экран. Тэюн смотрит сначала на Соа, потом на чужую руку у её запястья.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "Это до исчезновения. Я помню эти шторы.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Ты был у неё дома? Сейчас там живу я.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/suspicious.webp",
+                "emotion": "suspicious",
+                "pose": "suspicious",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/surprised.webp",
+                "emotion": "surprised",
+                "pose": "surprised",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Был в этой комнате. Это не значит, что я сделал снимок. И не значит, что он объясняет Джунхо.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Ты очень быстро решил, что я собираюсь спросить.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Я три года репетирую ответы. Всё равно ни один не подходит.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/concerned.webp",
+                "emotion": "concerned",
+                "pose": "concerned",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/vulnerable.webp",
+                "emotion": "vulnerable",
+                "pose": "vulnerable",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Тэюн"
+        }
+      ],
+      "nextSceneId": "ep2_soa_incoming"
+    },
+    {
+      "id": "ep2_photo_pendant",
+      "kind": "dialogue",
+      "text": "Лера увеличивает звезду. Края фотографии исчезают за рамкой экрана.\n\nЛера: Подвеску я вчера нашла в коридоре. Джунхо забрал её.\n\nТэюн: У одного луча царапина. Она называла его северным, даже когда держала звезду вверх ногами.\n\nНа секунду это похоже на обычное воспоминание. Потом Тэюн опускает глаза.\n\nТэюн: Значит, он всё это время хранил её.\n\nЛера: Или получил только вчера. Мы этого не знаем.",
+      "background": "assets/last-online/ep2/backgrounds/practice-room.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · малая репетиционная",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone-reading",
+            "pose": "phone-reading",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "pose": "serious",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера увеличивает звезду. Края фотографии исчезают за рамкой экрана.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Подвеску я вчера нашла в коридоре. Джунхо забрал её.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "У одного луча царапина. Она называла его северным, даже когда держала звезду вверх ногами.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/curious.webp",
+                "emotion": "curious",
+                "pose": "curious",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/amused.webp",
+                "emotion": "amused",
+                "pose": "amused",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "На секунду это похоже на обычное воспоминание. Потом Тэюн опускает глаза.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/concerned.webp",
+                "emotion": "concerned",
+                "pose": "concerned",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/vulnerable.webp",
+                "emotion": "vulnerable",
+                "pose": "vulnerable",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Значит, он всё это время хранил её.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Или получил только вчера. Мы этого не знаем.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        }
+      ],
+      "nextSceneId": "ep2_soa_incoming"
+    },
+    {
+      "id": "ep2_photo_refuse",
+      "kind": "dialogue",
+      "text": "Лера: Пока нет. Я не знаю, что ты сделаешь с тем, что увидишь.\n\nТэюн: Справедливо.\n\nОн убирает со стула свою куртку, предлагая Лере сесть, но остаётся у двери.\n\nТэюн: Тогда я покажу тебе то, что есть у меня. Ты ничего не обязана давать взамен.\n\nМежду ними остаётся свободный стул. Лере почему-то легче от этой дистанции.",
+      "background": "assets/last-online/ep2/backgrounds/practice-room.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · малая репетиционная",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/defensive.webp",
+            "emotion": "defensive",
+            "pose": "defensive",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "pose": "serious",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Пока нет. Я не знаю, что ты сделаешь с тем, что увидишь.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Справедливо.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/defensive.webp",
+                "emotion": "defensive",
+                "pose": "defensive",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/guarded.webp",
+                "emotion": "guarded",
+                "pose": "guarded",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Он убирает со стула свою куртку, предлагая Лере сесть, но остаётся у двери.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Тогда я покажу тебе то, что есть у меня. Ты ничего не обязана давать взамен.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Между ними остаётся свободный стул. Лере почему-то легче от этой дистанции.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_soa_incoming"
+    },
+    {
+      "id": "ep2_soa_incoming",
+      "kind": "message",
+      "text": "SOA: Ты сегодня почти не ела. Не забывай про себя.\n\nSOA: Он хорошо помнит время. Спроси, почему он был рядом.",
+      "background": "assets/last-online/ep2/backgrounds/practice-room.webp",
+      "presentation": {
+        "mode": "phone",
+        "location": "VANTA · малая репетиционная",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": []
+      },
+      "beats": [
+        {
+          "text": "Ты сегодня почти не ела. Не забывай про себя.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "SOA"
+        },
+        {
+          "text": "Он хорошо помнит время. Спроси, почему он был рядом.",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          },
+          "speaker": "SOA"
+        }
+      ],
+      "nextSceneId": "ep2_soa_outgoing",
+      "chat": {
+        "status": "была в сети очень давно",
+        "typing": false,
+        "context": "Лера не знает, забота это или способ показать: за ней наблюдают.",
+        "messages": [
+          {
+            "from": "soa",
+            "text": "Ты сегодня почти не ела. Не забывай про себя."
+          },
+          {
+            "from": "soa",
+            "text": "Он хорошо помнит время. Спроси, почему он был рядом."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ep2_soa_outgoing",
+      "kind": "message",
+      "text": "Лера: Ты сейчас видишь меня?\n\nSOA: Я хочу, чтобы ты вернулась домой.\n\nЛера: Тогда помоги мне понять, кому верить.\n\nSOA снова не в сети.",
+      "background": "assets/last-online/ep2/backgrounds/practice-room.webp",
+      "presentation": {
+        "mode": "phone",
+        "location": "VANTA · малая репетиционная",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": []
+      },
+      "beats": [
+        {
+          "text": "Ты сейчас видишь меня?",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Я хочу, чтобы ты вернулась домой.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "SOA"
+        },
+        {
+          "text": "Тогда помоги мне понять, кому верить.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "SOA снова не в сети.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_archive_choice",
+      "chat": {
+        "status": "была в сети очень давно",
+        "typing": false,
+        "context": "Тэюн молча ставит рядом стакан воды. Лера переворачивает телефон.",
+        "messages": [
+          {
+            "from": "lera",
+            "text": "Ты сейчас видишь меня?",
+            "meta": "прочитано"
+          },
+          {
+            "from": "soa",
+            "text": "Я хочу, чтобы ты вернулась домой."
+          },
+          {
+            "from": "lera",
+            "text": "Тогда помоги мне понять, кому верить.",
+            "meta": "прочитано"
+          },
+          {
+            "from": "system",
+            "text": "SOA снова не в сети."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ep2_archive_choice",
+      "kind": "dialogue",
+      "text": "Лера: Почему ты был рядом с Соа той ночью?\n\nТэюн задерживает вдох. Теперь он смотрит не на телефон, а прямо на неё.\n\nТэюн: Я был в здании. Есть копия коридорной записи из дела. Хан хранит её с материалами ECLIPSE. Попросим показать.\n\nЛера хочет увидеть запись. Но решить, с кем делать следующий шаг, может сама.",
+      "background": "assets/last-online/ep2/backgrounds/practice-room.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · малая репетиционная",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/suspicious.webp",
+            "emotion": "suspicious",
+            "pose": "suspicious",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/guarded.webp",
+            "emotion": "guarded",
+            "pose": "guarded",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Почему ты был рядом с Соа той ночью?",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Тэюн задерживает вдох. Теперь он смотрит не на телефон, а прямо на неё.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Я был в здании. Есть копия коридорной записи из дела. Хан хранит её с материалами ECLIPSE. Попросим показать.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Лера хочет увидеть запись. Но решить, с кем делать следующий шаг, может сама.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "ep2_archive_taeyun",
+          "text": "Пойти в архив с Тэюном",
+          "nextSceneId": "ep2_archive_taeyun",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "taeyunScore",
+              "by": 2
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep2_archive_partner",
+              "value": "taeyun"
+            }
+          ]
+        },
+        {
+          "id": "ep2_archive_mina",
+          "text": "Позвать Мину и пойти с ней",
+          "nextSceneId": "ep2_archive_mina",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 2
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": -1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep2_archive_partner",
+              "value": "mina"
+            }
+          ]
+        },
+        {
+          "id": "ep2_archive_soa",
+          "text": "Сначала спросить SOA об архиве",
+          "nextSceneId": "ep2_archive_soa",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 2
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep2_archive_partner",
+              "value": "soa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep2_archive_taeyun",
+      "kind": "dialogue",
+      "text": "Лера: Пойдём вместе. И если ты узнаешь кого-то — скажи до того, как я спрошу.\n\nТэюн кивает и набирает координатора. Он не отходит, пока говорит.\n\nТэюн: Хан, это касается Соа. Я разрешаю показать фрагмент с моим участием. Только просмотр, при вас.\n\nЛера идёт рядом с ним по коридору. Здесь он впервые не пытается идти на полшага впереди.",
+      "background": "assets/last-online/ep2/backgrounds/backstage.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · за сценой",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/curious.webp",
+            "emotion": "curious",
+            "pose": "curious",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "pose": "serious",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Пойдём вместе. И если ты узнаешь кого-то — скажи до того, как я спрошу.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Тэюн кивает и набирает координатора. Он не отходит, пока говорит.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Хан, это касается Соа. Я разрешаю показать фрагмент с моим участием. Только просмотр, при вас.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Лера идёт рядом с ним по коридору. Здесь он впервые не пытается идти на полшага впереди.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_archive_permission"
+    },
+    {
+      "id": "ep2_archive_mina",
+      "kind": "dialogue",
+      "text": "Лера: Мне нужна Мина. Ты можешь попросить Хан, но смотреть я буду с ней.\n\nТэюн: Конечно.\n\nМина приходит без обычной шутки. Лера коротко рассказывает ей о номере Соа.\n\nМина: Я записана помощницей Хан по архивным титрам эфира. На закрытые записи это не пропуск. Спросим отдельно.\n\nЛера: Спасибо, что не сказала «тебе показалось».\n\nМина: Я могу испугаться потом. Сейчас пойдём вместе.",
+      "background": "assets/last-online/ep2/backgrounds/backstage.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · за сценой",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "pose": "concerned",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/neutral.webp",
+            "emotion": "neutral",
+            "pose": "neutral",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Мне нужна Мина. Ты можешь попросить Хан, но смотреть я буду с ней.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Конечно.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/defensive.webp",
+                "emotion": "defensive",
+                "pose": "defensive",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/guarded.webp",
+                "emotion": "guarded",
+                "pose": "guarded",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Мина приходит без обычной шутки. Лера коротко рассказывает ей о номере Соа.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/concerned.webp",
+                "emotion": "concerned",
+                "pose": "concerned",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "mina",
+                "src": "assets/last-online/v2/characters/mina/surprised.webp",
+                "emotion": "surprised",
+                "pose": "surprised",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Я записана помощницей Хан по архивным титрам эфира. На закрытые записи это не пропуск. Спросим отдельно.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Мина"
+        },
+        {
+          "text": "Спасибо, что не сказала «тебе показалось».",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Я могу испугаться потом. Сейчас пойдём вместе.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/concerned.webp",
+                "emotion": "concerned",
+                "pose": "concerned",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "mina",
+                "src": "assets/last-online/v2/characters/mina/friendly.webp",
+                "emotion": "friendly",
+                "pose": "friendly",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Мина"
+        }
+      ],
+      "nextSceneId": "ep2_archive_permission"
+    },
+    {
+      "id": "ep2_archive_soa",
+      "kind": "message",
+      "text": "Лера: Тэюн предлагает архив. Что мне искать?\n\nSOA: Не лицо. Посмотри в стекло.\n\nЛера: Какое стекло?\n\nСообщение прочитано. Ответа нет.",
+      "background": "assets/last-online/ep2/backgrounds/backstage.webp",
+      "presentation": {
+        "mode": "phone",
+        "location": "VANTA · за сценой",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": []
+      },
+      "beats": [
+        {
+          "text": "Тэюн предлагает архив. Что мне искать?",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Не лицо. Посмотри в стекло.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "SOA"
+        },
+        {
+          "text": "Какое стекло?",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Сообщение прочитано. Ответа нет.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_archive_permission",
+      "chat": {
+        "status": "была в сети очень давно",
+        "typing": false,
+        "context": "Лера убирает телефон и просит Тэюна связаться с Хан. Сообщение не даёт ей права войти в архив.",
+        "messages": [
+          {
+            "from": "lera",
+            "text": "Тэюн предлагает архив. Что мне искать?",
+            "meta": "прочитано"
+          },
+          {
+            "from": "soa",
+            "text": "Не лицо. Посмотри в стекло."
+          },
+          {
+            "from": "lera",
+            "text": "Какое стекло?",
+            "meta": "прочитано"
+          },
+          {
+            "from": "system",
+            "text": "Сообщение прочитано. Ответа нет."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ep2_archive_permission",
+      "kind": "dialogue",
+      "text": "Хан встречает их у поста хранения. Тэюн подтвердил согласие на просмотр; Мина вернулась с листом архивных титров.\n\nХан: Я была координатором ECLIPSE и тогда. Это копия переданного следствию фрагмента, не общий доступ к камерам.\n\nХан проверяет разрешение хранителя на совместный просмотр и сама вводит служебный пароль.\n\nХан: Без съёмки экрана. Можете записать время и номер комнаты. Остальные лица здесь скрыты.\n\nОна открывает файл с датой исчезновения. Тэюн остаётся у двери, Мина — рядом с Лерой.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архивный пост",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "pose": "concerned",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/guarded.webp",
+            "emotion": "guarded",
+            "pose": "guarded",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Хан встречает их у поста хранения. Тэюн подтвердил согласие на просмотр; Мина вернулась с листом архивных титров.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "reveal"
+          }
+        },
+        {
+          "text": "Я была координатором ECLIPSE и тогда. Это копия переданного следствию фрагмента, не общий доступ к камерам.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Хан"
+        },
+        {
+          "text": "Хан проверяет разрешение хранителя на совместный просмотр и сама вводит служебный пароль.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Без съёмки экрана. Можете записать время и номер комнаты. Остальные лица здесь скрыты.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Хан"
+        },
+        {
+          "text": "Она открывает файл с датой исчезновения. Тэюн остаётся у двери, Мина — рядом с Лерой.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/concerned.webp",
+                "emotion": "concerned",
+                "pose": "concerned",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "mina",
+                "src": "assets/last-online/v2/characters/mina/friendly.webp",
+                "emotion": "friendly",
+                "pose": "friendly",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          }
+        }
+      ],
+      "nextSceneId": "ep2_archive_0226"
+    },
+    {
+      "id": "ep2_archive_0226",
+      "kind": "narrative",
+      "text": "02:26. Соа идёт по служебному коридору к двери B17.\n\nРядом мужчина в куртке ECLIPSE. Лицо скрывают угол камеры и поднятый воротник.\n\nОна оборачивается к нему. Изображение пропускает кадр.\n\nНе видно, держит он её или просто идёт близко. Без звука даже её движение нельзя назвать согласием.\n\nМина показывает на стеклянную панель у двери. В ней есть ещё одно отражение.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "VANTA · архивный пост",
+        "camera": "wide",
+        "position": "center",
+        "motion": "push-in",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [],
+        "cg": "assets/last-online/ep2/cg/archive-0226.webp"
+      },
+      "beats": [
+        {
+          "text": "02:26. Соа идёт по служебному коридору к двери B17.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Рядом мужчина в куртке ECLIPSE. Лицо скрывают угол камеры и поднятый воротник.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Она оборачивается к нему. Изображение пропускает кадр.",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        },
+        {
+          "text": "Не видно, держит он её или просто идёт близко. Без звука даже её движение нельзя назвать согласием.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Мина показывает на стеклянную панель у двери. В ней есть ещё одно отражение.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_archive_reflection"
+    },
+    {
+      "id": "ep2_archive_reflection",
+      "kind": "dialogue",
+      "text": "В отражении — Тэюн. Он бежит к ним; светлая манжета пересекает стекло.\n\nЛера: Ты сказал, что был в здании. Ты был в нескольких шагах.\n\nТэюн: Я увидел её слишком поздно.\n\nЛера: Для чего поздно?\n\nТэюн не отвечает. Хан ставит запись на паузу: следующий фрагмент в этой копии отсутствует.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "VANTA · архивный пост",
+        "camera": "wide",
+        "position": "center",
+        "motion": "push-in",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [],
+        "cg": "assets/last-online/ep2/cg/archive-0226.webp"
+      },
+      "beats": [
+        {
+          "text": "В отражении — Тэюн. Он бежит к ним; светлая манжета пересекает стекло.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in",
+            "effect": "dark-pulse",
+            "haptic": "light"
+          }
+        },
+        {
+          "text": "Ты сказал, что был в здании. Ты был в нескольких шагах.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Я увидел её слишком поздно.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Для чего поздно?",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Тэюн не отвечает. Хан ставит запись на паузу: следующий фрагмент в этой копии отсутствует.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_archive_caution",
+      "transitions": [
+        {
+          "nextSceneId": "ep2_archive_deep",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "deep_scandal_search",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep2_archive_deep",
+      "kind": "dialogue",
+      "text": "Лера вспоминает исчезнувший комментарий: искать того, кому было выгодно исчезновение Соа.\n\nЛера: И куртку мог носить не только Джунхо. Я читала, что их выдавали всей команде.\n\nХан: Стилисты, танцоры, менеджеры. Да. Но на этой копии мы никого не опознаем.\n\nРаньше Лера собирала версии. Сейчас записывает только то, что действительно видно: 02:26, B17, трое в коридоре.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архивный пост",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/suspicious.webp",
+            "emotion": "suspicious",
+            "pose": "suspicious",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/guarded.webp",
+            "emotion": "guarded",
+            "pose": "guarded",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера вспоминает исчезнувший комментарий: искать того, кому было выгодно исчезновение Соа.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "И куртку мог носить не только Джунхо. Я читала, что их выдавали всей команде.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Стилисты, танцоры, менеджеры. Да. Но на этой копии мы никого не опознаем.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Хан"
+        },
+        {
+          "text": "Раньше Лера собирала версии. Сейчас записывает только то, что действительно видно: 02:26, B17, трое в коридоре.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_rooftop"
+    },
+    {
+      "id": "ep2_archive_caution",
+      "kind": "dialogue",
+      "text": "Тэюн: Это не доказывает, что Джунхо был тем человеком. И не оправдывает меня.\n\nЛера: Я знаю. Человек в отражении может бежать и спасать, и мешать.\n\nХан закрывает файл. Мина перепроверяет записанные цифры: 02:26. Девять минут после звонка.\n\nЛера подчёркивает разницу. Между двумя временами пока нет истории — только пустое место.",
+      "background": "assets/last-online/ep2/backgrounds/archive.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · архивный пост",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "pose": "concerned",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "pose": "serious",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Это не доказывает, что Джунхо был тем человеком. И не оправдывает меня.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Я знаю. Человек в отражении может бежать и спасать, и мешать.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Хан закрывает файл. Мина перепроверяет записанные цифры: 02:26. Девять минут после звонка.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Лера подчёркивает разницу. Между двумя временами пока нет истории — только пустое место.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_rooftop"
+    },
+    {
+      "id": "ep2_rooftop",
+      "kind": "dialogue",
+      "text": "Эфир давно закончился. Мина остаётся с Хан сдавать бейджи; Лера выходит на крышу. Тэюн останавливается в дверях.\n\nТэюн: Можно?\n\nОна кивает. Он встаёт рядом, оставляя между ними ширину ладони.\n\nТэюн: Когда на тебя смотрят тысячи людей, легко сделать вид, что ни один не смотрит по-настоящему.\n\nЛера: А сейчас?\n\nТэюн: Сейчас я не знаю, куда деть руки.\n\nВетер бросает прядь ей на губы. Тэюн поднимает руку, останавливается — и ждёт, пока она сама уберёт волосы.",
+      "background": "assets/last-online/ep2/backgrounds/rooftop.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · крыша, сумерки",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "pose": "concerned",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/neutral.webp",
+            "emotion": "neutral",
+            "pose": "neutral",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Эфир давно закончился. Мина остаётся с Хан сдавать бейджи; Лера выходит на крышу. Тэюн останавливается в дверях.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "pull-out"
+          }
+        },
+        {
+          "text": "Можно?",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Она кивает. Он встаёт рядом, оставляя между ними ширину ладони.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Когда на тебя смотрят тысячи людей, легко сделать вид, что ни один не смотрит по-настоящему.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/concerned.webp",
+                "emotion": "concerned",
+                "pose": "concerned",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/vulnerable.webp",
+                "emotion": "vulnerable",
+                "pose": "vulnerable",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "А сейчас?",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Сейчас я не знаю, куда деть руки.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/shy.webp",
+                "emotion": "shy",
+                "pose": "shy",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/amused.webp",
+                "emotion": "amused",
+                "pose": "amused",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Ветер бросает прядь ей на губы. Тэюн поднимает руку, останавливается — и ждёт, пока она сама уберёт волосы.",
+          "presentation": {
+            "camera": "close",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_rooftop_choice"
+    },
+    {
+      "id": "ep2_rooftop_choice",
+      "kind": "dialogue",
+      "text": "Тэюн: Я не смог её остановить. Это всё, что я могу сказать сейчас.\n\nБлизость делает его голос тише. Но не делает ответ полнее.\n\nЛера чувствует тепло его плеча сквозь холодный воздух. Решение от этого не становится проще.",
+      "background": "assets/last-online/ep2/backgrounds/rooftop.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · крыша, сумерки",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "pose": "concerned",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/vulnerable.webp",
+            "emotion": "vulnerable",
+            "pose": "vulnerable",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Я не смог её остановить. Это всё, что я могу сказать сейчас.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/concerned.webp",
+                "emotion": "concerned",
+                "pose": "concerned",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/vulnerable.webp",
+                "emotion": "vulnerable",
+                "pose": "vulnerable",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Близость делает его голос тише. Но не делает ответ полнее.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Лера чувствует тепло его плеча сквозь холодный воздух. Решение от этого не становится проще.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "ep2_rooftop_believe",
+          "text": "Поверить ему — пока",
+          "nextSceneId": "ep2_rooftop_believe",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "taeyunScore",
+              "by": 2
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep2_rooftop_response",
+              "value": "believe"
+            }
+          ]
+        },
+        {
+          "id": "ep2_rooftop_suspect",
+          "text": "Сказать, что его молчание подозрительно",
+          "nextSceneId": "ep2_rooftop_suspect",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 2
+            },
+            {
+              "kind": "inc",
+              "score": "taeyunScore",
+              "by": -1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep2_rooftop_response",
+              "value": "suspect"
+            }
+          ]
+        },
+        {
+          "id": "ep2_rooftop_junho",
+          "text": "Позвонить Джунхо при нём",
+          "nextSceneId": "ep2_rooftop_junho",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "junhoScore",
+              "by": 2
+            },
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep2_rooftop_response",
+              "value": "junho"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep2_rooftop_believe",
+      "kind": "dialogue",
+      "text": "Лера: Я верю, что тебе страшно. С остальным разберусь сама.\n\nТэюн коротко смеётся — совсем не так, как на сцене.\n\nТэюн: Лучшее предложение за весь день.\n\nОна кладёт ладонь на перила рядом с его рукой. Он поворачивает ладонь вверх, не касаясь её.\n\nТелефон вибрирует. Джунхо. Лера отвечает, не пряча экран.",
+      "background": "assets/last-online/ep2/backgrounds/rooftop.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · крыша, сумерки",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/shy.webp",
+            "emotion": "shy",
+            "pose": "shy",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/vulnerable.webp",
+            "emotion": "vulnerable",
+            "pose": "vulnerable",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Я верю, что тебе страшно. С остальным разберусь сама.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Тэюн коротко смеётся — совсем не так, как на сцене.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/shy.webp",
+                "emotion": "shy",
+                "pose": "shy",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/amused.webp",
+                "emotion": "amused",
+                "pose": "amused",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Лучшее предложение за весь день.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Она кладёт ладонь на перила рядом с его рукой. Он поворачивает ладонь вверх, не касаясь её.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Телефон вибрирует. Джунхо. Лера отвечает, не пряча экран.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+                "emotion": "phone-reading",
+                "pose": "phone-reading",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/guarded.webp",
+                "emotion": "guarded",
+                "pose": "guarded",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          }
+        }
+      ],
+      "nextSceneId": "ep2_junho_distant",
+      "transitions": [
+        {
+          "nextSceneId": "ep2_junho_close",
+          "conditions": [
+            {
+              "kind": "scoreAtLeast",
+              "score": "junhoScore",
+              "value": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep2_rooftop_suspect",
+      "kind": "dialogue",
+      "text": "Лера: Ты умеешь говорить ровно столько правды, чтобы захотелось тебя пожалеть.\n\nТэюн опускает взгляд. Улыбка на секунду возвращается — и он сам стирает её.\n\nТэюн: Да. Этому меня научили лучше, чем петь.\n\nЛера: Тогда сегодня попробуй разучиться.\n\nВходящий вызов Джунхо разрезает паузу. Лера отвечает при Тэюне.",
+      "background": "assets/last-online/ep2/backgrounds/rooftop.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · крыша, сумерки",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/suspicious.webp",
+            "emotion": "suspicious",
+            "pose": "suspicious",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "pose": "serious",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Ты умеешь говорить ровно столько правды, чтобы захотелось тебя пожалеть.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Тэюн опускает взгляд. Улыбка на секунду возвращается — и он сам стирает её.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/suspicious.webp",
+                "emotion": "suspicious",
+                "pose": "suspicious",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/guarded.webp",
+                "emotion": "guarded",
+                "pose": "guarded",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Да. Этому меня научили лучше, чем петь.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Тогда сегодня попробуй разучиться.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Входящий вызов Джунхо разрезает паузу. Лера отвечает при Тэюне.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+                "emotion": "phone-reading",
+                "pose": "phone-reading",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+                "emotion": "serious",
+                "pose": "serious",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          }
+        }
+      ],
+      "nextSceneId": "ep2_junho_distant",
+      "transitions": [
+        {
+          "nextSceneId": "ep2_junho_close",
+          "conditions": [
+            {
+              "kind": "scoreAtLeast",
+              "score": "junhoScore",
+              "value": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep2_rooftop_junho",
+      "kind": "dialogue",
+      "text": "Лера: Я хочу услышать его версию. Пока ты рядом.\n\nТэюн смотрит на имя контакта и отходит от перил.\n\nТэюн: Попроси его не выбирать слова за тебя.\n\nЛера: Это относится и к тебе.\n\nДжунхо отвечает со второго гудка. На заднем плане коротко звякают ключи.",
+      "background": "assets/last-online/ep2/backgrounds/rooftop.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · крыша, сумерки",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone-reading",
+            "pose": "phone-reading",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "pose": "serious",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Я хочу услышать его версию. Пока ты рядом.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Тэюн смотрит на имя контакта и отходит от перил.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+                "emotion": "phone-reading",
+                "pose": "phone-reading",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/guarded.webp",
+                "emotion": "guarded",
+                "pose": "guarded",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Попроси его не выбирать слова за тебя.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Это относится и к тебе.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Джунхо отвечает со второго гудка. На заднем плане коротко звякают ключи.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_junho_distant",
+      "transitions": [
+        {
+          "nextSceneId": "ep2_junho_close",
+          "conditions": [
+            {
+              "kind": "scoreAtLeast",
+              "score": "junhoScore",
+              "value": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep2_junho_close",
+      "kind": "dialogue",
+      "text": "Джунхо · по телефону: Лера? Ты в порядке?\n\nЛера: Я в VANTA. С Тэюном. Видела запись: Соа у B17 в 02:26.\n\nДжунхо выдыхает. Лера слышит, как захлопывается дверца машины.\n\nДжунхо · по телефону: Спасибо, что сказала сама. Я еду. Скинь служебный вход.\n\nЛера: Не приезжай решать за меня. Мне нужны ответы.\n\nДжунхо · по телефону: Знаю. И я уже слишком долго заставлял тебя ждать.\n\nЛера отправляет геометку. Тэюн стоит близко, но теперь расстояние между ними будто занято другим человеком.",
+      "background": "assets/last-online/ep2/backgrounds/rooftop.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · крыша, сумерки",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "pose": "concerned",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/guarded.webp",
+            "emotion": "guarded",
+            "pose": "guarded",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера? Ты в порядке?",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Джунхо · по телефону"
+        },
+        {
+          "text": "Я в VANTA. С Тэюном. Видела запись: Соа у B17 в 02:26.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Джунхо выдыхает. Лера слышит, как захлопывается дверца машины.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Спасибо, что сказала сама. Я еду. Скинь служебный вход.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Джунхо · по телефону"
+        },
+        {
+          "text": "Не приезжай решать за меня. Мне нужны ответы.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Знаю. И я уже слишком долго заставлял тебя ждать.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Джунхо · по телефону"
+        },
+        {
+          "text": "Лера отправляет геометку. Тэюн стоит близко, но теперь расстояние между ними будто занято другим человеком.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_soa_door"
+    },
+    {
+      "id": "ep2_junho_distant",
+      "kind": "dialogue",
+      "text": "Джунхо · по телефону: Ты всё-таки в VANTA.\n\nЛера: С Тэюном. Мы видели запись Соа у B17. В 02:26.\n\nДжунхо · по телефону: Не заходи туда.\n\nЛера: Если ты опять ограничишься запретом, я положу трубку.\n\nПауза. Потом в динамике щёлкает ремень безопасности.\n\nДжунхо · по телефону: B17 открывается через служебный лифт. Пришли вход. Я объясню лично.\n\nЛера отправляет геометку. Доверия от этого не прибавилось, но впервые он хотя бы едет к её вопросу.",
+      "background": "assets/last-online/ep2/backgrounds/rooftop.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · крыша, сумерки",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone-reading",
+            "pose": "phone-reading",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "pose": "serious",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Ты всё-таки в VANTA.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Джунхо · по телефону"
+        },
+        {
+          "text": "С Тэюном. Мы видели запись Соа у B17. В 02:26.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Не заходи туда.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Джунхо · по телефону"
+        },
+        {
+          "text": "Если ты опять ограничишься запретом, я положу трубку.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/defensive.webp",
+                "emotion": "defensive",
+                "pose": "defensive",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/guarded.webp",
+                "emotion": "guarded",
+                "pose": "guarded",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Пауза. Потом в динамике щёлкает ремень безопасности.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "B17 открывается через служебный лифт. Пришли вход. Я объясню лично.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Джунхо · по телефону"
+        },
+        {
+          "text": "Лера отправляет геометку. Доверия от этого не прибавилось, но впервые он хотя бы едет к её вопросу.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_soa_door"
+    },
+    {
+      "id": "ep2_soa_door",
+      "kind": "message",
+      "text": "SOA: Не открывай дверь, если Тэюн рядом.\n\nЛера: Какую дверь? Что случилось в B17?\n\nSOA: Сначала убедись, что сможешь выйти.\n\nSOA была в сети очень давно.",
+      "background": "assets/last-online/ep2/backgrounds/rooftop.webp",
+      "presentation": {
+        "mode": "phone",
+        "location": "VANTA · крыша, сумерки",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": []
+      },
+      "beats": [
+        {
+          "text": "Не открывай дверь, если Тэюн рядом.",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          },
+          "speaker": "SOA"
+        },
+        {
+          "text": "Какую дверь? Что случилось в B17?",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Сначала убедись, что сможешь выйти.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "SOA"
+        },
+        {
+          "text": "SOA была в сети очень давно.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_card_intro",
+      "chat": {
+        "status": "была в сети очень давно",
+        "typing": false,
+        "context": "Лера запоминает путь назад. Ни один из них пока не объяснил, чего именно боится.",
+        "messages": [
+          {
+            "from": "soa",
+            "text": "Не открывай дверь, если Тэюн рядом."
+          },
+          {
+            "from": "lera",
+            "text": "Какую дверь? Что случилось в B17?",
+            "meta": "прочитано"
+          },
+          {
+            "from": "soa",
+            "text": "Сначала убедись, что сможешь выйти."
+          },
+          {
+            "from": "system",
+            "text": "SOA была в сети очень давно."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ep2_card_intro",
+      "kind": "dialogue",
+      "text": "У служебной лестницы Тэюн достаёт из бумажника старую чёрную карту.\n\nB-17 / NIGHT ACCESS. На торце четыре продавленные цифры: 0217.\n\nТэюн: Ночной пропуск ECLIPSE. B17 была репетиционной и служебной комнатой. Оттуда можно выйти к погрузочному коридору.\n\nЛера: 0217. Как время звонка.\n\nТэюн: Этот код был на карте раньше. Я не знаю, совпало время или она выбрала его.\n\nОн держит карту за край. Достаточно близко, чтобы Лера могла взять её сама.",
+      "background": "assets/last-online/ep2/backgrounds/backstage.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "VANTA · за сценой",
+        "camera": "wide",
+        "position": "center",
+        "motion": "push-in",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [],
+        "cg": "assets/last-online/ep2/cg/night-access-v2.webp"
+      },
+      "beats": [
+        {
+          "text": "У служебной лестницы Тэюн достаёт из бумажника старую чёрную карту.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "reveal"
+          }
+        },
+        {
+          "text": "B-17 / NIGHT ACCESS. На торце четыре продавленные цифры: 0217.",
+          "presentation": {
+            "camera": "extreme-close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "Ночной пропуск ECLIPSE. B17 была репетиционной и служебной комнатой. Оттуда можно выйти к погрузочному коридору.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "0217. Как время звонка.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Этот код был на карте раньше. Я не знаю, совпало время или она выбрала его.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Он держит карту за край. Достаточно близко, чтобы Лера могла взять её сама.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_card_choice"
+    },
+    {
+      "id": "ep2_card_choice",
+      "kind": "dialogue",
+      "text": "Тэюн: Карту сохранили в списке действующих служебных пропусков. Хан разрешила спуститься до поста B17; саму дверь без неё не открываем.\n\nХан подтверждает по рации: «Ждите у лифта внизу. Я подойду с дежурным». Мина слышит это рядом.\n\nМина: Я останусь наверху с Хан. Если вы не вернётесь — знаю, где искать.\n\nТэюн снова предлагает карту Лере. Теперь это уже не просто улика.",
+      "background": "assets/last-online/ep2/backgrounds/backstage.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · за сценой",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/suspicious.webp",
+            "emotion": "suspicious",
+            "pose": "suspicious",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "pose": "serious",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Карту сохранили в списке действующих служебных пропусков. Хан разрешила спуститься до поста B17; саму дверь без неё не открываем.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Хан подтверждает по рации: «Ждите у лифта внизу. Я подойду с дежурным». Мина слышит это рядом.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Я останусь наверху с Хан. Если вы не вернётесь — знаю, где искать.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Мина"
+        },
+        {
+          "text": "Тэюн снова предлагает карту Лере. Теперь это уже не просто улика.",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "ep2_card_take",
+          "text": "Взять карту B17",
+          "nextSceneId": "ep2_card_take",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "taeyunScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 2
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep2_card_response",
+              "value": "take"
+            }
+          ]
+        },
+        {
+          "id": "ep2_card_refuse",
+          "text": "Не брать, но записать код и номер",
+          "nextSceneId": "ep2_card_refuse",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 2
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": -1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep2_card_response",
+              "value": "refuse"
+            }
+          ]
+        },
+        {
+          "id": "ep2_card_send",
+          "text": "Отправить Джунхо фотографию карты",
+          "nextSceneId": "ep2_card_send",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "junhoScore",
+              "by": 2
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "ep2_card_response",
+              "value": "send"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep2_card_take",
+      "kind": "dialogue",
+      "text": "Лера берёт карту. Пальцы Тэюна разжимаются сразу.\n\nЛера: До поста идём вместе. Дверь ждёт Хан.\n\nТэюн: Хорошо.\n\nЛера прячет карту в ладони. Металл ещё хранит его тепло — раздражающе живое для вещи из старого дела.",
+      "background": "assets/last-online/ep2/backgrounds/backstage.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · за сценой",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "pose": "concerned",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "pose": "serious",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера берёт карту. Пальцы Тэюна разжимаются сразу.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "До поста идём вместе. Дверь ждёт Хан.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Хорошо.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/defensive.webp",
+                "emotion": "defensive",
+                "pose": "defensive",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/neutral.webp",
+                "emotion": "neutral",
+                "pose": "neutral",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Лера прячет карту в ладони. Металл ещё хранит его тепло — раздражающе живое для вещи из старого дела.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_lift_checkpoint"
+    },
+    {
+      "id": "ep2_card_refuse",
+      "kind": "dialogue",
+      "text": "Лера: Нет. Пока пусть будет у тебя. Я запишу обе стороны.\n\nТэюн переворачивает карту, не выпуская её. Лера записывает: B-17, NIGHT ACCESS, 0217.\n\nЛера: То, что я иду рядом, не значит, что согласна открыть дверь.\n\nТэюн: Понял. Карту храню я. У поста ждём Хан.\n\nОн убирает пропуск в наружный карман. Лера видит, в какой именно.",
+      "background": "assets/last-online/ep2/backgrounds/backstage.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · за сценой",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone-reading",
+            "pose": "phone-reading",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "pose": "serious",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Нет. Пока пусть будет у тебя. Я запишу обе стороны.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Тэюн переворачивает карту, не выпуская её. Лера записывает: B-17, NIGHT ACCESS, 0217.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "То, что я иду рядом, не значит, что согласна открыть дверь.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Понял. Карту храню я. У поста ждём Хан.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/defensive.webp",
+                "emotion": "defensive",
+                "pose": "defensive",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/guarded.webp",
+                "emotion": "guarded",
+                "pose": "guarded",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Он убирает пропуск в наружный карман. Лера видит, в какой именно.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_lift_checkpoint"
+    },
+    {
+      "id": "ep2_card_send",
+      "kind": "dialogue",
+      "text": "Лера берёт карту для снимка. Тэюн придерживает край, пока она фотографирует обе стороны.\n\nОна отправляет фото Джунхо: «Спускаемся к посту B17. Дверь ждёт Хан. Не теряй нас».\n\nОтвет приходит почти сразу: «Пусть он вернёт карту тебе после считывателя. Я у здания».\n\nЛера возвращает пропуск Тэюну для прохода. Не передаёт его Джунхо — тот пока существует только на экране.\n\nТэюн: Он уже здесь?\n\nЛера: Скоро будет.",
+      "background": "assets/last-online/ep2/backgrounds/backstage.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · за сценой",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+            "emotion": "phone-reading",
+            "pose": "phone-reading",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "pose": "serious",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Лера берёт карту для снимка. Тэюн придерживает край, пока она фотографирует обе стороны.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Она отправляет фото Джунхо: «Спускаемся к посту B17. Дверь ждёт Хан. Не теряй нас».",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none",
+            "characters": [
+              {
+                "id": "lera",
+                "src": "assets/last-online/v2/characters/lera/phone-reading.webp",
+                "emotion": "phone-reading",
+                "pose": "phone-reading",
+                "position": "left",
+                "depth": "foreground",
+                "framing": "medium"
+              },
+              {
+                "id": "taeyun",
+                "src": "assets/last-online/ep2/characters/taeyun/guarded.webp",
+                "emotion": "guarded",
+                "pose": "guarded",
+                "position": "right",
+                "depth": "foreground",
+                "framing": "medium"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Ответ приходит почти сразу: «Пусть он вернёт карту тебе после считывателя. Я у здания».",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Лера возвращает пропуск Тэюну для прохода. Не передаёт его Джунхо — тот пока существует только на экране.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Он уже здесь?",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Скоро будет.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        }
+      ],
+      "nextSceneId": "ep2_lift_checkpoint"
+    },
+    {
+      "id": "ep2_lift_checkpoint",
+      "kind": "dialogue",
+      "text": "У служебного лифта нет музыки. Только вентилятор за решёткой и белая полоса света на полу.\n\nХан по рации просит подождать у нижнего поста. Тэюн нажимает вызов; кабина открывается пустой.\n\nТэюн: Чтобы выбрать уровень B, нужно приложить карту к внутреннему считывателю.\n\nЛера входит первой и остаётся у кнопки открытия дверей. Тэюн не загораживает ей выход.",
+      "background": "assets/last-online/ep2/backgrounds/service-lift.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · служебный лифт",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/concerned.webp",
+            "emotion": "concerned",
+            "pose": "concerned",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/serious.webp",
+            "emotion": "serious",
+            "pose": "serious",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "У служебного лифта нет музыки. Только вентилятор за решёткой и белая полоса света на полу.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "drift-left"
+          }
+        },
+        {
+          "text": "Хан по рации просит подождать у нижнего поста. Тэюн нажимает вызов; кабина открывается пустой.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Чтобы выбрать уровень B, нужно приложить карту к внутреннему считывателю.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Лера входит первой и остаётся у кнопки открытия дверей. Тэюн не загораживает ей выход.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "tension"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_lift_his",
+      "transitions": [
+        {
+          "nextSceneId": "ep2_lift_yours",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "ep2_card_response",
+              "value": "take"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ep2_lift_yours",
+      "kind": "dialogue",
+      "text": "Считыватель у дальнего поручня. Лера протягивает карту Тэюну — только чтобы открыть уровень B.\n\nЛера: Сразу верни.\n\nОн прикладывает её к панели. Зелёная точка загорается раньше ответа.\n\nТэюн: Конечно.\n\nКарта остаётся между его пальцами. В коридоре кто-то быстро приближается.",
+      "background": "assets/last-online/ep2/backgrounds/service-lift.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · служебный лифт",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/suspicious.webp",
+            "emotion": "suspicious",
+            "pose": "suspicious",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/guarded.webp",
+            "emotion": "guarded",
+            "pose": "guarded",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Считыватель у дальнего поручня. Лера протягивает карту Тэюну — только чтобы открыть уровень B.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Сразу верни.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Он прикладывает её к панели. Зелёная точка загорается раньше ответа.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Конечно.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          },
+          "speaker": "Тэюн"
+        },
+        {
+          "text": "Карта остаётся между его пальцами. В коридоре кто-то быстро приближается.",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_blocked"
+    },
+    {
+      "id": "ep2_lift_his",
+      "kind": "dialogue",
+      "text": "Тэюн достаёт карту из наружного кармана. Лера проверяет надпись: та самая B-17.\n\nСчитыватель вспыхивает зелёным. Тэюн убирает карту от панели, но не прячет её.\n\nЛера: До нижнего поста. Потом ждём.\n\nОн кивает. В коридоре раздаётся быстрый шаг.",
+      "background": "assets/last-online/ep2/backgrounds/service-lift.webp",
+      "presentation": {
+        "mode": "standard",
+        "location": "VANTA · служебный лифт",
+        "camera": "medium",
+        "position": "center",
+        "motion": "none",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [
+          {
+            "id": "lera",
+            "src": "assets/last-online/v2/characters/lera/defensive.webp",
+            "emotion": "defensive",
+            "pose": "defensive",
+            "position": "left",
+            "depth": "foreground",
+            "framing": "medium"
+          },
+          {
+            "id": "taeyun",
+            "src": "assets/last-online/ep2/characters/taeyun/guarded.webp",
+            "emotion": "guarded",
+            "pose": "guarded",
+            "position": "right",
+            "depth": "foreground",
+            "framing": "medium"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "text": "Тэюн достаёт карту из наружного кармана. Лера проверяет надпись: та самая B-17.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Считыватель вспыхивает зелёным. Тэюн убирает карту от панели, но не прячет её.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "До нижнего поста. Потом ждём.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          },
+          "speaker": "Лера"
+        },
+        {
+          "text": "Он кивает. В коридоре раздаётся быстрый шаг.",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        }
+      ],
+      "nextSceneId": "ep2_blocked"
+    },
+    {
+      "id": "ep2_blocked",
+      "kind": "narrative",
+      "text": "Двери начинают сходиться. В щель врывается чёрный рукав.\n\nСрабатывает датчик. Металл дрожит и отступает.\n\nСначала Лера видит руку на створке. Потом — знакомый шрам у брови.\n\nДжунхо. Он смотрит на неё, на Тэюна и на карту между его пальцами.",
+      "background": "assets/last-online/ep2/backgrounds/service-lift.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "VANTA · служебный лифт",
+        "camera": "wide",
+        "position": "center",
+        "motion": "push-in",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [],
+        "cg": "assets/last-online/ep2/cg/elevator-hand.webp"
+      },
+      "beats": [
+        {
+          "text": "Двери начинают сходиться. В щель врывается чёрный рукав.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "tension"
+          }
+        },
+        {
+          "text": "Срабатывает датчик. Металл дрожит и отступает.",
+          "presentation": {
+            "camera": "close",
+            "motion": "shake",
+            "effect": "none",
+            "haptic": "medium"
+          }
+        },
+        {
+          "text": "Сначала Лера видит руку на створке. Потом — знакомый шрам у брови.",
+          "presentation": {
+            "camera": "close",
+            "motion": "reveal",
+            "cg": "assets/last-online/ep2/cg/elevator-cliffhanger.webp",
+            "characters": []
+          }
+        },
+        {
+          "text": "Джунхо. Он смотрит на неё, на Тэюна и на карту между его пальцами.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "push-in",
+            "cg": "assets/last-online/ep2/cg/elevator-cliffhanger.webp",
+            "characters": []
+          }
+        }
+      ],
+      "nextSceneId": "ep2_confrontation"
+    },
+    {
+      "id": "ep2_confrontation",
+      "kind": "dialogue",
+      "text": "Джунхо: Отдай ей это.\n\nЛера ещё не успевает спросить, почему он не отпускает дверь.\n\nТэюн поднимает голову. Публичная улыбка исчезает окончательно.\n\nТэюн: Ты опоздал на три года.",
+      "background": "assets/last-online/ep2/backgrounds/service-lift.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "VANTA · служебный лифт",
+        "camera": "wide",
+        "position": "center",
+        "motion": "push-in",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [],
+        "cg": "assets/last-online/ep2/cg/elevator-cliffhanger.webp"
+      },
+      "beats": [
+        {
+          "text": "Отдай ей это.",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          },
+          "speaker": "Джунхо"
+        },
+        {
+          "text": "Лера ещё не успевает спросить, почему он не отпускает дверь.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Тэюн поднимает голову. Публичная улыбка исчезает окончательно.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Ты опоздал на три года.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in",
+            "effect": "dark-pulse",
+            "haptic": "light"
+          },
+          "speaker": "Тэюн"
+        }
+      ],
+      "nextSceneId": "ep2_end"
+    },
+    {
+      "id": "ep2_end",
+      "kind": "terminal",
+      "text": "Между ними — карта, четыре цифры и девять минут, о которых никто не говорит.\n\nДжунхо удерживает дверь. Тэюн не разжимает пальцы. Лера стоит достаточно близко, чтобы увидеть страх у обоих.\n\nКОНЕЦ ЭПИЗОДА 2 · «Тот, кого все знают»",
+      "background": "assets/last-online/ep2/backgrounds/service-lift.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "VANTA · служебный лифт",
+        "camera": "wide",
+        "position": "center",
+        "motion": "push-in",
+        "transition": "crossfade",
+        "ambient": "none",
+        "characters": [],
+        "cg": "assets/last-online/ep2/cg/elevator-cliffhanger.webp"
+      },
+      "beats": [
+        {
+          "text": "Между ними — карта, четыре цифры и девять минут, о которых никто не говорит.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Джунхо удерживает дверь. Тэюн не разжимает пальцы. Лера стоит достаточно близко, чтобы увидеть страх у обоих.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "КОНЕЦ ЭПИЗОДА 2 · «Тот, кого все знают»",
+          "presentation": {
+            "camera": "wide",
+            "motion": "none"
+          }
+        }
+      ]
+    }
+  ]
+}

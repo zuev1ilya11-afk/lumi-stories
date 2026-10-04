@@ -1,0 +1,2273 @@
+{
+  "id": "house-of-black-roses-s1-e1",
+  "title": "Наследница",
+  "startSceneId": "gothic_ep1_arrival",
+  "requiredSceneIds": [
+    "gothic_ep1_arrival",
+    "gothic_ep1_letter",
+    "gothic_ep1_foyer",
+    "gothic_ep1_adrian_intro",
+    "gothic_ep1_hall",
+    "gothic_ep1_rules_choice",
+    "gothic_ep1_question_rules",
+    "gothic_ep1_defy_rules",
+    "gothic_ep1_accept_rules",
+    "gothic_ep1_landing",
+    "gothic_ep1_room",
+    "gothic_ep1_roses",
+    "gothic_ep1_waiting",
+    "gothic_ep1_voice",
+    "gothic_ep1_door_choice",
+    "gothic_ep1_opened_door",
+    "gothic_ep1_ignored_door",
+    "gothic_ep1_corridor",
+    "gothic_ep1_stair_trail",
+    "gothic_ep1_hall_trail",
+    "gothic_ep1_petals_choice",
+    "gothic_ep1_enter_gallery",
+    "gothic_ep1_call_adrian_scene",
+    "gothic_ep1_portrait",
+    "gothic_ep1_portrait_face",
+    "gothic_ep1_nameplate",
+    "gothic_ep1_recognition",
+    "gothic_ep1_adrian_portrait",
+    "gothic_ep1_end"
+  ],
+  "scenes": [
+    {
+      "id": "gothic_ep1_arrival",
+      "kind": "narrative",
+      "text": "Последний поворот скрывается за дождём. Машина останавливается, и в наступившей тишине Эвелин впервые слышит, как вода стучит по крыше.",
+      "background": "assets/house-of-black-roses/v1/ravenhall-exterior.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Дорога к Рейвенхоллу",
+        "ambient": "rain",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Последний поворот скрывается за дождём. Машина останавливается, и в наступившей тишине Эвелин впервые слышит, как вода стучит по крыше.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/ravenhall-exterior.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Водитель смотрит на ворота, потом на часы. «Дальше пешком, мисс. Там колея. Я бы вернулся за вами утром, если передумаете».",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/ravenhall-exterior.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Она благодарит его и выходит. Холод сразу забирается под воротник. Гравий прилипает к подошвам; до дома ещё далеко.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-arrival.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Машина разворачивается. Красные огни быстро растворяются в тумане, оставляя после себя запах мокрой дороги и неловкое ощущение окончательности.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/ravenhall-exterior.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Сначала видна только одна башня. Потом дождь редеет, словно кто-то отодвинул занавес, и из серого воздуха проступает всё поместье.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/ravenhall-exterior.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Рейвенхолл слишком велик для одного человека. Сотни тёмных окон, острые крыши, каменная лестница. Несколько окон светятся тёплым янтарём.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/ravenhall-exterior.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Эвелин ожидала заброшенный дом. Но за оградой подстрижен кустарник, а на ступенях нет ни одного опавшего листа.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/ravenhall-exterior.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Кто-то готовился к её приезду. Эта мысль должна успокаивать. Почему-то становится только холоднее.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-arrival.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_letter"
+    },
+    {
+      "id": "gothic_ep1_letter",
+      "kind": "narrative",
+      "text": "Во внутреннем кармане лежит письмо нотариуса. За неделю бумага стала мягкой на сгибах: Эвелин перечитывала её в поезде и перед сном.",
+      "background": "assets/house-of-black-roses/v1/evelyn-arrival.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "У ворот",
+        "ambient": "rain",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Во внутреннем кармане лежит письмо нотариуса. За неделю бумага стала мягкой на сгибах: Эвелин перечитывала её в поезде и перед сном.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-arrival.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "«Наследница обязуется непрерывно прожить в поместье Рейвенхолл тридцать дней». Всего одна строчка среди сухих юридических формулировок.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-arrival.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "После этого дом станет её собственностью. Можно будет продать его, закрыть долги за учёбу и впервые выбрать жильё без оглядки на цену.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-arrival.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Тридцать дней. Люди и дольше терпят неудобных соседей.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-arrival.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Шутка теряется под дождём. Решётка ворот украшена розами; капли собираются на железных лепестках, тяжелеют и падают.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/ravenhall-exterior.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "О Рейвенхолле в семье не говорили. На вопрос о дальних родственниках мать однажды ответила: «Наша фамилия — ещё не вся наша история».",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-arrival.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Тогда Эвелин не стала настаивать. Теперь спросить было не у кого, а письмо подписано человеком, которого она никогда не встречала.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-arrival.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Она убирает бумагу глубже в карман и идёт к свету. Прежде чем решать, что делать с домом, нужно хотя бы войти.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-arrival.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_foyer"
+    },
+    {
+      "id": "gothic_ep1_foyer",
+      "kind": "narrative",
+      "text": "Под каменным козырьком наконец сухо. На двери — бронзовый молоток в форме розы, отполированный прикосновениями множества рук.",
+      "background": "assets/house-of-black-roses/v1/ravenhall-exterior.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Крыльцо",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Под каменным козырьком наконец сухо. На двери — бронзовый молоток в форме розы, отполированный прикосновениями множества рук.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/ravenhall-exterior.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Эвелин останавливается в шаге от порога. После дороги хочется только полотенца, горячего чая и объяснения, где здесь выключатель.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-arrival.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Она поднимает руку, но постучать не успевает.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/ravenhall-exterior.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Дверь открывается изнутри. Без скрипа, без возни с засовом. Словно стоявший за ней человек всё время наблюдал за её приближением.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-door.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Мужчина не похож ни на садовника, ни на пожилого смотрителя, которого она воображала. Он молод и держится так, будто дом принадлежит ему.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/ravenhall-exterior.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Тёмные волосы, светлые глаза. Свечи за его спиной дробятся в стекле витража; на секунду Эвелин забывает, что промокла насквозь.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/ravenhall-exterior.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Добро пожаловать домой, мисс Рейвен.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/ravenhall-exterior.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_adrian_intro"
+    },
+    {
+      "id": "gothic_ep1_adrian_intro",
+      "kind": "narrative",
+      "text": "Домой? Я здесь впервые.",
+      "background": "assets/house-of-black-roses/v1/adrian-formal.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Порог",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Домой? Я здесь впервые.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-curious.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Он смотрит на неё чуть дольше, чем позволяет обычная вежливость. Не разглядывает одежду или чемодан — будто проверяет что-то в её лице.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-formal.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Разумеется. Простите. Старый дом располагает к старым словам.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-soft.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Он отступает, освобождая проход. Эвелин переступает порог, и шум дождя внезапно становится далёким, словно дверь закрылась между двумя временами.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-formal.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Адриан Вейл. Я управляю поместьем. Вашу комнату приготовили, камин разожжён.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-formal.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Нотариус сказал, вы ответите на мои вопросы.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-neutral.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "На те, на которые у меня есть ответы.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-guarded.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Это могло бы прозвучать высокомерно, но в его голосе только усталость. Эвелин решает пока не спорить с человеком, знающим дорогу к камину.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-formal.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_hall"
+    },
+    {
+      "id": "gothic_ep1_hall",
+      "kind": "narrative",
+      "text": "Холл открывается целиком, когда они обходят высокий дубовый экран. Эвелин невольно замедляет шаг: потолок теряется выше второго этажа.",
+      "background": "assets/house-of-black-roses/v1/main-hall.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Главный холл",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Холл открывается целиком, когда они обходят высокий дубовый экран. Эвелин невольно замедляет шаг: потолок теряется выше второго этажа.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/main-hall.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Лестница расходится двумя тёмными лентами. Между ними — витраж с розами. В свете свечей кажется, что цветы на стекле ещё не раскрылись.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/main-hall.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "На стенах висят портреты. Незнакомые люди в чужой одежде, чьи фамилии, возможно, когда-то были её фамилией.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/main-hall.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Вы живёте здесь один?",
+          "speaker": "Эвелин",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-curious.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Сегодня в доме только мы. Сотрудники приходят утром.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-neutral.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Старые часы отмеряют секунды. Их маятник виден сквозь узкое стекло; каждый качок отдаётся в пустом пространстве слишком отчётливо.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/main-hall.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Восточная лестница ведёт к вашей спальне. Библиотека — за аркой. Если потребуется что-нибудь из вещей, скажите мне.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-formal.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Эвелин уже собирается спросить о ключах, но он останавливается у начала лестницы. Теперь в его голосе нет ни следа приветливой рассеянности.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-curious.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_rules_choice"
+    },
+    {
+      "id": "gothic_ep1_rules_choice",
+      "kind": "narrative",
+      "text": "Прежде чем вы подниметесь, я должен попросить вас соблюдать три правила.",
+      "background": "assets/house-of-black-roses/v1/adrian-warning.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Три правила",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Прежде чем вы подниметесь, я должен попросить вас соблюдать три правила.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-warning.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Он произносит это без торжественности. Так объясняют, какая ступенька шатается, — только ни на одну ступеньку он не смотрит.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/main-hall.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Первое. После полуночи не открывайте дверь своей спальни.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-warning.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Второе. Не входите в западное крыло. Ни днём, ни ночью.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-warning.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "И третье. Никогда не срывайте чёрные розы в саду.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-warning.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Последнее правило звучит нелепее первых двух. Но он не улыбается, и Эвелин тоже почему-то не может улыбнуться.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-curious.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Это условия завещания или ваши личные требования?",
+          "speaker": "Эвелин",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-warning.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Это просьба человека, который знает этот дом.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-guarded.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "gothic_ep1_rules_question",
+          "text": "«Почему? Что случится?»",
+          "nextSceneId": "gothic_ep1_question_rules",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "junhoScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_rules_response",
+              "value": "question"
+            }
+          ]
+        },
+        {
+          "id": "gothic_ep1_rules_defy",
+          "text": "«Не люблю, когда мне запрещают.»",
+          "nextSceneId": "gothic_ep1_defy_rules",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 2
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_rules_response",
+              "value": "defy"
+            }
+          ]
+        },
+        {
+          "id": "gothic_ep1_rules_accept",
+          "text": "«Хорошо. Я запомню.»",
+          "nextSceneId": "gothic_ep1_accept_rules",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "junhoScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_rules_response",
+              "value": "accept"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gothic_ep1_question_rules",
+      "kind": "narrative",
+      "text": "Почему? Что случится?",
+      "background": "assets/house-of-black-roses/v1/evelyn-curious.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Главный холл",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Почему? Что случится?",
+          "speaker": "Эвелин",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-curious.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Адриан чуть опускает плечи. Кажется, вопрос ему нравится больше, чем безоговорочное согласие, которого он только что добивался.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-soft.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Самый полезный вопрос. И самый трудный для первого вечера.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-curious.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "В западном крыле проваливается пол? Розы ядовиты? Мне проще соблюдать правило, когда я понимаю причину.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-curious.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Западное крыло закрыто давно. А у роз есть шипы, которые не сразу замечаешь. Об остальном поговорим утром.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-guarded.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Он произносит «утром» почти как обещание. Эвелин отмечает: про дверь спальни он ничего не объяснил.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-curious.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Вы правильно делаете, что спрашиваете. Только не пытайтесь получить все ответы за одну ночь.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-soft.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Она решает запомнить и правила, и его уклончивость. Доверие не обязательно начинается с правды; иногда — с признания, что её пока не говорят.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-determined.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_landing"
+    },
+    {
+      "id": "gothic_ep1_defy_rules",
+      "kind": "narrative",
+      "text": "Не люблю, когда мне запрещают.",
+      "background": "assets/house-of-black-roses/v1/evelyn-determined.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Главный холл",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Не люблю, когда мне запрещают.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-determined.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Адриан смотрит на неё спокойно. От этого спорить сложнее: в его лице нет ни раздражения, ни удовольствия от чужой зависимости.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-guarded.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Я заметил. Но моя просьба останется прежней, даже если вам не нравится её форма.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-determined.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Через месяц этот дом будет моим. Не хотелось бы каждый раз спрашивать разрешения, куда поставить ногу.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-determined.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Владеть домом и знать его — разные вещи. Я надеюсь, у вас будет время убедиться в этом без неприятностей.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-warning.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Он не приближается и не преграждает путь. Выбор оставлен ей; почему-то именно это звучит серьёзнее запрета.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-determined.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Эвелин складывает руки перед собой, чтобы не показать, как они замёрзли. Уезжать сейчас означало бы признать, что его слова её напугали.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-determined.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Она не собирается этого признавать. Ни ему, ни себе. Но три правила уже повторяются в голове сами собой.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-curious.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_landing"
+    },
+    {
+      "id": "gothic_ep1_accept_rules",
+      "kind": "narrative",
+      "text": "Хорошо. Я запомню.",
+      "background": "assets/house-of-black-roses/v1/evelyn-neutral.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Главный холл",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Хорошо. Я запомню.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-neutral.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "На его лице впервые появляется что-то похожее на облегчение. Очень короткое, почти болезненное, будто он надеялся именно на этот ответ.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-soft.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Спасибо. Мне бы хотелось, чтобы ваше пребывание здесь оказалось спокойным.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-neutral.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Судя по вступлению, вы в этом не уверены.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-curious.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Он уже поворачивается к лестнице, но останавливается. Когда говорит снова, голос звучит тише, и Эвелин невольно наклоняется ближе.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-warning.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "И если ночью услышите своё имя — не отвечайте.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-neutral.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Эвелин ждёт продолжения. Объяснения. Хотя бы намёка на шутку. Адриан лишь смотрит на часы, прежде чем снова встретиться с ней взглядом.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-curious.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Она кивает второй раз. Этот кивок даётся труднее первого. Теперь ей хочется, чтобы до утра дом вообще не издал ни звука.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-neutral.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_landing"
+    },
+    {
+      "id": "gothic_ep1_landing",
+      "kind": "narrative",
+      "text": "Наверху шум дождя возвращается: здесь окна подходят к самой лестнице. В стекле отражаются две фигуры, идущие на расстоянии нескольких ступеней.",
+      "background": "assets/house-of-black-roses/v1/grand-staircase.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Восточная лестница",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Наверху шум дождя возвращается: здесь окна подходят к самой лестнице. В стекле отражаются две фигуры, идущие на расстоянии нескольких ступеней.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/grand-staircase.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Адриан не торопит её. Когда она останавливается посмотреть вниз, он тоже ждёт, не задавая вопроса.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/grand-staircase.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Вы давно управляете поместьем?",
+          "speaker": "Эвелин",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-curious.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Достаточно давно, чтобы знать, где скрипит пол.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-neutral.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Она замечает, что под его шагами пол как раз не скрипит. Под её — отзывается почти каждая доска.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/grand-staircase.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "У двери спальни он показывает простой поворотный замок с внутренней стороны. Ключа снаружи нет. Эта маленькая подробность почему-то успокаивает.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-soft.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Вы устали. Остальное может подождать.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/grand-staircase.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Он остаётся за порогом, пока она входит. Ни попытки задержать её, ни последнего взгляда через плечо. Только тихое: «Доброй ночи, мисс Рейвен».",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/bedroom.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_room"
+    },
+    {
+      "id": "gothic_ep1_room",
+      "kind": "narrative",
+      "text": "Комната пахнет горящим деревом и чистым бельём. Постель раскрыта; у камина стоят кресло и низкая скамья для ног.",
+      "background": "assets/house-of-black-roses/v1/bedroom.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Спальня Эвелин",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Комната пахнет горящим деревом и чистым бельём. Постель раскрыта; у камина стоят кресло и низкая скамья для ног.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/bedroom.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Эвелин оставляет чемодан возле кровати, снимает мокрое пальто и развешивает его подальше от огня. Блуза под ним почти сухая.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/bedroom.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Телефон показывает одно деление связи, потом ни одного. Написанное сообщение остаётся с маленькими часами вместо галочки отправки.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-concerned.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Отлично. Дом с характером и без интернета.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/bedroom.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Она подходит к окну. За стеклом различимы дорожки сада и круглая беседка. Дождь делает кусты чёрными, будто их нарисовали тушью.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/bedroom.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "На письменном столе лежит чистая бумага. Рядом — обычная современная ручка. Среди всех старых вещей она кажется неожиданным знаком внимания.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/bedroom.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Здесь можно жить. Читать, гулять, разобраться с документами. Эвелин повторяет это про себя, пока перестаёт слышать в каждом шорохе движение за дверью.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/bedroom.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_roses"
+    },
+    {
+      "id": "gothic_ep1_roses",
+      "kind": "narrative",
+      "text": "Розы она замечает не сразу. Небольшая ваза стоит на столике у окна, в стороне от огня, и тёмные бутоны сливаются с отражением сада.",
+      "background": "assets/house-of-black-roses/v1/black-roses.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Чёрные розы",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Розы она замечает не сразу. Небольшая ваза стоит на столике у окна, в стороне от огня, и тёмные бутоны сливаются с отражением сада.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/black-roses.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Вблизи цвет оказывается почти невозможным. Не густо-красным, не фиолетовым. Чёрным, с тонким серебряным краем там, где падает свет.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/black-roses.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Эвелин вспоминает последнее правило. Не срывать розы в саду. Кто-то уже срезал эти — или для кого-то правила другие?",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-concerned.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "На лепестке держится капля. Стебли свежие; один светлый срез виден сквозь дымчатое стекло. Их принесли совсем недавно.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/black-roses.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Она не касается цветов. Только отодвигает лежавшую рядом бумагу, чтобы на неё не попала вода с края вазы.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/black-roses.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Из зеркала напротив смотрит её отражение. На секунду кажется, что девушка в стекле стоит чуть прямее и держит голову иначе.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-concerned.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Эвелин моргает. Ничего не меняется. Та же блуза, влажная прядь у виска, усталые глаза после дороги.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/black-roses.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_waiting"
+    },
+    {
+      "id": "gothic_ep1_waiting",
+      "kind": "narrative",
+      "text": "Она умывается, проверяет замок и садится у камина. В письме нотариуса нет ни слова о розах, западном крыле или ночных посетителях.",
+      "background": "assets/house-of-black-roses/v1/bedroom.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Перед полуночью",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Она умывается, проверяет замок и садится у камина. В письме нотариуса нет ни слова о розах, западном крыле или ночных посетителях.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/bedroom.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Можно позвонить утром. Попросить копию полного завещания. Узнать, почему единственная наследница до прошлой недели не знала о наследстве.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-concerned.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Пока же Эвелин записывает три правила на листке. На бумаге они выглядят ещё страннее, зато перестают путаться в голове.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/bedroom.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Огонь оседает. Дом звучит иначе, чем городская квартира: в нём слышно расстояние между звуками. Дождь далеко, камин близко, часы где-то внизу.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/bedroom.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Ей двадцать три, она умеет ездить одна и проверять незнакомые договоры. Бояться красивого дома из-за чужого серьёзного голоса было бы глупо.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/bedroom.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "И всё-таки она оставляет ботинки возле кресла, носками к двери. Привычка, говорит она себе. Ничего больше.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-concerned.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Стрелки маленьких часов на каминной полке сходятся наверху. Эвелин поднимает взгляд раньше, чем слышит первый удар.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/bedroom.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_voice"
+    },
+    {
+      "id": "gothic_ep1_voice",
+      "kind": "narrative",
+      "text": "Часы в холле начинают бить двенадцать. Звук проходит через перекрытия, глубокий и медленный, как будто дом считает вместе с ними.",
+      "background": "assets/house-of-black-roses/v1/midnight-handle.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Полночь",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Часы в холле начинают бить двенадцать. Звук проходит через перекрытия, глубокий и медленный, как будто дом считает вместе с ними.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/midnight-handle.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "После четвёртого удара Эвелин слышит другой звук. Не в комнате. За дверью.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/midnight-handle.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Эвелин…",
+          "speaker": "Голос",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/midnight-handle.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Она выпрямляется. Имя произнесено тихо и так близко, что человек должен стоять почти вплотную к деревянной панели.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-frightened.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Пятый удар. Шестой. Она смотрит на щель под дверью, но не видит там ни движения, ни тени.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/midnight-handle.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Эвелин…",
+          "speaker": "Голос",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/midnight-handle.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Голос женский. Незнакомый — и почему-то напоминает то, как её собственное имя звучит в записи на телефоне.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/midnight-handle.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Она не отвечает. Считает удары до конца. Последний гаснет, а человек за дверью всё ещё ждёт.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-frightened.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_door_choice"
+    },
+    {
+      "id": "gothic_ep1_door_choice",
+      "kind": "narrative",
+      "text": "Латунная ручка медленно опускается. Не рывком: кто-то осторожно проверяет, поддастся ли дверь.",
+      "background": "assets/house-of-black-roses/v1/midnight-handle.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Дверь спальни",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Латунная ручка медленно опускается. Не рывком: кто-то осторожно проверяет, поддастся ли дверь.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/midnight-handle.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Эвелин встаёт и надевает ботинки. Пол холодный даже через подошвы. Правило Адриана вдруг перестаёт быть причудой человека из старого дома.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-frightened.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Ручка замирает, затем возвращается на место. Можно остаться здесь. Дождаться утра. Никто пока не пытался сломать замок.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/midnight-handle.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Но за дверью могут нуждаться в помощи. А если это чья-то жестокая шутка, она не хочет всю ночь сидеть в собственной комнате пленницей.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-determined-night.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Эвелин кладёт ладонь на прохладное дерево и прислушивается ещё раз. Теперь решение придётся принять без объяснений.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/midnight-handle.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "gothic_ep1_open_door",
+          "text": "Открыть дверь",
+          "nextSceneId": "gothic_ep1_opened_door",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 2
+            },
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_opened_midnight_door",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "gothic_ep1_ignore_door",
+          "text": "Не открывать",
+          "nextSceneId": "gothic_ep1_ignored_door",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_opened_midnight_door",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gothic_ep1_opened_door",
+      "kind": "narrative",
+      "text": "Она поворачивает замок, делает шаг назад и открывает дверь. Достаточно широко, чтобы за ней никто не мог спрятаться.",
+      "background": "assets/house-of-black-roses/v1/evelyn-determined-night.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Ночной коридор",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Она поворачивает замок, делает шаг назад и открывает дверь. Достаточно широко, чтобы за ней никто не мог спрятаться.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-determined-night.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Коридор пуст. В обе стороны видны закрытые двери и неровные островки лунного света. Ни человека, ни удаляющихся шагов.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/midnight-corridor.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Воздух заметно холоднее, чем в спальне. Свечи в стенных подсвечниках горят ровно: сквозняка, который мог бы двигать ручку, нет.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-determined-night.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "На полу возле порога лежат чёрные лепестки. Один прилип к краю ковра, ещё два темнеют на блестящем дереве.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/petal-trail.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Эвелин вспоминает вазу у окна и оглядывается. Цветы стоят на месте. Все бутоны целы, насколько можно разобрать отсюда.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-concerned.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Она уже нарушила первое правило. Утром Адриан, вероятно, об этом узнает. Сейчас важнее понять, кто назвал её по имени.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-determined-night.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Эвелин придерживает дверь, чтобы она не захлопнулась, и выходит. За спиной остаётся единственный тёплый прямоугольник света.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/midnight-corridor.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_corridor"
+    },
+    {
+      "id": "gothic_ep1_ignored_door",
+      "kind": "narrative",
+      "text": "Она убирает руку и отступает. Пусть человек снаружи сам объяснит, чего хочет. Её имя — ещё не причина открывать дверь посреди ночи.",
+      "background": "assets/house-of-black-roses/v1/evelyn-frightened.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Спальня Эвелин",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Она убирает руку и отступает. Пусть человек снаружи сам объяснит, чего хочет. Её имя — ещё не причина открывать дверь посреди ночи.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-frightened.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Шёпот не повторяется. Ручка больше не двигается. Эвелин ждёт минуту, потом ещё одну, не сводя глаз с дерева.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/midnight-handle.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Наконец возвращаются обычные звуки: дождь по стеклу, короткий треск угля, шорох её собственного дыхания.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/bedroom.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Звон разбитого стекла приходит снизу. Следом — глухой удар и тишина. Это уже не голос, которому можно просто не отвечать.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-frightened.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Если упала рама или кто-то поранился, ждать до утра нельзя. Она берёт телефон: связи всё ещё нет. Позвать Адриана из комнаты не получается.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-concerned.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Эвелин подходит к двери. Прислушивается. Тишина длится достаточно долго, чтобы страх сменился тревогой за того, кто мог оказаться внизу.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-determined-night.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Она отпирает замок и выходит. Под дверью лежит чёрный лепесток. Женщина, звавшая её, не оставила никаких других следов.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/midnight-corridor.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_corridor"
+    },
+    {
+      "id": "gothic_ep1_corridor",
+      "kind": "narrative",
+      "text": "Один лепесток. Чуть дальше — ещё один.",
+      "background": "assets/house-of-black-roses/v1/petal-trail.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "След лепестков",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Один лепесток. Чуть дальше — ещё один.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/petal-trail.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Они тянутся вдоль ковра к лестнице. Не россыпью, как из опрокинутой вазы: между ними примерно одинаковое расстояние.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/midnight-corridor.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "На тёмном дереве поблёскивают капли. Кто-то принёс цветы с улицы — под дождём, после того как входная дверь уже закрылась.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/petal-trail.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Эвелин идёт медленно, выбирая места, где доски меньше скрипят. Теперь ей хочется услышать чужие шаги раньше, чем чужой голос.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-determined-night.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Сзади спальня ещё видна. Она отмечает это про себя и запоминает число дверей до лестницы.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/petal-trail.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_stair_trail"
+    },
+    {
+      "id": "gothic_ep1_stair_trail",
+      "kind": "narrative",
+      "text": "На третьей ступени лежит следующий лепесток.",
+      "background": "assets/house-of-black-roses/v1/grand-staircase.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Парадная лестница",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "На третьей ступени лежит следующий лепесток.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/grand-staircase.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "На седьмой — ещё один. Дальше след изгибается вместе с лестницей и теряется в холле.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/grand-staircase.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Витраж отбрасывает на перила розовые тени, хотя за окном только холодный лунный свет.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/grand-staircase.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Она не касается перил. Не потому, что боится, — просто руки и так холодные. Эвелин замечает, сколько объяснений ей сегодня приходится придумывать.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-determined-night.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "У последней ступени она останавливается. Часы продолжают идти. Этот звук неожиданно кажется поддержкой: что-то в доме всё ещё ведёт себя как положено.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/grand-staircase.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_hall_trail"
+    },
+    {
+      "id": "gothic_ep1_hall_trail",
+      "kind": "narrative",
+      "text": "Свечи стали короче. На стене за часами блестит стеклянный осколок; ещё несколько лежат возле пустой рамки на низком столике.",
+      "background": "assets/house-of-black-roses/v1/main-hall.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Главный холл ночью",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Свечи стали короче. На стене за часами блестит стеклянный осколок; ещё несколько лежат возле пустой рамки на низком столике.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/main-hall.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Крови нет. Эвелин выдыхает и только теперь понимает, чего боялась увидеть.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/main-hall.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Лепестки обходят стекло по ровной дуге. Случайно рассыпаться так они не могли.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/petal-trail.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "След уходит к приоткрытой двери под восточной аркой. Западное крыло — в другой стороне; по крайней мере второй запрет она ещё не нарушила.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-gallery.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "За дверью пахнет воском и старым лаком. Где-то глубоко внутри коротко скрипит половица.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-concerned.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_petals_choice"
+    },
+    {
+      "id": "gothic_ep1_petals_choice",
+      "kind": "narrative",
+      "text": "В щель видны рамы. Портреты уходят вдоль стены так далеко, что последние теряются в темноте.",
+      "background": "assets/house-of-black-roses/v1/portrait-gallery.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Перед галереей",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "В щель видны рамы. Портреты уходят вдоль стены так далеко, что последние теряются в темноте.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-gallery.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "У порога лежит один целый бутон. Стебель обломан. Все остальные лепестки будто вели именно к нему.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/petal-trail.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Эвелин может войти сама. Или позвать человека, который обещал ответы утром и, кажется, заранее знал, что ночь будет неспокойной.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-concerned.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "В доме тихо. Теперь отсутствие Адриана тревожит почти так же, как возможность встретить его за следующей дверью.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-gallery.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Она останавливается у порога. До сих пор кто-то выбирал дорогу за неё. Этот шаг она хочет сделать по собственной воле.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-determined-night.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "gothic_ep1_follow_petals",
+          "text": "Войти самой",
+          "nextSceneId": "gothic_ep1_enter_gallery",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 2
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_gallery_choice",
+              "value": "alone"
+            }
+          ]
+        },
+        {
+          "id": "gothic_ep1_call_adrian",
+          "text": "Позвать Адриана",
+          "nextSceneId": "gothic_ep1_call_adrian_scene",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "junhoScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": -1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_gallery_choice",
+              "value": "adrian"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gothic_ep1_enter_gallery",
+      "kind": "narrative",
+      "text": "Эвелин толкает дверь ладонью и входит. Говорить «здесь кто-нибудь есть?» кажется бессмысленным после того, как кто-то уже звал её по имени.",
+      "background": "assets/house-of-black-roses/v1/evelyn-determined-night.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Галерея",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Эвелин толкает дверь ладонью и входит. Говорить «здесь кто-нибудь есть?» кажется бессмысленным после того, как кто-то уже звал её по имени.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-determined-night.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Галерея длиннее, чем выглядела снаружи. Рамы отражают свечи, и от этого лица внутри кажутся то ближе, то дальше.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-gallery.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Она проходит мимо пожилого мужчины с книгой, девочки в белом и женщины, прижимающей к груди закрытый веер. Незнакомые Рейвены не помогают.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-determined-night.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Эвелин ищет объяснение следу, а не сходство с семьёй. Но у последней ниши останавливается прежде, чем успевает решить почему.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-concerned.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Лунный свет касается золотого края большой рамы. Правая часть полотна уходит в глубину ниши; старый лак бликует, мешая разглядеть её отсюда.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-gallery.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Шорох за спиной заставляет её оглянуться. Дверь осталась приоткрыта. В коридоре никого, только свет из холла.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-determined-night.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Она поворачивается обратно. Ещё один взгляд на картину — и можно будет вернуться. Именно так Эвелин уговаривает себя подойти ближе.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-determined-night.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_portrait"
+    },
+    {
+      "id": "gothic_ep1_call_adrian_scene",
+      "kind": "narrative",
+      "text": "Адриан?",
+      "background": "assets/house-of-black-roses/v1/evelyn-concerned.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Галерея",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Адриан?",
+          "speaker": "Эвелин",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-concerned.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Он появляется у соседней арки почти сразу. Не запыхавшийся, не сонный. Эвелин ещё не успела позвать во второй раз.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-tense.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Вы должны были остаться в комнате.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-concerned.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Тогда объясните, почему кто-то привёл меня сюда.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-determined-night.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Его взгляд скользит по лепесткам, задерживается на обломанном бутоне. Он не спрашивает, какой голос она слышала.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-guarded.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Вы были рядом всё это время?",
+          "speaker": "Эвелин",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-concerned.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Адриан не отвечает. Теперь он смотрит мимо неё, в сторону большой рамы в конце галереи. На лице появляется выражение, которого она ещё не видела.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-tense.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Он остаётся у входа, когда Эвелин проходит вперёд. Не останавливает её. Кажется, именно это даётся ему с трудом.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-gallery.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_portrait"
+    },
+    {
+      "id": "gothic_ep1_portrait",
+      "kind": "narrative",
+      "text": "Сначала Эвелин различает платье. Высокий ворот, тонкое кружево, длинный ряд обтянутых тканью пуговиц.",
+      "background": "assets/house-of-black-roses/v1/portrait-dress.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Старый портрет",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Сначала Эвелин различает платье. Высокий ворот, тонкое кружево, длинный ряд обтянутых тканью пуговиц.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-dress.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Масляная краска лежит неровно. На светлых складках видны мазки кисти; в тенях — сетка трещинок, настоящая старость, которую нельзя нарисовать поверх фотографии.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-dress.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Юбка спускается к резной ножке кресла. Всё в одежде говорит о времени, когда этот дом был новым, а люди на соседних стенах ещё ходили по его лестницам.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-dress.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Эвелин подаётся ближе. Ей хочется увидеть подпись художника, любую понятную деталь, которая превратит чужую ночную игру в объяснимую вещь.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-shocked.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Но взгляд останавливается на руках женщины. Они лежат на коленях спокойно, без усилия понравиться тому, кто пишет портрет.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-dress.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Пальцы тонкие. На запястье светлая кожа собирается точно так же, как у неё, когда она сгибает кисть над страницей.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-dress.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Это ещё можно назвать совпадением. Эвелин уже готова так и сделать.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-concerned.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_portrait_face"
+    },
+    {
+      "id": "gothic_ep1_portrait_face",
+      "kind": "narrative",
+      "text": "Потом лунный свет достигает лица.",
+      "background": "assets/house-of-black-roses/v1/portrait-face.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Лицо на полотне",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Потом лунный свет достигает лица.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-face.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Эвелин не сразу понимает, почему перестала дышать. Она видит привычный изгиб брови, линию скулы, маленькую тень под нижней губой.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-face.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Так выглядит лицо, которое знаешь не по памяти, а по тысячам случайных отражений: в окне поезда, в выключенном экране, в зеркале ванной.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-shocked.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "У женщины другая причёска. Волосы подняты и уложены мягкой волной. Взгляд холоднее, поза неподвижна, словно ей велели долго не шевелиться.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-face.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Но под всем этим — её собственное лицо. Не похожее. Её.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-face.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Это… я.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-shocked.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Она говорит тихо, почти без голоса. И тут же хочет забрать слова обратно, потому что произнесённые вслух они перестают быть ошибкой зрения.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-face.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_nameplate"
+    },
+    {
+      "id": "gothic_ep1_nameplate",
+      "kind": "narrative",
+      "text": "Под полотном закреплена латунная табличка. Воск затёк в один из завитков рамы, но буквы вычищены аккуратно.",
+      "background": "assets/house-of-black-roses/v1/portrait-nameplate.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Имя под рамой",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Под полотном закреплена латунная табличка. Воск затёк в один из завитков рамы, но буквы вычищены аккуратно.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-nameplate.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "ЭВЕЛИН РЕЙВЕН",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-nameplate.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "1879–1901",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-nameplate.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Она читает сначала имя, потом даты. Ещё раз. Ничего не меняется, сколько бы ни смотреть.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-shocked.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Двадцать два года. Женщина на картине умерла моложе неё. Сто двадцать пять лет назад.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-nameplate.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Эвелин ищет маленькую приписку: «копия», «реконструкция», хотя бы знак, что над ней разыгрывают дорогую, отвратительную шутку.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-concerned.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Но старая краска растрескалась и на щеке женщины, и на кружевном воротнике. Время прошло сквозь всё полотно одинаково.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-face.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_recognition"
+    },
+    {
+      "id": "gothic_ep1_recognition",
+      "kind": "narrative",
+      "text": "Тридцать дней в доме. Незнакомый управляющий, узнавший её у порога. Голос, которому понадобилось только имя.",
+      "background": "assets/house-of-black-roses/v1/evelyn-shocked.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Галерея",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Тридцать дней в доме. Незнакомый управляющий, узнавший её у порога. Голос, которому понадобилось только имя.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-shocked.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Ещё час назад эти вещи можно было разложить по отдельным ящикам: странное завещание, странный человек, усталость после дороги.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-shocked.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Теперь ящики не закрываются.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-shocked.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Эвелин смотрит на женщину и пытается найти отличие. Хоть одно, за которое можно ухватиться. Она находит только выражение: та словно заранее всё знает.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-face.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Кто ты?",
+          "speaker": "Эвелин",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-shocked.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Ответа нет. Но справа, за полосой бликующего лака, виден фрагмент тёмного рукава. На картине не одна фигура.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-shocked.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Полотно шире, чем казалось. Эвелин делает шаг влево, чтобы свет перестал отражаться в старом лаке.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-dress.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_adrian_portrait"
+    },
+    {
+      "id": "gothic_ep1_adrian_portrait",
+      "kind": "narrative",
+      "text": "Рядом с женщиной стоит молодой мужчина. Тёмный костюм, светлая полоска воротника, спокойная поза человека, привыкшего ждать.",
+      "background": "assets/house-of-black-roses/v1/portrait-full.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Вторая фигура",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "Рядом с женщиной стоит молодой мужчина. Тёмный костюм, светлая полоска воротника, спокойная поза человека, привыкшего ждать.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-full.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Эвелин узнаёт его раньше, чем успевает разглядеть лицо целиком.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-full.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Те же скулы. Те же волосы. Светлые глаза, смотрящие чуть в сторону, будто художник так и не сумел заставить его смотреть прямо.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-full.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Адриан?..",
+          "speaker": "Эвелин",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-shocked.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "За несколько часов она запомнила его достаточно хорошо. На полотне нет ни одной черты, которую можно было бы объяснить сходством с предком.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-full.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Он выглядит точно так же, как сегодня. Ни старше, ни моложе. Будто вышел из этой рамы встретить её у двери.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-full.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "В углу стоит дата: 1901. Эвелин снова смотрит на лицо мужчины. Теперь холодно даже ладоням, сжатым в кулаки.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/portrait-full.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep1_end"
+    },
+    {
+      "id": "gothic_ep1_end",
+      "kind": "terminal",
+      "text": "За спиной негромко скрипит доска. Теперь Эвелин не оборачивается сразу: ей страшно увидеть рядом с собой доказательство того, что перед ней.",
+      "background": "assets/house-of-black-roses/v1/final-frame.webp",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Галерея · Рейвенхолл",
+        "ambient": "dust",
+        "transition": "crossfade"
+      },
+      "beats": [
+        {
+          "text": "За спиной негромко скрипит доска. Теперь Эвелин не оборачивается сразу: ей страшно увидеть рядом с собой доказательство того, что перед ней.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/final-frame.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Адриан стоит в нескольких шагах. Он смотрит на портрет, и его лицо впервые не скрывает печали.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-final.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "У неё десятки вопросов. Почему он не постарел? Кто эта женщина? Зачем дом позвал именно её?",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/evelyn-shocked.webp",
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Ни один вопрос не успевает стать словами.",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/final-frame.webp",
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Я надеялся, что у нас будет больше времени.",
+          "speaker": "Адриан",
+          "presentation": {
+            "cg": "assets/house-of-black-roses/v1/adrian-final.webp",
+            "camera": "wide",
+            "motion": "none"
+          }
+        }
+      ]
+    }
+  ]
+}
