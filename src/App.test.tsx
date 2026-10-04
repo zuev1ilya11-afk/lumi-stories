@@ -3,9 +3,9 @@ import { afterEach, expect, it, vi } from 'vitest';
 import type { ProgressDto } from './api/types';
 import { App } from './App';
 
-const { bootstrap, saveProgress } = vi.hoisted(() => ({ bootstrap: vi.fn(), saveProgress: vi.fn() }));
-vi.mock('./api/client', async () => ({ ...await vi.importActual('./api/client'), bootstrap, saveProgress, sendAnalytics: vi.fn().mockResolvedValue(undefined) }));
-afterEach(() => { delete window.Telegram; vi.unstubAllGlobals(); bootstrap.mockReset(); saveProgress.mockReset(); });
+const { bootstrap, saveProgress, loadProgress, getPaymentStatus } = vi.hoisted(() => ({ bootstrap: vi.fn(), saveProgress: vi.fn(), loadProgress: vi.fn(), getPaymentStatus: vi.fn() }));
+vi.mock('./api/client', async () => ({ ...await vi.importActual('./api/client'), bootstrap, saveProgress, loadProgress, getPaymentStatus, sendAnalytics: vi.fn().mockResolvedValue(undefined) }));
+afterEach(() => { delete window.Telegram; vi.unstubAllGlobals(); bootstrap.mockReset(); saveProgress.mockReset(); loadProgress.mockReset(); getPaymentStatus.mockReset(); });
 
 const saved: ProgressDto = { storyId: 'last-online', seasonId: 'season-1', episodeId: 'last-online-s1-e1', sceneId: 'ep1_end_paywall', junhoScore: 4, taeyunScore: 1, truthScore: 2, riskScore: 3, flags: { clue: true } };
 function connected(progress: ProgressDto, season1Owned = false) {
@@ -87,5 +87,44 @@ it('opens a read-only episode 1 recap without changing saved episode 2 progress'
   fireEvent.click(screen.getByRole('button', { name: 'Назад к эпизодам' }));
   fireEvent.click(screen.getByRole('button', { name: 'Продолжить' }));
   expect(screen.getByTestId('story-stage')).toHaveAttribute('data-scene-id', 'ep2_morning');
+  expect(saveProgress).not.toHaveBeenCalled();
+});
+
+
+it('opens completed Black Roses episodes as read-only recaps and preserves current progress', async () => {
+  connected(saved, true);
+  loadProgress.mockResolvedValue({
+    storyId: 'house-of-black-roses',
+    seasonId: 'season-1',
+    episodeId: 'house-of-black-roses-s1-e2',
+    sceneId: 'gothic_ep2_after_portrait',
+    junhoScore: 2,
+    taeyunScore: 0,
+    truthScore: 4,
+    riskScore: 2,
+    flags: { gothic_gallery_choice: 'alone' },
+  });
+  getPaymentStatus.mockResolvedValue({
+    storyId: 'house-of-black-roses',
+    seasonId: 'season-1',
+    season1Owned: true,
+    priceStars: 149,
+    episodeRewindPriceStars: 49,
+  });
+
+  render(<App production />);
+  fireEvent.click(await screen.findByRole('button', { name: 'Истории', exact: true }));
+  fireEvent.click(screen.getByRole('button', { name: 'Открыть историю «Дом чёрных роз»', exact: true }));
+
+  const recapButton = await screen.findByRole('button', { name: 'Эпизод 1: Наследница. Краткая сводка' });
+  fireEvent.click(recapButton);
+
+  expect(screen.getByRole('heading', { name: 'Наследница' })).toBeVisible();
+  expect(screen.getByText(/чёрные лепестки/i)).toBeVisible();
+  expect(screen.queryByRole('button', { name: /Изменить события/ })).not.toBeInTheDocument();
+  expect(saveProgress).not.toHaveBeenCalled();
+
+  fireEvent.click(screen.getByRole('button', { name: 'Назад к эпизодам' }));
+  expect(screen.getByText('Текущий эпизод')).toBeVisible();
   expect(saveProgress).not.toHaveBeenCalled();
 });
