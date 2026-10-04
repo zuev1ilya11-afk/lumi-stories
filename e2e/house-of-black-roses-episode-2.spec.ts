@@ -41,7 +41,7 @@ for(const route of [[0,0,0,0,0],[1,1,1,1,1],[2,2,2,2,0]]) {
     await open(page,store); const visited=new Set<string>();
     for(let i=0;i<360&&await marker(page)!=='offer';i++){
       const id=await page.locator('[data-scene-id]').getAttribute('data-scene-id');
-      if(id){visited.add(id);await expect(page.locator('.lumi-story__backdrop')).toBeVisible();}
+      if(id){visited.add(id);await expect(page.locator('.lumi-story__backdrop.is-loaded')).toBeVisible();}
       await step(page,route,episode);
     }
     await expect(page.getByText('Эпизод 2 завершён',{exact:true})).toBeVisible();
