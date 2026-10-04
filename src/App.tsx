@@ -177,7 +177,7 @@ function LocalStoryPrototype({ storyId, initialScreen, onOpenStory }: { storyId:
     initialScreen={initialScreen}
     progress={progress}
     season1Owned
-    season1PriceStars={story.free ? 0 : 149}
+    season1PriceStars={story.free ? 0 : story.id === 'house-of-black-roses' ? 249 : 149}
     episodeRewindPriceStars={story.id === 'last-online' ? 49 : 0}
     userDisplayName="Игрок LUMI"
     onOpenStory={onOpenStory}
