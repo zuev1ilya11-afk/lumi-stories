@@ -2,7 +2,7 @@ import { jsonResponse } from '../../_shared/http.ts';
 import type { StarPaymentOrder, StarPaymentStore } from '../../_shared/payments.ts';
 import type { LumiRepository } from '../../_shared/repository.ts';
 import { constantTimeTextEqual } from '../../_shared/telegram-bot.ts';
-import { EPISODE_REWIND_TARGETS, REWIND_PRODUCT_PREFIX, episodeRewindInput, isSeasonProductId } from './payments.ts';
+import { EPISODE_REWIND_TARGETS, REWIND_PRODUCT_PREFIX, SEASON_PRODUCT_PREFIX, episodeRewindInput, isSeasonProductId, seasonPriceStarsFor } from './payments.ts';
 
 type TelegramUser = { id?: number };
 type TelegramChat = { id?: number };
@@ -60,7 +60,13 @@ export type TelegramWebhookDependencies = {
 };
 
 function productPrice(productId: string, dependencies: TelegramWebhookDependencies): number | null {
-  if (productId === 'season-1' || isSeasonProductId(productId)) return dependencies.seasonPriceStars;
+  if (productId === 'season-1') return dependencies.seasonPriceStars;
+  if (isSeasonProductId(productId)) {
+    const key = productId.slice(SEASON_PRODUCT_PREFIX.length);
+    const separator = key.lastIndexOf(':');
+    if (separator <= 0) return null;
+    return seasonPriceStarsFor(key.slice(0, separator), key.slice(separator + 1), dependencies.seasonPriceStars);
+  }
   if (productId.startsWith(REWIND_PRODUCT_PREFIX)) {
     const episodeId = productId.slice(REWIND_PRODUCT_PREFIX.length);
     if (episodeId in EPISODE_REWIND_TARGETS) return dependencies.rewindPriceStars;
