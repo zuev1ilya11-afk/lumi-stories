@@ -16,7 +16,7 @@ async function setup(page: Page, store: Store) {
     const request=route.request(); const url=new URL(request.url());
     const headers={'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'*','Access-Control-Allow-Methods':'GET,POST,PUT,OPTIONS','Content-Type':'application/json'};
     if(request.method()==='OPTIONS') return route.fulfill({status:204,headers,body:''});
-    if(url.pathname.endsWith('/bootstrap')) return route.fulfill({status:200,headers,body:JSON.stringify({playerId:'p',telegramUserId:555111,season1Owned:true,season1PriceStars:149,progress:store.progress})});
+    if(url.pathname.endsWith('/bootstrap')) return route.fulfill({status:200,headers,body:JSON.stringify({playerId:'p',telegramUserId:555111,season1Owned:true,season1PriceStars:149,progress:null})});
     if(url.pathname.endsWith('/progress')) {
       if(request.method()==='PUT'){ store.progress=request.postDataJSON() as ProgressDto; store.saves.push(structuredClone(store.progress)); }
       return route.fulfill({status:200,headers,body:JSON.stringify({progress:store.progress})});
