@@ -3,6 +3,7 @@ import { playerAccess } from '../../_shared/access.ts';
 import type { StarPaymentStore } from '../../_shared/payments.ts';
 import type { LumiRepository, Player, Progress, SaveProgressInput } from '../../_shared/repository.ts';
 import { verifyTelegramInitData } from '../../_shared/telegram.ts';
+import { EPISODE_REWIND_TARGETS, isRewindEpisodeId, type RewindEpisodeId } from '../rewind-targets.ts';
 
 export const REWIND_PRODUCT_PREFIX = 'episode-rewind:';
 export const SEASON_PRODUCT_PREFIX = 'season:';
@@ -83,26 +84,6 @@ export async function seasonAccess(
   };
 }
 
-type RewindTarget = {
-  index: number;
-  startSceneId: string;
-  terminalSceneIds: readonly string[];
-};
-
-export const EPISODE_REWIND_TARGETS = {
-  'last-online-s1-e1': { index: 0, startSceneId: 'ep1_arrival', terminalSceneIds: ['ep1_end_paywall'] },
-  'last-online-s1-e2': { index: 1, startSceneId: 'ep2_morning', terminalSceneIds: ['ep2_end'] },
-  'last-online-s1-e3': { index: 2, startSceneId: 'ep3_elevator', terminalSceneIds: ['ep3_end'] },
-  'last-online-s1-e4': { index: 3, startSceneId: 'ep4_morning', terminalSceneIds: ['ep4_end'] },
-  'last-online-s1-e5': {
-    index: 4,
-    startSceneId: 'ep5_morning',
-    terminalSceneIds: ['ep5_end_junho', 'ep5_end_taeyun', 'ep5_end_self'],
-  },
-} as const satisfies Record<string, RewindTarget>;
-
-type RewindEpisodeId = keyof typeof EPISODE_REWIND_TARGETS;
-
 export type PaymentRepository = Pick<
   LumiRepository,
   'getOrCreatePlayer' | 'getProgress' | 'getEpisodeCheckpoint' | 'saveProgress'
@@ -137,17 +118,20 @@ async function verifiedPlayer(
   return dependencies.repository.getOrCreatePlayer(user.id);
 }
 
-function isRewindEpisodeId(value: unknown): value is RewindEpisodeId {
-  return typeof value === 'string' && value in EPISODE_REWIND_TARGETS;
-}
-
 function targetCompleted(progress: Progress | null, episodeId: RewindEpisodeId): boolean {
   if (!progress) return false;
-  const current = EPISODE_REWIND_TARGETS[progress.episodeId as RewindEpisodeId];
   const target = EPISODE_REWIND_TARGETS[episodeId];
-  if (!current) return false;
+  const current = EPISODE_REWIND_TARGETS[progress.episodeId as RewindEpisodeId];
+  if (
+    !current ||
+    progress.storyId !== target.storyId ||
+    progress.seasonId !== target.seasonId ||
+    current.storyId !== target.storyId ||
+    current.seasonId !== target.seasonId
+  ) return false;
   if (current.index > target.index) return true;
-  return current.index === target.index && (target.terminalSceneIds as readonly string[]).includes(progress.sceneId);
+  return current.index === target.index &&
+    (target.terminalSceneIds as readonly string[]).includes(progress.sceneId);
 }
 
 async function canRewind(
@@ -155,13 +139,14 @@ async function canRewind(
   episodeId: RewindEpisodeId,
   dependencies: PaymentDependencies,
 ): Promise<boolean> {
-  const progress = await dependencies.repository.getProgress(playerId, 'last-online', 'season-1');
+  const target = EPISODE_REWIND_TARGETS[episodeId];
+  const progress = await dependencies.repository.getProgress(playerId, target.storyId, target.seasonId);
   if (!targetCompleted(progress, episodeId)) return false;
-  if (episodeId === 'last-online-s1-e1') return true;
+  if (target.index === 0) return true;
   const checkpoint = await dependencies.repository.getEpisodeCheckpoint(
     playerId,
-    'last-online',
-    'season-1',
+    target.storyId,
+    target.seasonId,
     episodeId,
   );
   return Boolean(checkpoint);
@@ -173,14 +158,19 @@ export async function episodeRewindInput(
   repository: Pick<LumiRepository, 'getEpisodeCheckpoint'>,
 ): Promise<SaveProgressInput> {
   const target = EPISODE_REWIND_TARGETS[episodeId];
-  if (episodeId === 'last-online-s1-e1') {
+  if (target.index === 0) {
     return {
-      storyId: 'last-online', seasonId: 'season-1', episodeId,
+      storyId: target.storyId, seasonId: target.seasonId, episodeId,
       sceneId: target.startSceneId, junhoScore: 0, taeyunScore: 0,
       truthScore: 0, riskScore: 0, flags: {},
     };
   }
-  const checkpoint = await repository.getEpisodeCheckpoint(playerId, 'last-online', 'season-1', episodeId);
+  const checkpoint = await repository.getEpisodeCheckpoint(
+    playerId,
+    target.storyId,
+    target.seasonId,
+    episodeId,
+  );
   if (!checkpoint) throw new Error('REWIND_CHECKPOINT_MISSING');
   return {
     storyId: checkpoint.storyId, seasonId: checkpoint.seasonId, episodeId,
@@ -322,8 +312,12 @@ export async function handleEpisodeRewindStatus(
     return jsonResponse({ error: 'INVALID_REWIND_EPISODE' }, 400);
   }
 
-  const progress = await dependencies.repository.getProgress(player.id, 'last-online', 'season-1');
   const target = EPISODE_REWIND_TARGETS[episodeId];
+  const progress = await dependencies.repository.getProgress(
+    player.id,
+    target.storyId,
+    target.seasonId,
+  );
   return jsonResponse({
     episodeId,
     priceStars: playerAccess(player, dependencies).episodeRewindPriceStars,
