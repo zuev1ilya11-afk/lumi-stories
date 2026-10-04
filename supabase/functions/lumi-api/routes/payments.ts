@@ -12,6 +12,14 @@ const SUPPORTED_SEASONS = new Set([
   'house-of-black-roses:season-1',
 ]);
 
+const SEASON_PRICE_OVERRIDES = new Map<string, number>([
+  ['house-of-black-roses:season-1', 249],
+]);
+
+export function seasonPriceStarsFor(storyId: string, seasonId: string, defaultPriceStars: number): number {
+  return SEASON_PRICE_OVERRIDES.get(storyId + ':' + seasonId) ?? defaultPriceStars;
+}
+
 export function seasonProductId(storyId: string, seasonId: string): string | null {
   const key = storyId + ':' + seasonId;
   return SUPPORTED_SEASONS.has(key) ? SEASON_PRODUCT_PREFIX + key : null;
@@ -71,7 +79,7 @@ export async function seasonAccess(
   const paid = legacyOwned ? true : await dependencies.store.hasPaidProduct(player.id, productId);
   return {
     season1Owned: free || paid,
-    season1PriceStars: free ? 0 : dependencies.seasonPriceStars,
+    season1PriceStars: free ? 0 : seasonPriceStarsFor(storyId, seasonId, dependencies.seasonPriceStars),
   };
 }
 
@@ -207,11 +215,12 @@ export async function handleCreateSeasonInvoice(
 
   try {
     await dependencies.telegram.ensureWebhook();
-    const order = await dependencies.store.createOrder(player.id, target.productId, dependencies.seasonPriceStars);
-    const invoiceUrl = await dependencies.telegram.createInvoiceLink(order.invoicePayload, dependencies.seasonPriceStars);
+    const priceStars = seasonPriceStarsFor(target.storyId, target.seasonId, dependencies.seasonPriceStars);
+    const order = await dependencies.store.createOrder(player.id, target.productId, priceStars);
+    const invoiceUrl = await dependencies.telegram.createInvoiceLink(order.invoicePayload, priceStars);
     return jsonResponse({
       season1Owned: false,
-      priceStars: dependencies.seasonPriceStars,
+      priceStars,
       storyId: target.storyId,
       seasonId: target.seasonId,
       invoiceUrl,
