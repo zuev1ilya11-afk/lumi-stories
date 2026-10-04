@@ -38,7 +38,7 @@ export function useProgress(initData: string, storyId = 'last-online'): {
   function configureAccess(payload: { season1Owned: boolean; season1PriceStars?: number; priceStars?: number; episodeRewindPriceStars?: number }) {
     setSeason1Owned(payload.season1Owned);
     setSeason1PriceStars(payload.season1PriceStars ?? payload.priceStars ?? 149);
-    setEpisodeRewindPriceStars(story.id === 'last-online' ? (payload.episodeRewindPriceStars ?? 49) : 0);
+    setEpisodeRewindPriceStars(payload.episodeRewindPriceStars ?? 49);
   }
 
   function normalizeProgress(progress: Awaited<ReturnType<typeof loadProgress>> | null, episode: ReturnType<typeof getStoryEpisode>) {
