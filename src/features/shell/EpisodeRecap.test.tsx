@@ -22,11 +22,35 @@ it('personal free replay requires confirmation and applies without Telegram paym
 });
 
 
-it('shows a read-only Black Roses recap without replay controls', () => {
-  render(<EpisodeRecap episodeId="house-of-black-roses-s1-e1" onBack={vi.fn()} />);
+it('replays a completed Black Roses episode through the same Stars flow', async () => {
+  mocks.invoice.mockResolvedValue({
+    episodeId: 'house-of-black-roses-s1-e1',
+    priceStars: 49,
+    invoiceUrl: 'https://t.me/$rewind',
+  });
+  mocks.open.mockResolvedValue('paid');
+  mocks.status.mockResolvedValue({
+    episodeId: 'house-of-black-roses-s1-e1',
+    priceStars: 49,
+    applied: true,
+  });
+  const onRewindComplete = vi.fn();
+
+  render(
+    <EpisodeRecap
+      episodeId="house-of-black-roses-s1-e1"
+      rewindPriceStars={49}
+      onRewindComplete={onRewindComplete}
+      onBack={vi.fn()}
+    />,
+  );
+
   expect(screen.getByRole('heading', { name: 'Наследница' })).toBeVisible();
-  expect(screen.getByText(/тридцать дней/i)).toBeVisible();
-  expect(screen.getByText(/портрет женщины 1901 года/i)).toBeVisible();
-  expect(screen.queryByRole('button', { name: /Изменить события/ })).not.toBeInTheDocument();
-  expect(screen.getByRole('button', { name: 'Назад к эпизодам' })).toBeVisible();
+  fireEvent.click(screen.getByRole('button', { name: 'Изменить события — 49 ⭐' }));
+  expect(screen.getByText(/Прогресс всех следующих эпизодов будет сброшен/)).toBeVisible();
+  fireEvent.click(screen.getByRole('button', { name: 'Подтвердить за 49 ⭐' }));
+
+  await waitFor(() => expect(onRewindComplete).toHaveBeenCalledWith('house-of-black-roses-s1-e1'));
+  expect(mocks.invoice).toHaveBeenCalledWith('signed', 'house-of-black-roses-s1-e1');
+  expect(mocks.open).toHaveBeenCalledWith('https://t.me/$rewind');
 });
