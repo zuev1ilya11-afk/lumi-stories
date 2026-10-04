@@ -487,5 +487,55 @@ Deno.test('season invoice product is scoped to the selected story', async () => 
   const payload = await response.json();
   assert(response.status === 200, 'scoped season invoice failed');
   assert(createdProduct === 'season:house-of-black-roses:season-1', 'season product was not scoped to the story');
-  assert(payload.priceStars === 149 && payload.invoiceUrl, 'scoped invoice response is incomplete');
+  assert(payload.priceStars === 249 && payload.invoiceUrl, 'scoped invoice response is incomplete');
+});
+
+
+Deno.test('Black Roses pre-checkout requires the story-specific 249 Stars price', async () => {
+  const blackRosesOrder = order({
+    productId: 'season:house-of-black-roses:season-1',
+    amount: 249,
+    invoicePayload: 'lumi:season:house-of-black-roses:season-1:11111111-1111-4111-8111-111111111111',
+  });
+  const store = storeMock(blackRosesOrder);
+  let approved: boolean | undefined;
+  const deps: TelegramWebhookDependencies = {
+    webhookSecret: 'secret',
+    seasonPriceStars: 149,
+    rewindPriceStars: 49,
+    repository: paymentDependencies(store).repository,
+    store,
+    async answerPreCheckout(_id, ok) { approved = ok; },
+    async sendMessage() {},
+  };
+  const headers = { 'Content-Type': 'application/json', 'X-Telegram-Bot-Api-Secret-Token': 'secret' };
+
+  await handleTelegramWebhook(new Request('https://example.test/telegram/webhook', {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({ pre_checkout_query: {
+      id: 'black-roses-good',
+      from: { id: 555111 },
+      currency: 'XTR',
+      total_amount: 249,
+      invoice_payload: blackRosesOrder.invoicePayload,
+    } }),
+  }), deps);
+  assert(approved === true, '249 Stars Black Roses payment must be approved');
+
+  approved = undefined;
+  const freshStore = storeMock(order({ ...blackRosesOrder, id: '22222222-2222-4222-8222-222222222222', status: 'pending' }));
+  deps.store = freshStore;
+  await handleTelegramWebhook(new Request('https://example.test/telegram/webhook', {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({ pre_checkout_query: {
+      id: 'black-roses-old-price',
+      from: { id: 555111 },
+      currency: 'XTR',
+      total_amount: 149,
+      invoice_payload: blackRosesOrder.invoicePayload,
+    } }),
+  }), deps);
+  assert(approved === false, 'old 149 Stars Black Roses price must be rejected');
 });
