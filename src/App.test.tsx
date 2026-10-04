@@ -113,8 +113,8 @@ it('opens completed Black Roses episodes as read-only recaps and preserves curre
   });
 
   render(<App production />);
-  fireEvent.click(await screen.findByRole('button', { name: 'Истории', exact: true }));
-  fireEvent.click(screen.getByRole('button', { name: 'Открыть историю «Дом чёрных роз»', exact: true }));
+  fireEvent.click(await screen.findByRole('button', { name: 'Истории' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Открыть историю «Дом чёрных роз»' }));
 
   const recapButton = await screen.findByRole('button', { name: 'Эпизод 1: Наследница. Краткая сводка' });
   fireEvent.click(recapButton);
