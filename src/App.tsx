@@ -82,13 +82,13 @@ function StoryFrame(props: StoryFrameProps) {
     season1Owned={props.season1Owned}
     season1PriceStars={props.season1PriceStars}
     onPlay={openSavedEpisode}
-    onOpenRecap={props.storyId === 'last-online' ? openRecap : undefined}
+    onOpenRecap={openRecap}
     onBack={() => setScreen('start')}
   />;
   if (screen === 'recap' && recapEpisodeId) return <EpisodeRecap
     episodeId={recapEpisodeId}
     rewindPriceStars={props.episodeRewindPriceStars}
-    onRewindComplete={props.onRewindComplete ? async (episodeId) => {
+    onRewindComplete={props.storyId === 'last-online' && props.onRewindComplete ? async (episodeId) => {
       await props.onRewindComplete?.(episodeId);
       setRecapEpisodeId(undefined);
       setScreen('story');
