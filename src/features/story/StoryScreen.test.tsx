@@ -3,6 +3,9 @@ import { describe, expect, it, vi } from 'vitest';
 import type { Episode, StoryState } from '../../story/schema';
 import { StoryScreen } from './StoryScreen';
 import { StartScreen } from '../shell/StartScreen';
+import { CinematicStage } from './CinematicStage';
+import { getStoryRuntime } from '../../story/stories';
+import { getScenePresentation } from './presentation';
 
 const state: StoryState = {
   junhoScore: 0,
@@ -11,6 +14,27 @@ const state: StoryState = {
   riskScore: 0,
   flags: {},
 };
+
+it('reveals the Ravenhall mirror writing only after the apparition has disappeared', () => {
+  const scenes = getStoryRuntime('house-of-black-roses').episodes[1].scenes;
+  const mirror = scenes.find(s => s.id === 'gothic_ep2_mirror')!;
+  const end = scenes.find(s => s.id === 'gothic_ep2_end')!;
+  const stage = (scene: typeof mirror, index: number) => <CinematicStage scene={scene} beat={scene.beats![index]} presentation={getScenePresentation(scene, scene.beats![index])} beatIndex={index} />;
+  const { container, rerender } = render(stage(mirror, 0));
+  expect(container.querySelector('.lumi-rose-mirror-fog')).not.toBeInTheDocument();
+  rerender(stage(mirror, 1));
+  expect(container.querySelector('.lumi-rose-mirror-fog')).toBeInTheDocument();
+  expect(container.querySelector('.lumi-rose-mirror-warning')).not.toBeInTheDocument();
+  rerender(stage(mirror, 2));
+  expect(container.querySelector('.lumi-story__backdrop:last-of-type')).toHaveAttribute('src', '/assets/house-of-black-roses/ep2/mirror-reflection.webp');
+  rerender(stage(mirror, 3));
+  expect(container.querySelector('.lumi-rose-mirror-warning')).not.toBeInTheDocument();
+  rerender(stage(end, 0));
+  expect(container.querySelector('.lumi-rose-mirror-warning')).toHaveTextContent('НЕ ВЕРЬ ЕМУ.');
+  expect(container.querySelector('.lumi-rose-mirror-warning')).toHaveAttribute('data-revealed', 'false');
+  rerender(stage(end, 1));
+  expect(container.querySelector('.lumi-rose-mirror-warning')).toHaveAttribute('data-revealed', 'true');
+});
 
 const episode: Episode = {
   id: 'episode-test',

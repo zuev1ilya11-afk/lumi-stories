@@ -57,16 +57,31 @@ it('Episode 2 keeps every scene visually staged and all v2 assets present', () =
   for (const scene of episodeTwo.scenes) {
     expect(scene.presentation?.cg, scene.id).toBeTruthy();
     const art = scene.presentation?.cg!;
-    expect(art, scene.id).toMatch(/^assets\/house-of-black-roses\/(?:v1|v2)\//);
+    expect(art, scene.id).toMatch(/^assets\/house-of-black-roses\/(?:v1|v2|ep2)\//);
     expect(existsSync(`public/${art}`), art).toBe(true);
     arts.add(art);
-    for (const beat of scene.beats ?? []) expect(beat.text.length).toBeLessThanOrEqual(320);
+    for (const beat of scene.beats ?? []) {
+      expect(beat.text.length).toBeLessThanOrEqual(320);
+      const shot = getScenePresentation(scene, beat).cg!;
+      expect(shot, scene.id).toMatch(/\.webp$/);
+      expect(existsSync(`public/${shot}`), shot).toBe(true);
+      arts.add(shot);
+    }
   }
   for (const art of [
-    'assets/house-of-black-roses/v2/isabel-portrait.svg',
-    'assets/house-of-black-roses/v2/lucian-portrait.svg',
-    'assets/house-of-black-roses/v2/adrian-photos.svg',
-    'assets/house-of-black-roses/v2/diary-page.svg',
-    'assets/house-of-black-roses/v2/mirror-warning.svg'
+    ...['isabel-arrival', 'isabel-confide', 'isabel-guarded', 'adrian-photos',
+      'west-door', 'west-opening', 'west-corridor', 'first-evelyn-room', 'letters',
+      'diary', 'chapel', 'lucian-entrance', 'lucian-evidence', 'adrian-conflict',
+      'adrian-grief', 'mirror-empty', 'mirror-reflection'].map(name => `assets/house-of-black-roses/ep2/${name}.webp`)
   ]) expect(arts.has(art), art).toBe(true);
+});
+
+it('stages the mirror apparition before the warning without revealing it early', () => {
+  const scenes = getStoryRuntime('house-of-black-roses').episodes[1].scenes;
+  const mirror = scenes.find(s => s.id === 'gothic_ep2_mirror')!;
+  expect(getScenePresentation(mirror, mirror.beats![0]).cg).toContain('mirror-empty');
+  expect(getScenePresentation(mirror, mirror.beats![2]).cg).toContain('mirror-reflection');
+  expect(getScenePresentation(mirror, mirror.beats![3]).cg).toContain('mirror-empty');
+  expect(mirror.beats?.some(b => b.text.includes('НЕ ВЕРЬ ЕМУ'))).toBe(false);
+  expect(scenes.find(s => s.id === 'gothic_ep2_end')!.beats!.at(-1)!.text).toBe('НЕ ВЕРЬ ЕМУ.');
 });

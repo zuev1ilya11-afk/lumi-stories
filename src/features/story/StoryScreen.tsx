@@ -115,7 +115,7 @@ function ScenePlayer({ storyId = 'last-online', seasonId = 'season-1', episode, 
   const readyChoices = playback.final && playback.complete ? choices : [];
   return <main className={`lumi-story lumi-story--${p.mode}`} data-testid="story-stage" data-story-id={storyId} data-scene-id={scene.id} data-beat-index={playback.index} data-beat-count={getSceneBeats(scene).length}
     data-presentation={p.mode} data-motion={p.motion} data-camera={p.camera} data-transition={p.transition}>
-    <CinematicStage scene={scene} beat={playback.beat} presentation={p} previous={previous} />
+    <CinematicStage scene={scene} beat={playback.beat} beatIndex={playback.index} presentation={p} previous={previous} />
     <header className="lumi-story__topbar"><div><small>LUMI · {p.location ?? 'История'}</small><strong>{episode.title}</strong></div><button className="lumi-icon-button" type="button" onClick={onMenu} aria-label="Меню">⋯</button></header>
     <button className="lumi-stage-tap" type="button" aria-label="Продолжить сцену" disabled={pending || disabled || readyChoices.length > 0} onClick={event => { if (event.detail < 2) tap(); }} tabIndex={-1} />
     <div className="lumi-story__content">

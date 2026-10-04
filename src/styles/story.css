@@ -123,3 +123,26 @@ button:focus-visible { outline: 2px solid #edcff7; outline-offset: 3px; }
 .lumi-paywall[data-story-id="house-of-black-roses"] { background: #0c090c; animation: lumi-gothic-ending 1.1s ease-out both; }
 @keyframes lumi-gothic-ending { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .lumi-paywall[data-story-id="house-of-black-roses"] { animation: none; } }
+
+/* Episode 2 only: dust, subtle candlelight and the authored mirror sequence. */
+.lumi-story:is([data-scene-id="gothic_ep2_photos_reveal"], [data-scene-id="gothic_ep2_diary_core"], [data-scene-id="gothic_ep2_torn_page"]) .lumi-story__backdrop { object-fit: contain; }
+@media (max-height: 650px) {
+  .lumi-story:is([data-scene-id="gothic_ep2_photos_reveal"], [data-scene-id="gothic_ep2_diary_core"], [data-scene-id="gothic_ep2_torn_page"]) .lumi-framing { bottom: calc(164px + var(--lumi-safe-bottom)); }
+}
+.lumi-story[data-scene-id^="gothic_ep2_"] .lumi-ambient[data-ambient="dust"] { animation: lumi-rose-dust 18s linear infinite; }
+.lumi-story[data-scene-id^="gothic_ep2_"] .lumi-ambient[data-ambient="dust"]::after {
+  content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 88% 68%, #e3a65430, transparent 55%);
+  animation: lumi-rose-candle 5s ease-in-out infinite alternate;
+}
+.lumi-rose-mirror-fog { position: absolute; z-index: 2; left: 21%; top: 10%; width: 58%; height: 49%; border-radius: 50%; background: radial-gradient(ellipse, transparent 30%, #d5dfdf25 65%, transparent 78%); filter: blur(12px); animation: lumi-rose-fog 3s ease-out both; }
+.lumi-rose-mirror-warning { position: absolute; z-index: 3; top: 29%; left: 22%; width: 56%; text-align: center; color: #e8efed; font: italic 600 clamp(1.05rem, 5vw, 1.65rem)/1.5 Georgia, serif; letter-spacing: .08em; text-shadow: 0 1px 5px #07101d; animation: lumi-rose-writing 3.5s ease-out both; }
+.lumi-rose-mirror-warning[data-revealed="true"] { animation: none; opacity: 1; clip-path: none; }
+@keyframes lumi-rose-dust { to { background-position: 32px -85px; } }
+@keyframes lumi-rose-candle { from { opacity: .4; } to { opacity: .9; } }
+@keyframes lumi-rose-fog { from { opacity: 0; } to { opacity: 1; } }
+@keyframes lumi-rose-writing { from { clip-path: inset(0 100% 0 0); opacity: .1; } to { clip-path: inset(0); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .lumi-story[data-scene-id^="gothic_ep2_"] .lumi-ambient::after,
+  .lumi-rose-mirror-fog, .lumi-rose-mirror-warning { animation: none !important; }
+  .lumi-rose-mirror-warning[data-revealed="false"] { visibility: hidden; }
+}

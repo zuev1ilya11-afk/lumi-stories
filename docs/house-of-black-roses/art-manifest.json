@@ -238,5 +238,178 @@
     "sha256": "c8a918990b66da54f7515a2ec580f265110072de31865fc19d4dd624def1eb1a",
     "prompt": "Use case: identity-preserve. ONE vertical2:3 cinematic photoreal medium portrait of EXACT Evelyn in reference1, unchanged face/hair/age23/eyes. NOW wearing only same ivory blouse and dark high waist trousers, coat REMOVED. Dark long hair loose, sleeves buttoned. She stands in moonlit oak corridor outside gallery reference2, determined investigative expression, chin raised slightly, gaze ahead, shoulders natural, two arms relaxed with anatomically correct hands at sides, no props. Warm candle and blue moonlight, no red flowers, no text, no collage.",
     "qa": "Accepted after individual full-frame visual inspection; corrected assets re-inspected. Identity, anatomy, garments, props and perspective checked."
+  },
+  {
+    "file": "public/assets/house-of-black-roses/ep2/isabel-arrival.webp",
+    "bytes": 131980,
+    "sha256": "c5ab12841477c12ecf40ffaa257e9b4c455326fa92a145160d7adacee3561180",
+    "prompts": [
+      "Use case: illustration-story. Deliver ONE portrait 2:3 cinematic photorealistic gothic romance game CG, no panels, no collage, no text, no watermark. Identity references: image 1 is the APPROVED character bible (Evelyn first column brunette long loose wavy hair pale green eyes; Adrian second black hair formal black cravat; Lucian third tousled brown hair stubble dark modern jacket; Isabelle fourth auburn messy updo freckles ivory shirt brown vest); image 2 locks Evelyn and Adrian's exact faces and Evelyn ivory blouse/black trousers. Preserve these identities, distinct faces, realistic anatomy, natural wrists and five fingers per hand. Important action in upper two-thirds for mobile dialogue lower area; readable candlelit rich brown and blue palette, not excessively dark. Isabelle age24 arrives into Ravenhall library in gray morning daylight, warm observant welcoming half smile, leather satchel on shoulder and closed archival folder held naturally against her side. Evelyn turns toward her from left edge in three-quarter profile. Medium event shot, Isabelle off-center right, background stair arch. No Adrian."
+    ],
+    "review": "Reviewed full frame: matching identity, natural visible limbs/prop contact, coherent scene. Imagegen corrections applied before encoding."
+  },
+  {
+    "file": "public/assets/house-of-black-roses/ep2/isabel-confide.webp",
+    "bytes": 114094,
+    "sha256": "d09492de9af811e8db4e1ad2aa587063771de7fe5c1b5cd6b49249017482f472",
+    "prompts": [
+      "Use case: illustration-story. Deliver ONE portrait 2:3 cinematic photorealistic gothic romance game CG, no panels, no collage, no text, no watermark. Identity references: image 1 is the APPROVED character bible (Evelyn first column brunette long loose wavy hair pale green eyes; Adrian second black hair formal black cravat; Lucian third tousled brown hair stubble dark modern jacket; Isabelle fourth auburn messy updo freckles ivory shirt brown vest); image 2 locks Evelyn and Adrian's exact faces and Evelyn ivory blouse/black trousers. Preserve these identities, distinct faces, realistic anatomy, natural wrists and five fingers per hand. Important action in upper two-thirds for mobile dialogue lower area; readable candlelit rich brown and blue palette, not excessively dark. At wooden archive desk Evelyn leans toward Isabelle telling a troubling secret. Isabelle's warm smile fades to compassionate concern, hands resting naturally separated on tabletop beside flat archive papers; Evelyn seen in profile at left, both adult women seated. Intimate medium shot, eye contact, morning light, no held objects."
+    ],
+    "review": "Reviewed full frame: matching identity, natural visible limbs/prop contact, coherent scene. Imagegen corrections applied before encoding."
+  },
+  {
+    "file": "public/assets/house-of-black-roses/ep2/isabel-guarded.webp",
+    "bytes": 96680,
+    "sha256": "f2199f901130ee7bf351363f84e4f5a79b4daaecaf1f892c5fe7a75cf8137549",
+    "prompts": [
+      "Use case: illustration-story. Deliver ONE portrait 2:3 cinematic photorealistic gothic romance game CG, no panels, no collage, no text, no watermark. Identity references: image 1 is the APPROVED character bible (Evelyn first column brunette long loose wavy hair pale green eyes; Adrian second black hair formal black cravat; Lucian third tousled brown hair stubble dark modern jacket; Isabelle fourth auburn messy updo freckles ivory shirt brown vest); image 2 locks Evelyn and Adrian's exact faces and Evelyn ivory blouse/black trousers. Preserve these identities, distinct faces, realistic anatomy, natural wrists and five fingers per hand. Important action in upper two-thirds for mobile dialogue lower area; readable candlelit rich brown and blue palette, not excessively dark. Isabelle at archive desk pauses while sorting envelopes laid on table, expression alert and cautious, one hand resting on closed folder, other relaxed by elbow, turns her upper body toward Evelyn visible at near left edge. Medium side angle distinct pose from reference, freckles auburn updo brown vest ivory shirt; neutral restrained worry.",
+      "Create ONE portrait 2:3 photorealistic cinematic gothic romance visual novel CG, realistic detailed materials, restrained candlelight/cool daylight, readable shadows. No montage, no panels, no watermark, no text except specified. Key action upper 65% for mobile overlay below. Reference1 character bible: Evelyn first column brown long wavy hair pale green eyes; Isabelle fourth column auburn updo freckles; reference2 exact Evelyn identity ivory blouse black trousers. All characters adult. Preserve reference faces exactly; no additional people, no Adrian. Anatomically natural arms, wrists, normal fingers, no merged objects. ONLY two women at archive desk: auburn Isabelle sits on right with a wary expression, turns toward Evelyn at left. Her hands rest apart on the closed folder and on her chair arm, fingers relaxed. Same ivory blouse brown vest and freckles, daytime. No man anywhere, no Adrian. Distinct pose from affectionate conversation."
+    ],
+    "review": "Reviewed full frame: matching identity, natural visible limbs/prop contact, coherent scene. Imagegen corrections applied before encoding."
+  },
+  {
+    "file": "public/assets/house-of-black-roses/ep2/adrian-photos.webp",
+    "bytes": 170202,
+    "sha256": "2717082f87cfdb3f4440fb948ef825251e71658d1e722f273611ff82865df8f8",
+    "prompts": [
+      "Use case: illustration-story. Deliver ONE portrait 2:3 cinematic photorealistic gothic romance game CG, no panels, no collage, no text, no watermark. Identity references: image 1 is the APPROVED character bible (Evelyn first column brunette long loose wavy hair pale green eyes; Adrian second black hair formal black cravat; Lucian third tousled brown hair stubble dark modern jacket; Isabelle fourth auburn messy updo freckles ivory shirt brown vest); image 2 locks Evelyn and Adrian's exact faces and Evelyn ivory blouse/black trousers. Preserve these identities, distinct faces, realistic anatomy, natural wrists and five fingers per hand. Important action in upper two-thirds for mobile dialogue lower area; readable candlelit rich brown and blue palette, not excessively dark. A single cinematic still-life CG of FOUR different old PHOTOGRAPHIC PRINTS arranged neatly in two rows on an archive table, no hands. Each print clearly depicts the SAME Adrian face from reference second image, youthful 29, standing at Ravenhall gates in different eras: top left sepia early 1930s gate restoration, top right black and white 1950s snow at gates, bottom left faded 1980s color with car, bottom right modern 2019 digital color of garden gate. Faces recognizable and identical, period-appropriate coats over white shirt, do not change Adrian facial structure. The four prints fill upper 65% of vertical frame, spare table below. EXCEPTION text: on large white print margins EXACT legible dates '1931', '1957', '1986', '2019' respectively. This is an in-world tabletop shot of evidence, not a character collage."
+    ],
+    "review": "Reviewed full frame: matching identity, natural visible limbs/prop contact, coherent scene. Imagegen corrections applied before encoding."
+  },
+  {
+    "file": "public/assets/house-of-black-roses/ep2/west-door.webp",
+    "bytes": 130324,
+    "sha256": "078620fa058f2c6c376f57ed899e0306f81652804617ff87e4e4fd6c25612c18",
+    "prompts": [
+      "Create ONE portrait 2:3 photorealistic cinematic gothic romance visual novel CG, realistic detailed materials, restrained candlelight/cool daylight, readable shadows. No montage, no panels, no watermark, no text except specified. Key action upper 65% for mobile overlay below. Reference1 character bible: Evelyn first column brown long wavy hair pale green eyes; Isabelle fourth column auburn updo freckles; reference2 exact Evelyn identity ivory blouse black trousers. All characters adult. Preserve reference faces exactly; no additional people, no Adrian. Anatomically natural arms, wrists, normal fingers, no merged objects. Environment establishing shot ONLY, no characters: imposing CLOSED narrow dark oak double door to forbidden west wing, oxidized brass keyhole and lever at natural waist height, partially drawn thick charcoal velvet curtain, worn plaster rose motif, dusty floor, seal long broken. Sparse cool light instead of normal warm polished hall, feels sealed for 125 years."
+    ],
+    "review": "Reviewed full frame: matching identity, natural visible limbs/prop contact, coherent scene. Imagegen corrections applied before encoding."
+  },
+  {
+    "file": "public/assets/house-of-black-roses/ep2/west-opening.webp",
+    "bytes": 102400,
+    "sha256": "5d3f14d72d90a547cf63b4d0e5578fda35e1fd12c9c82ef0e95208c162cfa92e",
+    "prompts": [
+      "Create ONE portrait 2:3 photorealistic cinematic gothic romance visual novel CG, realistic detailed materials, restrained candlelight/cool daylight, readable shadows. No montage, no panels, no watermark, no text except specified. Key action upper 65% for mobile overlay below. Reference1 character bible: Evelyn first column brown long wavy hair pale green eyes; Isabelle fourth column auburn updo freckles; reference2 exact Evelyn identity ivory blouse black trousers. All characters adult. Preserve reference faces exactly; no additional people, no Adrian. Anatomically natural arms, wrists, normal fingers, no merged objects. Evelyn in exact ivory blouse and black trousers slowly opens an old dark oak door into west wing using her RIGHT hand on brass lever, seen from side and slightly behind, face tense in profile. Right shoulder elbow wrist align naturally, right palm toward door and thumb correctly placed, no exaggerated arm rotation. LEFT arm naturally at her side. Worn plaster, fallen fragments, sliver of cool light from abandoned corridor. TWO arms only, complete natural hand gripping horizontal lever."
+    ],
+    "review": "Reviewed full frame: matching identity, natural visible limbs/prop contact, coherent scene. Imagegen corrections applied before encoding."
+  },
+  {
+    "file": "public/assets/house-of-black-roses/ep2/west-corridor.webp",
+    "bytes": 120032,
+    "sha256": "ab303bf77a04748240f8af248f72e56efd1cec5c1a5d95eca24baf9bbd070f48",
+    "prompts": [
+      "Create ONE portrait 2:3 photorealistic cinematic gothic romance visual novel CG, realistic detailed materials, restrained candlelight/cool daylight, readable shadows. No montage, no panels, no watermark, no text except specified. Key action upper 65% for mobile overlay below. Reference1 character bible: Evelyn first column brown long wavy hair pale green eyes; Isabelle fourth column auburn updo freckles; reference2 exact Evelyn identity ivory blouse black trousers. All characters adult. Preserve reference faces exactly; no additional people, no Adrian. Anatomically natural arms, wrists, normal fingers, no merged objects. No characters: long ABANDONED western corridor in Ravenhall, peeling damask wallpaper, empty pale rectangles where frames were removed, dusty floor with a narrow trail of faint human bare footprints receding toward ONE open bedroom door at far end. Other doors closed. Broken plaster and draped old furniture, cobwebs high in corners, cold diffuse pale window light, no polished golden hall."
+    ],
+    "review": "Reviewed full frame: matching identity, natural visible limbs/prop contact, coherent scene. Imagegen corrections applied before encoding."
+  },
+  {
+    "file": "public/assets/house-of-black-roses/ep2/first-evelyn-room.webp",
+    "bytes": 163070,
+    "sha256": "73a396f06dd47d93b7d91882314e10812caa3658aba968d8ae5f34c6fc2e8a88",
+    "prompts": [
+      "Create ONE portrait 2:3 photorealistic cinematic gothic romance visual novel CG, realistic detailed materials, restrained candlelight/cool daylight, readable shadows. No montage, no panels, no watermark, no text except specified. Key action upper 65% for mobile overlay below. Reference1 character bible: Evelyn first column brown long wavy hair pale green eyes; Isabelle fourth column auburn updo freckles; reference2 exact Evelyn identity ivory blouse black trousers. All characters adult. Preserve reference faces exactly; no additional people, no Adrian. Anatomically natural arms, wrists, normal fingers, no merged objects. Single wide establishing view of first Evelyn's bedroom preserved since 1901, no people. Ivory lace dress hanging in open antique wardrobe, initial E.R. embroidered on collar, four-poster bed with neatly arranged coverlet, vanity with tall oval tarnished-gold mirror that is unusually clean, ribbon-tied letters and old photographic portrait on writing desk, small vase JET BLACK roses. Dust on chairs and floor, cold soft window light, original wallpaper, no modern objects."
+    ],
+    "review": "Reviewed full frame: matching identity, natural visible limbs/prop contact, coherent scene. Imagegen corrections applied before encoding."
+  },
+  {
+    "file": "public/assets/house-of-black-roses/ep2/letters.webp",
+    "bytes": 127192,
+    "sha256": "ac13a17c57f45c260cb38316042b14a0fde2ef7fe91049046c3624b5aa0be604",
+    "prompts": [
+      "Create ONE portrait 2:3 photorealistic cinematic gothic romance visual novel CG, realistic detailed materials, restrained candlelight/cool daylight, readable shadows. No montage, no panels, no watermark, no text except specified. Key action upper 65% for mobile overlay below. Reference1 character bible: Evelyn first column brown long wavy hair pale green eyes; Isabelle fourth column auburn updo freckles; reference2 exact Evelyn identity ivory blouse black trousers. All characters adult. Preserve reference faces exactly; no additional people, no Adrian. Anatomically natural arms, wrists, normal fingers, no merged objects. Single intimate still-life of opened old letters on antique writing desk, loose dark ribbon, black rose petals, fountain pen, one cream envelope. Small dark handwritten Cyrillic ink in lines, the only sharply legible signature is 'Адриан'. Letters lie flat, no hands, no people. Upper frame contains paper; lower frame desk edge with dust. Cinematic 1901 paper texture, low side sunlight."
+    ],
+    "review": "Reviewed full frame: matching identity, natural visible limbs/prop contact, coherent scene. Imagegen corrections applied before encoding."
+  },
+  {
+    "file": "public/assets/house-of-black-roses/ep2/diary.webp",
+    "bytes": 174546,
+    "sha256": "248a62bdf5f4b4579e725f0a77354e885d827b9da6c4ee7274c649ad48dab917",
+    "prompts": [
+      "Create ONE portrait 2:3 photorealistic cinematic gothic romance visual novel CG, realistic detailed materials, restrained candlelight/cool daylight, readable shadows. No montage, no panels, no watermark, no text except specified. Key action upper 65% for mobile overlay below. Reference1 character bible: Evelyn first column brown long wavy hair pale green eyes; Isabelle fourth column auburn updo freckles; reference2 exact Evelyn identity ivory blouse black trousers. All characters adult. Preserve reference faces exactly; no additional people, no Adrian. Anatomically natural arms, wrists, normal fingers, no merged objects. Single overhead angled still-life: thin antique BLACK leather diary lies OPEN on old writing desk, ink handwritten Cyrillic pages, rightmost final leaf TORN out at the binding with unmistakable ragged stub. Next to book a tiny old paper DRAWING of a stone chapel labeled 'Кроу', one dry jet-black petal, a rusted clasp and dark ribbon. Main diary pages no crisply legible text; actual passages will be shown by game. Realistic page geometry, one binding, no hands. Entire diary and clue in upper 65%, desk below."
+    ],
+    "review": "Reviewed full frame: matching identity, natural visible limbs/prop contact, coherent scene. Imagegen corrections applied before encoding."
+  },
+  {
+    "file": "public/assets/house-of-black-roses/ep2/west-isabel.webp",
+    "bytes": 110140,
+    "sha256": "aea8c03e95d4697205095281744f0285aa50948e5eeb8b80c71b8d2577156512",
+    "prompts": [
+      "Use case illustration-story, ONE portrait 2:3 cinematic photorealistic gothic romance CG for mobile visual novel, no panels/collage, no text/watermarks. Place key faces/action upper two-thirds. Preserve approved faces EXACTLY from references. All adults: Evelyn23 is first column brunette long loose wavy hair pale green eyes, ivory blouse black trousers; Adrian29 is second column black swept hair, clean-shaven angular face black frock coat cravat; Lucian26 is THIRD column tousled brown hair, slight stubble and irreverent smile, dark modern jacket open shirt; Isabelle24 FOURTH column auburn messy updo freckles brown vest ivory blouse. Use ONLY explicitly requested people, not all reference characters. Natural anatomy and prop physics, no extra arms/fingers. Rich dark wood/cool natural light/warm candle accents with visible detail. ONLY Evelyn and Isabelle, together at threshold of abandoned west wing bedroom. Evelyn at left holding shoulder bag strap naturally, Isabelle on right looks frightened while cautiously looking at the eerily clean mirror inside. Both standing in three-quarter side view, midshot, dusty cracked wallpaper around dark open wooden doorway, cold afternoon light. No men."
+    ],
+    "review": "Reviewed full frame: matching identity, natural visible limbs/prop contact, coherent scene. Imagegen corrections applied before encoding."
+  },
+  {
+    "file": "public/assets/house-of-black-roses/ep2/chapel.webp",
+    "bytes": 163750,
+    "sha256": "6fda6c1f1f3cae7a372ed6627aa6d28248a2c09b8f6b52fbd086db3294ff0081",
+    "prompts": [
+      "Use case illustration-story, ONE portrait 2:3 cinematic photorealistic gothic romance CG for mobile visual novel, no panels/collage, no text/watermarks. Place key faces/action upper two-thirds. Preserve approved faces EXACTLY from references. All adults: Evelyn23 is first column brunette long loose wavy hair pale green eyes, ivory blouse black trousers; Adrian29 is second column black swept hair, clean-shaven angular face black frock coat cravat; Lucian26 is THIRD column tousled brown hair, slight stubble and irreverent smile, dark modern jacket open shirt; Isabelle24 FOURTH column auburn messy updo freckles brown vest ivory blouse. Use ONLY explicitly requested people, not all reference characters. Natural anatomy and prop physics, no extra arms/fingers. Rich dark wood/cool natural light/warm candle accents with visible detail. ONLY Evelyn seen from behind at medium distance approaching a small ruined stone chapel at end of overgrown path in blue gray evening mist, dark shoulder satchel, ivory blouse black trousers. Chapel has pointed stone doorway, ONE circular rose window above, tiny cross on roof, no tower. Door open candle visible inside. Dramatic setting, no other people."
+    ],
+    "review": "Reviewed full frame: matching identity, natural visible limbs/prop contact, coherent scene. Imagegen corrections applied before encoding."
+  },
+  {
+    "file": "public/assets/house-of-black-roses/ep2/lucian-entrance.webp",
+    "bytes": 116560,
+    "sha256": "70f1e3fbc84fa537e2daf37467d28051823231048e72cd8f73dfe51d631272b9",
+    "prompts": [
+      "Use case illustration-story, ONE portrait 2:3 cinematic photorealistic gothic romance CG for mobile visual novel, no panels/collage, no text/watermarks. Place key faces/action upper two-thirds. Preserve approved faces EXACTLY from references. All adults: Evelyn23 is first column brunette long loose wavy hair pale green eyes, ivory blouse black trousers; Adrian29 is second column black swept hair, clean-shaven angular face black frock coat cravat; Lucian26 is THIRD column tousled brown hair, slight stubble and irreverent smile, dark modern jacket open shirt; Isabelle24 FOURTH column auburn messy updo freckles brown vest ivory blouse. Use ONLY explicitly requested people, not all reference characters. Natural anatomy and prop physics, no extra arms/fingers. Rich dark wood/cool natural light/warm candle accents with visible detail. ONLY Lucian26 and Evelyn23. An arresting cinematic first meeting INSIDE ruined stone chapel: Lucian at right of center, caught rising from beside a stone reading lectern with an OPEN old book resting flat on it. His right hand rests casually flat on stone beside book, left hand relaxed at side; half amused intent face turns to Evelyn entering in near left foreground seen from behind/profile. One candle, dusty beam through broken rose window, composition leading diagonally to Lucian, medium/wide event shot. No Adrian or Isabelle, Lucian has distinct THIRD COLUMN face, stubble, informal dark jacket, NO cravat."
+    ],
+    "review": "Reviewed full frame: matching identity, natural visible limbs/prop contact, coherent scene. Imagegen corrections applied before encoding."
+  },
+  {
+    "file": "public/assets/house-of-black-roses/ep2/lucian-evidence.webp",
+    "bytes": 106536,
+    "sha256": "34786819302870c537b4ee327e470646597a94933256d1a9102172fba3558f50",
+    "prompts": [
+      "Use case illustration-story, ONE portrait 2:3 cinematic photorealistic gothic romance CG for mobile visual novel, no panels/collage, no text/watermarks. Place key faces/action upper two-thirds. Preserve approved faces EXACTLY from references. All adults: Evelyn23 is first column brunette long loose wavy hair pale green eyes, ivory blouse black trousers; Adrian29 is second column black swept hair, clean-shaven angular face black frock coat cravat; Lucian26 is THIRD column tousled brown hair, slight stubble and irreverent smile, dark modern jacket open shirt; Isabelle24 FOURTH column auburn messy updo freckles brown vest ivory blouse. Use ONLY explicitly requested people, not all reference characters. Natural anatomy and prop physics, no extra arms/fingers. Rich dark wood/cool natural light/warm candle accents with visible detail. ONLY Lucian26 at stone chapel lectern, an open old book and a small sepia photograph of Ravenhall gate laid flat before him. Evelyn23 on the other side in profile studies the evidence. Lucian rests both hands APART naturally on lectern edges without gripping anything, looking at Evelyn with serious concern. Third column Lucian exact face, tousled brown hair light stubble informal jacket open collar not Adrian. Side-angle medium shot, overcast evening light from broken rose window.",
+      "Precise edit target image1 ONLY the small SEPIA PHOTOGRAPH lying on chapel lectern in front of the open book. In that photograph add Adrian standing at Ravenhall gates, matching the MALE face in reference2: black swept hair, angular clean-shaven face, black formal coat white shirt. He must be recognizable in the old print. Preserve BOTH full-size foreground people EXACTLY: Lucian brown tousled hair stubble and Evelyn brunette ivory blouse, their faces bodies hands positions and clothes, all the stone lectern, book, lighting and chapel background. Do NOT add Adrian as full-size person or change Lucian to Adrian. Do NOT change anything outside the small photographic print."
+    ],
+    "review": "Reviewed full frame: matching identity, natural visible limbs/prop contact, coherent scene. Imagegen corrections applied before encoding."
+  },
+  {
+    "file": "public/assets/house-of-black-roses/ep2/adrian-conflict.webp",
+    "bytes": 81700,
+    "sha256": "eceaa92131b47f44a9c42dc283933a044bd0cc810eb82ae49499ddc0b4cb2153",
+    "prompts": [
+      "Use case illustration-story, ONE portrait 2:3 cinematic photorealistic gothic romance CG for mobile visual novel, no panels/collage, no text/watermarks. Place key faces/action upper two-thirds. Preserve approved faces EXACTLY from references. All adults: Evelyn23 is first column brunette long loose wavy hair pale green eyes, ivory blouse black trousers; Adrian29 is second column black swept hair, clean-shaven angular face black frock coat cravat; Lucian26 is THIRD column tousled brown hair, slight stubble and irreverent smile, dark modern jacket open shirt; Isabelle24 FOURTH column auburn messy updo freckles brown vest ivory blouse. Use ONLY explicitly requested people, not all reference characters. Natural anatomy and prop physics, no extra arms/fingers. Rich dark wood/cool natural light/warm candle accents with visible detail. ONLY Evelyn and Adrian. Tense conflict in main hall at foot of carved dark staircase at NIGHT. Evelyn left ivory blouse black trousers dark satchel at hip confronts Adrian right black coat cravat. They stand turned toward one another, not toward viewer, half-step apart, hands down natural tense postures. Evelyn raised chin angry; Adrian restrains his fear. Warm candles and cool window dark outside; midshot faces high in frame."
+    ],
+    "review": "Reviewed full frame: matching identity, natural visible limbs/prop contact, coherent scene. Imagegen corrections applied before encoding."
+  },
+  {
+    "file": "public/assets/house-of-black-roses/ep2/adrian-grief.webp",
+    "bytes": 94778,
+    "sha256": "c918a78af7e2bf8b66c03649aa1ca973015e36e9146f188a7a6c6354a6a3eced",
+    "prompts": [
+      "Use case illustration-story, ONE portrait 2:3 cinematic photorealistic gothic romance CG for mobile visual novel, no panels/collage, no text/watermarks. Place key faces/action upper two-thirds. Preserve approved faces EXACTLY from references. All adults: Evelyn23 is first column brunette long loose wavy hair pale green eyes, ivory blouse black trousers; Adrian29 is second column black swept hair, clean-shaven angular face black frock coat cravat; Lucian26 is THIRD column tousled brown hair, slight stubble and irreverent smile, dark modern jacket open shirt; Isabelle24 FOURTH column auburn messy updo freckles brown vest ivory blouse. Use ONLY explicitly requested people, not all reference characters. Natural anatomy and prop physics, no extra arms/fingers. Rich dark wood/cool natural light/warm candle accents with visible detail. ONLY Evelyn and Adrian beside narrow writing console below Ravenhall staircase at night. Thin BLACK leather diary lies OPEN FLAT on console, not held, yellow handwritten pages. Evelyn left in profile looks at Adrian right as his composure BREAKS: downcast moist eyes, pressed lips, one hand naturally resting on console edge, other hangs at side, visible grief, no theatrical crying. Canonical identical faces from final-frame, same clothes. Medium close staged shot of both people and book, no floating objects."
+    ],
+    "review": "Reviewed full frame: matching identity, natural visible limbs/prop contact, coherent scene. Imagegen corrections applied before encoding."
+  },
+  {
+    "file": "public/assets/house-of-black-roses/ep2/mirror-empty.webp",
+    "bytes": 125814,
+    "sha256": "000fc9a40a00bd706a8baeaaaacf6c22aa6ee3a43c0ba0b6117b81b62d041c35",
+    "prompts": [
+      "ONE portrait2:3 photorealistic gothic game CG. NO PEOPLE, no faces, no text anywhere. Camera almost straight-on toward large antique OVAL gold-framed mirror centered in UPPER 60% of frame, its glass blank dark blue-gray reflecting an EMPTY bedroom and pale curtain. In lower half a writing desk with a small closed BLACK leather diary and ONE jet-black rose petal next to it. Single candle on far right side, cool moonlight left, nighttime ornate but intimate bedroom. Mirror glass completely clean with subtle reflected room, no apparition or writing yet; broad usable oval glass for later game overlay. Upper mirror rim at 8% image, lower rim at60%, glass center at34%. Gothic film realism matched to references. No decorative extra books or red flowers."
+    ],
+    "review": "Reviewed full frame: matching identity, natural visible limbs/prop contact, coherent scene. Imagegen corrections applied before encoding."
+  },
+  {
+    "file": "public/assets/house-of-black-roses/ep2/mirror-reflection.webp",
+    "bytes": 129928,
+    "sha256": "90ab19c2d7f358b814d1ff6ace0669fdd52334a46138f615650909ece372d56a",
+    "prompts": [
+      "Edit target image1, preserve camera, oval mirror frame, bedroom, table, CLOSED black diary, petal, candle and all geometry EXACTLY. Add ONLY the reflection of first Evelyn inside the mirror glass, young woman from LEFT seated figure in reference image2: same face as modern Evelyn, brown updo with wisps, ivory high-neck lace gown of1901. She stands waist up inside reflected bedroom, pale and softly spectral but clear familiar face. Her two arms hang naturally at sides, no reaching hands. No person outside mirror, no Adrian anywhere, no writing or text. Very light mist over glass edges; reflection should be unsettling but tender, not horror. The same empty-room composition will crossfade to this frame in game."
+    ],
+    "review": "Reviewed full frame: matching identity, natural visible limbs/prop contact, coherent scene. Imagegen corrections applied before encoding."
+  },
+  {
+    "file": "public/assets/house-of-black-roses/ep2/diary-torn.webp",
+    "bytes": 157834,
+    "sha256": "d091d6e1fd936b591f3fafc34cccb3458a7dad4ce9cd65c7bb64e106b068d86c",
+    "prompts": [
+      "Edit this diary still-life for the final missing-page reveal. Same table, black leather small diary, side sketch of identical small chapel labeled Кроу and single black petal; preserve lighting/style. OPEN book at its VERY LAST PAGE: on LEFT a complete handwritten yellow page, on RIGHT the exposed inside BLACK back cover, and a NARROW RAGGED STRIP of torn yellow paper remains immediately beside the CENTRAL BINDING. The missing leaf was ripped at the SPINE, not outer edge. Make this unambiguous. Left whole page exact Cyrillic visible handwriting: «Я совершила ошибку. Адриан обещает всё исправить.» date '17 октября 1901'. No hands. Whole book physically coherent, one spine, pages attached along middle. Portrait2:3."
+    ],
+    "review": "Reviewed full frame: matching identity, natural visible limbs/prop contact, coherent scene. Imagegen corrections applied before encoding."
   }
 ]
