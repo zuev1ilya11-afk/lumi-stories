@@ -88,7 +88,7 @@ function StoryFrame(props: StoryFrameProps) {
   if (screen === 'recap' && recapEpisodeId) return <EpisodeRecap
     episodeId={recapEpisodeId}
     rewindPriceStars={props.episodeRewindPriceStars}
-    onRewindComplete={props.storyId === 'last-online' && props.onRewindComplete ? async (episodeId) => {
+    onRewindComplete={props.onRewindComplete ? async (episodeId) => {
       await props.onRewindComplete?.(episodeId);
       setRecapEpisodeId(undefined);
       setScreen('story');
@@ -178,7 +178,7 @@ function LocalStoryPrototype({ storyId, initialScreen, onOpenStory }: { storyId:
     progress={progress}
     season1Owned
     season1PriceStars={story.free ? 0 : story.id === 'house-of-black-roses' ? 249 : 149}
-    episodeRewindPriceStars={story.id === 'last-online' ? 49 : 0}
+    episodeRewindPriceStars={49}
     userDisplayName="Игрок LUMI"
     onOpenStory={onOpenStory}
     onChoose={async id => { setProgress(await machine.choose(id)); }}
