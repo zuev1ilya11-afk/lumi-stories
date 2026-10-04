@@ -1,5 +1,6 @@
 // @vitest-environment node
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { expect, it } from 'vitest';
 import { getStoryRuntime } from './stories';
 import { enumeratePaths } from './validator';
@@ -74,6 +75,14 @@ it('Episode 2 keeps every scene visually staged and all v2 assets present', () =
       'diary', 'chapel', 'lucian-entrance', 'lucian-evidence', 'adrian-conflict',
       'adrian-grief', 'mirror-empty', 'mirror-reflection'].map(name => `assets/house-of-black-roses/ep2/${name}.webp`)
   ]) expect(arts.has(art), art).toBe(true);
+  const manifest = JSON.parse(readFileSync('docs/house-of-black-roses/art-manifest.json', 'utf8')) as { file: string; bytes?: number; sha256?: string }[];
+  const accepted = manifest.filter(item => item.file.includes('/ep2/') && item.file.endsWith('.webp'));
+  expect(accepted).toHaveLength(19);
+  for (const item of accepted) {
+    const bytes = readFileSync(item.file);
+    expect(bytes.length, item.file).toBe(item.bytes);
+    expect(createHash('sha256').update(bytes).digest('hex'), item.file).toBe(item.sha256);
+  }
 });
 
 it('stages the mirror apparition before the warning without revealing it early', () => {
