@@ -91,7 +91,7 @@ it('opens a read-only episode 1 recap without changing saved episode 2 progress'
 });
 
 
-it('opens completed Black Roses episodes as read-only recaps and preserves current progress', async () => {
+it('opens completed Black Roses episodes with the shared replay controls and preserves progress until confirmed', async () => {
   connected(saved, true);
   loadProgress.mockResolvedValue({
     storyId: 'house-of-black-roses',
@@ -121,7 +121,7 @@ it('opens completed Black Roses episodes as read-only recaps and preserves curre
 
   expect(screen.getByRole('heading', { name: 'Наследница' })).toBeVisible();
   expect(screen.getByText(/чёрные лепестки/i)).toBeVisible();
-  expect(screen.queryByRole('button', { name: /Изменить события/ })).not.toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'Изменить события — 49 ⭐' })).toBeVisible();
   expect(saveProgress).not.toHaveBeenCalled();
 
   fireEvent.click(screen.getByRole('button', { name: 'Назад к эпизодам' }));
