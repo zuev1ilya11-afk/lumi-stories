@@ -2,7 +2,8 @@ import { jsonResponse } from '../../_shared/http.ts';
 import type { StarPaymentOrder, StarPaymentStore } from '../../_shared/payments.ts';
 import type { LumiRepository } from '../../_shared/repository.ts';
 import { constantTimeTextEqual } from '../../_shared/telegram-bot.ts';
-import { EPISODE_REWIND_TARGETS, REWIND_PRODUCT_PREFIX, SEASON_PRODUCT_PREFIX, episodeRewindInput, isSeasonProductId, seasonPriceStarsFor } from './payments.ts';
+import { REWIND_PRODUCT_PREFIX, SEASON_PRODUCT_PREFIX, episodeRewindInput, isSeasonProductId, seasonPriceStarsFor } from './payments.ts';
+import { EPISODE_REWIND_TARGETS, type RewindEpisodeId } from '../rewind-targets.ts';
 
 type TelegramUser = { id?: number };
 type TelegramChat = { id?: number };
@@ -86,11 +87,11 @@ function validOrder(
   return expectedPrice !== null && order.amount === expectedPrice && amount === expectedPrice;
 }
 
-function rewindEpisodeId(productId: string): keyof typeof EPISODE_REWIND_TARGETS | null {
+function rewindEpisodeId(productId: string): RewindEpisodeId | null {
   if (!productId.startsWith(REWIND_PRODUCT_PREFIX)) return null;
   const episodeId = productId.slice(REWIND_PRODUCT_PREFIX.length);
   return episodeId in EPISODE_REWIND_TARGETS
-    ? episodeId as keyof typeof EPISODE_REWIND_TARGETS
+    ? episodeId as RewindEpisodeId
     : null;
 }
 
