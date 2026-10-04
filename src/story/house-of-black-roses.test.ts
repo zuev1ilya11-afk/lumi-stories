@@ -26,8 +26,17 @@ it('all Episode 1 gothic choices end on the portrait cliffhanger', () => {
 
 it('Episode 2 keeps every decision route playable and converges on the mirror warning', () => {
   const episode = getStoryRuntime('house-of-black-roses').episodes[1];
-  const paths = enumeratePaths(episode, zero);
-  expect(paths.length).toBe(162);
+  const defaultPaths = enumeratePaths(episode, zero);
+  const inheritedPaths = enumeratePaths(episode, {
+    ...zero,
+    flags: {
+      gothic_gallery_choice: 'adrian',
+      gothic_opened_midnight_door: true,
+    },
+  });
+  expect(defaultPaths.length).toBe(486);
+  expect(inheritedPaths.length).toBe(486);
+  const paths = [...defaultPaths, ...inheritedPaths];
   const reached = new Set(paths.flatMap(path => path.sceneIds));
   expect(reached).toEqual(new Set(episode.scenes.map(scene => scene.id)));
   for (const path of paths) {
