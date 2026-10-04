@@ -108,7 +108,7 @@ it('opens completed Black Roses episodes as read-only recaps and preserves curre
     storyId: 'house-of-black-roses',
     seasonId: 'season-1',
     season1Owned: true,
-    priceStars: 149,
+    priceStars: 249,
     episodeRewindPriceStars: 49,
   });
 
