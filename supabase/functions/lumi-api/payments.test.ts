@@ -467,6 +467,104 @@ Deno.test('Episode 5 progress permits rewinding its completed chapter from every
   }
 });
 
+Deno.test('Black Roses completed episodes use the shared replay flow', async () => {
+  const target = 'house-of-black-roses-s1-e1';
+  let createdProduct = '';
+  const store = storeMock(order({
+    productId: 'episode-rewind:' + target,
+    amount: 49,
+    invoicePayload: 'lumi:episode-rewind:house-of-black-roses-s1-e1:rewind',
+  }));
+  store.createOrder = async (playerId, productId, amount) => {
+    createdProduct = productId;
+    return order({
+      playerId,
+      productId,
+      amount,
+      invoicePayload: 'lumi:' + productId + ':rewind',
+    });
+  };
+  const deps = paymentDependencies(store);
+  deps.repository = {
+    ...deps.repository,
+    async getProgress(playerId, storyId, seasonId) {
+      assert(storyId === 'house-of-black-roses' && seasonId === 'season-1', 'rewind read wrong story scope');
+      return {
+        playerId,
+        storyId,
+        seasonId,
+        episodeId: 'house-of-black-roses-s1-e2',
+        sceneId: 'gothic_ep2_after_portrait',
+        junhoScore: 2,
+        taeyunScore: 0,
+        truthScore: 4,
+        riskScore: 2,
+        flags: { gothic_gallery_choice: 'alone' },
+        updatedAt: 'now',
+      };
+    },
+  };
+
+  const response = await handleCreateEpisodeRewindInvoice(new Request('https://example.test/payments/rewind/invoice', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-Telegram-Init-Data': await validInitData() },
+    body: JSON.stringify({ episodeId: target }),
+  }), deps);
+  const payload = await response.json();
+
+  assert(response.status === 200, 'Black Roses rewind invoice failed');
+  assert(payload.priceStars === 49 && payload.invoiceUrl, 'Black Roses rewind must use shared 49 Stars price');
+  assert(createdProduct === 'episode-rewind:' + target, 'Black Roses rewind product was not scoped to its episode');
+});
+
+Deno.test('Black Roses episode 2 replay restores its trusted checkpoint', async () => {
+  const target = 'house-of-black-roses-s1-e2';
+  const store = storeMock(order({ productId: 'episode-rewind:' + target, amount: 49 }));
+  const deps = paymentDependencies(store);
+  deps.repository = {
+    ...deps.repository,
+    async getProgress(playerId, storyId, seasonId) {
+      return {
+        playerId,
+        storyId,
+        seasonId,
+        episodeId: target,
+        sceneId: 'gothic_ep2_end',
+        junhoScore: 8,
+        taeyunScore: 3,
+        truthScore: 11,
+        riskScore: 6,
+        flags: { changed_inside_episode: true },
+        updatedAt: 'now',
+      };
+    },
+    async getEpisodeCheckpoint(playerId, storyId, seasonId, episodeId) {
+      assert(storyId === 'house-of-black-roses' && seasonId === 'season-1', 'checkpoint read wrong story scope');
+      assert(episodeId === target, 'checkpoint read wrong episode');
+      return {
+        playerId,
+        storyId,
+        seasonId,
+        episodeId,
+        sceneId: 'gothic_ep2_after_portrait',
+        junhoScore: 2,
+        taeyunScore: 0,
+        truthScore: 4,
+        riskScore: 2,
+        flags: { gothic_gallery_choice: 'alone' },
+        updatedAt: 'now',
+      };
+    },
+  };
+
+  const response = await handleCreateEpisodeRewindInvoice(new Request('https://example.test/payments/rewind/invoice', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-Telegram-Init-Data': await validInitData() },
+    body: JSON.stringify({ episodeId: target }),
+  }), deps);
+  assert(response.status === 200, 'completed Black Roses episode 2 must be replayable');
+});
+
 Deno.test('season invoice product is scoped to the selected story', async () => {
   const store = storeMock();
   let createdProduct = '';
