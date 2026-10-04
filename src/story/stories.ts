@@ -1,4 +1,5 @@
 import episodeOneRaw from '../content/house-of-black-roses/season-1/episode-1.json';
+import episodeTwoBlackRosesRaw from '../content/house-of-black-roses/season-1/episode-2.json';
 import { STORY_CATALOG, getStoryCatalogEntry } from './catalog';
 import { episodes as lastOnlineEpisodes } from './episodes';
 import { parseEpisode, type Episode } from './schema';
@@ -11,7 +12,7 @@ export type StoryRuntime = {
   free: boolean;
 };
 
-const blackRosesEpisodes: readonly Episode[] = [parseEpisode(episodeOneRaw)];
+const blackRosesEpisodes: readonly Episode[] = [parseEpisode(episodeOneRaw), parseEpisode(episodeTwoBlackRosesRaw)];
 
 const RUNTIMES: Record<string, StoryRuntime> = {
   'last-online': {

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 307 350">
+<image href="approved-character-bible.jpeg" x="-921.6" y="-62" width="1536" height="864" preserveAspectRatio="none"/>
+<defs><linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset=".62" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".76"/></linearGradient></defs>
+<rect width="307" height="350" fill="url(#shade)"/>
+<text x="153.5" y="327" fill="#d8c8b9" font-family="Georgia,serif" font-size="13" text-anchor="middle" letter-spacing="2">ИЗАБЕЛЬ МОРРОУ</text>
+</svg>

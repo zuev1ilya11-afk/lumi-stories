@@ -44,7 +44,7 @@ export const STORY_CATALOG: StoryCatalogEntry[] = [
     theme: 'gothic',
     episodes: [
       { number: '01', id: 'house-of-black-roses-s1-e1', title: 'Наследница' },
-      { number: '02', title: 'Западное крыло' },
+      { number: '02', id: 'house-of-black-roses-s1-e2', title: 'Западное крыло' },
       { number: '03', title: 'Чёрная роза' },
       { number: '04', title: 'Бал мёртвых' },
       { number: '05', title: 'Хозяйка Рейвенхолла' },

@@ -72,7 +72,7 @@ for(const a of [0,1,2]) for(const b of [0,1]) for(const c of [0,1]) {
       } else await step(page,route,episode);
     }
     await expect(page.getByText('Эпизод 1 завершён',{exact:true})).toBeVisible();
-    await expect(page.getByRole('heading',{name:'Эпизод 2 в разработке'})).toBeVisible();
+    await expect(page.getByRole('heading',{name:'Продолжить: Западное крыло'})).toBeVisible();
     expect([...visited]).toEqual(expected.sceneIds);
     expect(store.progress.get(storyId)).toMatchObject({...expected.state,episodeId:episode.id,sceneId:'gothic_ep1_end'});
     expect(store.progress.get('last-online')).toEqual(old);

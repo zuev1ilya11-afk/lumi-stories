@@ -1,0 +1,2400 @@
+{
+  "id": "house-of-black-roses-s1-e2",
+  "title": "Западное крыло",
+  "startSceneId": "gothic_ep2_after_portrait",
+  "requiredSceneIds": [
+    "gothic_ep2_after_portrait",
+    "gothic_ep2_adrian_choice",
+    "gothic_ep2_first_evelyn_name",
+    "gothic_ep2_morning",
+    "gothic_ep2_isabel_arrival",
+    "gothic_ep2_photos_reveal",
+    "gothic_ep2_west_door",
+    "gothic_ep2_first_evelyn_room",
+    "gothic_ep2_diary",
+    "gothic_ep2_diary_core",
+    "gothic_ep2_chapel_path",
+    "gothic_ep2_lucian_meet",
+    "gothic_ep2_lucian_reveal",
+    "gothic_ep2_return",
+    "gothic_ep2_adrian_close",
+    "gothic_ep2_mirror",
+    "gothic_ep2_end"
+  ],
+  "scenes": [
+    {
+      "id": "gothic_ep2_after_portrait",
+      "kind": "narrative",
+      "text": "Слова Адриана остаются между ними. За окнами дождь слабеет, но в галерее становится только холоднее.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Галерея · после полуночи",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/final-frame.webp"
+      },
+      "beats": [
+        {
+          "text": "Слова Адриана остаются между ними. За окнами дождь слабеет, но в галерее становится только холоднее.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Эвелин снова смотрит на дату на портрете: 1901. Потом — на мужчину рядом с собой, который выглядит так же, как на полотне.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "На этот раз она не отводит взгляд. Если дом хотел напугать её, он выбрал слишком убедительное доказательство.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ],
+      "transitions": [
+        {
+          "nextSceneId": "gothic_ep2_after_called_adrian",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "gothic_gallery_choice",
+              "value": "adrian"
+            }
+          ]
+        },
+        {
+          "nextSceneId": "gothic_ep2_after_entered_alone",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "gothic_gallery_choice",
+              "value": "alone"
+            }
+          ]
+        }
+      ],
+      "nextSceneId": "gothic_ep2_after_entered_alone"
+    },
+    {
+      "id": "gothic_ep2_after_called_adrian",
+      "kind": "narrative",
+      "text": "Эвелин вспоминает, как сама позвала Адриана несколько минут назад. Он пришёл слишком быстро — будто уже стоял за дверью.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Галерея",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/adrian-final.webp"
+      },
+      "beats": [
+        {
+          "text": "Эвелин вспоминает, как сама позвала Адриана несколько минут назад. Он пришёл слишком быстро — будто уже стоял за дверью.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Ты знал, что я найду этот портрет.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Я знал, что однажды дом покажет его тебе. Я надеялся, что не сегодня.",
+          "speaker": "Адриан",
+          "presentation": {
+            "camera": "close",
+            "motion": "drift-left"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_adrian_choice"
+    },
+    {
+      "id": "gothic_ep2_after_entered_alone",
+      "kind": "narrative",
+      "text": "Она вошла сюда без разрешения, и теперь доказательство висит перед ней. Запреты Адриана больше не звучат как забота.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Галерея",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/evelyn-shocked.webp"
+      },
+      "beats": [
+        {
+          "text": "Она вошла сюда без разрешения, и теперь доказательство висит перед ней. Запреты Адриана больше не звучат как забота.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Ты пытался не допустить меня сюда. Потому что знал, что я увижу тебя.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Потому что я знал, что после этого ты перестанешь верить любому моему слову.",
+          "speaker": "Адриан",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_adrian_choice"
+    },
+    {
+      "id": "gothic_ep2_adrian_choice",
+      "kind": "dialogue",
+      "text": "Адриан не подходит ближе. Впервые с момента её приезда он выглядит не хозяином дома, а человеком, которого загнали в угол.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Галерея",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/adrian-tense.webp"
+      },
+      "beats": [
+        {
+          "text": "Адриан не подходит ближе. Впервые с момента её приезда он выглядит не хозяином дома, а человеком, которого загнали в угол.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Что спросить первым?",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "gothic_ep2_ask_who",
+          "text": "«Кто ты на самом деле?»",
+          "nextSceneId": "gothic_ep2_adrian_truth",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 2
+            },
+            {
+              "kind": "inc",
+              "score": "junhoScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_ep2_adrian_approach",
+              "value": "truth"
+            }
+          ]
+        },
+        {
+          "id": "gothic_ep2_accuse",
+          "text": "«Ты лгал мне с первой минуты.»",
+          "nextSceneId": "gothic_ep2_adrian_accuse",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "junhoScore",
+              "by": -1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_ep2_adrian_approach",
+              "value": "accuse"
+            }
+          ]
+        },
+        {
+          "id": "gothic_ep2_ask_first_evelyn",
+          "text": "«Кто женщина рядом с тобой?»",
+          "nextSceneId": "gothic_ep2_adrian_woman",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "junhoScore",
+              "by": 2
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_ep2_adrian_approach",
+              "value": "woman"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gothic_ep2_adrian_truth",
+      "kind": "narrative",
+      "text": "Короткая тень улыбки исчезает с его лица прежде, чем успевает появиться.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Галерея",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/adrian-guarded.webp"
+      },
+      "beats": [
+        {
+          "text": "Короткая тень улыбки исчезает с его лица прежде, чем успевает появиться.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Если я отвечу сейчас, ты решишь, что я безумен. Если не отвечу — решишь, что опасен.",
+          "speaker": "Адриан",
+          "presentation": {
+            "camera": "close",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Это не ответ.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Нет. Но это правда.",
+          "speaker": "Адриан",
+          "presentation": {
+            "camera": "close",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_first_evelyn_name"
+    },
+    {
+      "id": "gothic_ep2_adrian_accuse",
+      "kind": "narrative",
+      "text": "Адриан принимает обвинение без спора. Это злит сильнее, чем оправдание.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Галерея",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/adrian-warning.webp"
+      },
+      "beats": [
+        {
+          "text": "Адриан принимает обвинение без спора. Это злит сильнее, чем оправдание.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "tension"
+          }
+        },
+        {
+          "text": "Я не солгал о правилах. И не солгал о том, что они нужны, чтобы ты дожила до конца этих тридцати дней.",
+          "speaker": "Адриан",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Очень успокаивает.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Я не пытаюсь тебя успокоить.",
+          "speaker": "Адриан",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_first_evelyn_name"
+    },
+    {
+      "id": "gothic_ep2_adrian_woman",
+      "kind": "narrative",
+      "text": "Адриан смотрит не на Эвелин, а на лицо женщины на картине. В его выражении появляется что-то слишком личное.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Портрет 1901 года",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/portrait-face.webp"
+      },
+      "beats": [
+        {
+          "text": "Адриан смотрит не на Эвелин, а на лицо женщины на картине. В его выражении появляется что-то слишком личное.",
+          "presentation": {
+            "camera": "close",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Её звали Эвелин Рейвен.",
+          "speaker": "Адриан",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Так же, как меня.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Да. И она тоже считала, что сможет заставить этот дом раскрыть все тайны сразу.",
+          "speaker": "Адриан",
+          "presentation": {
+            "camera": "close",
+            "motion": "drift-left"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_first_evelyn_name"
+    },
+    {
+      "id": "gothic_ep2_first_evelyn_name",
+      "kind": "narrative",
+      "text": "Эвелин Рейвен. Двадцать два года. Умерла в 1901-м — если табличка говорит правду.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Портрет 1901 года",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/first-evelyn-portrait.svg"
+      },
+      "beats": [
+        {
+          "text": "Эвелин Рейвен. Двадцать два года. Умерла в 1901-м — если табличка говорит правду.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "На фотографии лица обычно становятся чужими через несколько поколений. Здесь сходство не поколенческое. Оно почти точное.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "Она была моей родственницей?",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Была частью этого дома. Этого пока достаточно.",
+          "speaker": "Адриан",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_adrian_warning"
+    },
+    {
+      "id": "gothic_ep2_adrian_warning",
+      "kind": "narrative",
+      "text": "Адриан закрывает ставню, и тёмное стекло на секунду отражает их рядом — почти так же, как на портрете.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "У выхода из галереи",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/adrian-warning.webp"
+      },
+      "beats": [
+        {
+          "text": "Адриан закрывает ставню, и тёмное стекло на секунду отражает их рядом — почти так же, как на портрете.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Есть ещё одно место, куда ты не должна идти. Западное крыло.",
+          "speaker": "Адриан",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        },
+        {
+          "text": "Это уже было одним из твоих правил.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Теперь это не правило. Это просьба.",
+          "speaker": "Адриан",
+          "presentation": {
+            "camera": "close",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "transitions": [
+        {
+          "nextSceneId": "gothic_ep2_midnight_open_memory",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "gothic_opened_midnight_door",
+              "value": true
+            }
+          ]
+        },
+        {
+          "nextSceneId": "gothic_ep2_midnight_closed_memory",
+          "conditions": [
+            {
+              "kind": "flagEquals",
+              "flag": "gothic_opened_midnight_door",
+              "value": false
+            }
+          ]
+        }
+      ],
+      "nextSceneId": "gothic_ep2_midnight_closed_memory"
+    },
+    {
+      "id": "gothic_ep2_midnight_open_memory",
+      "kind": "narrative",
+      "text": "Эвелин вспоминает холодную ручку двери и пустой коридор за ней. Кто-то позвал её по имени, но там никого не было.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Коридор · воспоминание",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/midnight-handle.webp"
+      },
+      "beats": [
+        {
+          "text": "Эвелин вспоминает холодную ручку двери и пустой коридор за ней. Кто-то позвал её по имени, но там никого не было.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Если это была не ты и не Адриан, значит в доме есть кто-то ещё. Или что-то.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_morning"
+    },
+    {
+      "id": "gothic_ep2_midnight_closed_memory",
+      "kind": "narrative",
+      "text": "Она вспоминает, как удержала дверь закрытой, пока за ней не разбилось стекло. Потом появились чёрные лепестки.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Коридор · воспоминание",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/petal-trail.webp"
+      },
+      "beats": [
+        {
+          "text": "Она вспоминает, как удержала дверь закрытой, пока за ней не разбилось стекло. Потом появились чёрные лепестки.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Не открыть дверь не означало остаться в безопасности. Дом всё равно вывел её к портрету.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_morning"
+    },
+    {
+      "id": "gothic_ep2_morning",
+      "kind": "narrative",
+      "text": "Утро приходит без солнца. За окнами висит белый туман, будто Рейвенхолл за ночь отрезали от остального мира.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Утро · спальня Эвелин",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/evelyn-concerned.webp"
+      },
+      "beats": [
+        {
+          "text": "Утро приходит без солнца. За окнами висит белый туман, будто Рейвенхолл за ночь отрезали от остального мира.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Эвелин почти не спала. В блокноте уже три страницы вопросов и ни одного ответа, которому она доверяет.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Внизу хлопает входная дверь. Через несколько секунд слышится незнакомый женский голос.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_isabel_arrival"
+    },
+    {
+      "id": "gothic_ep2_isabel_arrival",
+      "kind": "narrative",
+      "text": "Девушка у лестницы держит под мышкой папку и старую кожаную сумку. Рыжеватые волосы собраны небрежно, взгляд слишком внимательный для случайного гостя.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Главный холл",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/isabel-portrait.svg"
+      },
+      "beats": [
+        {
+          "text": "Девушка у лестницы держит под мышкой папку и старую кожаную сумку. Рыжеватые волосы собраны небрежно, взгляд слишком внимательный для случайного гостя.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Изабель Морроу. Архивистка. Нотариус просил разобрать семейные бумаги, пока дом официально переходит к вам.",
+          "speaker": "Изабель",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Она произносит «дом» так, будто речь идёт не о здании, а о человеке, который может услышать.",
+          "presentation": {
+            "camera": "close",
+            "motion": "drift-left"
+          }
+        },
+        {
+          "text": "Адриан рядом заметно напрягается. Значит, они знакомы.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "tension"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_archive_room"
+    },
+    {
+      "id": "gothic_ep2_archive_room",
+      "kind": "narrative",
+      "text": "Изабель выбирает маленькую комнату рядом с библиотекой. Через час стол исчезает под коробками, конвертами и карточками с датами.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Архивная комната",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/main-hall.webp"
+      },
+      "beats": [
+        {
+          "text": "Изабель выбирает маленькую комнату рядом с библиотекой. Через час стол исчезает под коробками, конвертами и карточками с датами.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Адриан уходит, сказав, что будет в оранжерее. Изабель ждёт, пока его шаги стихнут.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Только тогда она вытаскивает из сумки плоский серый пакет.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "Я нашла это ещё до вашего приезда. Но показывать при нём не хотела.",
+          "speaker": "Изабель",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_photos_reveal"
+    },
+    {
+      "id": "gothic_ep2_photos_reveal",
+      "kind": "narrative",
+      "text": "На стол ложатся четыре фотографии Рейвенхолла. Разные камеры, разная бумага, разные десятилетия.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Архив · фотографии",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/adrian-photos.svg"
+      },
+      "beats": [
+        {
+          "text": "На стол ложатся четыре фотографии Рейвенхолла. Разные камеры, разная бумага, разные десятилетия.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "1931. 1957. 1986. 2019.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "На каждой в глубине кадра стоит один и тот же мужчина. Те же волосы. То же лицо. Даже выражение почти не меняется.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "Адриан Вейл.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Изабель кивает. Она явно ждала, что Эвелин узнает его без подсказки.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "tension"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_isabel_choice"
+    },
+    {
+      "id": "gothic_ep2_isabel_choice",
+      "kind": "dialogue",
+      "text": "Изабель складывает руки на столе. Её доброжелательность остаётся, но теперь в ней чувствуется осторожность.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Архив",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/isabel-portrait.svg"
+      },
+      "beats": [
+        {
+          "text": "Изабель складывает руки на столе. Её доброжелательность остаётся, но теперь в ней чувствуется осторожность.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Что рассказать ей?",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "gothic_ep2_isabel_confide_choice",
+          "text": "Рассказать о голосе, лепестках и портрете",
+          "nextSceneId": "gothic_ep2_isabel_confide",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_isabel_trust",
+              "value": 2
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_ep2_told_isabel_everything",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "gothic_ep2_isabel_photos_choice",
+          "text": "Спросить только о фотографиях",
+          "nextSceneId": "gothic_ep2_isabel_photos",
+          "effects": [
+            {
+              "kind": "setFlag",
+              "flag": "gothic_isabel_trust",
+              "value": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_ep2_told_isabel_everything",
+              "value": false
+            }
+          ]
+        },
+        {
+          "id": "gothic_ep2_isabel_probe_choice",
+          "text": "«На кого ты работаешь на самом деле?»",
+          "nextSceneId": "gothic_ep2_isabel_probe",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_isabel_trust",
+              "value": 0
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_ep2_told_isabel_everything",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gothic_ep2_isabel_confide",
+      "kind": "narrative",
+      "text": "Изабель не перебивает ни разу. На словах о женщине с лицом Эвелин её пальцы замирают на краю фотографии.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Архив",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/isabel-portrait.svg"
+      },
+      "beats": [
+        {
+          "text": "Изабель не перебивает ни разу. На словах о женщине с лицом Эвелин её пальцы замирают на краю фотографии.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Значит, он уже показал тебе первую Эвелин.",
+          "speaker": "Изабель",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "Не он. Дом.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Это хуже.",
+          "speaker": "Изабель",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_isabel_hint"
+    },
+    {
+      "id": "gothic_ep2_isabel_photos",
+      "kind": "narrative",
+      "text": "Эвелин не упоминает голос и чёрные лепестки. Пока рано решать, кому здесь можно доверять.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Архив",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/adrian-photos.svg"
+      },
+      "beats": [
+        {
+          "text": "Эвелин не упоминает голос и чёрные лепестки. Пока рано решать, кому здесь можно доверять.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Фотографии подлинные?",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Бумага, эмульсия и архивные отметки совпадают с датами. Если это подделка, её начали готовить почти сто лет назад.",
+          "speaker": "Изабель",
+          "presentation": {
+            "camera": "close",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_isabel_hint"
+    },
+    {
+      "id": "gothic_ep2_isabel_probe",
+      "kind": "narrative",
+      "text": "Улыбка Изабель становится меньше, но не исчезает.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Архив",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/isabel-portrait.svg"
+      },
+      "beats": [
+        {
+          "text": "Улыбка Изабель становится меньше, но не исчезает.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Умный вопрос. Обычно его задают позже.",
+          "speaker": "Изабель",
+          "presentation": {
+            "camera": "close",
+            "motion": "drift-left"
+          }
+        },
+        {
+          "text": "Значит, ответ есть.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Есть. Но сначала тебе нужно увидеть, почему я вообще приехала.",
+          "speaker": "Изабель",
+          "presentation": {
+            "camera": "close",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_isabel_hint"
+    },
+    {
+      "id": "gothic_ep2_isabel_hint",
+      "kind": "narrative",
+      "text": "Изабель переворачивает последнюю фотографию. На обороте карандашом нарисован знак: круг, перечёркнутый тремя шипами.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Архив",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/isabel-portrait.svg"
+      },
+      "beats": [
+        {
+          "text": "Изабель переворачивает последнюю фотографию. На обороте карандашом нарисован знак: круг, перечёркнутый тремя шипами.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "Такой знак встречается в бумагах семьи Рейвен. Чаще всего рядом с упоминаниями западного крыла.",
+          "speaker": "Изабель",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Адриан запретил туда входить.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Тогда вопрос не в том, что там есть. Вопрос — почему он уверен, что ты найдёшь это опасным.",
+          "speaker": "Изабель",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_west_door"
+    },
+    {
+      "id": "gothic_ep2_west_door",
+      "kind": "narrative",
+      "text": "Дверь в западное крыло стоит за тяжёлой портьерой. Утром Эвелин прошла мимо неё дважды и не заметила ни ручки, ни замочной скважины.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Западное крыло",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/west-wing-door.svg"
+      },
+      "beats": [
+        {
+          "text": "Дверь в западное крыло стоит за тяжёлой портьерой. Утром Эвелин прошла мимо неё дважды и не заметила ни ручки, ни замочной скважины.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Теперь в дереве виден узкий латунный замок. Будто дверь решила, что пора позволить себя открыть.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "Из архива Эвелин принесла маленький ключ из конверта с датой «1901». Он подходит с первого раза.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Щелчок звучит слишком громко.",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_enter_choice"
+    },
+    {
+      "id": "gothic_ep2_enter_choice",
+      "kind": "dialogue",
+      "text": "До заката ещё несколько часов. Адриан в другой части дома. Изабель собирает архивные коробки.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "У двери западного крыла",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/west-wing-door.svg"
+      },
+      "beats": [
+        {
+          "text": "До заката ещё несколько часов. Адриан в другой части дома. Изабель собирает архивные коробки.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Как войти?",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "gothic_ep2_enter_alone",
+          "text": "Войти одной, пока никто не остановил",
+          "nextSceneId": "gothic_ep2_west_alone",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 2
+            },
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_ep2_west_companion",
+              "value": "alone"
+            }
+          ]
+        },
+        {
+          "id": "gothic_ep2_enter_isabel",
+          "text": "Позвать Изабель",
+          "nextSceneId": "gothic_ep2_west_isabel",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_ep2_west_companion",
+              "value": "isabel"
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_isabel_trust",
+              "value": 3
+            }
+          ]
+        },
+        {
+          "id": "gothic_ep2_enter_note",
+          "text": "Оставить Адриану записку и всё равно войти",
+          "nextSceneId": "gothic_ep2_west_note",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "junhoScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_ep2_west_companion",
+              "value": "note"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gothic_ep2_west_alone",
+      "kind": "narrative",
+      "text": "Эвелин кладёт ключ в карман и открывает дверь сама. Ей не хочется, чтобы ещё один человек решал, какую правду она может выдержать.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Порог западного крыла",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/evelyn-determined-night.webp"
+      },
+      "beats": [
+        {
+          "text": "Эвелин кладёт ключ в карман и открывает дверь сама. Ей не хочется, чтобы ещё один человек решал, какую правду она может выдержать.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "За дверью пахнет сухими розами и холодным камнем.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_west_corridor"
+    },
+    {
+      "id": "gothic_ep2_west_isabel",
+      "kind": "narrative",
+      "text": "Изабель приходит через минуту и, увидев открытый замок, впервые выглядит по-настоящему испуганной.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Порог западного крыла",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/isabel-portrait.svg"
+      },
+      "beats": [
+        {
+          "text": "Изабель приходит через минуту и, увидев открытый замок, впервые выглядит по-настоящему испуганной.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "Я думала, дверь запечатана.",
+          "speaker": "Изабель",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Была. Пока дом не оставил ключ в архиве.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Тогда держись рядом. И ничего не бери руками, если оно выглядит так, будто ждало именно тебя.",
+          "speaker": "Изабель",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_west_corridor"
+    },
+    {
+      "id": "gothic_ep2_west_note",
+      "kind": "narrative",
+      "text": "Эвелин оставляет на столе короткую записку: «Я иду туда. Если хочешь остановить — объясни почему».",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Порог западного крыла",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/evelyn-determined.webp"
+      },
+      "beats": [
+        {
+          "text": "Эвелин оставляет на столе короткую записку: «Я иду туда. Если хочешь остановить — объясни почему».",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Это не разрешение и не просьба. Просто шанс для Адриана перестать делать вид, что её безопасность требует молчания.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_west_corridor"
+    },
+    {
+      "id": "gothic_ep2_west_corridor",
+      "kind": "narrative",
+      "text": "Воздух за дверью холоднее на несколько градусов. Пыль лежит на полу нетронутым слоем — кроме одной узкой дорожки следов.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Западное крыло",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/midnight-corridor.webp"
+      },
+      "beats": [
+        {
+          "text": "Воздух за дверью холоднее на несколько градусов. Пыль лежит на полу нетронутым слоем — кроме одной узкой дорожки следов.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Следы босых ног уходят вглубь коридора. Размер почти такой же, как у Эвелин.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "На стенах нет портретов. Только пустые прямоугольники, где когда-то висели рамы.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "В самом конце коридора открыта одна дверь.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_first_evelyn_room"
+    },
+    {
+      "id": "gothic_ep2_first_evelyn_room",
+      "kind": "narrative",
+      "text": "Комната сохранилась так, будто хозяйка вышла утром и должна вернуться к ужину. На кровати расправлено покрывало, на туалетном столике стоят флаконы.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Спальня первой Эвелин",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/first-evelyn-room.svg"
+      },
+      "beats": [
+        {
+          "text": "Комната сохранилась так, будто хозяйка вышла утром и должна вернуться к ужину. На кровати расправлено покрывало, на туалетном столике стоят флаконы.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "В шкафу висят платья начала прошлого века. На одном из воротников вышиты две буквы: E. R.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "drift-left"
+          }
+        },
+        {
+          "text": "На кресле лежит современный слой пыли, но зеркало чистое. Кто-то протирает его регулярно.",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        },
+        {
+          "text": "Эвелин чувствует чужое присутствие не за спиной, а внутри самой комнаты — словно та узнаёт её.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_letters"
+    },
+    {
+      "id": "gothic_ep2_letters",
+      "kind": "narrative",
+      "text": "В нижнем ящике стола лежат письма, перевязанные потемневшей лентой. Большинство подписано только одной буквой — А.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Спальня первой Эвелин",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/black-roses.webp"
+      },
+      "beats": [
+        {
+          "text": "В нижнем ящике стола лежат письма, перевязанные потемневшей лентой. Большинство подписано только одной буквой — А.",
+          "presentation": {
+            "camera": "close",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "«Не выходи к розарию после заката». «Не отвечай, если услышишь своё имя из пустой комнаты».",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Те же правила. Только написаны сто двадцать пять лет назад.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "Последнее письмо короче остальных: «Я обещал, что найду способ. Не делай ничего до моего возвращения. — Адриан».",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_diary"
+    },
+    {
+      "id": "gothic_ep2_diary",
+      "kind": "narrative",
+      "text": "Под письмами спрятан тонкий дневник в чёрной коже. Замок сломан давно, но страницы сохранились почти идеально.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Спальня первой Эвелин · дневник",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/diary-page.svg"
+      },
+      "beats": [
+        {
+          "text": "Под письмами спрятан тонкий дневник в чёрной коже. Замок сломан давно, но страницы сохранились почти идеально.",
+          "presentation": {
+            "camera": "close",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Почерк меняется от спокойного к резкому по мере того, как даты приближаются к осени 1901 года.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "На полях повторяется один и тот же рисунок: роза с тремя длинными шипами.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_diary_choice"
+    },
+    {
+      "id": "gothic_ep2_diary_choice",
+      "kind": "dialogue",
+      "text": "Времени мало. Если Адриан увидел записку — он уже идёт сюда.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Дневник 1901 года",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/diary-page.svg"
+      },
+      "beats": [
+        {
+          "text": "Времени мало. Если Адриан увидел записку — он уже идёт сюда.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "tension"
+          }
+        },
+        {
+          "text": "Что искать в первую очередь?",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "gothic_ep2_diary_begin",
+          "text": "Читать с первой записи",
+          "nextSceneId": "gothic_ep2_diary_beginning",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 2
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_ep2_diary_path",
+              "value": "beginning"
+            }
+          ]
+        },
+        {
+          "id": "gothic_ep2_diary_end",
+          "text": "Перейти к последним дням 1901 года",
+          "nextSceneId": "gothic_ep2_diary_final_days",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_ep2_diary_path",
+              "value": "final-days"
+            }
+          ]
+        },
+        {
+          "id": "gothic_ep2_diary_adrian",
+          "text": "Искать упоминания Адриана",
+          "nextSceneId": "gothic_ep2_diary_adrian_entries",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "junhoScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_ep2_diary_path",
+              "value": "adrian"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gothic_ep2_diary_beginning",
+      "kind": "narrative",
+      "text": "Первые записи почти обычные: прогулки, гости, скука, спор с отцом о наследстве.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Дневник · весна 1901",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/diary-page.svg"
+      },
+      "beats": [
+        {
+          "text": "Первые записи почти обычные: прогулки, гости, скука, спор с отцом о наследстве.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Потом появляется фраза: «Дом снова назвал меня по имени. Адриан говорит, это значит, что Рейвенхолл меня помнит».",
+          "presentation": {
+            "camera": "close",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Через неделю: «Сегодня я увидела в зеркале комнату, в которой никогда не была».",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_diary_core"
+    },
+    {
+      "id": "gothic_ep2_diary_final_days",
+      "kind": "narrative",
+      "text": "Последние страницы исписаны плотнее. Некоторые слова продавили бумагу насквозь.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Дневник · октябрь 1901",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/diary-page.svg"
+      },
+      "beats": [
+        {
+          "text": "Последние страницы исписаны плотнее. Некоторые слова продавили бумагу насквозь.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "«Они хотят завершить обряд до новолуния. Я больше не уверена, что дом защищает нашу семью».",
+          "presentation": {
+            "camera": "close",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Ниже другое чернилами: «Если я уйду, он последует. Если останусь — может остаться только он».",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_diary_core"
+    },
+    {
+      "id": "gothic_ep2_diary_adrian_entries",
+      "kind": "narrative",
+      "text": "Имя Адриана встречается чаще любого другого. Иногда рядом с ним нарисована роза. Иногда — только тёмная черта.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Дневник · Адриан",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/diary-page.svg"
+      },
+      "beats": [
+        {
+          "text": "Имя Адриана встречается чаще любого другого. Иногда рядом с ним нарисована роза. Иногда — только тёмная черта.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "«Он снова не изменился. Я спросила, боится ли он времени. Он ответил, что боится только повторения».",
+          "presentation": {
+            "camera": "close",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Эвелин перечитывает строку дважды. Первая Эвелин уже тогда знала, что с ним что-то невозможно.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_diary_core"
+    },
+    {
+      "id": "gothic_ep2_diary_core",
+      "kind": "narrative",
+      "text": "Все ветки дневника сходятся на одной странице, датированной 17 октября 1901 года.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Дневник · последняя целая страница",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/diary-page.svg"
+      },
+      "beats": [
+        {
+          "text": "Все ветки дневника сходятся на одной странице, датированной 17 октября 1901 года.",
+          "presentation": {
+            "camera": "close",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Почерк здесь дрожит.",
+          "presentation": {
+            "camera": "extreme-close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "«Я совершила ошибку. Адриан обещает всё исправить.»",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "Следующая страница вырвана у самого корешка.",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_torn_page"
+    },
+    {
+      "id": "gothic_ep2_torn_page",
+      "kind": "narrative",
+      "text": "Между оставшимися листами застрял сухой чёрный лепесток и маленький рисунок часовни на северной стороне поместья.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Спальня первой Эвелин",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/diary-page.svg"
+      },
+      "beats": [
+        {
+          "text": "Между оставшимися листами застрял сухой чёрный лепесток и маленький рисунок часовни на северной стороне поместья.",
+          "presentation": {
+            "camera": "close",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Под рисунком одно слово: «Кроу».",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "В коридоре скрипит половица. Эвелин закрывает дневник и прячет его под пальто.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "tension"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_chapel_path"
+    },
+    {
+      "id": "gothic_ep2_chapel_path",
+      "kind": "narrative",
+      "text": "К вечеру туман расходится. За северной стеной сада Эвелин находит дорожку, которой нет на современной карте поместья.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Старая часовня · сумерки",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/chapel.svg"
+      },
+      "beats": [
+        {
+          "text": "К вечеру туман расходится. За северной стеной сада Эвелин находит дорожку, которой нет на современной карте поместья.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Она приводит к маленькой каменной часовне. Дверь открыта, хотя петли покрыты ржавчиной.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Внутри горит одна свеча.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "И рядом с ней кто-то перелистывает старую книгу.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "tension"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_lucian_meet"
+    },
+    {
+      "id": "gothic_ep2_lucian_meet",
+      "kind": "narrative",
+      "text": "Мужчина поднимает голову раньше, чем Эвелин успевает сделать шаг назад. Он выглядит слишком современно для этой часовни и слишком спокойно для незваного гостя.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Старая часовня",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/lucian-portrait.svg"
+      },
+      "beats": [
+        {
+          "text": "Мужчина поднимает голову раньше, чем Эвелин успевает сделать шаг назад. Он выглядит слишком современно для этой часовни и слишком спокойно для незваного гостя.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Эвелин Рейвен.",
+          "speaker": "Люциан",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Она не представилась.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "Если ты нашла дневник, значит дом уже решил, что мы должны встретиться.",
+          "speaker": "Люциан",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_lucian_choice"
+    },
+    {
+      "id": "gothic_ep2_lucian_choice",
+      "kind": "dialogue",
+      "text": "В его голосе нет угрозы. Это почему-то делает ситуацию ещё менее безопасной.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Часовня",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/lucian-portrait.svg"
+      },
+      "beats": [
+        {
+          "text": "В его голосе нет угрозы. Это почему-то делает ситуацию ещё менее безопасной.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Что спросить?",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "gothic_ep2_lucian_who",
+          "text": "«Кто вы?»",
+          "nextSceneId": "gothic_ep2_lucian_identity",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "taeyunScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_ep2_lucian_approach",
+              "value": "identity"
+            }
+          ]
+        },
+        {
+          "id": "gothic_ep2_lucian_follow",
+          "text": "«Вы следили за мной?»",
+          "nextSceneId": "gothic_ep2_lucian_followed",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_ep2_lucian_approach",
+              "value": "suspicious"
+            }
+          ]
+        },
+        {
+          "id": "gothic_ep2_lucian_adrian",
+          "text": "«Что вы знаете об Адриане?»",
+          "nextSceneId": "gothic_ep2_lucian_adrian",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 2
+            },
+            {
+              "kind": "inc",
+              "score": "taeyunScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_ep2_lucian_approach",
+              "value": "adrian"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gothic_ep2_lucian_identity",
+      "kind": "narrative",
+      "text": "Люциан Кроу. Исследователь. Иногда — человек, которого нанимают семьи, предпочитающие не объяснять, что именно нужно найти.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Часовня",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/lucian-portrait.svg"
+      },
+      "beats": [
+        {
+          "text": "Люциан Кроу. Исследователь. Иногда — человек, которого нанимают семьи, предпочитающие не объяснять, что именно нужно найти.",
+          "speaker": "Люциан",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Кроу. Это имя было под рисунком часовни.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "Тогда первая Эвелин оставила тебе больше, чем я рассчитывал.",
+          "speaker": "Люциан",
+          "presentation": {
+            "camera": "close",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_lucian_reveal"
+    },
+    {
+      "id": "gothic_ep2_lucian_followed",
+      "kind": "narrative",
+      "text": "Не за тобой. За домом. Ты появилась позже.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Часовня",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/lucian-portrait.svg"
+      },
+      "beats": [
+        {
+          "text": "Не за тобой. За домом. Ты появилась позже.",
+          "speaker": "Люциан",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Это должно звучать лучше?",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Нет. Но я предпочитаю плохую правду хорошей лжи.",
+          "speaker": "Люциан",
+          "presentation": {
+            "camera": "close",
+            "motion": "drift-left"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_lucian_reveal"
+    },
+    {
+      "id": "gothic_ep2_lucian_adrian",
+      "kind": "narrative",
+      "text": "Люциан смотрит на открытую дверь часовни, будто проверяет, не стоит ли кто-то снаружи.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Часовня",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/lucian-portrait.svg"
+      },
+      "beats": [
+        {
+          "text": "Люциан смотрит на открытую дверь часовни, будто проверяет, не стоит ли кто-то снаружи.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "tension"
+          }
+        },
+        {
+          "text": "Достаточно, чтобы не задавать ему вопрос «сколько тебе лет». Спроси лучше: сколько раз он уже видел наследницу с твоим лицом.",
+          "speaker": "Люциан",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "По спине Эвелин проходит холод.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_lucian_reveal"
+    },
+    {
+      "id": "gothic_ep2_lucian_reveal",
+      "kind": "narrative",
+      "text": "Люциан вытаскивает из книги фотографию. На ней Адриан стоит у ворот Рейвенхолла задолго до снимков Изабель.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Часовня",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/lucian-portrait.svg"
+      },
+      "beats": [
+        {
+          "text": "Люциан вытаскивает из книги фотографию. На ней Адриан стоит у ворот Рейвенхолла задолго до снимков Изабель.",
+          "presentation": {
+            "camera": "close",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Фотографии не подделаны. И Адриан — не единственная странность этого дома.",
+          "speaker": "Люциан",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "А Изабель?",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Изабель знает больше, чем говорит. Но это не значит, что она твой враг.",
+          "speaker": "Люциан",
+          "presentation": {
+            "camera": "close",
+            "motion": "drift-right"
+          }
+        },
+        {
+          "text": "Он кивает на дневник под её пальто. «Последняя страница уцелела. Просто не там, где ты её ищешь».",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_return"
+    },
+    {
+      "id": "gothic_ep2_return",
+      "kind": "narrative",
+      "text": "Когда Эвелин возвращается, в холле уже горят все свечи. На лестнице её ждёт Адриан.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Рейвенхолл · ночь",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/evelyn-determined-night.webp"
+      },
+      "beats": [
+        {
+          "text": "Когда Эвелин возвращается, в холле уже горят все свечи. На лестнице её ждёт Адриан.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Он не спрашивает, где она была. Его взгляд сразу падает на карман пальто, где спрятан дневник.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "Ты открыла западное крыло.",
+          "speaker": "Адриан",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "И нашла причину, по которой ты так боялся, что я это сделаю.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_confront_choice"
+    },
+    {
+      "id": "gothic_ep2_confront_choice",
+      "kind": "dialogue",
+      "text": "Дневник кажется тяжелее, чем несколько минут назад.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Главный холл",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/adrian-tense.webp"
+      },
+      "beats": [
+        {
+          "text": "Дневник кажется тяжелее, чем несколько минут назад.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Что сделать?",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "gothic_ep2_hide_diary",
+          "text": "Спрятать дневник и ничего не показывать",
+          "nextSceneId": "gothic_ep2_hide_from_adrian",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "riskScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_ep2_diary_hidden",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "gothic_ep2_show_diary",
+          "text": "Показать ему последнюю целую страницу",
+          "nextSceneId": "gothic_ep2_show_adrian",
+          "effects": [
+            {
+              "kind": "inc",
+              "score": "junhoScore",
+              "by": 1
+            },
+            {
+              "kind": "inc",
+              "score": "truthScore",
+              "by": 1
+            },
+            {
+              "kind": "setFlag",
+              "flag": "gothic_ep2_diary_hidden",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gothic_ep2_hide_from_adrian",
+      "kind": "narrative",
+      "text": "Ничего, что тебе нужно видеть.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Главный холл",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/adrian-guarded.webp"
+      },
+      "beats": [
+        {
+          "text": "Ничего, что тебе нужно видеть.",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Адриан смотрит на неё несколько долгих секунд. Потом отступает на одну ступень.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Хорошо. Но если найдёшь страницу, которой не хватает, не читай её одна.",
+          "speaker": "Адриан",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        },
+        {
+          "text": "Он знает о вырванной странице. Эвелин этого не говорила.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_adrian_close"
+    },
+    {
+      "id": "gothic_ep2_show_adrian",
+      "kind": "narrative",
+      "text": "Эвелин раскрывает дневник на последней целой странице и держит его так, чтобы Адриан видел только одну запись.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Главный холл",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/adrian-soft.webp"
+      },
+      "beats": [
+        {
+          "text": "Эвелин раскрывает дневник на последней целой странице и держит его так, чтобы Адриан видел только одну запись.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "«Я совершила ошибку. Адриан обещает всё исправить.»",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "На лице Адриана исчезает вся защита. Осталась только старая, слишком знакомая боль.",
+          "presentation": {
+            "camera": "close",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Я не исправил.",
+          "speaker": "Адриан",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_adrian_close"
+    },
+    {
+      "id": "gothic_ep2_adrian_close",
+      "kind": "narrative",
+      "text": "Адриан подходит ближе, но не касается её. Между ними остаётся всего полшага и целый век вопросов.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "У лестницы",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v1/adrian-final.webp"
+      },
+      "beats": [
+        {
+          "text": "Адриан подходит ближе, но не касается её. Между ними остаётся всего полшага и целый век вопросов.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Первая Эвелин доверилась мне слишком поздно. Ты не обязана повторять её ошибку.",
+          "speaker": "Адриан",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "А какая именно была её ошибка?",
+          "speaker": "Эвелин",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "Адриан смотрит в сторону западного крыла. «Поверить, что у дома есть только один способ забрать человека».",
+          "speaker": "Адриан",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        },
+        {
+          "text": "Он уходит, не объяснив больше.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "drift-left"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_mirror"
+    },
+    {
+      "id": "gothic_ep2_mirror",
+      "kind": "narrative",
+      "text": "После полуночи Эвелин закрывает дверь на ключ. Дневник лежит на столе. Чёрный лепесток — рядом.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Спальня Эвелин · 00:17",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/mirror-warning.svg",
+        "effect": "dark-pulse"
+      },
+      "beats": [
+        {
+          "text": "После полуночи Эвелин закрывает дверь на ключ. Дневник лежит на столе. Чёрный лепесток — рядом.",
+          "presentation": {
+            "camera": "wide",
+            "motion": "slow-zoom"
+          }
+        },
+        {
+          "text": "Зеркало напротив кровати мутнеет от краёв к центру, хотя в комнате холодно и никто не дышит на стекло.",
+          "presentation": {
+            "camera": "close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "В отражении на секунду появляется женщина из портрета. Она стоит прямо за Эвелин.",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        },
+        {
+          "text": "Эвелин оборачивается. Комната пуста.",
+          "presentation": {
+            "camera": "medium",
+            "motion": "shake"
+          }
+        },
+        {
+          "text": "Когда она снова смотрит в зеркало, по стеклу медленно проступают три слова.",
+          "presentation": {
+            "camera": "extreme-close",
+            "motion": "slow-zoom"
+          }
+        }
+      ],
+      "nextSceneId": "gothic_ep2_end"
+    },
+    {
+      "id": "gothic_ep2_end",
+      "kind": "terminal",
+      "text": "Буквы становятся темнее, будто их выводит невидимый палец с обратной стороны зеркала.",
+      "presentation": {
+        "mode": "cinematic",
+        "location": "Спальня Эвелин",
+        "ambient": "dust",
+        "transition": "crossfade",
+        "cg": "assets/house-of-black-roses/v2/mirror-warning.svg",
+        "effect": "dark-pulse"
+      },
+      "beats": [
+        {
+          "text": "Буквы становятся темнее, будто их выводит невидимый палец с обратной стороны зеркала.",
+          "presentation": {
+            "camera": "extreme-close",
+            "motion": "push-in"
+          }
+        },
+        {
+          "text": "Под ними появляется отпечаток ладони. Слишком маленькой, чтобы принадлежать Адриану или Люциану.",
+          "presentation": {
+            "camera": "close",
+            "motion": "tension"
+          }
+        },
+        {
+          "text": "Эвелин не моргает.",
+          "presentation": {
+            "camera": "close",
+            "motion": "none"
+          }
+        },
+        {
+          "text": "НЕ ВЕРЬ ЕМУ.",
+          "presentation": {
+            "camera": "extreme-close",
+            "motion": "slow-zoom"
+          }
+        }
+      ]
+    }
+  ]
+}
