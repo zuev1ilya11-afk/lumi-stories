@@ -1,5 +1,6 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
+import { EPISODE_RECAPS } from '../src/features/shell/episodeRecaps.ts';
 import { EPISODE_REWIND_TARGETS } from '../supabase/functions/lumi-api/rewind-targets.ts';
 
 type RawEpisode = {
@@ -36,6 +37,7 @@ for (const file of episodeFiles) {
 
   const target = EPISODE_REWIND_TARGETS[episode.id as keyof typeof EPISODE_REWIND_TARGETS];
   if (!target) throw new Error(episode.id + ': missing replay target');
+  if (!(episode.id in EPISODE_RECAPS)) throw new Error(episode.id + ': missing episode recap');
   seen.add(episode.id);
 
   const terminalSceneIds = episode.scenes
@@ -57,4 +59,8 @@ for (const episodeId of Object.keys(EPISODE_REWIND_TARGETS)) {
   if (!seen.has(episodeId)) throw new Error(episodeId + ': replay target has no published episode');
 }
 
-console.log('Replay coverage OK for ' + seen.size + ' published episodes.');
+for (const episodeId of Object.keys(EPISODE_RECAPS)) {
+  if (!seen.has(episodeId)) throw new Error(episodeId + ': recap has no published episode');
+}
+
+console.log('Replay + recap coverage OK for ' + seen.size + ' published episodes.');
