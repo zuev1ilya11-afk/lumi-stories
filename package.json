@@ -9,7 +9,8 @@
     "typecheck": "tsc --noEmit",
     "build": "tsc --noEmit && vite build",
     "e2e": "playwright test",
-    "validate:story": "node --experimental-strip-types scripts/validate-story.ts"
+    "validate:story": "node --experimental-strip-types scripts/validate-story.ts",
+    "validate:replay": "node --experimental-strip-types scripts/validate-replay.ts"
   },
   "dependencies": {
     "react": "^19.3.0",
